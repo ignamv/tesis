@@ -1,0 +1,106 @@
+\documentclass{article}
+
+\usepackage[spanish]{babel}
+\hyphenation{i-rra-dia-dor}
+\usepackage[utf8]{inputenc}
+\usepackage[backend=bibtex,sorting=none]{biblatex}
+\bibliography{bibliografia.bib}
+\usepackage{todonotes}
+\usepackage[]{hyperref}
+%\hypersetup{pdftex,colorlinks=true,allcolors=blue}
+\hypersetup{pdfpagemode=UseOutlines}
+%\usepackage{hypcap}
+\usepackage{amssymb}
+\usepackage[]{amsmath}
+\usepackage[]{mathrsfs}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[load=addn]{siunitx}
+\usepackage{textcomp}
+
+\graphicspath{ {imagenes/} }
+\newcommand{\figref}[1]{figura~\ref{#1}}
+\newcommand{\equref}[1]{ecuación~\ref{#1}}
+% \fig{label}{archivo}{caption}
+\newcommand{\fig}[3]{
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=\columnwidth]{#2}
+    \includegraphics{#2}
+    \caption{#3}
+    \label{fig:#1}
+\end{figure}}
+\newcommand{\figp}[3]{
+\begin{figure}[p]
+    \centering
+    %\includegraphics[width=\columnwidth]{#2}
+    \includegraphics{#2}
+    \caption{#3}
+    \label{fig:#1}
+\end{figure}}
+\newcommand{\cita}[1]{\cite{#1}}
+\newcommand{\deriv}[2]{\frac{d#1}{d#2}}
+\newcommand{\strontium}{\mathrm{Sr}}
+\newcommand{\Strontium}{\ensuremath{\left.^{90}\mathrm{Sr}\right.}}
+\newcommand{\yttrium}{\mathrm{Y}}
+\newcommand{\Yttrium}{\ensuremath{\left.^{90}\mathrm{Y}\right.}}
+\newcommand{\zirconium}{\mathrm{Zr}}
+\newcommand{\vdd}{\ensuremath{V_{\text{DD}}}}
+
+\author{Ignacio Martinez Vazquez}
+\date{}
+
+\begin{document}
+\tableofcontents
+\listoffigures
+%
+% Está escrita como un informe donde se dice económicamente lo que se hizo.
+% A diferencia de un informe, una tesis debe
+% -proclamar sus objetivos, en este caso contextualizados por el estado del arte.
+% -ir explicando para qué se hace cada cosa (`` a fin de\dots'', ``con el
+% propósito de \dots''), y de qué modo se piensa hacer. Y al fin del capítulo con
+% los resultados a la vista comparar con lo que se propuso.
+% - Hacer una discusión-conclusión-resumen final.
+%
+% Fijate en algun momento como comparan tus resultados con los pocos
+% publicados con estructuras similares, tanto para la tesis como
+% pensando en el interés de publicarlos
+% pensaba más en los FG de los que tenemos resultados más
+% completos, quiero decir carga y descarga eléctrica controladas y
+% descarga por radiación medida.
+% 
+% Respecto de los APS, sí podés ver si lo visto es comparable y tratar
+% de tener algun resultado con radiación.
+% 
+% Otra: Me gustaría que el programa de simulación de la radiación
+% (GEANT?) quede instalado en alguna máquina de acá (lo está?) y nos
+% ayudes o nos encamines en algunos cálculos. En particular quisiera
+% revisar los resultados de Javier que le daba una tasa un poco altísima
+% dentro del cañon.
+%
+\input{agradecimientos.tex}
+\input{introduccion.tex}
+\part{Teoría}
+\input{fundamentos_mos.tex}
+\input{fundamentos_radiacion.tex}
+\input{fundamentos_dosimetria.tex}
+\input{radiacion_mos.tex}
+\input{montecarlo.tex}
+\part{Experimental}
+\input{instrumental.tex}
+\input{irradiador.tex}
+\part{Diseño, fabricación y caracterización de dosímetros MOS no
+convencionales}
+\input{dosimetroaps.tex}
+\input{dosimetrofg.tex}
+\part{Discusión y conclusiones}
+\input{discusion.tex}
+\input{conclusiones.tex}
+
+%\bibliographystyle{ieeetr}
+%\bibliography{bibliografia}
+\printbibliography
+
+\end{document}

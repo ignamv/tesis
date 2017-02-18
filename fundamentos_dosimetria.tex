@@ -1,0 +1,75 @@
+\section{Dosimetría y protección contra la radiación}
+La radiación es una parte inexorable de muchos procesos que mejoran nuestra
+calidad de vida:
+producción nuclear de energía, 
+diagnóstico y terapias médicas, 
+y mediciones con fines científicos e industriales.
+El conocimiento de su producción, propagación y efectos biológicos
+es el punto de partida para 
+proteger a las personas y el ambiente de sus efectos deletéreos
+\cite{iaea_radiation_????}.
+Con este objetivo surgen organizaciones como la International Commission on
+Radiological Protection\cite{_icrp_????} y la International Atomic Energy
+Agency\cite{iaea_official_????}.
+Las mismas crean recomendaciones para la seguridad en el uso de la radiación,
+tanto para los usuarios como para orientar la legislación en cada país.
+
+En todo contexto donde se emplea radiación 
+hay criterios para la exposición máxima 
+que pueden sufrir pacientes,
+trabajadores y el público general.
+Estos criterios se establecen balanceando los daños y beneficios,
+que no siempre se dan en la misma persona 
+(energía nuclear versus radioterapia).
+
+Para limitar la exposición,
+se definen prácticas a distintos niveles organizativos.
+A nivel operativo, se planean las manipulaciones de material radioactivo
+para minimizar la dosis.
+Asimismo, se monitorea la dosis recibida por trabajadores 
+mediante distintos tipos de dosímetros,
+y se controla la contaminación del ambiente de trabajo.
+Esto se acompaña con la creación de protocolos para el trabajo seguro
+que incluyen roles pre-establecidos para responder a accidentes.
+
+A nivel más alto, en cada organización se busca una cultura de seguridad:
+involucrando a los trabajadores en la creación e implementación de las normas,
+buscando transparencia y responsabilidad individual. 
+
+Esto sigue con 
+la regulación de las empresas, tanto de forma externa 
+(gubernamental e internacional) como interna (revisión por pares mediante
+organizaciones como la World Association of Nuclear Operators
+\cite{washington_practice_1997}).
+\subsection{Dosis}
+Los efectos de la exposición a la radiación varían con 
+\begin{itemize}
+    \item flujo de partículas,
+    \item tiempo de exposición,
+    \item tipo de partícula incidente ($\alpha$, $\beta$, $\gamma$, etc.),
+    \item sustancia donde incide,
+    \item clase de estructuras presentes en el blanco (tejido graso o ADN,
+        pads o celdas de memoria),
+    \item condiciones del blanco (estadío de vida de una célula
+        \cite{podgorsak_radiation_2005}, polarización de un circuito),
+\end{itemize}etc.
+Como punto de partida para cuantificar el efecto de la radiación ionizante
+se define la \emph{dosis}: energía depositada por unidad de masa.
+Unidades típicas son Gray 
+(\SI{1}{\Gray} = \SI{1}{\joule\per\kilo\gram}) 
+y rad 
+(\SI{1}{\rad} = \SI{0.01}{\Gray}).
+
+Para evaluar los efectos de una exposición o serie de exposiciones en humanos,
+se calcula la dosis equivalente\cite{martin_effective_2007}.
+Teniendo en cuenta las respuestas distintas de cada tejido,
+se definen factores de peso $w_t$ para cada uno.
+Asimismo, cada tipo de partícula tiene un factor de peso $w_r$
+en función de su capacidad de dañar células.
+Ponderando cada tipo y zona de radiación con estos factores se calcula un
+número $E$ que representa de manera más precisa el daño total al organismo:
+\begin{align*}
+    E = \sum_r w_r \sum_t w_t D_{r,t}
+\end{align*}
+con $D_{r,t}$ la dosis de partículas $r$ recibida por el tejido $t$.
+% TODO: linear no threshold model

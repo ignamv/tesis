@@ -1,0 +1,27 @@
+\section{Cálculos Monte-Carlo}
+\label{montecarlo}
+Las interacciones fundamentales entre radiación y materia son 
+cuánticas, y por lo tanto no deterministas.
+Su resultado se describe mediante una distribución de probabilidad,
+como la sección diferencial de scattering $\deriv{\sigma}{\Omega}$:
+la probabilidad por unidad de ángulo sólido de scatterear en % TODO scatterear
+una dirección dada.
+
+Frecuentemente se busca predecir la dosis que va a recibir un detector 
+(por ejemplo un circuito o persona)
+dada una fuente de radiación y un entorno.
+Una partícula incidente participa en muchas interacciones y es capaz de generar
+múltiples partículas secundarias.
+Por lo tanto, el espacio de estados finales partículas$\otimes$radiación es complejo
+y la función de distribución es difícil de calcular.
+No es factible calcular el valor esperado de dosis a partir de la
+función de distribución.
+
+El método Monte-Carlo\cite{roe_probability_1992} consiste en generar muestras
+del estado final y calcular los estadísticos a partir de ellas.
+Para esto se simula la evolución de una partícula,
+eligiendo al azar entre las interacciones posibles de acuerdo con su 
+probabilidad. 
+Usamos el toolkit Geant4\cite{allison_geant4_2006},
+con las partículas y procesos necesarios para radiación $\beta$ y X,
+para calcular dosis en distintas situaciones.

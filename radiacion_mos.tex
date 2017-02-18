@@ -1,0 +1,88 @@
+\section{Efectos de radiación en dispositivos}
+Muchos dosímetros se basan en acumular carga por ionización proveniente
+de radiación.
+Esta carga produce transitorios de corriente y tensión en los circuitos 
+integrados y daño acumulativo en los transistores que los componen.
+
+\subsection{Radiación en junturas p-n}
+\subsubsection{Daño acumulativo}
+La radiación desplaza átomos de la red del semiconductor, 
+creando defectos activos.
+Estos son sitios cargados donde se rompe la periodicidad de la red
+\cite{iniewski_radiation_2011}.
+Los defectos lozalizados en la zona desierta de una juntura p-n
+actúan como centros de generación/recombinación.
+Su presencia facilita la cración de pares electrón-hueco, 
+aumentando la corriente de fuga en inversa
+\cita{bogaert_total_2000}.
+
+Este tipo de daño se da principalmente al irradiar con iones pesados,
+y tiene menor importancia con partículas $\beta$ o $\gamma$
+\cite{knoll_radiation_2010}%p. 397
+\cite{liu_electron_1971}.
+\subsubsection{Transitorios de carga}
+Cuando la radiación alcanza la zona desierta de una juntura,
+deposita parte de su energía creando pares electrón-hueco.
+El campo eléctrico lleva los portadores creados a terminales opuestas,
+produciendo un transitorio de corriente que fluye del lado n al p.
+Éste se suma a la corriente de pérdida que tienen las junturas
+debido a generación térmica (creación espontánea de pares),
+y a la corriente de portadores minoritarios.
+
+\subsection{Radiación en MOS}
+La ionización en el óxido de las estructuras MOS produce cargas con diversos
+efectos\cita{oldham_total_2003}. 
+\subsubsection{Captura de carga}
+En general, la radiación que incide en el dispositivo produce pares electrón-hueco
+(\figref{fig:capturamos}).
+Sin embargo, hay regiones particularmente sensibles a esta carga generada.
+Cuando la ionización sucede en el óxido de un gate polarizado positivamente,
+los electrones derivan hacia él debido a su alta movilidad.
+Esto deja carga positiva en el óxido, que reduce la tensión umbral 
+(ver sección~\ref{corrimientovt}).
+Los huecos se difunden lentamente hacia la interfaz Si-SiO$_2$.
+Una fracción la atraviesa, 
+saliendo del óxido y restaurando parcialmente el $V_T$.
+El resto es capturado por trampas,
+que retienen carga por tiempos largos (de horas a años).
+A medida que esta carga se libera, 
+lleva a una recuperación lenta del $V_T$.
+\fig{capturamos}{figuras/radmos/radiacion_mos.pdf}{Mecanismo de captura de
+carga en óxidos de MOS debido a radiación.}
+\subsubsection{Creación de trampas de interfaz}
+El otro efecto de la radiación es crear trampas de interfaz.
+Estos son estados energéticos localizados en la interfaz Si-SiO$_2$ con
+energías en el gap del Si.
+Pueden intercambiar carga con el Si,
+capturando o liberando tanto electrones como huecos.
+La densidad superficial de carga debido a estas trampas varía con el nivel de
+Fermi en la superficie, produciendo un $\Delta V_T$ dependiente de $V_G$.
+\subsubsection{Corrimiento de $V_T$}
+\label{corrimientovt}
+La carga en el óxido de gate altera la relación 
+entre la tensión aplicada al gate y el campo en la interfaz Si-SiO$_2$.
+Analizamos este fenómeno en una dimensión con $x=0$ en el gate y $x=t_{ox}$
+en el semiconductor:
+\begin{align*}
+    V_g-\psi_s&=\int_0^{t_{ox}}E(x)dx=
+    \int_0^{t_{ox}}\left[\frac d{dx}(xE)-x\frac{dE}{dx}\right]dx\\
+    &=t_{ox}\mathscr{E}_s-\frac 1{\epsilon_{ox}}\int_0^{t_{ox}}x\rho(x)dx\\
+    \mathscr{E}_s &= \frac{V_g-\psi_s+
+        \frac 1{\epsilon_{ox}}\int_0^{t_{ox}}x\rho(x)dx}{t_{ox}}.
+\end{align*}
+Se ve que la carga desplaza las curvas del dispositivo 
+en su dependencia con $V_g$.
+Mientras más cerca esté la carga al semiconductor,
+mayor es este corrimiento.
+
+Las trampas de interfaz contienen una densidad superficial de carga dependiente
+de $E_F$, dada por
+\begin{align*}
+    \sigma_{it} &= -e\int_{E_0}^{E_F} D_{it}dE
+\end{align*}
+siendo $D_{it}$ la densidad de trampas por unidad de energía,
+y $E_0$ el valor de $E_F$ para el cual se cancela la carga de las trampas
+donantes con la carga de las trampas aceptoras.
+Esta carga produce una deformación de las curvas del dispositivo,
+porque para cada $\psi_s$ se tiene un $\sigma_{it}$ distinto que produce un
+corrimiento distinto.

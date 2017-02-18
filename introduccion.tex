@@ -1,0 +1,82 @@
+\section{Introducción}
+Luego del descubrimiento de los rayos X,
+la radiación se convirtió en una herramienta
+que acumuló numerosas aplicaciones médicas e industriales.
+Paralelamente,
+se empezó a tomar conciencia de 
+los peligros de la exposición a la radiación
+y la importancia de cuantificar la dosis que recibe una persona.
+
+Hoy en día,
+más y más técnicas médicas de diagnóstico y terapia
+exponen al paciente a distintas formas de radiación.
+El control de la dosis se logra mediante calibración de la maquinaria
+y cálculos Monte Carlo para modelar la propagación de la radiación.
+
+Midiendo la dosis administrada a cada parte del paciente
+se reduce enormemente este riesgo.
+Al mismo tiempo,
+abre la puerta a terapias más efectivas:
+es posible planificar cada sesión de radiación
+en respuesta al resultado de la anterior,
+corrigiendo por fallas de alineamiento, calibración y cambios en el
+paciente\cite{wu_application_2006}.
+
+Para obtener esa información hacen falta dosímetros 
+que se presten al uso médico.
+Esto pasa tanto por sus especificaciones técnicas
+(sensibilidad, dosis máxima)
+como por su costo,
+biocompatibilidad y tamaño.
+Un grupo muy prometedor de dosímetros usa técnicas 
+provenientes de la fabricación de circuitos integrados 
+para obtener dosímetros fácilmente
+miniaturizables\cite{holmes-siedle_radfet:_1986}.
+Actualmente consisten en circuitos que miden el corrimiento de parámetros de un transistor
+especialmente sensible a la radiación, debido a su óxido de compuerta muy
+grueso.
+
+Dentro de los dosímetros integrables 
+(que se pueden incorporar con otras funciones en un circuito integrado),
+hay gran interés en aquellos fabricados usando, sin modificación,
+procesos comerciales para circuitos integrados\cite{lipovetzky_field_2013}
+\cite{wang_temperature_2005}
+\cite{garcia-moreno_floating_2012}
+\cite{dulinski_cmos_2004}.
+Esto quita la posibilidad de optimizar y controlar 
+muchos parámetros del proceso.
+A cambio de esa restricción, 
+permite integrar circuitería adicional
+para procesamiento de señales e interfaz con el mundo exterior,
+aprovechando las economías de escala de los procesos estándar.
+
+En este trabajo diseñamos, construímos y caracterizamos
+dos dosímetros fabricados en un proceso estándar CMOS de
+\SI{0.6}{\micro\meter}.
+El primero es un Active Pixel Sensor,
+de estructura similar a un pixel del sensor de una cámara digital:
+tiene un diodo polarizado en inversa, con una zona desierta de portadores.
+La radiación incidente en esta zona genera pares electrón-hueco.
+El campo eléctrico separa electrones de huecos,
+y la baja concentración de portadores aumenta su tiempo de vida permitiendo
+recolectarlos.
+Su ventaja sobre dosímetros tradicionales es la capacidad de resetearlo
+instantáneamente de manera electrónica,
+simplemente descargando el capacitor que acumula la carga generada por
+radiación.
+
+El segundo es un Floating Gate,
+semejante a una celda de una memoria Flash.
+Aquí la radiación genera carga en el aislante que rodea la compuerta de un
+transistor MOS.
+Este dispositivo es ideal para sensar esa carga acumulada:
+en condiciones normales, la corriente de compuerta es despreciable 
+y no descarga al nodo donde se está acumulando la carga.
+Este dosímetro se destaca por la posibilidad de medir radiación sin suministro de tensión.
+
+Ambos dosímetros explotan la respuesta a radiación de estructuras 
+normalmente utilizadas para otros fines. 
+Luego de una introducción a la teoría de su funcionamiento,
+presentamos el proceso y las consideraciones de diseño,
+y los resultados de las mediciones de ambos dosímetros 
+comparando con los valores calculados.

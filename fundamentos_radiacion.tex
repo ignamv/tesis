@@ -1,0 +1,228 @@
+\section{Radiación}
+\label{sec:radiacion}
+La radiación es el transporte de energía,
+en nuestro caso mediado por fotones (rayos X) y electrones (rayos $\beta$).
+Cuando estas partículas tienen suficiente energía, 
+ionizan la materia y producen daños en tejidos orgánicos
+y en circuitos electrónicos.
+%
+\subsection{Radiación $\alpha$}
+Las partículas $\alpha$ son núcleos de $^4$He.
+Son producidas por núcleos inestables como
+$^{241}$Am (usado en detectores de humo) y U 
+cuando sufren decaimiento $\alpha$.
+Este proceso genera partículas con energías cercanas a 
+\SI{5}{\mega\electronvolt},
+que se detienen en algunos centímetros de aire 
+o en la capa muerta de la epidermis.
+No son una fuente significativa de dosis a humanos,
+salvo en caso de inhalación o ingestión,
+o de tener energías altas
+(por ejemplo si provienen de rayos cósmicos).
+\subsection{Neutrones}
+Los neutrones son partículas neutras presentes en los núcleos atómicos.
+Los distintos isótopos de cada elemento corresponden a núcleos que difieren
+sólo en la cantidad de neutrones.
+Los procesos de fusión y fisión nuclear tienden a emitir neutrones energéticos
+o,
+en procesos de nucleosíntesis,
+capturar neutrones para formar núcleos más masivos.
+
+A fines de protección, se estudian 3 tipos de interacciones entre neutrones
+y los núcleos de un blanco:
+scattering elástico e inelástico, y captura.
+En el scattering inelástico,
+parte de la energía inicial excita el núcleo del blanco y es luego emitida como
+fotones.
+La captura se da en los neutrones de menor energía,
+típicamente frenados por scattering,
+y está acompañada por emisión de rayos $\gamma$.
+Por ejemplo, en la terapia por captura neutrónica con Boro,
+se hace llegar boro a células cancerígenas para que capture neutrones.
+Así los tumores son destruídos por los fotones $\gamma$ y las partículas 
+$\alpha$ resultantes del proceso de captura.
+\subsection{Radiación $\beta$}
+La radiación $\beta$ consiste en electrones energéticos.
+Los mismos pasan por la materia y depositan energía por procesos de ionización 
+o la emiten como radiación de frenado (bremsstrahlung).
+Esto limita su rango o profundidad a la que pueden penetrar un material antes
+de agotar su energía.
+En aire recorren distancias típicas de metros, 
+mientras que en materiales más densos recorren milímetros.
+
+La materia con la que interactuamos tiene una gran fracción de electrones 
+(en número).
+Sin embargo, estos electrones se encuentran ligados a protones y neutrones,
+incapaces de escapar por falta de energía.
+Cuando incide radiación $\beta$ o $\gamma$ sobre un material,
+puede producir electrones libres (radiación $\beta$ secundaria)
+suponiendo que la partícula incidente supera la energía de ionización del
+material.
+
+Otra forma de producir radiación $\beta$ es crear nuevos electrones a partir de
+energía.
+Esto se da naturalmente en algunos isótopos radioactivos en un proceso llamado
+decaimiento $\beta$.
+\subsubsection{Decaimiento $\beta$}
+El decaimiento $\beta$ es un proceso
+que convierte un núcleo $X$ en otro menos masivo $X'$ y emite
+un antineutrino electrónico y un electrón.
+Por ejemplo, el decaimiento del estroncio a itrio
+\begin{align*}
+    \left.^{90}\strontium\right.
+    &\to\left.^{90}\yttrium\right.+e^-+\overline\nu_e.
+\end{align*}
+% TODO: estadística del decaimiento individual?
+La variación de la cantidad de átomos $N_X$ puede modelarse con
+\begin{align*}
+    \deriv{N_X}t &= -\lambda N_X\\
+    \deriv{N_{X'}}t &= \lambda N_X
+\end{align*}
+si $X'$ es estable. 
+$\lambda$ es un parámetro que determina la tasa de decaimiento.
+La solución es
+\begin{align}
+    \label{eq:soluciondecaimiento}
+    N_X(t) &= N_X(0)e^{-\lambda t}\\
+    N_{X'}(t) &= N_X(0)(1-e^{-\lambda t}).\nonumber
+\end{align}
+En vez de $\lambda$ se habla comunmente de la vida media de $X$:
+el tiempo $\tau$ que tarda $N_X$ en caer a la mitad.
+Puede despejarse de la \equref{eq:soluciondecaimiento}
+\begin{align*}
+    \frac 1 2 N_X(0) &= N_X(0)e^{-\lambda\tau}\\
+    \tau &= \frac{\ln2}\lambda
+\end{align*}
+\subsubsection{Equilibrio secular}
+El nuevo núcleo puede ser inestable.
+Por ejemplo, el $^{90}\strontium$ decae en $^{90}\yttrium$ que a su vez decae
+en $^{90}\zirconium$.
+Modelamos esto con
+\begin{align*}
+    \deriv{N_\strontium}t &= -\lambda_\strontium N_\strontium\\
+    \deriv{N_\yttrium}t &= \lambda_\strontium N_\strontium
+        -\lambda_\yttrium N_\yttrium\\
+    \deriv{N_\zirconium}t &= \lambda_\yttrium N_\yttrium.
+\end{align*}
+Su solución es
+\begin{align*}
+    N_\strontium(t) &= N_\strontium(0)e^{-\lambda_\strontium t}\\
+    %\deriv{N_\yttrium}t +\lambda_\yttrium N_\yttrium &= 
+        %\lambda_\strontium N_\strontium(0)e^{-\lambda_\strontium t}
+    N_\yttrium(t) &= ae^{-\lambda_\yttrium t}
+        +N_\strontium(0)\frac{\lambda_\strontium}
+        {\lambda_\yttrium-\lambda_\strontium}e^{-\lambda_\strontium t}.
+\end{align*}
+Dado que la vida media del $^{90}\yttrium$ (2.7 días) 
+es mucho menor que la del $^{90}\strontium$ (29 años),
+tenemos $\lambda_\yttrium\gg\lambda_\strontium$.
+Las cantidades de cada elemento tienden a un equilibrio secular dado por
+\begin{align*}
+    N_\strontium(t) &= N_\strontium(0)e^{-\lambda_\strontium t}\\
+    N_\yttrium(t) &\approx N_\strontium(0)
+        \frac{\lambda_\strontium}{\lambda_\yttrium}
+        e^{-\lambda_\strontium t}.
+\end{align*}La frecuencia con que cada elemento emite un electrón es su
+actividad. 
+Se expresa en Becquerel
+(\SI{1}{\becquerel}=\SI{1}{\per\second}) o Curie
+(1 Ci=\SI{3.7e10}{\per\second}), y está dada en este ejemplo por
+\begin{align*}
+    A_\strontium(t) &= N_\strontium(0)\lambda_\strontium
+        e^{-\lambda_\strontium t}\\
+    A_\yttrium(t) &\approx N_\strontium(0)
+        \frac{\lambda_\strontium}{\lambda_\yttrium}\lambda_\yttrium
+        e^{-\lambda_\strontium t}=A_\strontium(t).
+\end{align*}
+Por lo tanto, una fuente de $^{90}\strontium$ en equilibrio secular
+debe mitad de su actividad a decaimientos $\strontium\to\yttrium$
+y mitad a $\yttrium\to\zirconium$.
+%
+\subsubsection{Frenado de electrones}
+La pérdida de energía de los electrones se debe a interacciones discretas con
+los átomos del escudo.
+Aproximando el frenado como una variación contínua de su energía $E(x)$,
+podemos plantear un poder de frenado $S(E)$ del material tal que
+\begin{align*}
+    \frac{dE}{dx}=-S(E).
+\end{align*}
+Se llama poder de frenado de masa a $S/\rho$. 
+Esta es una medida de uso común en protección de radiación,
+que permite calcular tasa de dosis de un haz usando
+\begin{align*}
+    \dot D&=\deriv{E}{mdt}=\frac 1\rho\deriv{E}{x}\deriv{N}{Adt}=\frac{IS}\rho
+\end{align*}
+con $I$ el flujo de partículas por unidad de área (intensidad)
+y $\dot D$ la deposición de energía por unidad de masa y de tiempo 
+(tasa de dosis).
+$S$ está tabulada para cada elemento (\figref{fig:stopping})
+\fig{stopping}{figuras/rad/stopping.pdf}{Poder de frenado de electrones 
+para distintos materiales en función de la energía \cite{berger_estar_????}.}
+junto con el rango o distancia de frenado
+\begin{align*}
+    R(E) &= \int_0^E \frac{dE'}{S(E')}
+\end{align*} y la eficiencia radiativa $Y$.
+Esta es la fracción de la energía electrónica que se 
+emite como fotones (\emph{bremsstrahlung} o radiación de frenado). 
+
+$Y$ aumenta con el peso atómico del material de frenado.
+Para fines de protección,
+se suele frenar electrones con polímeros como acrílico que tienen bajo
+rendimiento radiativo.
+Así se minimiza la producción de rayos X y se reduce el espesor de plomo
+necesario para atenuarlos.
+%
+\subsection{Radiación X}
+Los rayos X son fotones de longitud de onda menor a \SI{10}{\nano\meter},
+radiación electromagnética con energía suficiente 
+para ionizar muchos materiales.
+Se producen típicamente por el frenado de partículas cargadas al interactuar
+con la materia.
+\subsubsection{Radiación de frenado (bremsstrahlung)}
+Cuando una carga es acelerada, emite radiación
+electromagnética\cite{jackson_classical_1998}.
+Un caso importante es la bremsstrahlung,
+radiación por frenado de electrones en materia.
+Ocurre en la naturaleza por interacción de rayos cósmicos con la atmósfera,
+y artificialmente en los tubos de rayos X 
+al frenar electrones en un blanco metálico.
+
+La densidad espectral de potencia de bremsstrahlung está dada por la ley de
+Kramers\cite{kramers_xciii._1923}
+\begin{align}
+    P(E)dE = \frac{2P_T}{E_M^2}(E_M-E)dE
+    \label{eq:kramers}
+\end{align} para electrones con energía $E_M$ (\figref{fig:kramers}).
+\fig{kramers}{figuras/rad/kramers.pdf}
+{Densidad espectral de potencia (PSD) de la radiación proveniente del 
+frenado de electrones con energía $E_M$ irradiando una potencia total $P_T$.}
+$P_T$ es la potencia total de \emph{bremsstrahlung}, dada por
+\begin{align*}
+    P_T&=E_MIY(E_M)
+\end{align*}con $I$ la intensidad de electrones e $Y$ la eficiencia radiativa a
+esa energía.
+\subsubsection{Absorción de X}
+Modelamos la intensidad de rayos X como función contínua de la energía y
+posición $I(E,x)$.
+Así podemos plantear un coeficiente de absorción $\mu(E)$ para cada 
+material (\figref{fig:absorcionX}) tal que 
+\fig{absorcionX}{figuras/rad/absorcionX.pdf}
+{Tasa de absorción $\mu$ de rayos X en función de la energía\cite{xraycoef}.}
+\begin{align}
+    \label{eq:absorcionx}
+    dI/dx=-\mu I.
+\end{align}
+Este $\mu$ se encuentra tabulado para distintos elementos y materiales
+\cite{xraycoef}.
+\subsubsection{Factor de buildup}
+% DETAIL: de repente estoy hablando de escudos y detectores
+El $\mu$ considera tanto absorción de fotones como scattering en un cuerpo.
+Si el detector está cerca, algunos fotones dispersados pueden
+impactarlo (\figref{fig:buildup}).
+\fig{buildup}{figuras/buildup/buildup.pdf}{Geometría mala: cerca del escudo algunos fotones
+dispersados llegan al detector.}
+Por eso se tabula el factor de buildup\cita{martin_physics_2013}
+que relaciona la verdadera intensidad a la salida del escudo 
+con la calculada mediante la \equref{eq:absorcionx}.
+Su valor se obtiene numéricamente mediante simulaciones Monte-Carlo
+(capítulo~\ref{montecarlo})

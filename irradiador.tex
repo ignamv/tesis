@@ -1,0 +1,144 @@
+\section{Irradiador $\beta$-$\gamma$}
+Para realizar ensayos con radiación,
+construímos un aparato que nos permite exponer dispositivos a rayos $\beta$ y
+$\gamma$ de manera segura y controlando la dosis con precisión.
+Este aparato consiste en un tubo de plomo con una capa de PVC en su pared
+interior (\figref{fig:corteirradiador}).
+\fig{corteirradiador}{figuras/poster/corte.pdf}{Corte del irradiador.}
+
+Todas las superficies donde puede impactar una partícula $\beta$ tienen una
+capa de plástico,
+para frenar la partícula minimizando la producción de radiación de frenado.
+
+En un extremo de la cavidad se encuentra una pastilla de \Strontium 
+(\figref{fig:fuente})
+\fig{fuente}{figuras/poster/fuente.pdf}{Corte de la fuente $\beta$.}
+colocada en una mochila de plástico unida a un bloque de plomo giratorio
+(\figref{fig:piezagiratoria}).
+\fig{piezagiratoria}{figuras/poster/piezagiratoria.png}
+{Detalle de la pieza giratoria donde se coloca la fuente $\beta$.}
+En la posición segura,
+esa pieza se interpone entre la fuente radioactiva y el interior de la cavidad
+(\figref{fig:posicionno}).
+En la posición de irradiar, la fuente emite partículas $\beta$ hacia el interior
+(\figref{fig:posicionsi}).
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{.45\textwidth}
+        \includegraphics{figuras/poster/posicion_no.png}
+        \caption{Posición segura.}
+        \label{fig:posicionno}
+    \end{subfigure}
+    \hspace{5mm}
+    \begin{subfigure}[b]{.45\textwidth}
+        \includegraphics{figuras/poster/posicion_si.png}
+        \caption{Posición para irradiar.}
+        \label{fig:posicionsi}
+    \end{subfigure}
+    \caption{Posiciones de la pieza giratoria.}
+    \label{fig:posicionespieza}
+\end{figure}
+\subsection{Cálculos de protección}
+\subsubsection{Frenado $\beta$}
+Usamos PVC para el frenado de electrones, porque está disponible en tubos
+del tamaño requerido.
+Tiene baja eficiencia radiativa y el rango de nuestros electrones más
+energéticos en PVC es inferior a \SI{1}{\centi\meter}.
+Por las mismas razones construimos las tapas del cilindro con discos de
+acrílico de \SI{1}{\centi\meter} de espesor.
+La mochila donde montamos la fuente consiste de plástico ABS extruído en una impresora
+3D.
+%
+\subsubsection{Radiación de frenado}
+Estimamos la radiación de frenado partiendo del espectro de energía de los
+electrones emitidos por la fuente.
+Dado que está en equilibrio secular 
+(misma actividad de \Strontium y de \Yttrium),
+sumamos sus espectros provenientes de 
+Radiological Toolbox\cite{eckerman2006radiological}
+y normalizamos a la actividad nominal de la fuente, \SI{100}{\milli\curie}
+(\figref{fig:actividadsr90}).
+\fig{actividadsr90}{figuras/irradiador/actividad.pdf}
+{Espectro de electrones provenientes de una fuente de
+\Strontium con actividad \SI{100}{\milli\curie}\cite{eckerman_icrp_2007}.}
+Luego calculamos el espectro de bremsstrahlung integrando la \equref{eq:kramers}
+(\figref{fig:espectrox}).
+\fig{espectrox}{figuras/irradiador/espectrox.pdf}
+{Espectro de bremsstrahlung calculado en la cara exterior del PVC.}
+%
+\subsubsection{Atenuación de rayos X}
+Aplicamos la \equref{eq:absorcionx} usando tasas de absorción tabuladas por
+NIST\cite{xraycoef},
+resultando en el espectro atenuado de la \figref{fig:xatenuado}
+\fig{xatenuado}{figuras/irradiador/xatenuado.pdf}
+{Espectro de rayos X calculado en la cara exterior del irradiador.}
+% TODO: tasa de dosis final según distancia, comparar con mediciones
+%
+%
+\subsubsection{Cálculos Monte-Carlo de fuente de \Strontium}
+Una fuente de \Strontium  emite electrones con un espectro amplio de
+energías (\figref{fig:actividadsr90}).
+Este consiste en la suma del espectro de emisión de \Strontium
+y el de \Yttrium.
+Simulamos un haz de electrones con este espectro incidiendo normalmente sobre
+tejido blando, registrando la energía que depositan en función de la
+profundidad (\figref{fig:deposicionsr90}).
+\fig{deposicionsr90}{figuras/montecarlo/deposicion_sr90.pdf}
+{Energía depositada en tejido blando en función de la distancia,
+promediando entre electrones provenientes de una fuente de \Strontium.}
+Así ajustamos una potencia de frenado de masa promedio $S/\rho$ (\figref{fig:stoppingsr90})
+\fig{stoppingsr90}{figuras/montecarlo/stopping_sr90.pdf}
+{Potencia de frenado promedio del tejido blando para electrones provenientes de
+una fuente de \Strontium.
+La cruz marca que a \SI{0.35}{\milli\meter} la tasa de dosis 
+coincide con la tabulada en \cite{delacroix_radionuclide_2002}.}
+que permite calcular tasa de dosis superficial mediante
+\begin{align*}
+    \dot D &= \frac{AS/\rho}{4\pi r^2}
+\end{align*}
+con $A=\SI{100}{\milli\curie}$ la actividad de la fuente.
+La tasa de dosis calculada de este modo es comparable con la tabulada en
+\cite{delacroix_radionuclide_2002} si se promedia hasta una profundidad de
+\SI{.35}{\milli\meter}.
+\subsubsection{Cálculos Monte-Carlo del irradiador}
+Buscamos una cota superior de la tasa de dosis fuera del irradiador.
+Ya que el espesor del plomo es de varias longitudes características de
+atenuación ($1/\mu$),
+sólo pasa una fracción muy pequeña de la radiación inicial.
+Por lo tanto, hay que simular muchos electrones de la fuente de \Strontium
+para estimar de forma precisa la tasa de dosis en el exterior.
+
+Una solución posible es usar reducción de la
+varianza\cite{dressel_geometrical_2003}.
+Esta es una técnica para cálculos Monte Carlo que introduce un sesgo en la
+evolución de la partícula.
+Por ejemplo, podemos aumentar la probabilidad de que una partícula atraviese
+el plomo sin interactuar.
+Llevando la cuenta de cuan improbable es la historia de la partícula,
+le damos un peso menor en la estadística final.
+Esto concentra la simulación en darnos muchos eventos que nos interesan
+(lo cual reduce la varianza de la estimación),
+minimizando la capacidad de procesamiento necesaria.
+
+Dada la dificultad de implementar reducción de la varianza en Geant4,
+optamos por acelerar el cálculo simplificando la geometría.
+Simulamos un irradiador isótropo,
+que consiste en un cascarón de \SI{10}{\milli\meter} de acrílico rodeado por
+\SI{36}{\milli\meter} de plomo (\figref{fig:corte_esferico}). 
+\fig{corte_esferico}{figuras/irradiador/corte_esfera.png}
+{Corte de la geometría simplificada que se usó para simular el irradiador en
+Geant4.}
+Toda partícula en el irradiador tiene que atravesar al menos ese espesor de
+acrílico y plomo.
+Por lo tanto, la dosis real va a ser aún menor a la simulada.
+Dada la simetría del problema, no tenemos en cuenta la distribución en
+$\theta$ y $\phi$ sino que promediamos sobre ambas variables.
+Esto reduce enormemente el número de eventos necesarios para una buena
+estimación de la tasa de dosis.
+El resultado se ve en la \figref{fig:dosis_irradiador}.
+\fig{dosis_irradiador}{figuras/montecarlo/dosis_irradiador.pdf}
+{Perfil de deposición de energía en la simulación Monte-Carlo del irradiador.}
+La dosis en la cara exterior del irradiador es de
+\SI{20.3}{\milli\sievert\per\year}.
+Este valor es aceptable si se tiene en cuenta la distancia y tiempo de
+exposición en condiciones reales.

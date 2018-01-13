@@ -253,20 +253,31 @@ La variación de la sensibilidad se ve con más detalle en la
 \fig{irradiacionfg_respuesta}{figuras/fg/irradiacion_corriente.pdf}
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
-    %  TODO: mover al texto?
-La corriente calculada parte de la sensibilidad inicial extraída de la
-medición.
-Esta sensibilidad va variando a medida que la descarga de la juntura reduce el 
-campo eléctrico y por lo tanto el yield de generación de pares electrón-hueco.
-Al mismo tiempo, cambia el punto de operación del transistor.}
+    % TODO: mover al texto?
+    % TODO: originalmente decia ``sensibilidad inicial'', cual es la correcta?
+La corriente calculada parte de la corriente inicial extraída de la
+medición.}
 \fig{irradiacionfg_sensibilidad}{figuras/fg/irradiacion_sensibilidad.pdf}
 {Sensibilidad del FG polarizado con
-    $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.}
-La sensibilidad aumenta con la dosis porque $\frac{dI_D}{dV_G}$ crece al
-reducirse la corriente (\figref{fig:didv}).
+    $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
+}
+% TODO: tomar valor absoluto para aclarar que la sensibilidad aumenta
+La sensibilidad cambia con la dosis debido a dos fenómenos opuestos.
+\begin{itemize}
+    \item A medida que se descarga el floating gate, disminuye el 
+        campo eléctrico en el óxido y baja el yield de generación de pares 
+        electrón-hueco.
+    \item Al reducirse la corriente, crece $\frac{dI_D}{dV_G}$ 
+        (\figref{fig:didv}) y esto aumenta la sensibilidad.
+\end{itemize}
+Se ve en las mediciones un crecimiento de la sensibilidad que se aplana al
+alzanzar \SI{50}{\Gray}.
 \fig{didv}{figuras/fg/didv.pdf}
 {La pendiente de la curva $I_D(V_G)$ del lector aumenta a medida que $I_D$ cae,
-incrementando la sensibilidad del FG.}
+incrementando la sensibilidad del FG.
+Esta curva fue simulada con modelos provistos por el foundry,
+debido a que la compuerta del dispositivo fabricado es inaccesible para
+mediciones.}
 \subsection{Corriente de ruido}
 Establecimos que una medición con este dosímetro consiste en promediar 10
 muestras de corriente.

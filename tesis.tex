@@ -5,7 +5,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[backend=bibtex,sorting=none]{biblatex}
 \bibliography{bibliografia.bib}
-\usepackage{todonotes}
+\usepackage{etoolbox}
+%\usepackage{todonotes}
+%\robustify{\today}
 \usepackage[]{hyperref}
 %\hypersetup{pdftex,colorlinks=true,allcolors=blue}
 \hypersetup{pdfpagemode=UseOutlines}
@@ -48,6 +50,7 @@
 \newcommand{\Yttrium}{\ensuremath{\left.^{90}\mathrm{Y}\right.}}
 \newcommand{\zirconium}{\mathrm{Zr}}
 \newcommand{\vdd}{\ensuremath{V_{\text{DD}}}}
+\def\code#1{\texttt{#1}}
 
 \author{Ignacio Martinez Vazquez}
 \date{}
@@ -88,6 +91,7 @@
 \input{fundamentos_dosimetria.tex}
 \input{radiacion_mos.tex}
 \input{montecarlo.tex}
+\input{geant.tex}
 \part{Experimental}
 \input{instrumental.tex}
 \input{irradiador.tex}

@@ -1,6 +1,6 @@
 \section{Efectos de radiación en dispositivos}
-Muchos dosímetros se basan en acumular carga por ionización proveniente
-de radiación.
+Muchos tipos de dosímetros se basan en acumular 
+carga por ionización proveniente de radiación.
 Esta carga produce transitorios de corriente y tensión en los circuitos 
 integrados y daño acumulativo en los transistores que los componen.
 
@@ -12,7 +12,7 @@ Estos son sitios cargados donde se rompe la periodicidad de la red
 \cite{iniewski_radiation_2011}.
 Los defectos lozalizados en la zona desierta de una juntura p-n
 actúan como centros de generación/recombinación.
-Su presencia facilita la cración de pares electrón-hueco, 
+Su presencia facilita la creación de pares electrón-hueco, 
 aumentando la corriente de fuga en inversa
 \cita{bogaert_total_2000}.
 
@@ -29,16 +29,35 @@ produciendo un transitorio de corriente que fluye del lado n al p.
 debido a generación térmica (creación espontánea de pares),
 y a la corriente de portadores minoritarios.
 
+Los transitorios pueden llevar a un modo de falla llamado Latch-Up
+\cite{gregory_latch-up_1973}.
+El transitorio polariza una juntura en directa brevemente.
+Si hay otras junturas cercanas en inversa,
+pueden colectar los portadores de la primera juntura 
+formando un transistor bipolar parásito.
+Si se dan las condiciones adecuadas,
+un conjunto de estas estructuras parásitas (\figref{fig:latchup})
+llega a un estado estable
+en el que cortocircuitan los rieles de alimentación.
+Esto continúa hasta que se apague la alimentación 
+(por ejemplo si hay protección contra exceso de corriente)
+o se destruya el circuito.
+\fig{latchup}{figuras/mos/latchup.pdf}{
+Transistores parásitos presentes en un proceso CMOS estándar.
+La condición estable normal es ambos transistores apagados.
+La condición estable anómala es ambos transistores prendidos,
+cada uno suministrando la corriente de base del otro.}
 \subsection{Radiación en MOS}
-La ionización en el óxido de las estructuras MOS produce cargas con diversos
-efectos\cita{oldham_total_2003}. 
+La ionización del óxido de las estructuras MOS crea portadores 
+con distintos efectos deletéreos\cita{oldham_total_2003}. 
 \subsubsection{Captura de carga}
-En general, la radiación que incide en el dispositivo produce pares electrón-hueco
-(\figref{fig:capturamos}).
-Sin embargo, hay regiones particularmente sensibles a esta carga generada.
+La radiación que incide en el dispositivo 
+produce una cantidad de pares electrón-hueco (\figref{fig:capturamos}).
+Algunas regiones son particularmente sensibles a esta carga generada.
 Cuando la ionización sucede en el óxido de un gate polarizado positivamente,
-los electrones derivan hacia él debido a su alta movilidad.
-Esto deja carga positiva en el óxido, que reduce la tensión umbral 
+los electrones derivan del óxido al gate gracias a su alta movilidad.
+Así quedan sólo los huecos.
+La carga positiva en el óxido reduce la tensión umbral 
 (ver sección~\ref{corrimientovt}).
 Los huecos se difunden lentamente hacia la interfaz Si-SiO$_2$.
 Una fracción la atraviesa, 
@@ -51,8 +70,8 @@ lleva a una recuperación lenta del $V_T$.
 carga en óxidos de MOS debido a radiación.}
 \subsubsection{Creación de trampas de interfaz}
 El otro efecto de la radiación es crear trampas de interfaz.
-Estos son estados energéticos localizados en la interfaz Si-SiO$_2$ con
-energías en el gap del Si.
+Estos son estados localizados en la interfaz Si-SiO$_2$ con
+energías entre la banda de valencia y de conducción del Si.
 Pueden intercambiar carga con el Si,
 capturando o liberando tanto electrones como huecos.
 La densidad superficial de carga debido a estas trampas varía con el nivel de
@@ -61,7 +80,7 @@ Fermi en la superficie, produciendo un $\Delta V_T$ dependiente de $V_G$.
 \label{corrimientovt}
 La carga en el óxido de gate altera la relación 
 entre la tensión aplicada al gate y el campo en la interfaz Si-SiO$_2$.
-Analizamos este fenómeno en una dimensión con $x=0$ en el gate y $x=t_{ox}$
+Analizamos este fenómeno en 1D con $x=0$ en el gate y $x=t_{ox}$
 en el semiconductor:
 \begin{align*}
     V_g-\psi_s&=\int_0^{t_{ox}}E(x)dx=
@@ -86,3 +105,4 @@ donantes con la carga de las trampas aceptoras.
 Esta carga produce una deformación de las curvas del dispositivo,
 porque para cada $\psi_s$ se tiene un $\sigma_{it}$ distinto que produce un
 corrimiento distinto.
+Se observa como un estiramiento de las curvas.

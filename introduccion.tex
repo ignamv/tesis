@@ -1,40 +1,62 @@
 \section{Introducción}
-Luego del descubrimiento de los rayos X,
-la radiación se convirtió en una herramienta
-que acumuló numerosas aplicaciones médicas e industriales.
-Paralelamente,
+La radiación es una herramienta con numerosas aplicaciones
+
+En la industria, se usa para esterilizar instrumental médico y comida,
+alterar propiedades químicas de superficies\cite{clough_high},
+y para muchos tipos de mediciones.
+
+En medicina, la radiación se emplea en diagnóstico para adquirir imágenes del cuerpo,
+y en terapia para tratar cáncer y otras enfermedades.
+Con la incidencia creciente de esta enfermedad 
+y el uso de radiación en 50\% de los
+pacientes\cite{symposium_assurance_dosimetry_1994},
+gran parte de la población va a ser expuesta a radiación.
+
+Con el desarrollo de estas aplicaciones,
 se empezó a tomar conciencia de 
-los peligros de la exposición a la radiación
-y la importancia de cuantificar la dosis que recibe una persona.
+los peligros de la exposición a la radiación,
+y la importancia de entender sus efectos en tejidos
+para establecer prácticas seguras.
 
-Hoy en día,
-más y más técnicas médicas de diagnóstico y terapia
-exponen al paciente a distintas formas de radiación.
-El control de la dosis se logra mediante calibración de la maquinaria
-y cálculos Monte Carlo para modelar la propagación de la radiación.
+Una parte central de estas prácticas es el uso de dosímetros personales.
+Los mismos permiten limitar los tiempos e intensidades de exposición
+por debajo de valores riesgosos.
 
-Midiendo la dosis administrada a cada parte del paciente
-se reduce enormemente este riesgo.
-Al mismo tiempo,
+Además de proteger al personal de un hospital o planta,
+los dosímetros permiten monitorear de forma precisa 
+el tratamiento que recibe un paciente.
+Su uso facilita detectar errores de aplicación\cite{noel_detection_1995}.
+También permiten verificar la planificación de nuevas
+técnicas y así mejorar el estándar de cuidado\cite{essers_vivo_1999}.
+Por último, la dosimetría \emph{in vivo} 
 abre la puerta a terapias más efectivas:
 es posible planificar cada sesión de radiación
 en respuesta al resultado de la anterior,
-corrigiendo por fallas de alineamiento, calibración y cambios en el
-paciente\cite{wu_application_2006}.
+corrigiendo por fallas de alineamiento, calibración 
+y cambios en el paciente\cite{wu_application_2006}.
 
-Para obtener esa información hacen falta dosímetros 
+Este tipo de medición demanda dosímetros 
 que se presten al uso médico.
-Esto pasa tanto por sus especificaciones técnicas
+Los requerimientos pasan tanto por sus especificaciones técnicas
 (sensibilidad, dosis máxima)
 como por su costo,
-biocompatibilidad y tamaño.
-Un grupo muy prometedor de dosímetros usa técnicas 
+biocompatibilidad, tamaño,
+demora en la lectura y simplicidad de uso.
+
+Desde hace mucho tiempo se usan dosímetros basados en 
+dispositivos semiconductores discretos.
+Los mismos se basan en el mismo principio que una cámara de ionización de aire,
+pero miles de veces más sensibles por unidad de volúmen\cite{jones_application_1963}.
+Así posibilitan mediciones con mayor resolución espacial.
+
+Más reciente es un tipo de dosímetro que usa técnicas 
 provenientes de la fabricación de circuitos integrados 
-para obtener dosímetros fácilmente
+para obtener dispositivos 
 miniaturizables\cite{holmes-siedle_radfet:_1986}.
-Actualmente consisten en circuitos que miden el corrimiento de parámetros de un transistor
-especialmente sensible a la radiación, debido a su óxido de compuerta muy
-grueso.
+Actualmente consisten en circuitos que miden el 
+cambio en los parámetros de un transistor que es
+especialmente sensible a la radiación 
+debido a su óxido de compuerta muy grueso (RADFET).
 
 Dentro de los dosímetros integrables 
 (que se pueden incorporar con otras funciones en un circuito integrado),
@@ -43,40 +65,52 @@ procesos comerciales para circuitos integrados\cite{lipovetzky_field_2013}
 \cite{wang_temperature_2005}
 \cite{garcia-moreno_floating_2012}
 \cite{dulinski_cmos_2004}.
-Esto quita la posibilidad de optimizar y controlar 
-muchos parámetros del proceso.
+Esto elimina la posibilidad de optimizar y controlar 
+los parámetros del proceso 
+para los requerimientos específicos de dosimetría.
 A cambio de esa restricción, 
 permite integrar circuitería adicional
 para procesamiento de señales e interfaz con el mundo exterior,
-aprovechando las economías de escala de los procesos estándar.
+y aprovechar las economías de escala de los procesos estándar.
 
 En este trabajo diseñamos, construímos y caracterizamos
 dos dosímetros fabricados en un proceso estándar CMOS de
 \SI{0.6}{\micro\meter}.
 El primero es un Active Pixel Sensor,
-de estructura similar a un pixel del sensor de una cámara digital:
-tiene un diodo polarizado en inversa, con una zona desierta de portadores.
+de estructura similar a un pixel del sensor de una cámara digital.
+El volúmen sensible es la zona desierta de portadores 
+de un diodo polarizado en inversa.
 La radiación incidente en esta zona genera pares electrón-hueco.
-El campo eléctrico separa electrones de huecos,
-y la baja concentración de portadores aumenta su tiempo de vida permitiendo
-recolectarlos.
+El campo eléctrico separa electrones de huecos y los transporta hacia
+terminales opuestas del diodo,
+con una fracción de ellos desapareciendo por recombinación.
+Así la radiación incidente produce una corriente que va
+descargando un capacitor.
+El cambio en su valor de carga es un indicador de la energía total recibida.
+
 Su ventaja sobre dosímetros tradicionales es la capacidad de resetearlo
 instantáneamente de manera electrónica,
-simplemente descargando el capacitor que acumula la carga generada por
-radiación.
+simplemente recargando el capacitor a su valor de carga original.
 
-El segundo es un Floating Gate,
-semejante a una celda de una memoria Flash.
-Aquí la radiación genera carga en el aislante que rodea la compuerta de un
-transistor MOS.
-Este dispositivo es ideal para sensar esa carga acumulada:
-en condiciones normales, la corriente de compuerta es despreciable 
-y no descarga al nodo donde se está acumulando la carga.
-Este dosímetro se destaca por la posibilidad de medir radiación sin suministro de tensión.
+El segundo dosímetro es un Floating Gate Transistor,
+semejante al transistor MOS en una celda de memoria Flash.
+Su compuerta se encuentra completamente aislada eléctricamente (flotando),
+para almacenar una carga colocada antes de la irradiación.
+La radiación incidente genera portadores en el aislante que rodea la compuerta
+y va descargándola en proporción a la energía capturada.
+Luego de la irradiación,
+se mide la carga remanente a través de su efecto en las curvas del transistor.
+Este dispositivo es idóneo para dicha medición
+porque la corriente que atraviesa la compuerta 
+(una fuente de descarga indeseada) es despreciable,
+a diferencia de los transistores BJT y JFET.
+Este dosímetro se destaca por la posibilidad de medir radiación sin suministro
+de tensión, ya que la compuerta flotante retiene su carga durante tiempos muy
+largos.
 
-Ambos dosímetros explotan la respuesta a radiación de estructuras 
-normalmente utilizadas para otros fines. 
+Ambos dosímetros explotan la respuesta a radiación de dispositivos 
+normalmente utilizados para otros fines. 
 Luego de una introducción a la teoría de su funcionamiento,
 presentamos el proceso y las consideraciones de diseño,
 y los resultados de las mediciones de ambos dosímetros 
-comparando con los valores calculados.
+comparando con los valores calculados y cos trabajos previos.

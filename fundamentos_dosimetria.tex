@@ -1,26 +1,28 @@
 \section{Dosimetría y protección contra la radiación}
-La radiación es una parte inexorable de muchos procesos que mejoran nuestra
-calidad de vida:
+La radiación es una parte invisible de muchos procesos 
+y tecnologías que mejoran nuestra calidad de vida:
 producción nuclear de energía, 
 diagnóstico y terapias médicas, 
 y mediciones con fines científicos e industriales.
-El conocimiento de su producción, propagación y efectos biológicos
-es el punto de partida para 
-proteger a las personas y el ambiente de sus efectos deletéreos
+Hay que entender su producción, propagación y efectos biológicos
+como punto de partida para 
+proteger a las personas y al ambiente de sus efectos deletéreos
 \cite{iaea_radiation_????}.
-Con este objetivo surgen organizaciones como la International Commission on
+Con este objetivo se crearon organizaciones como la International Commission on
 Radiological Protection\cite{_icrp_????} y la International Atomic Energy
 Agency\cite{iaea_official_????}.
-Las mismas crean recomendaciones para la seguridad en el uso de la radiación,
-tanto para los usuarios como para orientar la legislación en cada país.
+Estos grupos crean recomendaciones para la seguridad en el uso de la radiación,
+tanto para los operarios como para orientar la legislación en cada país.
 
-En todo contexto donde se emplea radiación 
+En todo ámbito donde se emplea radiación 
 hay criterios para la exposición máxima 
 que pueden sufrir pacientes,
 trabajadores y el público general.
-Estos criterios se establecen balanceando los daños y beneficios,
-que no siempre se dan en la misma persona 
-(energía nuclear versus radioterapia).
+Estos criterios se establecen balanceando los riesgos y beneficios.
+Por ejemplo la radioterapia sirve para tratar la enfermedad
+pero también puede dañar tejidos sanos.
+Además es posible que haya riesgo para otras personas.
+Por ejemplo, el personal que administra radiodiagnóstico y terapia.
 
 Para limitar la exposición,
 se definen prácticas a distintos niveles organizativos.
@@ -32,7 +34,7 @@ y se controla la contaminación del ambiente de trabajo.
 Esto se acompaña con la creación de protocolos para el trabajo seguro
 que incluyen roles pre-establecidos para responder a accidentes.
 
-A nivel más alto, en cada organización se busca una cultura de seguridad:
+A nivel más alto, cada organización puede crear una cultura de seguridad:
 involucrando a los trabajadores en la creación e implementación de las normas,
 buscando transparencia y responsabilidad individual. 
 
@@ -44,7 +46,8 @@ organizaciones como la World Association of Nuclear Operators
 \subsection{Dosis}
 Los efectos de la exposición a la radiación varían con 
 \begin{itemize}
-    \item flujo de partículas,
+    \item flujo de partículas 
+        (cantidad que cruzan por unidad de tiempo y superficie),
     \item tiempo de exposición,
     \item tipo de partícula incidente ($\alpha$, $\beta$, $\gamma$, etc.),
     \item sustancia donde incide,
@@ -72,4 +75,12 @@ número $E$ que representa de manera más precisa el daño total al organismo:
     E = \sum_r w_r \sum_t w_t D_{r,t}
 \end{align*}
 con $D_{r,t}$ la dosis de partículas $r$ recibida por el tejido $t$.
-% TODO: linear no threshold model
+
+La dosis es una magnitud relevante debido a su correlación
+con el aumento de probabilidad de cáncer.
+El modelo usado convencionalmente se llama Linear Non-Threshold
+\cite{valentin_low-dose_2006}.
+Supone una relación lineal entre dosis y el aumento de probabilidad de cáncer.
+Esta es una base simple para el trabajo en protección.
+Sin embargo no modela posibles efectos positivos (horméticos) 
+de dosis muy bajas \cite{hooker_linear_2004}.

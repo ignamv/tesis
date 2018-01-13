@@ -1,6 +1,6 @@
 \section{Fundamentos de estructuras metal óxido semiconductor}
-La estructura MOS es la base de la tecnología de 
-circuitos integrados modernos\cita{sze_physics_2007}
+La estructura MOS es la base de la tecnología moderna de 
+circuitos integrados\cita{sze_physics_2007}
 que componen las PCs, dispositivos móviles e infraestructura de comunicaciones.
 Su forma de fabricación, denominada proceso CMOS,
 ha permitido un crecimiento exponencial en la capacidad de cómputo,
@@ -13,26 +13,49 @@ siguiendo la ley de Moore\cite{moore_cramming_2006}.
 Reproducido de \cite{sedra_microelectronic_2010}.}
 \subsection{Capacitor MOS}
 Para entender el transistor MOS, estudiamos antes el capacitor MOS.
-Consiste en un sustrato semiconductor donde se deposita un aislante delgado 
-(tradicionalmente SiO$_2$ sobre Si)
-y un conductor (\emph{gate}) como en la \figref{fig:cortemos}.
-Esto forma un capacitor porque tiene dos conductores separados por un
-dieléctrico.
+Su fabricación comienza con una oblea de alrededor de \SI{1}{\milli\meter} cortada de un monocristal de silicio.
+Se oxida la superficie para obtener una delgada capa aislante de SiO$_2$.
+Los detalles de este paso y los tratamientos posteriores
+determinan una propiedad crucial de la interfaz Si-SiO$_2$:
+la densidad de estados electrónicos superficiales.
+Si su valor es muy alto, 
+muchas propiedades eléctricas se ven degradadas 
+(mayor ruido, corrimiento de parámetros con el tiempo).
+El descubrimiento de cómo lograr una interfaz adecuada para transistores MOS
+se dio décadas después de la idea original del transistor
+\cite{chih-tang_evolution_1988}.
+
+Sobre el óxido se deposita un conductor (\emph{gate}) 
+como en la \figref{fig:cortemos}.
+El mismo puede ser polisilicio (silicio policristalino) o,
+en procesos recientes, un metal.
 \fig{cortemos}{figuras/mos/corte.png}{Corte lateral de una estructura MOS. 
 Reproducido de~\cite{sze_physics_2007}.}
+
+Esta estructura forma un capacitor porque tiene dos conductores separados por un
+dieléctrico.
 %
 \subsubsection{Estructura de bandas}
+El análisis que sigue se basa en que las dimensiones laterales del MOS 
+(paralelo a la superficie del sustrato) son mucho mayores que 
+la longitud característica en que varían los campos en la dirección normal.
+Esto permite considerarlo homogéneo en las direcciones laterales,
+y limitarnos a un análisis unidimensional.
+
 La \figref{fig:bandasmos} muestra la estructura de bandas del MOS ideal.
-Un MOS ideal no tiene carga atrapada en el óxido o en la interfaz
+Un MOS ideal no tiene carga atrapada en el óxido ni en la interfaz
 óxido-semiconductor, y sus bandas no tienen curvatura cuando no se le aplica
 tensión.
-Observamos la variación de las bandas en la dirección normal al sustrato,
+Analizamos la variación de las bandas en la dirección normal al sustrato,
 y su dependencia con la tensión $V$ aplicada.
-Al conectar una fuente de tensión (por ejemplo una batería)
-entre las terminales, fijamos la diferencia entre el nivel de Fermi del metal y
-el del semiconductor. 
+
+Al conectar una fuente de tensión 
+(por ejemplo una batería)
+entre las terminales, 
+fijamos la diferencia entre el nivel de Fermi del metal 
+y el del semiconductor. 
 El gradiente de $E_F$ produce un desplazamiento de cargas hasta que se llega a
-un nuevo equilibrio (\figref{fig:polarizacionmos}).
+una nueva condición de equilibrio (\figref{fig:polarizacionmos}).
 
 %Bajo la condición $V=0$, los niveles de Fermi de metal y
 %semiconductor coinciden.
@@ -76,6 +99,103 @@ Reproducido de~\cite{sze_physics_2007}.}
     \label{fig:polarizacionmos}
 \end{figure}
 %
+\subsubsection{Concentración de portadores}
+Para modelar la concentración de huecos y electrones en semiconductores,
+se parte de la aproximación de electrón independiente.
+La misma permite pensar en términos de niveles de 1 electrón que son ocupados
+por electrones idénticos que no interactúan.
+La termodinámica de un sistema así
+lleva a la estadística de Fermi-Dirac, 
+que dice que la probabilidad de ocupación de un nivel está dada por
+\begin{align*}
+    f(E) = \left[\exp\left(\frac{E-E_F}{kT}\right)+1\right]^{-1}
+\end{align*}
+con $E$ la energía del nivel y $E_F$ el nivel de Fermi.
+$E_F$ es constante a lo largo de un sistema en equilibrio
+químico,
+y puede despejarse como función del número total de partículas.
+Para eso se invierte la identidad $N=\sum_E f(E)$ donde la suma es sobre
+todos los niveles de energía.
+
+Para obtener la cantidad promedio de portadores en una banda,
+es necesario sumar la ocupación de todos los niveles de la misma. 
+En muchos casos de interés la banda de conducción cumple 
+$|E-E_F| \gg kT$.
+Esto permite aproximar
+\begin{align*}
+    f(E) = \exp\left(-\frac{E-E_F}{kT}\right)
+\end{align*}.
+Asimismo la suma de $f(E)$ sobre los niveles de la banda se puede aproximar
+por una integral, y así se llega a las concentraciones de electrones y huecos
+\begin{align*}
+    n_c = N_c(T)e^{-\frac{\epsilon_c-E_F}{k_BT}}\\
+    p_v = P_v(T)e^{-\frac{E_F-\epsilon_v}{k_BT}}
+\end{align*} con $N_c(T)$ y $P_v(T)$ funciones que varían lentamente con la
+temperatura.
+
+Es conveniente expresar la concentración de portadores 
+como función del potencial medido respecto del contacto de bulk
+(un punto alejado del semiconductor, que tomamos como referencia):
+$\psi_p=\phi(x)-\phi(\infty)$,
+\begin{align}
+    n &= n_0\exp\left(\frac{q\psi_p}{kT}\right)&
+    p &= p_0\exp\left(-\frac{q\psi_p}{kT}\right),
+    \label{eq:portadores_nodegenerados}
+\end{align}
+con $n_0$ y $p_0$ las concentraciones de portadores en el bulk.
+\subsubsection{Impurezas}
+Una parte central del proceso de fabricación
+es introducir impurezas que aportan electrones o huecos
+en regiones cuidadosamente controladas (\emph{doping}).
+Así se crean zonas con concentraciones particulares de portadores.
+La geometría y concentraciones de estas zonas 
+son lo que define cada tipo de dispositivo 
+que un proceso es capaz de producir.
+Por ejemplo, un proceso puede estar diseñado para altas tensiones
+eligiendo concentraciones y separaciones 
+que logren una alta tensión de ruptura de las junturas.
+
+Una técnica es exponer el sustrato a un gas
+para que haya difusión de átomos del gas al sustrato.
+La otra es ionizar las impurezas 
+y acelerarlas mediante campos eléctricos hacia el sustrato.
+Allí penetran una profundidad que puede controlarse 
+variando su energía\cite{campbell_science_2001}.
+
+
+La forma en que las impurezas introducen portadores es ionizándose al
+capturar o liberar un electrón.
+Para analizar este fenómeno se modela al efecto 
+de una impureza con valencia 5
+(uno más que el Silicio)
+como si fuera un átomo normal de la red 
+sumado a una carga fija +1, y un electrón/hueco.
+Esta carga fija es capaz de atraer y formar estados ligados con electrones.
+Usando la ecuación de masa efectiva\cite{datta_quantum_1989},
+se llega a que la energía de ligadura es muy baja
+y por lo tanto las impurezas están casi totalmente ionizadas 
+bajo condiciones normales de temperatura.
+Esto se debe al efecto de la red: 
+Por un lado actúa como dieléctrico
+y apantalla el campo eléctrico de la carga.
+Por otro lado altera la masa efectiva de los electrones 
+y reduce la energía cinética y por lo tanto la potencial.
+
+El análisis de impurezas aceptoras es análogo al de las donantes, 
+con una carga fija -1 que se ioniza y libera un hueco.
+
+Típicamente una región tiene al menos 
+un órden de magnitud más impurezas de un tipo que del otro.
+Se dice entonces que ahí los electrones o bien los huecos 
+son el portador mayoritario.
+En este caso la concentración de ese portador 
+es aproximadamente igual a la concentración de su impureza.
+La concentración del otro portador se encuentra fuertemente suprimida
+debido al principio de Le Chatelier,
+y vale aproximadamente $n_i^2/N_a$ 
+con $n_i$ la concentración de portadores del semiconductor intrínsico (puro),
+y $N_a$ la concentración de la impureza mayoritaria.
+
 \subsubsection{Relación carga-tensión}
 Planteando la ecuación de Poisson para el potencial $\phi$ en el semiconductor se llega a
 \begin{align*}
@@ -84,46 +204,6 @@ Planteando la ecuación de Poisson para el potencial $\phi$ en el semiconductor 
 siendo los términos de la derecha concentraciones de donantes, aceptores,
 huecos y electrones.
 
-Para modelar la concentración de huecos y electrones en semiconductores,
-se usa con gran éxito la aproximación de electrón independiente.
-La misma permite pensar en términos de niveles de 1 electrón que son ocupados
-por electrones idénticos que no interactúan.
-La termodinámica de un sistema de electrones
-lleva a la estadística de Fermi-Dirac, 
-que dice que la ocupación de un nivel está dada por
-\begin{align*}
-    f(E) = \left[\exp\left(\frac{E-E_F}{kT}\right)+1\right]^{-1}
-\end{align*}
-con $E$ la energía del nivel y $E_F$ el nivel de Fermi.
-$E_F$ es constante a lo largo de un sistema en equilibrio
-químico,
-y puede despejarse como función del número total de partículas.
-
-En muchos casos se cumple $|E-E_F| \gg kT$,
-permitiendo aproximar
-\begin{align*}
-    f(E) = \exp\left(-\frac{E-E_F}{kT}\right)
-\end{align*}.
-Es conveniente expresar la dependencia de la concentración d portadores 
-con el potencial medido respecto al contacto de bulk
-(un punto alejado del semiconductor que tomamos como referencia):
-$\psi_p=\phi(x)-\phi(\infty)$,
-\begin{align}
-    n &= n_0\exp\left(\frac{q\psi_p}{kT}\right)&
-    p &= p_0\exp\left(-\frac{q\psi_p}{kT}\right),
-    \label{eq:portadores_nodegenerados}
-\end{align}
-con $n_0$ y $p_0$ las concentraciones de portadores en el bulk.
-Estas concentraciones dependen principalmente de la concentración $N_a$ de
-impurezas aceptoras de electrones agregadas durante la fabricación.
-Típicamente $p_0\approx N_a$ y $n_0\approx n_i^2/N_a$ con $n_i$ la
-pequeña concentración intrínsica de portadores.
-Esto equivale a decir que todas las impurezas están ionizadas y aportan portadores.
-Se debe a que los niveles de impureza se sitúan a varios $kT$ de distancia de
-$E_F$.
-Por lo tanto, se encuentran casi completamente ionizados 
-y muy pocos portadores quedan ligados al ión aceptor.
-% FIXME Ashcroft lo explica con Ei << kT
 
 La aproximación~\ref{eq:portadores_nodegenerados} es válida para 
 $|E_F-E_{c/v}|\gg kT$, 
@@ -171,7 +251,7 @@ donde delimitamos distintos regímenes de operación.
         se aproxima al borde de la banda de conducción y 
         el semiconductor se torna degenerado.
         Esto significa que se comporta como un metal,
-        con una densidad de portadores que varía levemente con el potencial.
+        con una densidad de portadores que varía lentamente con el potencial.
 \end{itemize}
 \fig{cargamos}{figuras/mos/carga_vg.pdf}{Carga de un MOS típico 
     ($N_A=$\SI{4e15}{\centi\meter^{-3}}) en función
@@ -183,8 +263,8 @@ estadística de Fermi-Dirac en vez de aproximarla por Maxwell-Boltzmann.}
 %
 \subsection{Transistor MOS}
 El transistor es la base de la electrónica moderna.
-Modulando una señal con otra, permite realizar tareas analógicas como
-amplificación y multiplicación.
+Modulando una señal con otra, 
+permite realizar operaciones analógicas como amplificación y multiplicación.
 Al operarlo con niveles discretos (prendido/apagado),
 permite realizar las operaciones lógicas básicas (NOT, AND, etc.) que
 se combinan para formar un circuito digital.
@@ -206,6 +286,7 @@ transistor MOS típico.}
         Por eso esta es denominada la ``tensión umbral''.
         $V_T$ es un parámetro de fabricación que ronda \SI{.3}{\volt} en procesos CMOS
         modernos.
+        Un modelo más preciso es que $I_d$ depende exponencialmente de $V_g$.
     \item Triodo: Si $V_g>V_T$ y $V_{ds}<V_g-V_T$, la corriente de drain crece con la
         tensión drain-source siguiendo
         \begin{align*}
@@ -227,8 +308,8 @@ que forman drain y source (\figref{fig:mosfetestructura}).
 Sin tensión de gate no puede fluir corriente entre drain y source porque una de las
 junturas p-n (drain-sustrato o source-sustrato) queda polarizada en inversa.
 
-Al polarizar el MOS en inversión se forma junto al óxido
-de gate una capa de electrones libres llamada canal.
+Al polarizar el MOS en inversión se forma junto al óxido de gate 
+una capa de electrones libres llamada canal.
 Esta región de tipo n conecta drain y source y permite el flujo de corriente.
 Al variar la tensión de gate, la variación de carga en el canal modula su
 conductividad.

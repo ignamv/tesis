@@ -38,7 +38,7 @@ Configurado para medir tensión, sus características son:
     \label{fig:keithley617}
 \end{figure}
 Introduciendo elementos de realimentación en el circuito de entrada,
-se miden corrientes, resistencias y tensiones 
+es capaz de medir corrientes, resistencias y tensiones 
 (\figref{fig:keithley617}).
 La alta ganancia del amplificador mantiene la terminal de entrada a
 \SI{0}{\volt}, 
@@ -50,7 +50,7 @@ provoca una caída de tensión considerable.
 Debido a la impedancia de entrada del electrómetro,
 fluye muy poca corriente a través de sus terminales.
 Sin embargo, hay otra corriente que fluye en los cables debido a la resistencia
-finita de su aislación (\figref{fig:unguarded}).
+finita de la aislación (\figref{fig:unguarded}).
 \fig{unguarded}{figuras/instrumental/unguarded.png}
 {Efecto de las pérdidas de los cables en mediciones de tensión.
     Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
@@ -58,7 +58,7 @@ finita de su aislación (\figref{fig:unguarded}).
 Para evitar estas corrientes de pérdida,
 se utiliza un conductor de guarda (\figref{fig:guarded})
 rodeando al cable de señal.
-El electrómetro lo mantiene a una tensión muy cercana a la de la señal.
+El electrómetro lo mantiene a una tensión muy cercana a la señal.
 Esto minimiza la tensión a través del aislante del cable,
 reduciendo las pérdidas en el mismo.
 Al mismo tiempo, la guarda reduce la capacidad efectiva del cable
@@ -96,3 +96,14 @@ pero forzada desde una fuente de baja impedancia (\figref{fig:220guard}).
     Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
     \label{fig:220guard}
 \end{figure}
+\subsection{Módulo de adquisición de datos Keithley KUSB-3108}
+El KUSB-3108 es un módulo con múltiples entradas y salidas 
+analógicas y digitales controladas por una PC.
+Conectando estas entradas y salidas a circuitería auxiliar,
+puede reemplazar a los instrumentos anteriores para mediciones en el campo
+(por ejemplo en un centro de irradiación externo).
+
+El banco de medición del FG usa una salida analógica 
+para controlar la fuente de corriente que alimenta un LED.
+Una salida digital controla la entrada de Reset del APS,
+y dos entradas analógicas miden la tensión de salida del sensor.

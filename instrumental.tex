@@ -38,16 +38,20 @@ Configurado para medir tensión, sus características son:
     \label{fig:keithley617}
 \end{figure}
 Introduciendo elementos de realimentación en el circuito de entrada,
-es capaz de medir corrientes, resistencias y tensiones 
+es capaz de medir corriente, resistencia, carga y tensión.
 (\figref{fig:keithley617}).
 La alta ganancia del amplificador mantiene la terminal de entrada a
 \SI{0}{\volt}, 
 evitando cargar el circuito bajo prueba.
+La terminal de entrada está cuidadosamente aislada 
+para evitar fugas de corriente. 
+Por ejemplo, partes del circuito de entrada 
+están levantadas del circuito impreso para aumentar la aislación.
 \subsubsection{Medición con guarda}
 Al medir una fuente de tensión de muy alta impedancia,
 cualquier flujo de corriente hacia el instrumento de medición
 provoca una caída de tensión considerable.
-Debido a la impedancia de entrada del electrómetro,
+Debido a la alta impedancia de entrada del electrómetro,
 fluye muy poca corriente a través de sus terminales.
 Sin embargo, hay otra corriente que fluye en los cables debido a la resistencia
 finita de la aislación (\figref{fig:unguarded}).
@@ -103,7 +107,10 @@ Conectando estas entradas y salidas a circuitería auxiliar,
 puede reemplazar a los instrumentos anteriores para mediciones en el campo
 (por ejemplo en un centro de irradiación externo).
 
-El banco de medición del FG usa una salida analógica 
+El banco de medición del FG usa una entrada analógica conectada a un conversor
+I-V para medir la corriente de Drain del transistor lector.
+
+El banco del APS usa una salida analógica 
 para controlar la fuente de corriente que alimenta un LED.
-Una salida digital controla la entrada de Reset del APS,
-y dos entradas analógicas miden la tensión de salida del sensor.
+Una salida digital controla la entrada de Reset de los APS,
+y dos entradas analógicas miden la tensión de salida de cada sensor.

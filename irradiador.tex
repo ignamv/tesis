@@ -8,7 +8,7 @@ interior (\figref{fig:corteirradiador}).
 
 Todas las superficies donde puede impactar una partícula $\beta$ tienen una
 capa de plástico,
-para frenar la partícula minimizando la producción de radiación de frenado.
+para frenar la partícula minimizando la producción de radiación X de frenado.
 
 En un extremo de la cavidad se encuentra una pastilla de \Strontium 
 (\figref{fig:fuente})
@@ -22,6 +22,10 @@ esa pieza se interpone entre la fuente radioactiva y el interior de la cavidad
 (\figref{fig:posicionno}).
 En la posición de irradiar, la fuente emite partículas $\beta$ hacia el interior
 (\figref{fig:posicionsi}).
+
+Gracias al trabajo de Laboratorio 6 y 7 de Javier Badía,
+el movimiento de la fuente está motorizado.
+Esto permite mover la fuente con un interruptor de manera fácil, rápida y repetible.
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{.45\textwidth}
@@ -46,11 +50,15 @@ Tiene baja eficiencia radiativa y el rango de nuestros electrones más
 energéticos en PVC es inferior a \SI{1}{\centi\meter}.
 Por las mismas razones construimos las tapas del cilindro con discos de
 acrílico de \SI{1}{\centi\meter} de espesor.
-La mochila donde montamos la fuente consiste de plástico ABS extruído en una impresora
-3D.
+La mochila donde montamos la fuente consiste de plástico ABS 
+extruído en una impresora 3D en el LABi.
+Esto requirió separar el modelo inicial en dos partes que fueron pegadas y
+terminadas con herramientas manuales.
 %
 \subsubsection{Radiación de frenado}
-Estimamos la radiación de frenado partiendo del espectro de energía de los
+Las partículas $\beta$ de la fuente empiezan a frenarse en el plástico,
+donde producen radiación X de frenado.
+Estimamos su magnitud partiendo del espectro de energía de los
 electrones emitidos por la fuente.
 Dado que está en equilibrio secular 
 (misma actividad de \Strontium y de \Yttrium),
@@ -66,9 +74,9 @@ Luego calculamos el espectro de bremsstrahlung integrando la \equref{eq:kramers}
 \fig{espectrox}{figuras/irradiador/espectrox.pdf}
 {Espectro de bremsstrahlung calculado en la cara exterior del PVC.}
 %
-\subsubsection{Atenuación de rayos X}
-Aplicamos la \equref{eq:absorcionx} usando tasas de absorción tabuladas por
-NIST\cite{xraycoef},
+\subsubsection{Atenuación de rayos X en el plomo}
+Aplicamos la \equref{eq:absorcionx} 
+usando tasas de absorción en plomo tabuladas por NIST\cite{xraycoef},
 resultando en el espectro atenuado de la \figref{fig:xatenuado}
 \fig{xatenuado}{figuras/irradiador/xatenuado.pdf}
 {Espectro de rayos X calculado en la cara exterior del irradiador.}
@@ -76,7 +84,7 @@ resultando en el espectro atenuado de la \figref{fig:xatenuado}
 %
 %
 \subsubsection{Cálculos Monte-Carlo de fuente de \Strontium}
-Una fuente de \Strontium  emite electrones con un espectro amplio de
+La fuente de \Strontium  emite electrones con un espectro amplio de
 energías (\figref{fig:actividadsr90}).
 Este consiste en la suma del espectro de emisión de \Strontium
 y el de \Yttrium.
@@ -90,7 +98,7 @@ Así ajustamos una potencia de frenado de masa promedio $S/\rho$ (\figref{fig:st
 \fig{stoppingsr90}{figuras/montecarlo/stopping_sr90.pdf}
 {Potencia de frenado promedio del tejido blando para electrones provenientes de
 una fuente de \Strontium.
-La cruz marca que a \SI{0.35}{\milli\meter} la tasa de dosis 
+La cruz marca que a una profundidad de \SI{0.35}{\milli\meter} la tasa de dosis 
 coincide con la tabulada en \cite{delacroix_radionuclide_2002}.}
 que permite calcular tasa de dosis superficial mediante
 \begin{align*}
@@ -100,20 +108,24 @@ con $A=\SI{100}{\milli\curie}$ la actividad de la fuente.
 La tasa de dosis calculada de este modo es comparable con la tabulada en
 \cite{delacroix_radionuclide_2002} si se promedia hasta una profundidad de
 \SI{.35}{\milli\meter}.
+Esto sirve como verificación de que nuestras simulaciones Monte-Carlo producen
+valores compatibles con los que se encuentran en la literatura.
 \subsubsection{Cálculos Monte-Carlo del irradiador}
 Buscamos una cota superior de la tasa de dosis fuera del irradiador.
+Esto brinda mayor confianza en que su operación no es peligrosa.
 Ya que el espesor del plomo es de varias longitudes características de
 atenuación ($1/\mu$),
 sólo pasa una fracción muy pequeña de la radiación inicial.
 Por lo tanto, hay que simular muchos electrones de la fuente de \Strontium
-para estimar de forma precisa la tasa de dosis en el exterior.
+para que llegue una cantidad apreciable a la cara exterior.
+Así podemos estimar de forma precisa la tasa de dosis.
 
 Una solución posible es usar reducción de la
 varianza\cite{dressel_geometrical_2003}.
 Esta es una técnica para cálculos Monte Carlo que introduce un sesgo en la
 evolución de la partícula.
 Por ejemplo, podemos aumentar la probabilidad de que una partícula atraviese
-el plomo sin interactuar.
+el plomo sin interactuar, en vez de scatterear.
 Llevando la cuenta de cuan improbable es la historia de la partícula,
 le damos un peso menor en la estadística final.
 Esto concentra la simulación en darnos muchos eventos que nos interesan
@@ -140,5 +152,6 @@ El resultado se ve en la \figref{fig:dosis_irradiador}.
 {Perfil de deposición de energía en la simulación Monte-Carlo del irradiador.}
 La dosis en la cara exterior del irradiador es
 de \SI{20.3}{\milli\sievert\per\year}.
-Este valor es aceptable si se tiene en cuenta la distancia y tiempo de
-exposición en condiciones reales.
+Este valor es aceptable si se tiene en cuenta que,
+en condiciones reales, se toca el irradiador durante intervalos muy cortos
+y el resto del tiempo se está a distancias mucho mayores.

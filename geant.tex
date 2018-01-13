@@ -1,0 +1,75 @@
+\subsection{Geant4}
+Geant4 es un conjunto de herramientas de código abierto
+para simular la interacción entre partículas y materia.
+Muchas instituciones colaboran en su desarrollo,
+incluyendo CERN, ESA y Fermilab.
+Se usa en múltiples áreas de la física, medicina e ingeniería espacial.
+\subsubsection{Estructura del programa}
+Geant4 es una librería de C++.
+Usando interfaces de esta librería,
+uno define clases para establecer:
+\begin{itemize}
+    \item Fuente de partículas: distribución espacial, de orientación, energía
+        y tipo de partícula
+    \item Geometría y materiales del detector y su entorno
+    \item Registro de las interacciones: qué variables o estadísticos
+        almacenar o filtrar (por ejemplo excluyendo ciertos tipos de
+        partículas).
+\end{itemize}
+Luego, uno instancia estas clases y las pasa a funciones provistas por Geant4
+que coordinan la simulación.
+
+Es posible hacer que estas clases reciban comandos de un archivo de texto.
+Esto permite correr variaciones de una simulación sin tener que recompilar el
+programa: sólo hacer falta cambiar parámetros en ese archivo.
+Así facilita la experimentación rápida.
+\subsubsection{Geometría}
+Para definir la geometría usé el modelo del irradiador que creé en FreeCAD
+durante la fabricación.
+Geant4 permite crear el mundo de simulación a partir de un archivo
+en formato GDML\cite{chytracek_geometry_2006}
+con la clase \code{G4GDMLParser}.
+Escribí una herramienta en Python para convertir archivos 
+\code{.fcstd} de FreeCAD
+a este formato.
+Permite definir el material de cada sólido
+(usando el nombre del material en la base de datos de Geant4)
+y dónde se quieren registrar las interacciones.
+
+Para tener una interfaz más cómoda creé la clase
+\code{GDMLDetectorConstruction}. 
+Por ejemplo, con esta secuencia de comandos carga un archivo GDML y define
+por nombre los volúmenes del modelo que conforman el detector:
+\begin{verbatim}
+/gdml/load pvc_pb.gdml
+/gdml/sensitivevolume detectorLogical
+\end{verbatim}
+
+\subsubsection{Fuente de partículas}
+Geant4 provee la clase \code{G4GeneralParticleSource}
+que permite definir todo tipo de fuentes:
+puntuales o extendidas, con distintas formas de haz y espectros de energía.
+Esto se configura mediante un archivo de comandos 
+leído en tiempo de ejecución.
+Por ejemplo, este fragmento crea una fuente 
+con forma de disco que dispara partículas en la dirección z:
+\begin{verbatim}
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/radius 3 mm
+/gps/ang/type beam1d
+/gps/direction 0 0 1
+\end{verbatim}
+\subsubsection{Registro de las interacciones}
+Sólo nos interesan las interacciones dentro de un volúmen acotado.
+En el caso del irradiador, este volúmen representa al humano que queremos
+proteger (y excluye toda la masa de plástico, aire y plomo del irradiador). 
+En el APS, es la zona desierta de una juntura donde queremos estimar la
+carga generada.
+
+Opté por registrar las coordenadas y energía depositada
+por todas las interacciones.
+Esto brindó mayor flexibilidad para el análisis posterior en Python.
+Las interacciones se colectan en memoria usando \code{G4THitsCollection}.
+Al final de cada disparo, se escriben a un archivo de texto
+usando funciones provistas por \code{G4AnalysisManager}.

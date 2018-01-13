@@ -1,24 +1,43 @@
 \section{Cálculos Monte-Carlo}
 \label{montecarlo}
-Las interacciones fundamentales entre radiación y materia son 
-cuánticas, y por lo tanto no deterministas.
-Su resultado se describe mediante una distribución de probabilidad,
-como la sección diferencial de scattering $\deriv{\sigma}{\Omega}$:
+Las interacciones entre radiación y materia son eventos como
+\begin{itemize}
+    \item Scattering: transferencia de energía y momento, por ejemplo de un
+        fotón a un electrón
+    \item Creación de pares: conversión de energía a un par partícula/
+        antipartícula, por ejemplo cuando un fotón incide en un núcleo y genera
+        un electrón y un positrón.
+\end{itemize}
+Estos procesos no son deterministas.
+Su resultado se describe mediante una distribución de probabilidad, como
+\begin{itemize}
+    \item probabilidad de decaimiento por unidad de tiempo (\emph{actividad}), o
+    \item sección diferencial de scattering $\deriv{\sigma}{\Omega}$:
 la probabilidad de scattering por unidad de ángulo sólido en 
 una dirección dada.
+\end{itemize}
+En algunos casos esta falta de determinismo es inescapable.
+Por ejemplo, en el entorno espacial hay que tener en cuenta la 
+pequeña probabilidad de recibir una partícula dañina de muy alta
+energía.
 
-Frecuentemente se busca predecir la dosis que va a recibir un detector 
+En muchos casos de interés (aplicaciones médicas e industriales)
+las variaciones se cancelan debido a la ley de los grandes números.
+Entonces alcanza con calcular el valor esperado de las magnitudes que se buscan.
+
+Frecuentemente se necesita predecir la dosis que va a recibir un \emph{detector}
 (por ejemplo un circuito o persona)
 dada una fuente de radiación y un entorno.
 Cada partícula generada por la fuente participa en muchas interacciones 
 y es capaz de generar múltiples partículas secundarias.
 Por lo tanto, el espacio de estados finales 
-partículas$\otimes$radiación es complejo
-y la función de distribución es difícil de calcular.
-No es factible calcular el valor esperado de dosis a partir de la
-función de distribución.
+partículas$\otimes$radiación tiene una gran dimensionalidad.
+Esto imposibilita calcular la función de distribución en todo el espacio.
+Por lo tanto, no es factible calcular el valor esperado de dosis 
+a partir de la función de distribución.
 
-El método Monte-Carlo\cite{roe_probability_1992} consiste en generar muestras
+El método Monte-Carlo\cite{roe_probability_1992} consiste en 
+generar muestras aleatorias
 del estado final en este espacio de probabilidad,
 y calcular los estadísticos a partir de ellas.
 Para esto se simula la evolución de una partícula,
@@ -28,8 +47,8 @@ probabilidad.
 Para realizar este muestreo se utilizan distintos paquetes de software. 
 Los mismos cuentan con bases de datos de materiales 
 que contienen información para cada tipo de interacción.
-Esto permite que el usuario se concentre en modelar la geometría,
-con software de modelado 3D como FreeCAD.
+Esto permite que el usuario se limite a modelar la geometría,
+usando software de modelado 3D como FreeCAD.
 
 Usé el toolkit Geant4\cite{allison_geant4_2006},
 con las partículas y procesos necesarios para radiación $\beta$ y X,

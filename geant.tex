@@ -61,15 +61,21 @@ con forma de disco que dispara partículas en la dirección z:
 /gps/direction 0 0 1
 \end{verbatim}
 \subsubsection{Registro de las interacciones}
-Sólo nos interesan las interacciones dentro de un volúmen acotado.
+Durante la simulación se dan interacciones en todas partes del modelo.
+Sólo nos interesa registrar las que ocurren dentro de un volúmen acotado.
 En el caso del irradiador, este volúmen representa al humano que queremos
-proteger (y excluye toda la masa de plástico, aire y plomo del irradiador). 
-En el APS, es la zona desierta de una juntura donde queremos estimar la
-carga generada.
+proteger.
+No nos interesan todos los datos intermedios de cómo la radiación atravesó 
+la masa de plástico, aire y plomo del irradiador. 
+En el APS, el volúmen de interés es la zona desierta de una juntura, 
+donde queremos estimar la carga generada.
 
+La opción más básica es sumar toda la energía depositada en el volúmen.
+Esto brinda la mínima información necesaria para un cálculo de dosis.
 Opté por registrar las coordenadas y energía depositada
-por todas las interacciones.
+por cada interacción en el volúmen.
 Esto brindó mayor flexibilidad para el análisis posterior en Python.
-Las interacciones se colectan en memoria usando \code{G4THitsCollection}.
+Por ejemplo, permite analizar la variación de la dosis con la profundidad.
+Las interacciones se colectan en memoria usando la clase \code{G4THitsCollection}.
 Al final de cada disparo, se escriben a un archivo de texto
 usando funciones provistas por \code{G4AnalysisManager}.

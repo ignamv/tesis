@@ -4,27 +4,33 @@ El dosímetro APS tiene una estructura similar a un pixel del sensor de imagen
 en una cámara digital. 
 Su principio de funcionamiento es medir la carga generada por radiación en la zona desierta de
 una juntura p-n.
-Hay un nodo flotante del circuito que acumula esta carga,
-conectado al cátodo del diodo (\figref{fig:aps}).
-Antes de cada medición, se reinicia el circuito llevando este nodo a 
-V$_{\text{DD}}$ mediante el transistor de reset M1.
+El cátodo de la juntura está aislado eléctricamente para que la carga no fugue
+y se pierda (D1 en \figref{fig:aps}).
+Antes de cada medición, se reinicia el circuito llevando dicho cátodo a
+V$_{\text{DD}}$ prendiendo brevemente el transistor de reset M1.
 La radiación que incide en la zona desierta de D1 interactúa con la red de
 silicio, depositando energía a través de distintos procesos como scattering e
 ionización (ver sección~\ref{sec:radiacion}).
 Los fotones y electrones secundarios resultantes producen pares electrón-hueco,
-que son arrastrados en direcciones opuestas por el campo eléctrico.
-Los electrones se acumulan en el cátodo, descargándolo.
+que son arrastrados en direcciones opuestas por el campo eléctrico
+que existe normalmente en la zona desierta.
+Los electrones se acumulan en el cátodo,
+descargándolo gradualmente hacia \SI{0}{\volt}.
 Luego de irradiar,
 se mide su tensión a través de un par de seguidores M2 y M3.
-Los mismos evitan que la medición de tensión modifique la carga en el nodo y
+Los mismos forman un circuito que replica la tensión de entrada a la salida,
+pero desplazada un valor fijo.
+Su propósito es evitar que la medición de tensión modifique la carga en el nodo y
 afecte al valor medido.
 \subsection{Proceso de fabricación}
-Fabricamos tanto el FG como el APS en el proceso XC06 de la empresa X-FAB
+Fabricamos tanto el FG como el APS en el proceso XC06 de la foundry X-FAB
 \cite{x-fab_0.6_2008}.
-El mismo tiene una escala de \SI{0.6}{\micro\meter} y está diseñado para
+El mismo tiene una escala (longitud característica) de \SI{0.6}{\micro\meter} y está diseñado para
 tensiones de hasta \SI{5}{\volt}.
 En su versión estándar, 
 cuenta con 1 capa de polisilicio y 2 de metalización.
+Existen variantes del proceso que utilizan máscaras adicionales para,
+por ejemplo, abrir ventanas para formar regiones fotosensibles.
 \subsection{Reset}
 Cargamos el nodo flotante a través del drain de un MOSFET de canal P,
 con el source conectado a \vdd.
@@ -42,10 +48,11 @@ apagarse.
 
 El transistor de reset es de área mínima,
 para que aporte la menor capacidad parásita posible al nodo flotante.
+Esto, como se verá más adelante, maximiza la sensibilidad del sensor.
 \subsection{Respuesta a partículas}
-Cada partícula deposita una energía promedio que depende de su energía
+Cada partícula incidente deposita una energía promedio que depende de su energía
 cinética inicial\cite{berger_response_1969} (ver sección~\ref{montecarloaps}).
-Una parte $E$ de esta energía se usa en la creación de pares electrón-hueco,
+Una fracción $E$ de esta energía se usa en la creación de pares electrón-hueco,
 generando carga 
 \begin{align*}
     Q &= \frac{qE}{E_i}
@@ -57,7 +64,7 @@ Su cambio de tensión
 \begin{align*}
     \Delta V &= \frac{Q}{C}
 \end{align*}
-depende de la capacidad total del nodo $C$.
+depende de la capacidad total $C$ del nodo.
 La misma tiene contribuciones de
 \begin{itemize}
     \item juntura de D1,
@@ -76,7 +83,7 @@ diseño (ver sección~\ref{section:diseno_aps}).
 El dosímetro APS detecta energía depositada 
 en una región específica de un circuito integrado.
 A fines de simularlo, 
-simplificamos la geometría del die a tres regiones:
+simplificamos la geometría del die en tres regiones:
 una superficie de SiO$_2$, un sustrato de Si 
 y una zona sensible también de Si (\figref{fig:corteaps}).
 \fig{corteaps}{figuras/aps/corte.pdf}
@@ -97,7 +104,10 @@ cuyo rango en Si es del orden de \SI{0.1}{\nano\meter}.
 Los resultados se encuentran en la \figref{fig:energia1electron}.
 % FIXME falta este gráfico usando
 % ../tesis/figuras/aps/deposicion1electron001.pdf y demás
-\fig{energia1electron}{../poster2015/aps_respuesta.pdf}{TODO!} % TODO 
+\fig{energia1electron}{figuras/aps/deposicion1electron_todos.pdf}{Distribución
+    de probabilidad para la energía depositada en el sensor (eje X).
+Cada gráfico corresponde a una dada energía cinética de la partícula incidente.
+La energía promedio depositada está en la \figref{fig:energiadepositadaaps}.}
 Se ve que los electrones menos energéticos tienden a frenarse por completo en
 el detector, depositando toda su energía.
 Los más energéticos, en cambio, depositan una fracción variable de su energía
@@ -115,13 +125,13 @@ pequeñas.
 Por eso es crítico conocer los procesos que introducen ruido y su magnitud.
 \subsubsection{Corriente de fuga de juntura p-n}
 Al polarizar una juntura p-n en inversa, fluye una corriente de
-pérdida\cite{sze_physics_2007} dada por
+pérdida\cite{sze_physics_2007} con un valor de DC dado por
 \begin{align*}
     I&=I_s(e^{\frac{qV}{\eta kT}}-1)
 \end{align*}
 con $V<0$ la tensión aplicada y $I_s$ y $\eta$ parámetros de fabricación de la
 juntura.
-El valor de $I$ fluctúa debido a la naturaleza discreta de los portadores que
+El valor instantáneo de $I$ fluctúa debido a la naturaleza discreta de los portadores que
 atraviesan la barrera de energía de la juntura.
 Esta fluctuación se denomina ruido \emph{shot}, una clase de ruido blanco:
 su densidad espectral de potencia,
@@ -132,8 +142,10 @@ no varía con la frecuencia (hasta frecuencias muy altas).
 \subsubsection{Fluctuaciones durante reset}
 Durante el reset, se carga la juntura p-n hasta $V_{dd}$ a través de M1.
 Cerca de la tensión final, M1 entra en modo triodo.
-El ruido de Johnson\cite{baker_cmos_2010} del canal cargando la capacidad 
-de juntura $C$ produce una varianza en la tensión final dada por
+En esta condición de operación, el canal actúa como una resistencia.
+Esto significa que produce ruido de Johnson\cite{baker_cmos_2010}.
+Al cargar la capacidad de juntura $C$, 
+este ruido produce una varianza en la tensión final dada por
 \begin{align*}
     \overline{v^2} &= \frac{kT}C.
 \end{align*}
@@ -144,6 +156,47 @@ Al tomar la diferencia se elimina el ruido de reset,
 presente en ambas por igual.
 \subsection{Diseño del circuito}
 \label{section:diseno_aps}
+La topología del circuito quedó determinada por la elección de construir un
+dosímetro APS con un par de seguidores para su medición.
+
+El paso siguiente en el diseño fue elegir los tamaños de los distintos
+componentes para optimizar el desempeño del sensor (\figref{fig:falltime}).
+\fig{falltime}{figuras/aps/falltime.pdf}
+{Tiempo de respuesta simulado del buffer en función del W del transistor
+final.}
+
+Para una carga dada, la tensión sobre un capacitor es inversamente proporcional
+a su capacidad.
+En este caso la carga fue generada por la radiación,
+y la tensión es la señal medida que queremos maximizar.
+Para esto minimizamos las capacidades parásitas del cátodo de D1,
+usando transistores de área mínima para M1 y M2.
+Restringimos el largo de las conexiones del cátodo,
+y las mantuvimos alejadas de otros nodos.
+Aplicamos software de Mentor de extracción de capacidades parásitas al layout
+resultante, y obtuvimos una capacidad total en el cátodo de \SI{3.4}{\femto\farad}.
+\begin{table}[h]
+    \centering
+    \caption{Dimensiones del diseño optimizadas para sensibilidad y tiempo de
+    respuesta}
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        Dispositivo&      W (um)&    L (um)&  Canales\\
+        \hline
+D1&     4&  4&  1\\
+M1&     0.8&    0.6&    1\\
+M2&     0.8&    0.6&    1\\
+M3&     50& 3&  8\\
+        \hline
+    \end{tabular}
+    \label{fig:areas}
+\end{table}
+
+Estas dimensiones se utilizaron tanto para la simulación del circuito en SPICE
+como para los cálculos Monte-Carlo.
+La combinación de estas dos herramientas nos da una sensibilidad esperada de 
+\SI{7.1}{\volt\per\gray}.
+El diseño físico final está en la \figref{fig:layoutaps}.
 \begin{figure}[p]
     \centering
     \includegraphics[width=\columnwidth]{figuras/aps/layout_hatch.pdf}
@@ -159,47 +212,9 @@ Los diodos sólo conducen si la tensión del pad excede \SI{5}{\volt} o
 baja de \SI{0}{\volt}.
 Esto evita que se polaricen en directa junturas del circuito que deben
 permanecer en inversa (drain-bulk y source-bulk).}
-La topología del circuito quedó determinada por la elección de construir un
-dosímetro APS con un par de seguidores para su medición.
-El paso siguiente en el diseño fue elegir los tamaños de los distintos
-componentes para optimizar el desempeño del sensor (\figref{fig:falltime}).
-\fig{falltime}{figuras/aps/falltime.pdf}
-{Tiempo de respuesta simulado del buffer en función del W del transistor
-final.}
-
-Para una carga dada, la tensión sobre un capacitor es inversamente proporcional
-a su capacidad.
-Por lo tanto, maximizamos la señal producida por la radiación 
-reduciendo las capacidades parásitas del cátodo de D1.
-Para esto usamos transistores de área mínima en M1 y M2.
-Restringimos el largo de las conexiones del cátodo,
-y las mantuvimos alejadas de otros nodos.
-Aplicamos software de Mentor de extracción de capacidades parásitas al layout
-resultante, y obtuvimos una capacidad total en el cátodo de \SI{3.4}{\femto\farad}.
-\begin{table}[h]
-    \centering
-    \caption{Dimensiones del diseño optimizadas para sensibilidad y tiempo de
-    respuesta}
-    \begin{tabular}{|c|c|}
-        \hline
-        Dispositivo&      Dimensiones\\
-        \hline
-D1&     \SI{4x4}{\micro\meter}\\
-M1&     \SI{0.8x0.6}{\micro\meter}\\
-M2&     \SI{0.8x0.6}{\micro\meter}\\
-M3&     TODO\\
-        \hline
-    \end{tabular}
-    \label{fig:areas}
-\end{table}
-
-Estas dimensiones se utilizaron tanto para la simulación del circuito en SPICE
-como para los cálculos Monte-Carlo.
-La combinación de estas dos herramientas nos da una sensibilidad esperada de 
-\SI{7.1}{\volt\per\gray}.
 \subsection{Medición}
 Tomamos dos dies y los bondeamos a placas adaptadoras de TSSOP28,
-un empaquetado de circuitos integrados de montaje superficial
+un tipo de empaquetado de circuitos integrados de montaje superficial
 (figuras~\ref{fig:bondeados1}, \ref{fig:bondeados2} y~\ref{fig:pinout}).
 \fig{bondeados1}{figuras/aps/bondeados.jpg}
 {Dies bondeados a placa adaptadora SMD.
@@ -226,15 +241,28 @@ inversa.
 Se ve en ambas figuras la misma curva 
 con escalas distintas de tiempo y de tensión.
 Esta variación proviene tanto de las áreas distintas de los dos sensores
-como del mismatching entre los seguidores.
-Ya que éstos usan varios transistores de área mínima,
-son particularmente sensibles a variaciones del proceso
-(el mismo error absoluto en las dimensiones del canal produce un mayor error relativo).
+como del mismatch entre los seguidores.
+
+Cada transistor del die tiene pequeñas variaciones debido a imperfecciones en
+la litografía y variaciones aleatorias de dopaje.
+Estas variaciones no son tan notables en dispositivos grandes debido a que
+desaparecen al promediarse sobre mucha área.
+
+Ya que los seguidores usan varios transistores de área mínima,
+son particularmente sensibles a variaciones del proceso:
+el mismo error absoluto en las dimensiones del canal produce un mayor error relativo.
 
 % Descarga debería ser lineal
 % https://books.google.com.ar/books?id=6Rg7AAAAQBAJ&lpg=PA289&ots=yO1HPv_N4E&dq=reverse%20biased%20diode%20%22discharge%20curve%22&hl=es&pg=PA290#v=onepage&q=reverse%20biased%20diode%20%22discharge%20curve%22&f=false
+
+La curva de descarga es la solución a una ecuación diferencial
+no-lineal:
+\begin{align*}
+    \frac{\partial Q}{\partial V}\frac{dV}{dt} &= -I(V)
+\end{align*}
 La forma de la curva proviene de la variación 
-tanto de la corriente de fuga como de la capacidad del diodo.
+tanto de la corriente de fuga $I(V)$ 
+como de la capacidad del diodo $\frac{\partial Q}{\partial V}(V)$.
 Ambas dependen de la tensión aplicada,
 debido a la variación del ancho de la zona desierta.
 Al caer la tensión en inversa,

@@ -1,13 +1,15 @@
 \section{Dosímetro Floating Gate}
 % TODO: diseño, cuentas, consideraciones
-El dosímetro FG se basa en un MOSFET con gate aislado (floating gate).
-Esto significa que el gate normalmente retiene su carga por mucho tiempo.
-Esto tiene aplicaciones comerciales en memorias no volátiles:
-una vez que se coloca cierta carga (representando información) en el gate,
-tiene permanencia y puede medirse en base a las curvas IV del MOSFET.
+Los MOSFET con gate aislado o floating gate se usan comercialmente
+en memorias no volátiles.
+Se coloca cierta carga, 
+cuyo valor representa uno o más bits de información, en el gate.
+Luego se recupera la información midiendo la carga del gate
+en base a las curvas IV del MOSFET.
 
-Para realizar dosimetría con un FG,
-explotamos la descarga del gate debido a la radiación.
+El dosímetro FG se basa en un MOSFET con gate aislado.
+Su principio de funcionamiento es que la radiación que incide
+en el óxido de compuerta tiende a descargar al FG.
 Antes de irradiar,
 se coloca carga en el gate mediante una corriente de túnel 
 (\figref{fig:cargafg}).
@@ -16,28 +18,29 @@ se coloca carga en el gate mediante una corriente de túnel
 La tensión en el inyector produce un campo eléctrico en su óxido de gate,
 que facilita una corriente de túnel Fowler-Nordheim.
 La carga que pasa al FG prende el transistor lector.}
-Esta carga altera la tensión de gate, prendiendo el transistor lector.
+Esta carga altera la tensión de gate, prendiendo un transistor lector.
 
-La radiación incidente produce pares electrón-hueco en el óxido de gate, 
-descargando el gate (\figref{fig:irradiacionfg}).
+La radiación incidente produce pares electrón-hueco en el óxido
+que rodea al floating gate, descargándolo
+(\figref{fig:irradiacionfg}).
 \figp{irradiacionfg}{figuras/fg/irradiacion.pdf}
 { Descarga del FG debido a pares electrón-hueco creados por
 radiación.
 Los huecos son atraídos a la carga negativa del FG y
 se recombinan con la misma, descargándolo.}
 Esto va apagando el lector,
-reduciendo su corriente de drain si se aplica tensión constante
+reduciendo su corriente de drain si se aplica tensión drain-source constante
 (\figref{fig:fg_vd_cte})
 \figp{fg_vd_cte}{figuras/fg/lector_vd_cte.pdf}
 {Variación de la corriente de drain del lector con la tensión de gate,
 para distintos valores de $V_{sd}$.}
-o aumentando su tensión de drain si se aplica corriente constante
-(\figref{fig:fg_id_cte})
+o aumentando su tensión drain-source si se aplica corriente de drain constante
+(\figref{fig:fg_id_cte}).
 \figp{fg_id_cte}{figuras/fg/lector_id_cte.pdf}
 {Variación de la tensión de drain del lector con la tensión de gate,
 para distintos valores de $I_d$.}
-Calibramos estas cantidades contra la dosis recibida para construir un
-dosímetro.
+Calibrando estas cantidades contra la dosis recibida, 
+el resultado es un dosímetro.
 %
 \subsection{Trabajos previos (emprolijar)}
 \cite{cesari_floating_2014} carga FG=4V en 5s con -18V.

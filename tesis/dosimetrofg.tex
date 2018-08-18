@@ -155,19 +155,47 @@ la corriente de drain varía linealmente con $V_{FG}$
 %
 \subsubsection{Mecanismo de inyección}
 Dado que el floating gate está aislado,
-no intercambia carga en condiciones normales.
-Por eso lo cargamos con una corriente de túnel
-Fowler-Nordheim\cite{lenzlinger_fowlernordheim_1969}.
-Aplicamos una tensión entre el gate y un transistor inyector.
-Esto genera un campo eléctrico en el óxido de gate,
-reduciendo el ancho de la barrera de potencial.
-Así aumenta la probabilidad de túnel y en consecuencia la corriente
+no es posible cargarlo o descargarlo con una fuente de tensión
+como una placa de un capacitor normal.
+La única forma de hacerle llegar carga es 
+a través del aislante que lo rodea.
+
+En condiciones normales, el aislante tiene muy pocos portadores.
+Esto impide la conducción normal como en un metal.
+Además, para espesores típicos de aislante, 
+los electrones que están a uno y otro lado del mismo
+no pueden tunelear a través de su barrera de potencial.
+En consecuencia, el aislante presenta una resistencia alta.
+
+Al aplicarle suficiente tensión,
+el campo eléctrico en el aislante inclina la banda de conducción,
+reduciendo el ancho de la barrera de potencial
 (\figref{fig:fowlernordheim}).
+Así aumenta la probabilidad de túnel, y en consecuencia la corriente.
+Esto se denomina corriente de túnel
+Fowler-Nordheim\cite{lenzlinger_fowlernordheim_1969}.
 \fig{fowlernordheim}{figuras/fowlernordheim/fowlernordheim.pdf}
 {Diagrama de bandas de la emisión de electrones del canal al gate de un MOS. 
 El campo eléctrico en el óxido de gate reduce el ancho de la barrera de
 potencial del óxido, facilitando el tuneleo.
-Reproducido de \cite{lenzlinger_fowlernordheim_1969}}.
+Reproducido de \cite{lenzlinger_fowlernordheim_1969}}
+
+Esto explica la corriente de gate que fluye en un MOS,
+al aplicar tensión suficiente entre body y gate.
+En nuestro caso, no podemos aplicar tensión directamente al gate
+porque está completamente aislado.
+Esto puede representarse como en la \figref{fig:cargadofg}.
+\fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
+{Esquemático del flujo de carga al floating gate 
+a través del óxido del inyector.
+Al aplicar tensión al inyector,
+parte de esta tensión cae sobre 
+la capacidad de gate del inyector $C_I$
+y parte sobre la capacidad de well $C_W$ y del lector $C_R$.
+Minimizando $C_I$, se maximiza la tensión a través del inyector
+y por lo tanto se logra la mayor corriente de túnel.}
+
+% TODO Aplicamos una tensión entre el gate y un transistor inyector.
 
 Esta corriente se ajusta a una expresión del tipo
 \begin{align*}

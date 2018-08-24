@@ -1,7 +1,7 @@
 \section{Dosímetro Floating Gate}
 % TODO: diseño, cuentas, consideraciones
 Los MOSFET con gate aislado o floating gate se usan comercialmente
-en memorias no volátiles.
+en memorias no volátiles (Flash y EEPROM).
 Se coloca cierta carga, 
 cuyo valor representa uno o más bits de información, en el gate.
 Luego se recupera la información midiendo la carga del gate
@@ -49,6 +49,7 @@ el resultado es un dosímetro.
 Id@Vsd=100mV. Calculó 5mV/rad, midió 3mV/rad.
 %
 \subsection{Acoplamiento capacitivo}
+% FIXME: mover a cargado FG
 Ya que el FG está aislado,
 su tensión es función de la carga que almacena 
 y de la capacidad entre este y otros nodos del circuito.
@@ -130,13 +131,17 @@ en función de la relación de áreas de
 inyector ($A_I$),
 lector ($A_R$) 
 y well del lector ($A_W$).}
-% TODO: dimensiones finales
-\begin{figure}[p]
-    \centering
-    \includegraphics[width=\columnwidth]{figuras/fg/layout_hatch.pdf}
-    \caption{Layout del dosímetro FG.}
-    \label{fig:layoutfg}
-\end{figure}
+
+Así llegamos a las dimensiones finales de cada región:
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|}
+    Región   & Área (\SI{}{\micro\meter\squared})\\ \hline
+Inyector & 4.32\\
+Well     & 180000\\
+Lector   & 35000
+\end{tabular}
+\end{table}
 %
 \subsection{Diseño físico (layout)}
 %

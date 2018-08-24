@@ -4,8 +4,9 @@ El dosímetro APS tiene una estructura similar a un pixel del sensor de imagen
 en una cámara digital. 
 Su principio de funcionamiento es medir la carga generada por radiación en la zona desierta de
 una juntura p-n.
-El cátodo de la juntura está aislado eléctricamente para que la carga no fugue
-y se pierda (D1 en \figref{fig:aps}).
+El cátodo de la juntura está aislado eléctricamente 
+para acumular la carga generada sin que se fugue
+(D1 en \figref{fig:aps}).
 Antes de cada medición, se reinicia el circuito llevando dicho cátodo a
 V$_{\text{DD}}$ prendiendo brevemente el transistor de reset M1.
 La radiación que incide en la zona desierta de D1 interactúa con la red de
@@ -149,21 +150,30 @@ este ruido produce una varianza en la tensión final dada por
 \begin{align*}
     \overline{v^2} &= \frac{kT}C.
 \end{align*}
+Evaluando esta fórmula con la capacitancia del APS
+% TODO: es la capacidad de 4x4 o 40x40?
+se llega a una tensión de ruido RMS de \SI{1.1}{\milli\volt}.
+
 Esta incertidumbre en la tensión luego del reset se elimina usando 
 la técnica Correlated Double Sampling\cite{white_characterization_1974}:
 se mide tensión antes y después de la exposición a la radiación.
 Al tomar la diferencia se elimina el ruido de reset,
 presente en ambas por igual.
+
 \subsection{Diseño del circuito}
 \label{section:diseno_aps}
 La topología del circuito quedó determinada por la elección de construir un
 dosímetro APS con un par de seguidores para su medición.
 
 El paso siguiente en el diseño fue elegir los tamaños de los distintos
-componentes para optimizar el desempeño del sensor (\figref{fig:falltime}).
+componentes para optimizar el desempeño del sensor.
+Para esto simulamos el tiempo de respuesta a un electrón incidente
+en función de (\figref{fig:falltime}).
 \fig{falltime}{figuras/aps/falltime.pdf}
 {Tiempo de respuesta simulado del buffer en función del W del transistor
-final.}
+final.
+% TODO: qué es Wideal?
+}
 
 Para una carga dada, la tensión sobre un capacitor es inversamente proporcional
 a su capacidad.

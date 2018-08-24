@@ -58,14 +58,28 @@ Sumando la carga en cada capacidad se llega a la relación
     \label{eq:ccoupling}
 \end{align}
 \subsection{Sensibilidad}
-Un modelo simple para predecir la sensibilidad del dosímetro es plantear que
-todos los aislantes que rodean al floating gate le aportan una carga
-proporcional a la dosis y al volúmen del aislante.
-A su vez, cada aislante forma parte de un capacitor que aporta a la capacidad
-total del FG y reduce su corrimiento de tensión para una carga dada.
+Para predecir la sensibilidad del dosímetro,
+necesitamos un modelo simple de cómo la radiación
+descarga al floating gate.
 
-Esto determina la variación de la sensibilidad con la geometría que rodea al
-FG,
+En principio, la radiación genera pares electrón-hueco
+en todo el volúmen de óxido donde incide.
+Esto sólo nos interesa cuando ocurre en el óxido que rodea al FG,
+porque entonces esos pares electrón-hueco pueden descargarlo.
+Por lo tanto, cada región de FG aporta una generación de carga
+proporcional a su área $A$ y al espesor de óxido: $t$.
+
+No podemos medir directamente la cantidad de carga en el floating gate.
+Sólo podemos saberla indirectamente, a partir de la tensión de gate.
+La relación entre carga y tensión es la capacitancia del FG.
+Para cada región de FG, su capacitancia es proporcional al área $A$
+e inversamente proporcional al espesor del óxido $t$
+que la separa de lo que tiene debajo.
+
+Por lo tanto, la sensibilidad 
+(definida como derivada de la tensión respecto de la dosis)
+es un cociente entre la carga generada por todo el óxido que rodea al FG
+y la capacitancia del FG a otros nodos.
 \begin{align}
     S = \deriv{V}{E} \propto \frac{\sum_i A_it_i}{\sum_j A_j/t_j}
     \label{eq:sensibilidad_fg}
@@ -73,6 +87,8 @@ FG,
 con $A_i$ y $t_i$ las áreas y espesores de los óxidos que rodean al FG.
 Tanto los óxidos de campo como de gate consisten de SiO$_2$,
 de modo que la permitividad sale como constante.
+Explorando esta ecuación, podemos optimizar el diseño del dosímetro
+para maximizar su sensibilidad.
 \subsection{Diseño}
 El desempeño del dosímetro depende de cocientes
 de capacidades entre FG y distintos nodos del circuito. 

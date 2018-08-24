@@ -218,7 +218,7 @@ la corriente de drain varía linealmente con $V_{FG}$
 \subsubsection{Mecanismo de inyección}
 Dado que el floating gate está aislado,
 no es posible cargarlo o descargarlo con una fuente de tensión
-como una placa de un capacitor normal.
+como las placas de un capacitor normal.
 La única forma de hacerle llegar carga es 
 a través del aislante que lo rodea.
 
@@ -242,6 +242,13 @@ El campo eléctrico en el óxido de gate reduce el ancho de la barrera de
 potencial del óxido, facilitando el tuneleo.
 Reproducido de \cite{lenzlinger_fowlernordheim_1969}}
 
+Esta corriente se ajusta a una expresión del tipo
+\begin{align*}
+    J_{FN} &= AF_{ox}^2\exp(-B/F_{ox}).
+\end{align*}
+con $A$ y $B$ constantes de ajuste 
+y $F_{ox}$ el campo eléctrico en el óxido.
+
 Esto explica la corriente de gate que fluye en un MOS,
 al aplicar tensión suficiente entre body y gate.
 En nuestro caso, no podemos aplicar tensión directamente al gate
@@ -249,34 +256,37 @@ porque está completamente aislado.
 Esto puede representarse como en la \figref{fig:cargadofg}.
 \fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
 {Esquemático del flujo de carga al floating gate 
-a través del óxido del inyector.
+a través del óxido del MOS inyector.
 Al aplicar tensión al inyector,
 parte de esta tensión cae sobre 
-la capacidad de gate del inyector $C_I$
-y parte sobre la capacidad de well $C_W$ y del lector $C_R$.
+la capacidad de gate $C_I$ del MOS inyector 
+y parte sobre la capacidad de well $C_W$ y del MOS lector $C_R$.
 Minimizando $C_I$, se maximiza la tensión a través del inyector
 y por lo tanto se logra la mayor corriente de túnel.}
+La tensión se aplica al body de un MOS inyector,
+cuyo gate es el FG.
+Dándole al MOS inyector la menor área posible, 
+reducimos su capacidad de gate.
+Así la mayoría de la tensión de inyección cae a través de su óxido
+y produce una corriente de túnel que carga al FG.
 
-% TODO Aplicamos una tensión entre el gate y un transistor inyector.
+Dado que el FG tiene que prender un PMOS,
+hay que darle una carga inicial negativa.
+Mirando la \figref{fig:cargadofg},
+una tensión negativa en el inyector
+produce carga negativa en el FG.
+Esta polarización pone al MOS inyector en acumulación,
+de modo que la tensión gate-body cae principalmente 
+en el óxido de gate (y muy poco en el silicio).
 
-Esta corriente se ajusta a una expresión del tipo
-\begin{align*}
-    J_{FN} &= AF_{ox}^2\exp(-B/F_{ox}).
-\end{align*}
+% FIXME: esto queda colgado
 El campo en el óxido $F_{ox}$ está dado por 
 \begin{align*}
     V_{FG}-V_I &= F_{ox}t_{ox}+\psi_s+V_{FB},
 \end{align*}
 con $V_{FB}=(\Phi_S-\Phi_M)/e$ 
-y $\psi_s$ la caída de tensión sobre el Si del inyector.
-
-Para llevar el floating gate de 0V a una tensión negativa que prenda al lector,
-aplicamos tensión negativa al inyector.
-Si bien no controlamos $V_{FG}$ directamente,
-reducimos su valor fijando $V_R=0$.
-Así obtenemos una corriente electrónica de túnel hacia el floating gate.
-Bajo esta polarización,
-el inyector se encuentra en acumulación y se puede despreciar $\psi_s$.
+y $\psi_s$ la caída de tensión sobre el Si del inyector,
+que como ya dijimos es despreciable.
 %
 %Nuestro proceso de fabricación alcanza breakdown del
 %óxido de gate al aplicar \SI{13}{\volt}.

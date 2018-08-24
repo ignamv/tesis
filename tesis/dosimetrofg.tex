@@ -121,6 +121,45 @@ y well del lector ($A_W$).}
     \caption{Layout del dosímetro FG.}
     \label{fig:layoutfg}
 \end{figure}
+%
+\subsection{Diseño físico (layout)}
+%
+\fig{layout_fg_todo}{figuras/gds/fg/small/poly_met.png}
+{Layout del dosímetro completo, mostrando polisilicio y metalización.
+El rectángulo superior de polisilicio está sobre nwell con óxido de campo,
+y es la región principal de generación de carga por su óxido grueso.
+Abajo a la izquierda está el inyector, 
+el MOS de área mínima a través del cual se carga al FG.
+Abajo a la derecha está el transistor lector,
+armado con múltiples canales 
+(varios MOSFET en paralelo que comparten difusiones source/drain).}
+El layout (\figref{fig:layout_fg_todo}) se divide en 3 grandes regiones:
+\begin{itemize}
+    \item Floating Gate sobre óxido de campo y nwell,
+    \item MOS inyector, y
+    \item MOSFET lector.
+\end{itemize}
+El inyector es un MOS de área mínima con su propio nwell
+(\figref{fig:layout_inyector}).
+\fig{layout_inyector}{figuras/gds/fg/small/inyector.png}
+{Layout del MOS inyector. Está rodeado por contactos a body (nwell).
+Estos contactos y los de drain/source 
+están cortocircuitados por la metalización (no visible).}
+Esto permite conectar su drain, source y body a la terminal de inyección.
+
+El lector es un MOSFET de $W=\SI{100}{\micro\meter}$ 
+por $L=\SI{25}{\micro\meter}$ con 14 canales.
+Esto significa que usa 14 MOSFET en paralelo,
+que comparten difusiones source/drain. 
+Esto se ve claramente en la metalización (\figref{fig:layout_fg_met}),
+donde los source están conectados por debajo con M1 (la primera capa de metal)
+y los drain por arriba con M2 (la segunda capa de metal).
+\fig{layout_fg_met}{figuras/gds/fg/small/met1_met2.png}
+{Metalización del FG.
+A la izquierda, hay M1 (la primera capa de metal) 
+cortocircuitando source, drain y body del MOS inyector.
+A la derecha, hay M1 conectando por debajo los sources/body del MOSFET lector
+y M2 conectando por arriba los drains.}
 \subsection{Medición de la carga}
 \fig{floatingcapacidades}{figuras/fgcapacidades/floatinggate2.pdf}{Modelo de
 acoplamiento capacitivo en un MOSFET con floating gate.}

@@ -199,19 +199,36 @@ La combinación de estas dos herramientas nos da una sensibilidad esperada de
 El diseño físico final está en la \figref{fig:layoutaps}.
 \begin{figure}[p]
     \centering
-    \includegraphics[width=\columnwidth]{figuras/aps/layout_hatch.pdf}
+    \includegraphics[width=\columnwidth]{figuras/gds/aps/todo.png}
     \caption{Layout del dosímetro APS. 
-    I1 es el espejo de corriente que polariza al primer seguidor M2.
-    El transistor de reset M1 está conectado a un pad a través del
-    circuito de protección de la \figref{fig:proteccion5v}.}
+    El transistor de la derecha es el de salida, del segundo seguidor.
+    El resto se ve en más detalle en la \figref{fig:layoutapszoom}.}
     \label{fig:layoutaps}
+\end{figure}
+\begin{figure}[p]
+    \centering
+    \includegraphics[width=\columnwidth]{figuras/gds/aps/zoom.png}
+    \caption{Vista en detalle del layout del APS, excluyendo el transistor de
+        salida.
+        A la derecha está el diodo, con el cátodo (nwell) en el centro y el
+        ánodo (contactos a sustrato) rodeándolo.
+        A su izquierda está el primer MOSFET seguidor y abajo el MOSFET de
+        reset.
+        Los transistores de la izquierda polarizan al primer seguidor.
+    El transistor de reset está conectado a un pad (no visible) a través del
+    circuito de protección de la \figref{fig:proteccion5v}.}
+    \label{fig:layoutapszoom}
 \end{figure}
 \fig{proteccion5v}{figuras/aps/proteccion.pdf}
 {Circuito de protección para la entrada de reset.
 Los diodos sólo conducen si la tensión del pad excede \SI{5}{\volt} o
 baja de \SI{0}{\volt}.
-Esto evita que se polaricen en directa junturas del circuito que deben
-permanecer en inversa (drain-bulk y source-bulk).}
+Cuando llega un pulso de alta tensión
+(por ejemplo debido a una descarga electrostática)
+los diodos limitan la tensión que llega al circuito.
+Esto evita que se polaricen en directa las junturas drain-body y source-body,
+previniendo una falla por latchup (sección~\ref{latchup}).
+También evita la ruptura de los óxidos de compuerta de MOS.}
 \subsection{Medición}
 Tomamos dos dies y los bondeamos a placas adaptadoras de TSSOP28,
 un tipo de empaquetado de circuitos integrados de montaje superficial

@@ -92,7 +92,7 @@ y pueda girar dentro de la misma
 \fig{torneo_simple}{figuras/irradiador/torneo_simple.pdf}
 {Elegimos una forma simple de tornear que obture lo más posible 
 la cavidad del irradiador y pueda girar en su interior.
-Para eso nos aseguramos que las esquinas no se salgan de un círculo
+Para eso nos aseguramos de que las esquinas no se salgan de un círculo
 con el diámetro interior de la cavidad.}
 Las dimensiones finales están en la \figref{fig:torneo}.
 La blandez del plomo demandó un torneado cuidadoso a bajas revoluciones.
@@ -108,14 +108,14 @@ Por eso decidimos montarla en un bolsillo donde se puede
 rápidamente dejar caer la fuente,
 minimizando la exposición del que realice la tarea.
 
-Quisimos asegurarnos que el plástico frene todos los electrones antes de llegar a
+Quisimos asegurarnos de que el plástico frene todos los electrones antes de llegar a
 la pieza de plomo. 
 Para eso le dimos una forma redonda que cubra lo más posible al plomo,
 con la restricción de que pueda girar en la cavidad.
 
 Debido a la dificultad de moldear esta forma (redonda y con una cavidad)
 en resina, recurrimos a Iván G. Pollitzer y el 
-Laboratorio Abierto de Electrónica.
+Laboratorio Abierto de Electrónica de FIUBA.
 Iván nos guió en el diseño de una pieza impresa en 3D en ABS.
 Esta pieza consiste en dos partes impresas por separado
 (\figref{fig:blender}),
@@ -129,6 +129,7 @@ Unimos la mochila de plástico a la pieza de plomo usando tornillos sin cabeza,
 agujereando y roscando ambas piezas.
 \subsection{Cálculos de protección}
 \subsubsection{Frenado $\beta$}
+% FIXME: repetido, todo esto está en la sección anterior
 Usamos PVC para el frenado de electrones, porque está disponible en tubos
 del tamaño requerido.
 Tiene baja eficiencia radiativa y el rango de nuestros electrones más
@@ -206,8 +207,8 @@ muchos electrones de la fuente de \Strontium
 para que llegue una cantidad apreciable a la cara exterior.
 Así podemos estimar de forma precisa la tasa de dosis.
 
-Una solución posible es usar reducción de la
-varianza\cite{dressel_geometrical_2003}.
+Una forma de reducir el tiempo de CPU necesario para simulaciones
+es usar reducción de la varianza\cite{dressel_geometrical_2003}.
 Esta es una técnica para cálculos Monte Carlo que introduce un sesgo en la
 evolución de la partícula.
 Por ejemplo, podemos aumentar la probabilidad de que una partícula atraviese
@@ -237,7 +238,7 @@ El resultado se ve en la \figref{fig:dosis_irradiador}.
 \fig{dosis_irradiador}{figuras/montecarlo/dosis_irradiador.pdf}
 {Perfil de deposición de energía en la simulación Monte-Carlo del irradiador.}
 La dosis en la cara exterior del irradiador es
-de \SI{20.3}{\milli\sievert\per\year}.
+de \SI{20.3}{\milli\sievert} por año.
 Este valor es aceptable si se tiene en cuenta que,
 en condiciones reales, se toca el irradiador durante intervalos muy cortos
 y el resto del tiempo se está a distancias mucho mayores.

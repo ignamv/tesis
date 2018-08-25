@@ -1,8 +1,15 @@
 \section{Efectos de radiación en dispositivos}
+El estudio de los efectos de la radiación en dispositivos electrónicos 
+tiene dos grandes áreas de aplicación:
+\begin{itemize}
+    \item el diseño de circuitos para uso en zonas de radiación intensa
+        (satélites, reactores nucleares), y
+    \item la medición de la radiación a través de su efecto en un dispositivo.
+\end{itemize}
 Muchos tipos de dosímetros se basan en acumular 
 carga por ionización proveniente de radiación.
 Esta carga produce transitorios de corriente y tensión en los circuitos 
-integrados y daño acumulativo en los transistores que los componen.
+integrados, y daño acumulativo en los transistores que los componen.
 
 \subsection{Radiación en junturas p-n}
 \subsubsection{Daño acumulativo}
@@ -10,7 +17,7 @@ La radiación desplaza átomos de la red del semiconductor,
 creando defectos activos.
 Estos son sitios cargados donde se rompe la periodicidad de la red
 \cite{iniewski_radiation_2011}.
-Los defectos lozalizados en la zona desierta de una juntura p-n
+Los defectos localizados en la zona desierta de una juntura p-n
 actúan como centros de generación/recombinación.
 Su presencia facilita la creación de pares electrón-hueco, 
 aumentando la corriente de fuga en inversa
@@ -47,7 +54,8 @@ o se destruya el circuito.
 Transistores parásitos presentes en un proceso CMOS estándar.
 La condición estable normal es ambos transistores apagados.
 La condición estable anómala es ambos transistores prendidos,
-cada uno suministrando la corriente de base del otro.}
+cada uno suministrando la corriente de base del otro.
+Esta última condición puede destruir al circuito por exceso de corriente.}
 \subsection{Radiación en MOS}
 La ionización del óxido de las estructuras MOS crea portadores 
 con distintos efectos deletéreos\cita{oldham_total_2003}. 

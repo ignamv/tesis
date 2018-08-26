@@ -339,12 +339,11 @@ inversa.
 Se ve en ambas figuras la misma curva 
 con escalas distintas de tiempo y de tensión.
 Esta variación proviene tanto de las áreas distintas de los dos sensores
-como del mismatch entre los seguidores.
-
+como de las variaciones aleatorias entre los MOS seguidores (mismatch).
 Cada transistor del die tiene pequeñas variaciones debido a imperfecciones en
 la litografía y variaciones aleatorias de dopaje.
 Estas variaciones no son tan notables en dispositivos grandes debido a que
-desaparecen al promediarse sobre mucha área.
+se cancelan al promediarse sobre mucha área.
 
 Ya que los seguidores usan varios transistores de área mínima,
 son particularmente sensibles a variaciones del proceso:
@@ -364,25 +363,33 @@ como de la capacidad del diodo $\frac{\partial Q}{\partial V}(V)$.
 Ambas dependen de la tensión aplicada,
 debido a la variación del ancho de la zona desierta.
 Al caer la tensión en inversa,
-se vuelve más angosta.
+la zona desierta se vuelve más angosta.
 Esto reduce su volúmen y por lo tanto 
 la tasa de generación térmica de pares electrón-hueco.
 Por otra parte,
 su capacidad es inversamente proporcional a este ancho.
 Ambos fenómenos reducen la tasa de descarga,
 como se ve al final de ambas curvas.
+
+Por otro lado, hay factores de segundo orden 
+que no contemplamos en el análisis.
+Por ejemplo, el transistor de reset apagado
+no es un circuito abierto perfecto, 
+sino que tiene una corriente de pérdida muy pequeña.
+Esta corriente va a tender a cargar el cátodo de D1,
+enlenteciendo la descarga.
 %
 \subsection{Iluminación con LED}
 Medimos las curvas de descarga iluminando los dies con un LED,
 variando su corriente para lograr distintas intensidades de iluminación
 (figuras~\ref{fig:led4} y~\ref{fig:led40}).
 \fig{led4}{figuras/aps/descarga_led_4.pdf}
-{Curva de descarga iluminando con un LED el APS de 4x\SI{4}{\micro\meter}.
+{Curva de descarga iluminando con un LED el APS de 40x\SI{40}{\micro\meter}.
 La corriente del LED aumenta de \SI{.1}{\milli\ampere} a la derecha hasta
 \SI{10}{\milli\ampere} a la izquierda,
 con 6 curvas por década.}
 \fig{led40}{figuras/aps/descarga_led_40.pdf}
-{Curva de descarga iluminando con un LED el APS de 40x\SI{40}{\micro\meter}.
+{Curva de descarga iluminando con un LED el APS de 4x\SI{4}{\micro\meter}.
 La corriente del LED aumenta de \SI{.1}{\milli\ampere} a la derecha hasta
 \SI{10}{\milli\ampere} a la izquierda,
 con 6 curvas por década.}
@@ -406,4 +413,20 @@ calculada.
 Así llegamos a una resolución de \SI{2.0}{\milli\gray} y \SI{2.3}{\milli\gray}
 para el APS de \SI{4x4}{\micro\meter} y \SI{40x40}{\micro\meter},
     respectivamente.
-% TODO: completar con cálculos de sensibilidad/resolución y mediciones
+% TODO ? completar con cálculos de sensibilidad/resolución y mediciones.
+%
+\subsection{Conclusiones}
+Presentamos el concepto básico del dosímetro APS,
+con sus peculiaridades de uso y el tipo de mediciones que permite realizar.
+Cubrimos su teoría de funcionamiento,
+y de ahí explicamos el proceso de diseñar el circuito
+para su fabricación.
+
+En los resultados verificamos que el sensor
+sigue el comportamiento básico que esperamos,
+tanto en ausencia de radiación 
+como para distintas intensidades de luz visible.
+Asimismo, conseguimos una estimación inicial de la resolución del sensor
+en base al ruido medido a la salida.
+Así dimos los primeros pasos para implementar un dosímetro APS
+en un proceso de fabricación CMOS estándar.

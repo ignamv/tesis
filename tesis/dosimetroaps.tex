@@ -37,6 +37,25 @@ Los mismos forman un circuito que replica la tensión de entrada a la salida,
 pero desplazada un valor fijo.
 Su propósito es evitar que la medición de tensión modifique la carga en el nodo y
 afecte al valor medido.
+\subsection{Trabajos previos}
+Turchetta\cite{turchetta_monolithic_2001} describe un APS para rayos X
+construído en un proceso CMOS estándar de \SI{0.6}{\micro\meter}. 
+Construye una grilla de píxeles para uso en tracking de partículas.
+Expone el sensor a rayos X provenientes de \isotope{Fe}{55},
+y a piones de \SI{15}{\giga\electronvolt}.
+Expresa la sensibilidad en términos de Volts por electrón generado por
+radiación. Esta figura llega a \SI{15}{\micro\volt} por electrón,
+con un ruido RMS equivalente a 15 electrones.
+Una innovación es el uso de un layout que permite que casi toda la superficie
+del wafer sea sensible.
+
+Matis\cite{matis_charged_2003} también construye un array de APS,
+en un proceso estándar de \SI{0.25}{\micro\meter}.
+Analiza distintas formas de procesar la señal,
+sumando la salida de varios píxeles para colectar toda la carga generada por
+una partícula incidente.
+Irradia el sensor con rayos X provenientes de \isotope{Fe}{55},
+y protones de \SI{55}{\mega\electronvolt}.
 \subsection{Proceso de fabricación}
 Si bien la fabricación viene luego del diseño,
 todo el diseño está condicionado por 

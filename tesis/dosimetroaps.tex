@@ -38,6 +38,17 @@ pero desplazada un valor fijo.
 Su propósito es evitar que la medición de tensión modifique la carga en el nodo y
 afecte al valor medido.
 \subsection{Proceso de fabricación}
+Si bien la fabricación viene luego del diseño,
+todo el diseño está condicionado por 
+las características del proceso de fabricación.
+En específico,
+\begin{itemize}
+    \item qué tensiones soporta,
+    \item qué dispositivos provee, y
+    \item qué características eléctricas tienen esos dispositivos
+        (tensiones umbral, capacidades parásitas, corrientes de pérdida, etc).
+\end{itemize}
+
 Fabricamos tanto el FG como el APS en el proceso XC06 de la foundry X-FAB
 \cite{x-fab_0.6_2008}.
 El mismo tiene una escala (longitud característica) de \SI{0.6}{\micro\meter} y está diseñado para
@@ -77,7 +88,7 @@ con $q$ la carga del electrón y $E_i$ la energía de creación de pares,
 Esta carga aparece con signo negativo en el cátodo, descargándolo.
 Su cambio de tensión
 \begin{align*}
-    \Delta V &= \frac{Q}{C}
+    \Delta V &= \frac{\Delta Q}{C}
 \end{align*}
 depende de la capacidad total $C$ del nodo.
 La misma tiene contribuciones de
@@ -111,16 +122,17 @@ su configuración por defecto no permite simular electrones secundarios por
 debajo de \SI{250}{\electronvolt}.
 % DETAIL rango a 250eV ~ nm, qué me importa?
 Para obtener precisión a escalas de distancia más chicas,
-empleamos una lista de procesos compilada para simulaciones en
-microelectrónica \cite{Raine201497}.
+empleamos una lista de procesos de interacción 
+compilada para simulaciones en microelectrónica \cite{Raine201497}.
 La misma simula con fidelidad electrones hasta \SI{16.7}{\electronvolt},
 cuyo rango en Si es del orden de \SI{0.1}{\nano\meter}.
 
 Los resultados se encuentran en la \figref{fig:energia1electron}.
 % FIXME falta este gráfico usando
 % ../tesis/figuras/aps/deposicion1electron001.pdf y demás
-\fig{energia1electron}{figuras/aps/deposicion1electron_todos.pdf}{Distribución
-    de probabilidad para la energía depositada en el sensor (eje X).
+\fig{energia1electron}{figuras/aps/deposicion1electron_todos.pdf}
+{Distribución de probabilidad simulada en Geant4 
+    para la energía depositada en el sensor (eje X).
 Cada gráfico corresponde a una dada energía cinética de la partícula incidente.
 La energía promedio depositada está en la \figref{fig:energiadepositadaaps}.}
 Se ve que los electrones menos energéticos tienden a frenarse por completo en
@@ -133,11 +145,24 @@ La energía depositada promedio se encuentra en la
 {Respuesta promedio a un electrón incidente,
 en función de su energía inicial.
 Se ve que los electrones menos energéticos se frenan completamente en el
-detector.}
+detector.
+Las cruces son el resultado de simulación con Geant4,
+mientras que la línea es un cálculo manual 
+con los datos tabulados por NIST en ESTAR\cite{berger_estar_????}.}
+Se ve que para el rango de energías de interés,
+cada partícula incidente produce un cambio de decenas de mV.
 \subsection{Fuentes de ruido}
 El APS se maneja con corrientes y variaciones de carga y tensión muy
 pequeñas.
-Por eso es crítico conocer los procesos que introducen ruido y su magnitud.
+Por eso es crítico conocer los procesos que introducen ruido, 
+y su magnitud.
+Este ruido se combina con la señal proveniente de la radiación
+y determina la resolución del dosímetro: 
+la dosis mínima que es posible resolver por encima del ruido.
+% TODO: citar 
+% Taylor, John Robert (1999). An Introduction to Error Analysis:
+% The Study of Uncertainties in Physical Measurements. University Science
+% Books. pp. 128–129. ISBN 0-935702-75-X.
 \subsubsection{Corriente de fuga de juntura p-n}
 Al polarizar una juntura p-n en inversa, fluye una corriente de
 pérdida\cite{sze_physics_2007} con un valor de DC dado por
@@ -168,7 +193,7 @@ Evaluando esta fórmula con la capacitancia del APS
 % TODO: es la capacidad de 4x4 o 40x40?
 se llega a una tensión de ruido RMS de \SI{1.1}{\milli\volt}.
 
-Esta incertidumbre en la tensión luego del reset se elimina usando 
+Esta incertidumbre en la tensión luego del reset puede eliminarse usando 
 la técnica Correlated Double Sampling\cite{white_characterization_1974}:
 se mide tensión antes y después de la exposición a la radiación.
 Al tomar la diferencia se elimina el ruido de reset,
@@ -178,27 +203,59 @@ presente en ambas por igual.
 \label{section:diseno_aps}
 La topología del circuito quedó determinada por la elección de construir un
 dosímetro APS con un par de seguidores para su medición.
-
 El paso siguiente en el diseño fue elegir los tamaños de los distintos
 componentes para optimizar el desempeño del sensor.
-Para esto simulamos el tiempo de respuesta a un electrón incidente
-en función de (\figref{fig:falltime}).
-\fig{falltime}{figuras/aps/falltime.pdf}
-{Tiempo de respuesta simulado del buffer en función del W del transistor
-final.
-% TODO: qué es Wideal?
-}
 
 Para una carga dada, la tensión sobre un capacitor es inversamente proporcional
 a su capacidad.
-En este caso la carga fue generada por la radiación,
-y la tensión es la señal medida que queremos maximizar.
+En el APS la carga es generada por la radiación,
+y la tensión es la señal cuya magnitud queremos maximizar.
 Para esto minimizamos las capacidades parásitas del cátodo de D1,
 usando transistores de área mínima para M1 y M2.
 Restringimos el largo de las conexiones del cátodo,
 y las mantuvimos alejadas de otros nodos.
 Aplicamos software de Mentor de extracción de capacidades parásitas al layout
 resultante, y obtuvimos una capacidad total en el cátodo de \SI{3.4}{\femto\farad}.
+
+El tamaño del primer MOS seguidor, M2, 
+tiene que ser el tamaño mínimo para no cargar capacitivamente
+al nodo que acumula carga.
+Esto deja libre las dimensiones del segundo MOS seguidor, M3.
+Mientras más grande es, mayor es su capacidad de gate
+y por lo tanto más va a cargar a la etapa anterior.
+Por otro lado va a tener mayor capacidad de corriente
+para manejar la carga capacitiva del pad de salida.
+
+Estimamos un tamaño inicial para M3 fijando un largo arbitrario
+y variando el ancho para minimizar una figura de mérito.
+La figura que elegimos representa el delay producido por los dos seguidores,
+\begin{align}
+    \tau &= \tau_1+\tau_2 = g_{m2}C_{g3} + g_{m3}C_{\textnormal{pad}}
+    \label{eq:delay_seguidor_aps}
+\end{align}
+con $g_m=\pderiv{I_D}{V_G}$ la transconductancia de un MOS 
+y $C_g$ su capacidad de gate.
+Minimizando la ecuación~\ref{eq:delay_seguidor_aps}
+para una polarización pre-fijada,
+llegamos a un $W$ inicial de \SI{409}{\micro\meter}.
+
+El paso siguiente es hacer un cálculo más preciso 
+que incluya todos los detalles del funcionamiento del circuito.
+Para esto simulamos con SPICE el tiempo de respuesta a un electrón incidente
+en función del ancho de M3 (\figref{fig:falltime}). % FIXME función de qué?
+\fig{falltime}{figuras/aps/falltime.pdf}
+{Tiempo de respuesta simulado del buffer en función del ancho del MOS del
+    segundo seguidor. 
+    $W_{\textnormal{ideal}}$ es el $W$ óptimo cálculado a mano de forma
+    simplificada.
+}
+Se ve que hay poca mejora en el tiempo de respuesta 
+al aumentar $W$ por encima de nuestro estimado inicial.
+Por eso, teniendo en cuenta las limitaciones de área,
+elegimos un ancho total de \SI{400}{\micro\meter} repartido entre 8 canales 
+(o sea 8 MOS en paralelo, cada uno de \SI{50}{\micro\meter}).
+
+Las dimensiones finales están en la tabla~\ref{fig:areas_aps}.
 \begin{table}[h]
     \centering
     \caption{Dimensiones del diseño optimizadas para sensibilidad y tiempo de
@@ -213,7 +270,7 @@ M2&     0.8&    0.6&    1\\
 M3&     50& 3&  8\\
         \hline
     \end{tabular}
-    \label{fig:areas}
+    \label{fig:areas_aps}
 \end{table}
 
 Estas dimensiones se utilizaron tanto para la simulación del circuito en SPICE

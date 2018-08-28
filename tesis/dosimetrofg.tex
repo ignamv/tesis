@@ -1,5 +1,5 @@
 \section{Dosímetro Floating Gate}
-% TODO: diseño, cuentas, consideraciones
+% TODO ?: diseño, cuentas, consideraciones
 Los MOSFET con gate aislado o floating gate se usan comercialmente
 en memorias no volátiles (Flash y EEPROM).
 Se coloca cierta carga, 
@@ -8,6 +8,14 @@ Luego se recupera la información midiendo la carga del gate
 en base a las curvas IV del MOSFET.
 
 El dosímetro FG se basa en un MOSFET con gate aislado.
+Su modo de uso es primero resetearlo, dándole una carga inicial.
+Desde el momento de reset, el dosímetro integra 
+la dosis total que recibe sin necesidad de alimentación
+(mientras no exceda una dosis máxima).
+Por lo tanto es idóneo para seguimientos largos,
+por ejemplo de un trabajador durante su turno.
+%
+\subsection{Principio de funcionamiento}
 Su principio de funcionamiento es que la radiación que incide
 en el óxido de compuerta tiende a descargar al FG.
 Antes de irradiar,

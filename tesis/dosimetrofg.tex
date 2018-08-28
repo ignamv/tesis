@@ -50,10 +50,19 @@ para distintos valores de $I_d$.}
 Calibrando estas cantidades contra la dosis recibida, 
 el resultado es un dosímetro.
 %
-\subsection{Trabajos previos (emprolijar)}
-\cite{cesari_floating_2014} carga FG=4V en 5s con -18V.
+\subsection{Trabajos previos}
+Cesari\cite{cesari_floating_2014} construye un dosímetro FG 
+con un proceso de una sola capa de polisilicio.
+Lo usa para estudiar el efecto de cargas y descargas repetidas
+en el sensor.
+En ambos casos controla la carga del FG eléctricamente,
+aplicando tensiones de hasta \SI{18}{\volt}.
 
-\cite{tarr_sensitive_2004} carga entre -20V y -40V en 10s. También monitorea
+Tarr\cite{tarr_sensitive_2004} fabrica un FG en un proceso comercial CMOS
+de \SI{1.5}{\micro\meter} con dos capas de polisilicio. 
+Esto le permite aplicar la tensión de inyección sin pasar por un MOS.
+% TODO terminar
+carga entre -20V y -40V en 10s. También monitorea
 Id@Vsd=100mV. Calculó 5mV/rad, midió 3mV/rad.
 %
 \subsection{Acoplamiento capacitivo}

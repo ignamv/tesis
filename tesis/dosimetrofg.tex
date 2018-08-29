@@ -82,9 +82,12 @@ su tensión es función de la carga que almacena
 y de la capacidad entre este y otros nodos del circuito.
 Sumando la carga en cada capacidad se llega a la relación
 \begin{align}
-    Q_{FG} &= (C_R + C_W) V_{FG} + C_C (V_{FG}-V_C) + C_I (V_{FG}-V_I)
+    Q_{FG} &= (C_R + C_W) V_{FG} + C_I (V_{FG}-V_I)
     \label{eq:ccoupling}
 \end{align}
+con $Q_{FG}$ la carga almacenada en el FG, $C_R$ la capacidad de gate del
+lector, $C_W$ la capacidad del FG sobre el well del lector y $C_I$ la capacidad
+de gate del inyector.
 \subsection{Sensibilidad}
 Para predecir la sensibilidad del dosímetro,
 necesitamos un modelo simple de cómo la radiación

@@ -51,6 +51,22 @@ Calibrando estas cantidades contra la dosis recibida,
 el resultado es un dosímetro.
 %
 \subsection{Trabajos previos}
+Thomsen\cite{thomsen_floating-gate_1991} produce un FG MOSFET
+con un proceso estándar de \SI{2}{\micro\meter} con dos capas de polisilicio
+a través del consorcio MOSIS\cite{noauthor_mosis_nodate}.
+Su innovación consiste en usar túnel Fowler-Nordheim entre las capas de
+polisilicio, en vez de usar electrones calientes. 
+Así logra buenas corrientes de inyección para ambas polaridades,
+aplicando tensiones de hasta \SI{20}{\volt}.
+
+Tarr\cite{tarr_sensitive_2004} fabrica un FG en un proceso comercial CMOS
+de \SI{1.5}{\micro\meter} con dos capas de polisilicio. 
+Esto le permite aplicar la tensión de inyección 
+(de hasta 40V) sin pasar por un MOS.
+Usa un MOS lector apareado con otro MOS idéntico para compensar 
+la variación con temperatura.
+Como resultado obtiene una sensibilidad de \SI{3}{\milli\volt\per\rad}.
+
 Cesari\cite{cesari_floating_2014} construye un dosímetro FG 
 con un proceso de una sola capa de polisilicio.
 Lo usa para estudiar el efecto de cargas y descargas repetidas
@@ -58,12 +74,6 @@ en el sensor.
 En ambos casos controla la carga del FG eléctricamente,
 aplicando tensiones de hasta \SI{18}{\volt}.
 
-Tarr\cite{tarr_sensitive_2004} fabrica un FG en un proceso comercial CMOS
-de \SI{1.5}{\micro\meter} con dos capas de polisilicio. 
-Esto le permite aplicar la tensión de inyección sin pasar por un MOS.
-% TODO terminar
-carga entre -20V y -40V en 10s. También monitorea
-Id@Vsd=100mV. Calculó 5mV/rad, midió 3mV/rad.
 %
 \subsection{Acoplamiento capacitivo}
 % FIXME: mover a cargado FG

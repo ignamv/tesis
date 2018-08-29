@@ -186,11 +186,8 @@ Por eso es crítico conocer los procesos que introducen ruido,
 y su magnitud.
 Este ruido se combina con la señal proveniente de la radiación
 y determina la resolución del dosímetro: 
-la dosis mínima que es posible resolver por encima del ruido.
-% TODO: citar 
-% Taylor, John Robert (1999). An Introduction to Error Analysis:
-% The Study of Uncertainties in Physical Measurements. University Science
-% Books. pp. 128–129. ISBN 0-935702-75-X.
+la dosis mínima que es posible resolver por encima del
+ruido\cite{taylor_introduction_1997}.
 \subsubsection{Corriente de fuga de juntura p-n}
 Al polarizar una juntura p-n en inversa, fluye una corriente de
 pérdida\cite{sze_physics_2007} con un valor de DC dado por
@@ -270,7 +267,7 @@ llegamos a un $W$ inicial de \SI{409}{\micro\meter}.
 El paso siguiente es hacer un cálculo más preciso 
 que incluya todos los detalles del funcionamiento del circuito.
 Para esto simulamos con SPICE el tiempo de respuesta a un electrón incidente
-en función del ancho de M3 (\figref{fig:falltime}). % FIXME función de qué?
+en función del ancho de M3 (\figref{fig:falltime}).
 \fig{falltime}{figuras/aps/falltime.pdf}
 {Tiempo de respuesta simulado del buffer en función del ancho del MOS del
     segundo seguidor. 
@@ -441,7 +438,6 @@ calculada.
 Así llegamos a una resolución de \SI{2.0}{\milli\gray} y \SI{2.3}{\milli\gray}
 para el APS de \SI{4x4}{\micro\meter} y \SI{40x40}{\micro\meter},
     respectivamente.
-% TODO ? completar con cálculos de sensibilidad/resolución y mediciones.
 %
 \subsection{Conclusiones}
 Presentamos el concepto básico del dosímetro APS,

@@ -1,5 +1,4 @@
 \section{Dosímetro Floating Gate}
-% TODO ?: diseño, cuentas, consideraciones
 Los MOSFET con gate aislado o floating gate se usan comercialmente
 en memorias no volátiles (Flash y EEPROM).
 Se coloca cierta carga, 
@@ -76,7 +75,6 @@ aplicando tensiones de hasta \SI{18}{\volt}.
 
 %
 \subsection{Acoplamiento capacitivo}
-% FIXME: mover a cargado FG
 Ya que el FG está aislado,
 su tensión es función de la carga que almacena 
 y de la capacidad entre este y otros nodos del circuito.
@@ -239,7 +237,6 @@ En función de $V_{FG}$ y $V'_R$, la corriente del lector es
 \end{align*}
 Estas ecuaciones nos indican que,
 polarizando el lector con una tensión $V_{sd}$ pequeña
-% FIXME: V_sd o V_r - V_{r'} ?
 (usamos \SI{0.1}{\volt}),
 estamos en la situación del medio y
 la corriente de drain varía linealmente con $V_{FG}$
@@ -386,15 +383,12 @@ La variación de la sensibilidad se ve con más detalle en la
 \fig{irradiacionfg_respuesta}{figuras/fg/irradiacion_corriente.pdf}
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
-    % TODO: mover al texto?
-    % TODO: originalmente decia ``sensibilidad inicial'', cual es la correcta?
 La corriente calculada parte de la corriente inicial extraída de la
 medición.}
 \fig{irradiacionfg_sensibilidad}{figuras/fg/irradiacion_sensibilidad.pdf}
 {Sensibilidad del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
 }
-% TODO: tomar valor absoluto para aclarar que la sensibilidad aumenta
 La sensibilidad cambia con la dosis debido a dos fenómenos opuestos.
 \begin{itemize}
     \item A medida que se descarga el floating gate, disminuye el 
@@ -424,4 +418,3 @@ correspondiente a una dosis de \SI{4}{\milli\gray}.
 \fig{ruidofg}{figuras/fg/ruido.pdf}{Diferencia entre
 mediciones sucesivas de corriente del lector, escaladas para representar el
 ruido en promedios de 10 muestras.}
-% TODO: otra estimación de ruido/resolución

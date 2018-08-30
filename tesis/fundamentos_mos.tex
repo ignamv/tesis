@@ -152,7 +152,7 @@ La geometría y concentración de cada zona
 es lo que define cada tipo de dispositivo 
 que un proceso es capaz de producir.
 Por ejemplo, un proceso puede estar diseñado para altas tensiones
-eligiendo concentraciones y separaciones 
+eligiendo concentraciones bajas y separaciones grandes
 que logren una alta tensión de ruptura de las junturas.
 
 Una técnica, llamada Chemical Vapor Deposition,
@@ -187,11 +187,13 @@ y reduce la energía cinética y por lo tanto la potencial.
 El análisis de impurezas aceptoras es análogo al de las donantes, 
 con una carga fija -1 que se ioniza y libera un hueco.
 
-Típicamente una región tiene al menos 
-un órden de magnitud más impurezas de un tipo que del otro.
+Típicamente se dopa una región con muchas más impurezas de un tipo
+que de otro: la diferencia suele ser de órdenes de magnitud.
 Se dice entonces que ahí los electrones o bien los huecos 
 son el portador mayoritario.
-En este caso la concentración de ese portador 
+De forma equivalente, se dice que esa región es de tipo 
+``P'' (dopada con aceptores) o de tipo ``N'' (dopada con donantes).
+En este caso la concentración del portador mayoritario
 es aproximadamente igual a la concentración de su impureza.
 La concentración del otro portador se encuentra fuertemente suprimida
 debido al principio de Le Chatelier,
@@ -248,13 +250,15 @@ donde delimitamos distintos regímenes de operación.
         Al cruzar $2\psi_B$ se puebla la superficie de portadores minoritarios
         con carga negativa,
         de igual magnitud y signo opuesto a la del sustrato.
-        Un pequeño aumento adicional de $V_G$ resulta en un aumento exponencial
+        Un pequeño aumento adicional de $\psi_s$ resulta en un aumento exponencial
         de $|Q|$.
         Esta dependencia exponencial es válida hasta que el nivel de Fermi 
         se aproxima al borde de la banda de conducción y 
         el semiconductor se torna degenerado.
         Esto significa que se comporta como un metal,
         con una densidad de portadores que varía lentamente con el potencial.
+        Antes de este punto, la carga pasa a crecer linealmente con $V_G$
+        porque casi toda la tensión adicional cae a través del óxido de gate.
 \end{itemize}
 \fig{cargamos}{figuras/mos/carga_vg.pdf}{Carga de un MOS típico 
     ($N_A=$\SI{4e15}{\centi\meter^{-3}}) en función

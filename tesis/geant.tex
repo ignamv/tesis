@@ -9,7 +9,7 @@ Geant4 es una librería de C++.
 Usando interfaces de esta librería,
 uno define clases para establecer:
 \begin{itemize}
-    \item Fuente de partículas: distribución espacial, de orientación, energía
+    \item Fuente de partículas: su distribución espacial, de orientación, energía
         y tipo de partícula
     \item Geometría y materiales del detector y su entorno
     \item Registro de las interacciones: qué variables o estadísticos
@@ -62,7 +62,8 @@ con forma de disco que dispara partículas en la dirección z:
 \end{verbatim}
 \subsubsection{Registro de las interacciones}
 Durante la simulación se dan interacciones en todas partes del modelo.
-Sólo nos interesa registrar las que ocurren dentro de un volúmen acotado.
+Sin embargo, sólo nos interesa registrar 
+las que ocurren dentro de un volúmen acotado.
 En el caso del irradiador, este volúmen representa al humano que queremos
 proteger.
 No nos interesan todos los datos intermedios de cómo la radiación atravesó 
@@ -70,10 +71,10 @@ la masa de plástico, aire y plomo del irradiador.
 En el APS, el volúmen de interés es la zona desierta de una juntura, 
 donde queremos estimar la carga generada.
 
-La opción más básica es sumar toda la energía depositada en el volúmen.
+La opción más básica es sumar toda la energía depositada en el detector.
 Esto brinda la mínima información necesaria para un cálculo de dosis.
 Opté por registrar las coordenadas y energía depositada
-por cada interacción en el volúmen.
+por cada interacción en el detector.
 Esto brindó mayor flexibilidad para el análisis posterior en Python.
 Por ejemplo, permite analizar la variación de la dosis con la profundidad.
 Las interacciones se colectan en memoria usando la clase \code{G4THitsCollection}.

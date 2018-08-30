@@ -13,9 +13,17 @@ la dosis total que recibe sin necesidad de alimentación
 (mientras no exceda una dosis máxima).
 Por lo tanto es idóneo para seguimientos largos,
 por ejemplo de un trabajador durante su turno.
+
+Igual que como hicimos para el dosímetro APS,
+esta parte del trabajo comienza con la teoría del dosímetro.
+Luego cubre cómo realizamos el diseño y lo optimizamos.
+Por último, presenta las mediciones del sensor fabricado,
+incluyendo los resultados de su irradiación,
+y las conclusiones que siguen de ellas.
 %
 \subsection{Principio de funcionamiento}
-Su principio de funcionamiento es que la radiación que incide
+El principio de funcionamiento del dosímetro FG 
+es que la radiación que incide
 en el óxido de compuerta tiende a descargar al FG.
 Antes de irradiar,
 se coloca carga en el gate mediante una corriente de túnel 
@@ -103,7 +111,7 @@ Sólo podemos saberla indirectamente, a partir de la tensión de gate.
 La relación entre carga y tensión es la capacitancia del FG.
 Para cada región de FG, su capacitancia es proporcional al área $A$
 e inversamente proporcional al espesor del óxido $t$
-que la separa de lo que tiene debajo.
+que la separa de la otra placa del capacitor (lo que sea que tenga debajo).
 
 Por lo tanto, la sensibilidad 
 (definida como derivada de la tensión respecto de la dosis)
@@ -403,7 +411,7 @@ alzanzar \SI{50}{\Gray}.
 {La pendiente de la curva $I_D(V_G)$ del lector aumenta a medida que $I_D$ cae,
 incrementando la sensibilidad del FG.
 Esta curva fue simulada con modelos provistos por el foundry,
-debido a que la compuerta del dispositivo fabricado es inaccesible para
+debido a que la compuerta del dispositivo fabricado está inaccesible para
 mediciones.}
 \subsection{Corriente de ruido}
 Establecimos que una medición con este dosímetro consiste en promediar 10

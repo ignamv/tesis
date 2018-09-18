@@ -87,7 +87,7 @@ Existen variantes del proceso que utilizan máscaras adicionales para,
 por ejemplo, abrir ventanas para formar regiones fotosensibles.
 \subsection{Reset}
 Cargamos el nodo flotante a través del drain de un MOSFET de canal P,
-con el source conectado a \vdd.
+con el source conectado a \vdd (\figref{fig:aps}).
 Durante la irradiación llevamos su gate a \vdd, apagándolo.
 Para resetear 
 llevamos su gate a tierra.
@@ -427,19 +427,52 @@ Establecimos que una medición con este dosímetro consiste en promediar 10
 muestras de tensión.
 Esto nos permite definir de manera precisa el ruido como la desviación estándar
 de ese promedio.
-Calculamos esa desviación estándar en base a las curvas medidas (figuras~\ref{fig:ruido4} 
-y~\ref{fig:ruido40}).
+Más precisamente, la tensión de salida a tasa de dosis constante
+es la suma de una componente determinista $V_D$ y una aleatoria $\epsilon$
+\begin{align*}
+    V = V_D(\dot D, t) + \epsilon
+\end{align*}. 
+Al tomar la diferencia entre dos muestras consecutivas,
+queda una pequeña componente sistemática 
+(proporcional a $\Delta t\partial{V_D}{t}$) 
+sumada a la diferencia entre dos variables aleatorias que suponemos
+independientes.
+Por lo tanto, 
+la desviación estándar de la diferencia entre dos muestras consecutivas
+es $\sqrt 2$ veces la desviación estándar presente en una muestra.
+
+Calculamos esa desviación estándar en base a las curvas medidas
+(figuras~\ref{fig:ruido4} y~\ref{fig:ruido40}).
+% TODO De dónde sale la equivalencia? ¿Es este sigma representativo de la
+% dispersión en una repetición de disparos? Diría que está restringido a la
+% freq de muestreo
 \fig{ruido4}{figuras/aps/ruido4.pdf}{Ruido a la salida del APS de
-    \SI{4x4}{\micro\meter}, calculado tomando diferencias entre muestras y
-escalando para que represente el ruido en un promedio de 10 valores.}
+    \SI{4x4}{\micro\meter}, calculado tomando diferencias entre muestras
+    consecutivas y
+escalando para que represente el ruido en un promedio de 10 valores.
+La dosis equivalente se calculó con la sensibilidad proveniente
+de las simulaciones SPICE y los cálculos de radiación.}
 \fig{ruido40}{figuras/aps/ruido40.pdf}{Ruido a la salida del APS de
-    \SI{40x40}{\micro\meter}, calculado tomando diferencias entre muestras y
-escalando para que represente el ruido en un promedio de 10 valores.}
+    \SI{40x40}{\micro\meter}, calculado tomando diferencias entre muestras
+    consecutivas y
+escalando para que represente el ruido en un promedio de 10 valores.
+La dosis equivalente se calculó con la sensibilidad proveniente
+de las simulaciones SPICE y los cálculos de radiación.}
 Podemos convertir estos valores de ruido en dosis usando la sensibilidad
-calculada.
+calculada en~\ref{section:diseno_aps}.
 Así llegamos a una resolución de \SI{2.0}{\milli\gray} y \SI{2.3}{\milli\gray}
 para el APS de \SI{4x4}{\micro\meter} y \SI{40x40}{\micro\meter},
     respectivamente.
+
+Este análisis del ruido no contempla todas los formas posibles
+de usar el APS.
+Su validez principal es al realizar una medición Correlated Double Sampling,
+restando la tensión final a la tensión luego del reset.
+Sin embargo,
+también existe la posibilidad de medir durante intervalos largos,
+sumando la dosis medida en cada ciclo de reset y descarga.
+En este caso, se suma el error en cada disparo para llegar a un valor de ruido
+proporcional a la raíz de la cantidad de disparos.
 %
 \subsection{Conclusiones}
 Presentamos el concepto básico del dosímetro APS,

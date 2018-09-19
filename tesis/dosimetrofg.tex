@@ -331,7 +331,14 @@ de modo que la tensión gate-body cae principalmente
 en el óxido de gate (y muy poco en el silicio).
 
 % FIXME: esto queda colgado
-El campo en el óxido $F_{ox}$ está dado por 
+El campo en el óxido $F_{ox}$ sigue la expresión para el campo en el óxido
+de gate de un MOS.
+En el caso del inyector, la tensión de gate es $V_{FG}$
+y la tensión de body es $V_I$.
+Reemplazando estas dos cantidades en la ecuación de balance de carga
+del MOS (ecuación~\ref{eq:potencial_campo_mos})
+y agregando los términos debido a la no-idealidad de la estructura
+se llega a la expresión
 \begin{align*}
     V_{FG}-V_I &= F_{ox}t_{ox}+\psi_s+V_{FB},
 \end{align*}
@@ -379,7 +386,7 @@ Cuando alcanza una diferencia de potencial suficiente respecto del FG,
 la corriente de túnel crece rápidamente y frena el crecimiento de la tensión.
 Las curvas IV (figuras~\ref{fig:descarga_iv}
 y~\ref{fig:carga_iv}) saturan a corrientes cada vez más grandes/chicas,
-confirmando la variación de tensión del FG entre cada tramo
+confirmando la variación de carga del FG entre cada tramo
 de inyección.
 \fig{descarga_inyector}{figuras/fg/21a29dip_inyector.pdf}
 {Descarga del FG midiendo tensión del inyector (línea punteada) y

@@ -415,7 +415,14 @@ La variación de la sensibilidad se ve con más detalle en la
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
 La corriente calculada parte de la corriente inicial extraída de la
-medición.}
+medición.
+Primero se calcula la variación de carga del FG 
+integrando numéricamente la carga generada por radiación.
+Luego se traduce esa carga en una tensión
+usando la ecuación de acoplamiento capacitivo.
+Finalmente se obtiene la corriente del lector
+en función de la tensión del FG,
+usando las curvas simuladas del transistor lector.}
 \fig{irradiacionfg_sensibilidad}{figuras/fg/irradiacion_sensibilidad.pdf}
 {Sensibilidad del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.

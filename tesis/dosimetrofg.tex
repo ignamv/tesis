@@ -170,14 +170,28 @@ y well del lector ($A_W$).}
 
 % TODO Detallar criterios utilizados para llegar a esos números.
 % Las relaciones Aw/Ai y Ar/Ai están fuera de los gráficos anteriores
-Así llegamos a las dimensiones finales de cada región:
+El inyector, por las razones ya explicadas, es de área mínima.
+Quedan por determinar las dimensiones finales del lector y el inyector.
+La \figref{fig:eficiencia_inyeccion}
+muestra que con una relación $A_R/A_I$ de cerca de 10000
+se obtiene una eficiencia de inyección casi igual a 1.
+Rellenando el resto del área disponible en el chip con Well del lector,
+obtenemos una relación $A_W/A_I$ de casi 40000.
+La \figref{fig:sensibilidad_fg} muestra que con estas áreas
+se obtiene una sensibilidad de varias decenas de \SI{}{\milli\volt\per\gray},
+lo cual resulta aceptable.
+Ajustando las áreas para que quepa todo 
+en la región reservada para este proyecto 
+llegamos a las dimensiones finales de cada región:
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
+    \hline
     Región   & Área (\SI{}{\micro\meter\squared})\\ \hline
 Inyector & 4.32\\
 Well     & 180000\\
-Lector   & 35000
+Lector   & 35000\\
+\hline
 \end{tabular}
 \end{table}
 %

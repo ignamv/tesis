@@ -329,11 +329,14 @@ y produce una corriente de túnel que carga al FG.
 Dado que el FG tiene que encender un PMOS,
 hay que darle una carga inicial negativa.
 Mirando la \figref{fig:cargadofg},
-una tensión negativa en el inyector
+una tensión negativa entre el inyector y el lector
 produce carga negativa en el FG.
 Esta polarización pone al MOS inyector en acumulación,
 de modo que la tensión gate-body cae principalmente 
 en el óxido de gate (y muy poco en el silicio).
+Por otro lado, casi nada de la tensión inyector-lector
+cae a través del MOS lector,
+porque su capacidad es tanto mayor a la del inyector.
 
 % FIXME: esto queda colgado
 El campo en el óxido $F_{ox}$ sigue la expresión para el campo en el óxido

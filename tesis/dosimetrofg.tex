@@ -93,7 +93,16 @@ Sumando la carga en cada capacidad se llega a la relación
 \end{align}
 con $Q_{FG}$ la carga almacenada en el FG, $C_R$ la capacidad de gate del
 lector, $C_W$ la capacidad del FG sobre el well del lector y $C_I$ la capacidad
-de gate del inyector.
+de gate del inyector (\figref{fig:cargadofg}).
+\fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
+{Esquemático del flujo de carga al floating gate 
+a través del óxido del MOS inyector.
+Al aplicar tensión al inyector,
+parte de esta tensión cae sobre 
+la capacidad de gate $C_I$ del MOS inyector 
+y parte sobre la capacidad de well $C_W$ y del MOS lector $C_R$.
+Minimizando $C_I$, se maximiza la tensión a través del inyector
+y por lo tanto se logra la mayor corriente de túnel.}
 \subsection{Sensibilidad}
 Para predecir la sensibilidad del dosímetro,
 necesitamos un modelo simple de cómo la radiación
@@ -305,15 +314,6 @@ al aplicar tensión suficiente entre body y gate.
 En nuestro caso, no podemos aplicar tensión directamente al gate
 porque está completamente aislado.
 Esto puede representarse como en la \figref{fig:cargadofg}.
-\fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
-{Esquemático del flujo de carga al floating gate 
-a través del óxido del MOS inyector.
-Al aplicar tensión al inyector,
-parte de esta tensión cae sobre 
-la capacidad de gate $C_I$ del MOS inyector 
-y parte sobre la capacidad de well $C_W$ y del MOS lector $C_R$.
-Minimizando $C_I$, se maximiza la tensión a través del inyector
-y por lo tanto se logra la mayor corriente de túnel.}
 La tensión se aplica al body de un MOS inyector,
 cuyo gate es el FG.
 Dándole al MOS inyector la menor área posible, 

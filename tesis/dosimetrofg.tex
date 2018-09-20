@@ -390,12 +390,26 @@ La tensión del inyector (figuras~\ref{fig:descarga_inyector}
 y~\ref{fig:carga_inyector})
 varía linealmente mientras se carga la capacidad de los cables a corriente
 constante.
-Cuando alcanza una diferencia de potencial suficiente respecto del FG,
+Cuando el inyector alcanza una diferencia de potencial suficiente respecto del FG,
 la corriente de túnel crece rápidamente y frena el crecimiento de la tensión.
+
+Para estudiar la carga y descarga del FG,
+repetimos varias veces estos dos pasos:
+\begin{itemize}
+    \item inyectar corriente constante a través del inyector,
+        midiendo al mismo tiempo la corriente del lector 
+        polarizado con $V_{sd}=$\SI{100}{\milli\volt}.
+        Terminamos esta inyección al obtener una cierta variación de corriente
+        del lector.
+    \item medir corriente del lector en función de la tensión $V_{sd}$.
+        En cada iteración de carga o descarga del FG,
+        esta curva tiene mayor o menor magnitud (respectivamente).
+\end{itemize}
+
 Las curvas IV (figuras~\ref{fig:descarga_iv}
 y~\ref{fig:carga_iv}) saturan a corrientes cada vez más grandes/chicas,
-confirmando la variación de carga del FG entre cada tramo
-de inyección.
+confirmando que el FG se está cargando/descargando 
+entre la medición de una curva y la siguiente.
 \fig{descarga_inyector}{figuras/fg/21a29dip_inyector.pdf}
 {Descarga del FG midiendo tensión del inyector (línea punteada) y
 corriente de drain del lector (línea sólida) a

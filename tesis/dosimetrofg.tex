@@ -252,14 +252,17 @@ que llamamos lector o reader.
 Para determinar esa tensión en función de la carga del FG,
 usamos el acoplamiento capacitivo
 \cita{pavan_floating_2004} 
-entre floating gate y otros nodos, llegando a la ecuación
+entre floating gate y otros nodos.
+Despejando la ecuación~\ref{eq:ccoupling}, llegamos a la ecuación
 \begin{align*}
     V_{FG} &= \frac{C_I V_I + (C_R+C_W) V_R + Q}{C_I+C_R+C_W}
 \end{align*}
 con los términos ilustrados en la \figref{fig:floatingcapacidades}.
 
 Durante la lectura se usa $V_I=V_R=0$.
-En función de $V_{FG}$ y $V'_R$, la corriente del lector es
+Podemos evaluar las ecuaciones de la sección~\ref{section:ecuaciones_mos}
+para un PMOS y expresarlas en función de $V_{FG}$ y $V'_R$.
+Así llegamos a la corriente del lector
 \begin{align*}
     I_R' &= \begin{cases}
         I_{D0} \left(\frac W L\right)_L
@@ -270,7 +273,7 @@ En función de $V_{FG}$ y $V'_R$, la corriente del lector es
         -V'_R-V_T>V_{FG}.
     \end{cases}
 \end{align*}
-Estas ecuaciones nos indican que,
+. Estas ecuaciones nos indican que,
 polarizando el lector con una tensión $V'_R$ pequeña
 (usamos \SI{-0.1}{\volt}),
 estamos en la situación del medio y

@@ -436,6 +436,30 @@ La \figref{fig:irradiacionfg_respuesta} muestra que la corriente responde de
 manera casi lineal a la dosis.
 La variación de la sensibilidad (pendiente de la curva)
 se ve con más detalle en la \figref{fig:irradiacionfg_sensibilidad}.
+
+La corriente calculada parte de la corriente inicial extraída de la
+medición.
+Primero se calcula la variación de carga del FG
+integrando numéricamente la carga generada por radiación.
+Luego se traduce esa carga en una tensión
+usando la ecuación de acoplamiento capacitivo.
+Finalmente se obtiene la corriente del lector
+en función de la tensión del FG,
+usando las curvas simuladas del transistor lector.
+
+Creemos que toda la parte de parámetros eléctricos de este cálculo
+(capacidades, curvas IV, etc) es precisa
+porque usa variables del proceso muy controladas.
+Asimismo, las áreas de los componentes son grandes,
+así que la variación estadística de sus parámetros es chica.
+Por lo tanto, creemos que la discrepancia entre
+la curva medida y la simulada
+proviene principalmente del valor usado para la
+carga generada en función de la dosis.
+Aquí usamos un valor proveniente de dosímetros anteriores,
+que no contempla diferencias en la geometría del dispositivo
+o en sus condiciones de polarización.
+
 \fig{irradiacionfg_respuesta}{figuras/fg/irradiacion_corriente.pdf}
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.

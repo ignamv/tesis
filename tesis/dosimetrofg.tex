@@ -500,9 +500,21 @@ Esta curva fue simulada con modelos provistos por el foundry,
 debido a que la compuerta del dispositivo fabricado está inaccesible para
 mediciones.}
 \subsection{Corriente de ruido}
-Establecimos que una medición con este dosímetro consiste en promediar 10
-muestras de corriente.
+Establecimos que una medición con este dosímetro 
+consiste en promediar 10 muestras de corriente
+tomadas a una frecuencia de \SI{1}{\hertz}.
 Así podemos definir el ruido como la desviación estándar de este promedio.
+
+Al igual que con el APS, partir de esta definición
+implica dejar de lado un análisis más general de las características de ruido
+intrínsicas al sensor.
+En cambio, nos enfocamos en el ruido para una cantidad de promediado
+y una frecuencia de muestreo particular.
+Un análisis más general estudiaría 
+la magnitud del ruido en función de la frecuencia,
+permitiendo distintas relaciones de compromiso 
+entre ruido y tiempo de medición.
+
 Medimos la corriente del lector en ausencia de radiación y
 tomamos la diferencia entre muestras sucesivas para eliminar derivas
 (\figref{fig:ruidofg}).

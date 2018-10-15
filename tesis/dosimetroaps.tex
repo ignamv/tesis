@@ -432,11 +432,11 @@ No fue posible medir el efecto de otros tipos de radiación
 Establecimos que una medición con este dosímetro consiste en promediar 10
 muestras de tensión tomadas a una frecuencia de \SI{625}{\hertz} 
 (período de muestreo \SI{1.6}{\milli\second}).
-Al hacer esta definición tan temprano en el análisis 
+Al partir de esta definición,
 estamos eligiendo no profundizar en
 las características intrínsicas de ruido del sensor
 (y su dependencia con la frecuencia, por ejemplo).
-En cambio, nos enfocamos en el ruido que va a ver el usuario bajo estas
+En cambio, nos enfocamos en el ruido que va a ver el usuario bajo ciertas
 condiciones particulares de uso.
 
 Con esta definición de qué es una medición, 
@@ -481,13 +481,30 @@ de las simulaciones SPICE y los cálculos de radiación.}
 escalando para que represente el ruido en un promedio de 10 valores.
 La dosis equivalente se calculó con la sensibilidad proveniente
 de las simulaciones SPICE y los cálculos de radiación.}
+También es posible tomar la desviación estándar para cada disparo,
+como se ve en las figuras~\figref{fig:ruido_disparo_4} y~\figref{fig:ruido_disparo_40}.
+Así se verifica que todos los disparos tienen una estadística similar.
+\fig{ruido_disparo_4}{figuras/aps/std_disparo_aps4.pdf}
+{Ruido a la salida del APS de \SI{40x40}{\micro\meter},
+calculado usando muestras de disparos individuales.
+Los resultados se agrupan muy cerca del valor de la \figref{fig:ruido40}.}
+\fig{ruido_disparo_40}{figuras/aps/std_disparo_aps40.pdf}
+{Ruido a la salida del APS de \SI{4x4}{\micro\meter},
+calculado usando muestras de disparos individuales.
+Los resultados se agrupan muy cerca del valor de la \figref{fig:ruido4}.}
 Podemos convertir estos valores de ruido en dosis usando la sensibilidad
 calculada en~\ref{section:diseno_aps}.
 Así llegamos a una resolución de \SI{2.0}{\milli\gray} y \SI{2.3}{\milli\gray}
 para el APS de \SI{4x4}{\micro\meter} y \SI{40x40}{\micro\meter},
     respectivamente.
+Sin embargo, esto está restringido a 
+las condiciones de muestreo de las que partimos,
+y es posible hacer un análisis más general de 
+la magnitud del ruido en función de la frecuencia.
+Esto permitiría elegir otra cantidad de promediado o frecuencia de muestreo 
+que logre mayor resolución.
 
-Este análisis del ruido no contempla todas los formas posibles
+Este análisis del ruido tampoco contempla todas los formas posibles
 de usar el APS.
 Su validez principal es al realizar una medición Correlated Double Sampling,
 restando la tensión final a la tensión luego del reset.

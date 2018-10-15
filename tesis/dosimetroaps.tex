@@ -430,9 +430,18 @@ No fue posible medir el efecto de otros tipos de radiación
 (por ejemplo, $\beta$) por limitaciones de tiempo.
 \subsubsection{Ruido medido}
 Establecimos que una medición con este dosímetro consiste en promediar 10
-muestras de tensión.
-Esto nos permite definir de manera precisa el ruido como la desviación estándar
-de ese promedio.
+muestras de tensión tomadas a una frecuencia de \SI{625}{\hertz} 
+(período de muestreo \SI{1.6}{\milli\second}).
+Al hacer esta definición tan temprano en el análisis 
+estamos eligiendo no profundizar en
+las características intrínsicas de ruido del sensor
+(y su dependencia con la frecuencia, por ejemplo).
+En cambio, nos enfocamos en el ruido que va a ver el usuario bajo estas
+condiciones particulares de uso.
+
+Con esta definición de qué es una medición, 
+podemos definir de manera precisa el ruido como la desviación estándar
+de ese promedio de 10 muestras.
 Más precisamente, la tensión de salida a tasa de dosis constante
 es la suma de una componente determinista $V_D$ y una aleatoria $\epsilon$
 \begin{align*}
@@ -440,15 +449,18 @@ es la suma de una componente determinista $V_D$ y una aleatoria $\epsilon$
 \end{align*}. 
 Al tomar la diferencia entre dos muestras consecutivas,
 queda una pequeña componente sistemática 
-(proporcional a $\Delta t\partial{V_D}{t}$) 
+(proporcional a $\Delta t\pderiv{V_D}{t}$) 
 sumada a la diferencia entre dos variables aleatorias que suponemos
 independientes.
 Por lo tanto, 
 la desviación estándar de la diferencia entre dos muestras consecutivas
 es $\sqrt 2$ veces la desviación estándar presente en una muestra.
 
-Calculamos esa desviación estándar en base a las curvas medidas
-(figuras~\ref{fig:ruido4} y~\ref{fig:ruido40}).
+Para el análisis, medimos 6 disparos del APS
+(cada disparo como las figuras~\ref{fig:led4} y~\ref{fig:led40}), 
+totalizando 75000 muestras.
+Luego diferenciamos estas mediciones y calculamos la desviación estándar.
+Los resultados se ven en las figuras~\ref{fig:ruido4} y~\ref{fig:ruido40}.
 % TODO: Las curvas medidas serían led4 y led40? Y pregunto:
 % 1) Las miles de muestras corresponden a un disparo o a muchos disparos? Y
 % cómo comparan los distintos disparos?

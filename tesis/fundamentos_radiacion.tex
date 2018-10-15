@@ -146,19 +146,26 @@ podemos plantear un poder de frenado $S(E)$ del material tal que
 \begin{align*}
     \frac{dE}{dx}=-S(E).
 \end{align*}
-Se llama poder de frenado de masa a $S/\rho$. 
-Esta es una medida de uso común en protección de radiación,
-que permite calcular tasa de dosis de un haz usando
+con $\frac{dE}{dx}$ la variación de energía de un electrón por unidad de
+distancia.
+
+En protección de radiación no se suele trabajar con electrones individuales
+sino con haces. Típicamente se considera un haz con un flujo constante de
+$\frac{dN}{dt}$ partículas por unidad de tiempo.
+También se define su intensidad $I=\frac{dN}{dAdt}$,
+que es el flujo de partículas por unidad de área.
+
+Para calcular la tasa de dosis de un haz,
+resulta útil definir el poder de frenado de masa $S/\rho$. 
+Así se llega a una expresión simple para la dosis:
 \begin{align*}
-    \dot D&=\deriv{E}{mdt}=\frac 1\rho\deriv{E}{x}\deriv{N}{Adt}=\frac{IS}\rho
+    \dot D&=\deriv{EdN}{mdt}=\frac 1\rho\deriv{E}{x}\deriv{N}{Adt}=
+    \frac{IS}\rho
 \end{align*}
-% TODO: sigo viendo algo mal\dots supongo que dE debiera ser
-% energía por partícula. De paso, debajo de la expresión definí las letras
-% nuevas que aparecen (N por ejemplo)
-con $I$ el flujo de partículas por unidad de área (intensidad)
+con $\rho$ la densidad del material bajo irradiación
 y $\dot D$ la deposición de energía por unidad de masa y de tiempo 
 (tasa de dosis).
-$S$ está tabulada para cada elemento (\figref{fig:stopping})
+$S$ está tabulada para cada elemento y material (\figref{fig:stopping})
 \fig{stopping}{figuras/rad/stopping.pdf}{Poder de frenado de electrones 
 para distintos materiales en función de la energía.
 Valores publicados por NIST en el proyecto ESTAR\cite{berger_estar_????}.}

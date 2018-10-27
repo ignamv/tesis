@@ -141,12 +141,12 @@ y mitad a $\yttrium\to\zirconium$.
 La pérdida de energía de los electrones se debe a interacciones discretas con
 los átomos de un escudo.
 Aproximando el frenado como una variación contínua de su energía 
-en función de la distancia $E(x)$,
-podemos plantear un poder de frenado $S(E)$ del material tal que
+en función de la distancia $\epsilon(x)$,
+podemos plantear un poder de frenado $S(\epsilon)$ del material tal que
 \begin{align*}
-    \frac{dE}{dx}=-S(E).
+    \frac{d\epsilon}{dx}=-S(\epsilon).
 \end{align*}
-con $\frac{dE}{dx}$ la variación de energía de un electrón por unidad de
+con $\frac{d\epsilon}{dx}$ la variación de energía de un electrón por unidad de
 distancia.
 
 En protección de radiación no se suele trabajar con electrones individuales
@@ -157,9 +157,10 @@ que es el flujo de partículas por unidad de área.
 
 Para calcular la tasa de dosis de un haz,
 resulta útil definir el poder de frenado de masa $S/\rho$. 
-Así se llega a una expresión simple para la dosis:
+Así se llega a una expresión simple para la tasa de dosis:
 \begin{align*}
-    \dot D&=\deriv{EdN}{mdt}=\frac 1\rho\deriv{E}{x}\deriv{N}{Adt}=
+    \dot D&=\deriv{}{t}\deriv{E}{m}=\deriv{\epsilon dN}{mdt}=\frac
+    1\rho\deriv{\epsilon}{x}\deriv{N}{Adt}=
     \frac{IS}\rho
 \end{align*}
 con $\rho$ la densidad del material bajo irradiación
@@ -171,7 +172,7 @@ para distintos materiales en función de la energía.
 Valores publicados por NIST en el proyecto ESTAR\cite{berger_estar_????}.}
 junto con el rango o distancia de frenado
 \begin{align*}
-    R(E) &= \int_0^E \frac{dE'}{S(E')}
+    R(\epsilon) &= \int_0^\epsilon \frac{d\epsilon'}{S(\epsilon')}
 \end{align*} y la eficiencia radiativa $Y$.
 Esta es la fracción de la energía electrónica que se 
 emite como fotones (\emph{bremsstrahlung} o radiación de frenado). 

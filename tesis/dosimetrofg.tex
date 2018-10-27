@@ -438,11 +438,11 @@ manera casi lineal a la dosis.
 La variación de la sensibilidad (pendiente de la curva)
 se ve con más detalle en la \figref{fig:irradiacionfg_sensibilidad}.
 
-La corriente calculada parte de la corriente inicial extraída de la
-medición.
-Primero se calcula la variación de carga del FG
+La corriente calculada parte de la corriente inicial extraída de la medición.
+También se extrae de la sensibilidad inicial medida el factor de proporcionalidad entre dosis y carga generada.
+Luego se calcula la variación de carga del FG
 integrando numéricamente la carga generada por radiación.
-Luego se traduce esa carga en una tensión
+Se traduce esa carga en una tensión
 usando la ecuación de acoplamiento capacitivo.
 Finalmente se obtiene la corriente del lector
 en función de la tensión del FG,
@@ -453,30 +453,23 @@ Creemos que toda la parte de parámetros eléctricos de este cálculo
 porque usa variables del proceso muy controladas.
 Asimismo, las áreas de los componentes son grandes,
 así que la variación estadística de sus parámetros es chica.
-Por lo tanto, creemos que la discrepancia entre
-la curva medida y la simulada
-proviene principalmente del valor usado para la
-carga generada en función de la dosis.
-Aquí usamos un valor proveniente de dosímetros anteriores,
-que no contempla diferencias en la geometría del dispositivo
-o en sus condiciones de polarización.
 
-Otra peculiaridad de estas curvas es que la sensibilidad medida es mayor a la simulada.
-Normalmente, al modelar el efecto de la radiación en un MOS, la sensibilidad calculada es mayor a la medida.
-Esto pasa si el cálculo asume que toda la carga generada en el óxido se encuentra cerca de la interfaz, donde produce el mayor desplazamiento de $V_t$ (ecuación~\ref{eq:corrimiento_vt_mos}).
-En nuestro caso, la relación entre las sensibilidades es la opuesta.
-Esto sugiere que hay otros procesos que se dan durante la irradiación y que aumentan la sensibilidad.
-Por ejemplo, puede darse un corrimiento adicional de $V_t$ por neutralización de carga producida por la radiación\cite{faigon_extension_2008}\cite{fleetwood_radiation-induced_1990}.
-Trabajos futuros deberían incorporar estos fenómenos al análisis de este dosímetro.
+Sin embargo, la sensibilidad medida se mantiene menor a la simulada.
+Esto es lo que sucede normalmente al modelar el efecto de la radiación en un MOS si el cálculo asume que toda la carga generada en el óxido se encuentra cerca de la interfaz. 
+Allí es donde dicha carga produce el mayor desplazamiento de $V_t$ (ecuación~\ref{eq:corrimiento_vt_mos}).
+En nuestro caso, el cálculo no trata con carga atrapada en el óxido sino con carga acumulada en un gate.
+Esto sugiere que hay otros procesos que se dan durante la irradiación y que reducen la sensibilidad.
+Por ejemplo, puede darse un corrimiento de $V_t$ por neutralización de carga producida por la radiación\cite{faigon_extension_2008}\cite{fleetwood_radiation-induced_1990}.
+Trabajos futuros podrían incorporar estos fenómenos al análisis de este dosímetro.
 
 \fig{irradiacionfg_respuesta}{figuras/fg/irradiacion_corriente.pdf}
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.
-La corriente calculada parte de la corriente inicial extraída de la
-medición.
-Primero se calcula la variación de carga del FG 
+La corriente calculada parte de la corriente inicial extraída de la medición.
+También se extrae de la sensibilidad inicial medida el factor de proporcionalidad entre dosis y carga generada.
+Luego se calcula la variación de carga del FG 
 integrando numéricamente la carga generada por radiación.
-Luego se traduce esa carga en una tensión
+Se traduce esa carga en una tensión
 usando la ecuación de acoplamiento capacitivo.
 Finalmente se obtiene la corriente del lector
 en función de la tensión del FG,

@@ -461,6 +461,14 @@ Aquí usamos un valor proveniente de dosímetros anteriores,
 que no contempla diferencias en la geometría del dispositivo
 o en sus condiciones de polarización.
 
+Otra peculiaridad de estas curvas es que la sensibilidad medida es mayor a la simulada.
+Normalmente, al modelar el efecto de la radiación en un MOS, la sensibilidad calculada es mayor a la medida.
+Esto pasa si el cálculo asume que toda la carga generada en el óxido se encuentra cerca de la interfaz, donde produce el mayor desplazamiento de $V_t$ (ecuación~\ref{eq:corrimiento_vt_mos}).
+En nuestro caso, la relación entre las sensibilidades es la opuesta.
+Esto sugiere que hay otros procesos que se dan durante la irradiación y que aumentan la sensibilidad.
+Por ejemplo, puede darse un corrimiento adicional de $V_t$ por neutralización de carga producida por la radiación\cite{faigon_extension_2008}\cite{fleetwood_radiation-induced_1990}.
+Trabajos futuros deberían incorporar estos fenómenos al análisis de este dosímetro.
+
 \fig{irradiacionfg_respuesta}{figuras/fg/irradiacion_corriente.pdf}
 {Corriente del lector del FG polarizado con
     $V_{sd}$=\SI{100}{\milli\volt} en función de la dosis recibida.

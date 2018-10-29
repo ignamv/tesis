@@ -513,6 +513,20 @@ también existe la posibilidad de medir durante intervalos largos,
 sumando la dosis medida en cada ciclo de reset y descarga.
 En este caso, se suma el error en cada disparo para llegar a un valor de ruido
 proporcional a la raíz de la cantidad de disparos.
+
+Otro tipo importante de ruido a considerar es la deriva en tiempos más largos.
+Para esto, comparamos la tensión de salida de los APS un tiempo fijo después de su reseteo, para varios disparos.
+El resultado (figuras~\ref{fig:comparacion_salida_disparos_aps4} y~\ref{fig:comparacion_salida_disparos_aps40}) es que hay una diferencia entre disparos comparable con la resolución del conversor A/D (unos \SI{39}{\milli\volt}).
+\fig{comparacion_salida_disparos_aps4}
+{figuras/aps/tension_salida_comparando_disparos_aps4.pdf}
+{Tensión de salida para varios disparos, un tiempo fijo luego de resetear el APS de \SI{4x4}{\micro\meter}.
+La diferencia es comparable con la resolución del conversor A/D.}
+\fig{comparacion_salida_disparos_aps40}
+{figuras/aps/tension_salida_comparando_disparos_aps40.pdf}
+{Tensión de salida para varios disparos, un tiempo fijo luego de resetear el APS de \SI{40x40}{\micro\meter}.
+La diferencia es comparable con la resolución del conversor A/D.}
+Con un conversor de más resolución y mayor cantidad de disparos, sería posible caracterizar este número en detalle.
+Sin embargo, alcanza para ver que la variación disparo a disparo es mucho mayor al ruido instantáneo visto en muestras sucesivas dentro de un disparo.
 %
 \subsection{Resúmen de características}
 El dosímetros APS de \SI{4x4}{\micro\meter} que diseñamos, 

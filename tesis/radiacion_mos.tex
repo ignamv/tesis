@@ -100,13 +100,14 @@ La carga en el óxido de gate altera la relación
 entre la tensión aplicada al gate y el campo en la interfaz Si-SiO$_2$.
 Analizamos este fenómeno en 1D con $x=0$ en el gate y $x=t_{ox}$
 en el semiconductor:
-\begin{align*}
+\begin{align}
     V_g-\psi_s&=\int_0^{t_{ox}}E(x)dx=
     \int_0^{t_{ox}}\left[\frac d{dx}(xE)-x\frac{dE}{dx}\right]dx\\
     &=t_{ox}\mathscr{E}_s-\frac 1{\epsilon_{ox}}\int_0^{t_{ox}}x\rho(x)dx\\
     \mathscr{E}_s &= \frac{V_g-\psi_s+
         \frac 1{\epsilon_{ox}}\int_0^{t_{ox}}x\rho(x)dx}{t_{ox}}.
-\end{align*}
+        \label{eq:corrimiento_vt_mos}
+\end{align}
 Se ve que la carga desplaza las curvas del dispositivo 
 en su dependencia con $V_g$.
 Mientras más cerca del semiconductor esté la carga,

@@ -1,0 +1,9 @@
+.quarterwidth { width: 24% }
+.halfwidth { width: 45% }
+.fullwidth { width: 95% }
+.reveal .slides section .fragment.stepFadeInThenOut {
+    opacity: 0;
+    display: none; }
+.reveal .slides section .fragment.stepFadeInThenOut.current-fragment {
+    opacity: 1;
+    display: inline; }

@@ -54,9 +54,27 @@ Ensayos no destructivos
 
 ## Dosímetros
 
-![](figuras/personal_dosimeter.png)
+![](figuras/personal_dosimeter.png){width=20%}
 
+# Radiación en dispositivos
 
+## Transitorios de carga
+
+![](figuras/radiacion_juntura.svg){width=70%}
+
+## Defectos cristalinos
+
+![](figuras/desplazamiento.svg){width=70%}
+
+## Radiación en Óxido de MOS
+
+![](../figuras/radmos/radiacion_mos.svg){width=70%}
+
+# Experimental
+
+## Irradiador
+
+![](figuras/corte_irradiador.png){width=70%}
 
 ## Texto al lado de imagen
 

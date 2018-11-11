@@ -76,22 +76,71 @@ Ensayos no destructivos
 
 ![](figuras/corte_irradiador.png){width=70%}
 
-## Texto al lado de imagen
+## Funcionamiento
+
+![](../figuras/poster/posicion_no.png){width=35%}
+![](../figuras/poster/posicion_si.png){width=35%}
+
+## Espectro de la fuente
+
+Actividad nominal: 100\ mCi
+![](figuras/actividad_fuente.svg){width=80%}
+
+## Simulación Monte Carlo
 
 :::::::::::::: {.columns}
-
-::: {.column width="40%"}
+::: {.column width="50%"}
+* Toolkit Geant4
+* Lista de procesos para microelectrónica
+    * Electrones secundarios hasta 16.7\ eV (rango 0.1\ nm)
+* Geometría simplificada para acelerar simulación
 :::
-
-::: {.column width="60%"}
-contents derecha $$x^2$$
+::: {.column width="50%"}
+![](../figuras/irradiador/corte_esfera.png){width=100%}
 :::
-
 ::::::::::::::
 
-## Conclusiones
+## Resultados
 
-* Esta
+![](figuras/dosis_irradiador.svg){width=80%}
 
-* Y esta
+# Dosímetro APS
 
+## Esquemático
+
+![](figuras/esquematico_aps.svg){width=60%}
+
+## Construcción
+:::::::::::::: {.columns}
+::: {.column width="70%"}
+* Proceso CMOS de 0.6\ µm, 5\ V
+* 1 polisilicio, 2 metales
+* PDK para Mentor
+:::
+::: {.column width="30%"}
+![](figuras/xfab.svg){width=100%}
+:::
+::::::::::::::
+![](figuras/cross_section.svg){width=80%}
+
+## Cálculos Monte Carlo
+
+Geometría simplificada
+
+![](figuras/corte_aps_montecarlo.svg){width=50%}
+
+## Resultados
+
+![](figuras/aps_respuesta_montecarlo.svg){width=60%}
+
+## Exposición a luz visible
+
+![](figuras/descarga_led_40.svg){width=60%}
+
+## Ruido intra-disparo
+
+![](figuras/aps_ruido4.svg){width=60%}
+
+## Ruido inter-disparos
+
+![](figuras/tension_salida_comparando_disparos_aps4.svg){width=60%}

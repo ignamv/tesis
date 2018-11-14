@@ -26,7 +26,7 @@
 
 Partículas que transportan energía
 
-![](figuras/Radioactive.png){.quarterwidth}
+![](figuras/Alfa_beta_gamma_neutron_radiation.svg){width=25%}
 
 ## Daño a tejidos y circuitos
 
@@ -48,13 +48,16 @@ Ensayos no destructivos
 
 ![](figuras/VACIS_Gamma-ray_Image_with_stowaways.GIF){width=70%}
 
-## Dosimetría
+## Dosis
 
 ![](figuras/dosis.svg){width=85%}
 
 ## Dosímetros
 
-![](figuras/personal_dosimeter.png){width=20%}
+![](figuras/dosimeter1.jpg){width=20%}
+![](figuras/dosimeter2.jpg){width=20%}
+![](figuras/area-filmbadge.jpg){width=20%}
+![](figuras/thermoluminiscent_dosimeter.jpg){width=20%}
 
 # Radiación en dispositivos
 
@@ -144,3 +147,94 @@ Geometría simplificada
 ## Ruido inter-disparos
 
 ![](figuras/tension_salida_comparando_disparos_aps4.svg){width=60%}
+
+## Resúmen de características
+
+|Característica|Valor|
+|-|-|
+|Sensibilidad|7.1\ V/Gy|
+|Resolución|2.0\ mGy|
+|Rango (por disparo)|0.4\ Gy|
+
+## Conclusiones
+
+* Respuesta a luz visible es la esperada
+    * Mayores intensidades aceleran la descarga
+* Estimación del ruido
+
+# Floating Gate
+
+## Esquemático
+
+![](figuras/corte_fg.svg){width=80%}
+
+## Inyección
+
+![](figuras/inyeccion.svg){width=80%}
+
+## Irradiación
+
+![](figuras/irradiacion_fg.svg){width=80%}
+
+## Curvas de carga
+
+![](figuras/fg_carga_inyector.svg){width=48%}
+![](figuras/fg_carga_lector.svg){width=48%}
+
+## Descarga con radiación
+
+![](figuras/fg_sr90_corriente.svg){width=48%}
+![](figuras/fg_sr90_sensibilidad.svg){width=48%}
+
+## Ruido
+
+![](figuras/fg_ruido.svg){width=60%}
+
+## Resúmen de características
+
+|Característica|Valor|
+|-|-|
+|Sensibilidad|5.5-7\ μA/Gy|
+|Resolución|4\ mGy|
+|Rango|100\ Gy|
+|Tensión de cargado|hasta ±16\ V|
+
+## Conclusiones
+
+* Pudimos inyectar carga y descargar con radiación
+* Estimación del ruido
+
+# Discusión
+
+## Uso de proceso CMOS estándar
+
+* Tipo de circuito determina qué variables importan
+    * Circuito analógico normal: t<sub>ox</sub>, Vt, Idsat
+    * Dosímetro: espesores de todas las capas, propiedades de interfaz Si-SiO<sub>2</sub>
+* Conveniente adquirir más información del proceso
+
+## Biasing para Monte Carlo
+
+* Concentrar tiempo de simulación en las partículas que escapan
+
+![](figuras/geant.gif){width=70%}
+
+## Protección para ESD
+
+* Diseñar protección compatible con tensiones de inyección
+
+![](figuras/esd.jpeg){width=60%}
+
+## Minimizar corrientes de fuga
+
+* Layout con guarda en nodos sensibles a fuga
+
+![](../figuras/instrumental/guarded.png){width=60%}
+
+## Conclusiones
+
+* Fundamentos de dosimetría y radiación
+* Construcción y cálculos del irradiador
+* Principios de funcionamiento de APS y FG
+* Fabricación de dosímetros en proceso CMOS estándar
+* Mediciones y parámetros extraídos

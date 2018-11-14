@@ -6,3 +6,5 @@ pandoc presentacion.md -o presentacion.html \
     --mathjax=MathJax/MathJax.js
 pandoc presentacion.md -o presentacion2.html -s --from markdown \
     --mathjax=MathJax/MathJax.js --css tipi.css
+
+echo \# Slides: `grep '\#\#' presentacion.md | wc -l`

@@ -201,7 +201,9 @@ Geometría simplificada
 
 ## Conclusiones
 
-* Pudimos inyectar carga y descargar con radiación
+* Inyección de carga
+* Descarga con radiación
+    * Sensibilidad anómala
 * Estimación del ruido
 
 # Discusión

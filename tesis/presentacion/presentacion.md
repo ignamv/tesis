@@ -212,14 +212,17 @@ explicar importancia del óxido grueso del well
 
 ![](figuras/irradiacion_fg.svg){width=80%}
 
-## Curvas de carga
+## Curvas de carga: inyector
+
+![](figuras/fg_carga_inyector.svg){width=80%}
 
 ::: notes
 Explicar mejor
 :::
 
-![](figuras/fg_carga_inyector.svg){width=48%}
-![](figuras/fg_carga_lector.svg){width=48%}
+## Curvas de carga: lector
+
+![](figuras/fg_carga_lector.svg){width=80%}
 
 ## Descarga con radiación
 

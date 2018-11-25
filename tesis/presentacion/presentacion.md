@@ -95,7 +95,7 @@ Actividad nominal: 100\ mCi
 :::::::::::::: {.columns}
 ::: {.column width="50%"}
 * Toolkit Geant4
-* Lista de procesos para microelectrónica
+* Configurado para simulación a bajas energías
     * Electrones secundarios hasta 16.7\ eV (rango 0.1\ nm)
 * Geometría simplificada para acelerar simulación
 :::
@@ -103,6 +103,10 @@ Actividad nominal: 100\ mCi
 ![](figuras/corte_esfera.png){width=100%}
 :::
 ::::::::::::::
+
+::: notes
+Explicar qué significa config para energias bajas
+:::
 
 ## Resultados
 

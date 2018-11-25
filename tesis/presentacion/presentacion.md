@@ -118,6 +118,10 @@ Explicar qué significa config para energias bajas
 
 ![](figuras/esquematico_aps.svg){width=60%}
 
+::: notes
+Explicar seguidor
+:::
+
 ## Construcción
 :::::::::::::: {.columns}
 ::: {.column width="70%"}
@@ -144,6 +148,10 @@ Geometría simplificada
 ## Exposición a luz visible
 
 ![](figuras/descarga_led_40.svg){width=60%}
+
+::: notes
+Explicar forma de la curva de descarga
+:::
 
 ## Ruido intra-disparo
 

@@ -71,7 +71,7 @@ Ensayos no destructivos
 
 ## Radiación en Óxido de MOS
 
-![](../figuras/radmos/radiacion_mos.svg){width=70%}
+![](figuras/radiacion_mos.svg){width=70%}
 
 # Experimental
 
@@ -81,8 +81,8 @@ Ensayos no destructivos
 
 ## Funcionamiento
 
-![](../figuras/poster/posicion_no.png){width=35%}
-![](../figuras/poster/posicion_si.png){width=35%}
+![](figuras/posicion_no.png){width=35%}
+![](figuras/posicion_si.png){width=35%}
 
 ## Espectro de la fuente
 
@@ -99,7 +99,7 @@ Actividad nominal: 100\ mCi
 * Geometría simplificada para acelerar simulación
 :::
 ::: {.column width="50%"}
-![](../figuras/irradiador/corte_esfera.png){width=100%}
+![](figuras/corte_esfera.png){width=100%}
 :::
 ::::::::::::::
 
@@ -231,7 +231,7 @@ Geometría simplificada
 
 * Layout con guarda en nodos sensibles a fuga
 
-![](../figuras/instrumental/guarded.png){width=60%}
+![](figuras/guarded.png){width=60%}
 
 ## Conclusiones
 

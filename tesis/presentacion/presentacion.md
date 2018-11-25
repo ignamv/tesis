@@ -1,6 +1,7 @@
-% Diseño y caracterización de dosímetros MOS
+% Diseño y caracterización de dosímetros MOS no convencionales
 % Ignacio Martinez
-% Diciembre 2018
+% Director: Prof. Adrián Faigón<br>
+  Laboratorio de Física de Dispositivos - Microelectrónica
 <!--
 
 * Priorizar interesante, no necesariamente cubrir todo

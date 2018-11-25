@@ -133,6 +133,10 @@ Explicar qué significa config para energias bajas
 Explicar seguidor
 :::
 
+## Layout
+
+![](figuras/layout_aps_zoom.png){width=80%}
+
 ## Construcción
 :::::::::::::: {.columns}
 ::: {.column width="70%"}
@@ -195,6 +199,11 @@ Explicar forma de la curva de descarga
 ::: notes
 explicar importancia del óxido grueso del well
 :::
+
+## Layout
+
+![](figuras/layout_fg_poly_met.png){width=70%}
+
 ## Inyección
 
 ![](figuras/inyeccion.svg){width=80%}

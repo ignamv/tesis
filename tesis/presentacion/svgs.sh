@@ -11,7 +11,7 @@ pdf2svg ../figuras/poster/aps_respuesta.pdf figuras/aps_respuesta_montecarlo.svg
 pdf2svg ../figuras/aps/descarga_led_40.pdf figuras/descarga_led_40.svg
 pdf2svg ../figuras/aps/ruido4.pdf figuras/aps_ruido4.svg
 pdf2svg ../figuras/aps/tension_salida_comparando_disparos_aps4.pdf figuras/tension_salida_comparando_disparos_aps4.svg
-pdf2svg ../figuras/fgcapacidades/floatinggate2.pdf figuras/corte_fg.svg
+#pdf2svg ../figuras/fgcapacidades/floatinggate2.pdf figuras/corte_fg.svg
 pdf2svg ../figuras/fowlernordheim/fowlernordheim.pdf figuras/fowlernordheim.svg
 pdf2svg ../figuras/fg/12a21dip_inyector.pdf figuras/fg_carga_inyector.svg
 pdf2svg ../figuras/fg/12a21dip_iv.pdf figuras/fg_carga_lector.svg
@@ -26,3 +26,5 @@ cp ../figuras/poster/posicion_no.png figuras/posicion_no.png
 cp ../figuras/poster/posicion_si.png figuras/posicion_si.png
 cp ../figuras/irradiador/corte_esfera.png figuras/corte_esfera.png
 cp ../figuras/instrumental/guarded.png figuras/guarded.png
+cp ../figuras/gds/fg/small/poly_met.png figuras/layout_fg_poly_met.png
+cp ../figuras/gds/aps/zoom.png figuras/layout_aps_zoom.png

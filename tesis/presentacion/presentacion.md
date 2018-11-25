@@ -29,7 +29,7 @@ Partículas que transportan energía
 
 ![](figuras/Alfa_beta_gamma_neutron_radiation.svg){width=25%}
 
-## Daño a tejidos y circuitos
+## Efectos sobre tejidos y circuitos
 
 ![](figuras/dna-uv-mutation.svg){.halfwidth}
 ![](figuras/Displacement-damage.jpg){.halfwidth}

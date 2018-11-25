@@ -237,7 +237,7 @@ Explicar mejor
     * Sensibilidad anómala
 * Estimación del ruido
 
-# Discusión
+# Discusión y conclusiones
 
 ## Uso de proceso CMOS estándar
 
@@ -245,6 +245,21 @@ Explicar mejor
     * Circuito analógico normal: t<sub>ox</sub>, Vt, Idsat
     * Dosímetro: espesores de todas las capas, propiedades de interfaz Si-SiO<sub>2</sub>
 * Conveniente adquirir más información del proceso
+
+## Conclusiones
+
+* Construímos un irradiador
+    * Dosis en el exterior de 20.3\ mSv/año
+* Construímos un APS 
+    * Calculamos sensibilidad de 7.1\ V/Gy
+    * Mayores intensidades de luz aceleran su descarga
+    * Estimación del ruido: 2.0\ mGy
+* Construímos un FG
+    * Inyectamos carga aplicando hasta -16\ V
+    * Medimos sensibilidad de 5.5-7\ μA/Gy
+    * Estimación del ruido: 4\ mGy
+
+# Trabajos futuros
 
 ## Biasing para Monte Carlo
 
@@ -263,11 +278,3 @@ Explicar mejor
 * Layout con guarda en nodos sensibles a fuga
 
 ![](figuras/guarded.png){width=60%}
-
-## Conclusiones
-
-* Fundamentos de dosimetría y radiación
-* Construcción y cálculos del irradiador
-* Principios de funcionamiento de APS y FG
-* Fabricación de dosímetros en proceso CMOS estándar
-* Mediciones y parámetros extraídos

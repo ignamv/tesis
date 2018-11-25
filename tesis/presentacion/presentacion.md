@@ -27,7 +27,7 @@
 
 Partículas que transportan energía
 
-![](figuras/Alfa_beta_gamma_neutron_radiation.svg){width=25%}
+![](figuras/Alfa_beta_gamma_neutron_radiation.svg){width=27%}
 
 ## Efectos sobre tejidos y circuitos
 
@@ -100,7 +100,6 @@ Explicar gráfico, fuentes
 ::: {.column width="50%"}
 * Toolkit Geant4
 * Configurado para simulación a bajas energías
-    * Electrones secundarios hasta 16.7\ eV (rango 0.1\ nm)
 * Geometría simplificada para acelerar simulación
 :::
 ::: {.column width="50%"}
@@ -109,12 +108,20 @@ Explicar gráfico, fuentes
 ::::::::::::::
 
 ::: notes
+Aclarar
+
 Explicar qué significa config para energias bajas
 :::
 
 ## Resultados
 
 ![](figuras/dosis_irradiador.svg){width=80%}
+
+## Conclusiones
+
+* Construímos un irradiador
+* Calculamos que la dosis que escapa es segura
+* El irradiador sigue en uso en el laboratorio
 
 # Dosímetro APS
 
@@ -185,6 +192,9 @@ Explicar forma de la curva de descarga
 
 ![](figuras/corte_fg.svg){width=80%}
 
+::: notes
+explicar importancia del óxido grueso del well
+:::
 ## Inyección
 
 ![](figuras/inyeccion.svg){width=80%}
@@ -194,6 +204,10 @@ Explicar forma de la curva de descarga
 ![](figuras/irradiacion_fg.svg){width=80%}
 
 ## Curvas de carga
+
+::: notes
+Explicar mejor
+:::
 
 ![](figuras/fg_carga_inyector.svg){width=48%}
 ![](figuras/fg_carga_lector.svg){width=48%}

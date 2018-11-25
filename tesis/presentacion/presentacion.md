@@ -90,6 +90,10 @@ Ensayos no destructivos
 Actividad nominal: 100\ mCi
 ![](figuras/actividad_fuente.svg){width=80%}
 
+::: notes
+Explicar gráfico, fuentes
+:::
+
 ## Simulación Monte Carlo
 
 :::::::::::::: {.columns}

@@ -227,7 +227,7 @@ Explicar mejor
 ## Descarga con radiación
 
 ![](figuras/fg_sr90_corriente.svg){width=48%}
-![](figuras/fg_sr90_sensibilidad.svg){width=48%}
+![](figuras/irradiacion_sensibilidad.svg){width=48%}
 
 ## Ruido
 

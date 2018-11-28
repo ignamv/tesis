@@ -222,6 +222,17 @@ explicar importancia del óxido grueso del well
 
 ![](figuras/irradiacion_fg.svg){width=80%}
 
+## Cálculo de descarga
+
+* Sensibilidad inicial extraída de medición
+* Sensibilidad posterior calculada usando campo eléctrico en el óxido
+* Tensión de FG es integral de sensibilidad en tensión
+* Corriente de lector calculada con Spice
+
+::: notes
+Aclarar que no se usa corrimiento de Vt
+:::
+
 ## Curvas de carga: inyector
 
 ![](figuras/fg_carga_inyector.svg){width=80%}

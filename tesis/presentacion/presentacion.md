@@ -115,7 +115,7 @@ Explicar qué significa config para energias bajas
 
 ## Resultados
 
-![](figuras/dosis_irradiador.svg){width=80%}
+Dosis superficial de 20.3\ mGy/año
 
 ## Conclusiones
 

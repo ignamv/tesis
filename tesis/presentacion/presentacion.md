@@ -292,7 +292,7 @@ Específico para 1 Hz, falta deriva
 ## Conclusiones
 
 * Construímos un irradiador
-    * Dosis en el exterior de 20.3\ mSv/año
+    * Dosis en el exterior de 20.3\ mGy/año
 * Construímos un APS 
     * Calculamos sensibilidad de 7.1\ V/Gy
     * Mayores intensidades de luz aceleran su descarga

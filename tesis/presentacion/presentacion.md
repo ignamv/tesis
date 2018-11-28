@@ -178,6 +178,10 @@ Explicar forma de la curva de descarga
 
 ![](figuras/aps_ruido4.svg){width=60%}
 
+::: notes
+Específico para 625 Hz, falta deriva
+:::
+
 ## Ruido inter-disparos
 
 ![](figuras/tension_salida_comparando_disparos_aps4.svg){width=60%}
@@ -238,6 +242,10 @@ Explicar mejor
 ## Ruido
 
 ![](figuras/fg_ruido.svg){width=60%}
+
+::: notes
+Específico para 1 Hz, falta deriva
+:::
 
 ## Resúmen de características
 

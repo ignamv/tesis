@@ -234,6 +234,10 @@ Explicar mejor
 
 ![](figuras/fg_carga_lector.svg){width=80%}
 
+## Banco de medición durante descarga
+
+![](figuras/banco_irradiacion_fg.svg){width=70%}
+
 ## Descarga con radiación
 
 ![](figuras/fg_sr90_corriente.svg){width=48%}

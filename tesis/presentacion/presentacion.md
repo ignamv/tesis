@@ -156,6 +156,12 @@ Geometría simplificada
 
 ![](figuras/corte_aps_montecarlo.svg){width=50%}
 
+## Cálculos manuales
+
+Integral resuelta numericamente
+$$ \frac{dE}{dx} = -S(E) $$
+Valores de \\( S \\) tabulados por NIST
+
 ## Resultados
 
 ![](figuras/aps_respuesta_montecarlo.svg){width=60%}

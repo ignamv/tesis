@@ -32,7 +32,7 @@ Partículas que transportan energía
 ## Efectos sobre tejidos y circuitos
 
 ![](figuras/dna-uv-mutation.svg){.halfwidth}
-![](figuras/Displacement-damage.jpg){.halfwidth}
+![](figuras/radiacion_mos.svg){.halfwidth}
 
 ## Usos médicos
 

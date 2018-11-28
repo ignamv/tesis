@@ -239,6 +239,8 @@ Explicar mejor
 ![](figuras/fg_sr90_corriente.svg){width=48%}
 ![](figuras/irradiacion_sensibilidad.svg){width=48%}
 
+Tasa de dosis: 50\ mGy/hr
+
 ## Ruido
 
 ![](figuras/fg_ruido.svg){width=60%}

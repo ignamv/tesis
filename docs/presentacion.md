@@ -159,7 +159,7 @@ Geometría simplificada
 ## Cálculos manuales
 
 Integral resuelta numericamente
-$$ \frac{dE}{dx} = -S(E) $$
+$$ \frac{d\epsilon}{dx} = -S(\epsilon) $$
 Valores de \\( S \\) tabulados por NIST
 
 ## Banco de medición

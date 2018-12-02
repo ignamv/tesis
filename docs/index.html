@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Ignacio Martinez">
+  <title>Diseño y caracterización de dosímetros MOS no convencionales</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+  <link rel="stylesheet" href="tipi.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Diseño y caracterización de dosímetros MOS no convencionales</h1>
+  <p class="author">Ignacio Martinez</p>
+  <p class="date">Director: Prof. Adrián Faigón<br> Laboratorio de Física de Dispositivos - Microelectrónica</p>
+</section>
+
+<section class="slide level2">
+
+<!--
+
+* Priorizar interesante, no necesariamente cubrir todo
+
+* Acentuar y dedicarle tiempo a las motivaciones generales y de cada tema
+
+* No muchas diapos, ir lento, explicar cada gráfico
+
+* Terminar con resumen de los logros y sugerencias para su continuación.
+
+* Preparar ensayo en el laboratorio con tiempo para adaptar las sugerencias
+
+• goal/objectives of the research (2 min)
+• literature review/theoretical framework (5 min)
+• methodology (5 min)
+• findings (10 min)
+• recommendations (5 min)
+
+-->
+</section>
+<section><section id="introducción" class="title-slide slide level1"><h1>Introducción</h1></section><section id="qué-es-la-radiación" class="slide level2">
+<h2>Qué es la radiación?</h2>
+<p>Partículas que transportan energía</p>
+<p><img data-src="figuras/Alfa_beta_gamma_neutron_radiation.svg" style="width:27.0%" /></p>
+</section><section id="efectos-sobre-tejidos-y-circuitos" class="slide level2">
+<h2>Efectos sobre tejidos y circuitos</h2>
+<p><img data-src="figuras/dna-uv-mutation.svg" class="halfwidth" /> <img data-src="figuras/radiacion_mos.svg" class="halfwidth" /></p>
+</section><section id="usos-médicos" class="slide level2">
+<h2>Usos médicos</h2>
+<p>Diagnóstico y terapia</p>
+<p><img data-src="figuras/3d_CT_scan_animation.gif" class="quarterwidth" /> <img data-src="figuras/1024px-Boron_neutron_capture_therapy_bnct_illustration.jpg" class="halfwidth" /></p>
+</section><section id="usos-industriales" class="slide level2">
+<h2>Usos industriales</h2>
+<p>Ensayos no destructivos</p>
+<p><img data-src="figuras/radiography.jpg" style="width:40.0%" /></p>
+<p><img data-src="figuras/VACIS_Gamma-ray_Image_with_stowaways.GIF" style="width:70.0%" /></p>
+</section><section id="dosis" class="slide level2">
+<h2>Dosis</h2>
+<p><img data-src="figuras/dosis.svg" style="width:85.0%" /></p>
+</section><section id="dosímetros" class="slide level2">
+<h2>Dosímetros</h2>
+<p><img data-src="figuras/dosimeter1.jpg" style="width:20.0%" /> <img data-src="figuras/dosimeter2.jpg" style="width:20.0%" /> <img data-src="figuras/area-filmbadge.jpg" style="width:20.0%" /> <img data-src="figuras/thermoluminiscent_dosimeter.jpg" style="width:20.0%" /></p>
+</section></section>
+<section><section id="radiación-en-dispositivos" class="title-slide slide level1"><h1>Radiación en dispositivos</h1></section><section id="transitorios-de-carga" class="slide level2">
+<h2>Transitorios de carga</h2>
+<p><img data-src="figuras/radiacion_juntura.svg" style="width:70.0%" /></p>
+</section><section id="defectos-cristalinos" class="slide level2">
+<h2>Defectos cristalinos</h2>
+<p><img data-src="figuras/desplazamiento.svg" style="width:70.0%" /></p>
+</section><section id="radiación-en-óxido-de-mos" class="slide level2">
+<h2>Radiación en Óxido de MOS</h2>
+<p><img data-src="figuras/radiacion_mos.svg" style="width:70.0%" /></p>
+</section></section>
+<section><section id="experimental" class="title-slide slide level1"><h1>Experimental</h1></section><section id="irradiador" class="slide level2">
+<h2>Irradiador</h2>
+<p><img data-src="figuras/corte_irradiador.png" style="width:70.0%" /></p>
+</section><section id="funcionamiento" class="slide level2">
+<h2>Funcionamiento</h2>
+<p><img data-src="figuras/posicion_no.png" style="width:35.0%" /> <img data-src="figuras/posicion_si.png" style="width:35.0%" /></p>
+</section><section id="espectro-de-la-fuente" class="slide level2">
+<h2>Espectro de la fuente</h2>
+<p>Actividad nominal: 100 mCi <img data-src="figuras/actividad_fuente.svg" style="width:80.0%" /></p>
+<aside class="notes">
+<p>Explicar gráfico, fuentes</p>
+</aside>
+</section><section id="simulación-monte-carlo" class="slide level2">
+<h2>Simulación Monte Carlo</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>Toolkit Geant4</li>
+<li>Configurado para simulación a bajas energías</li>
+<li>Geometría simplificada para acelerar simulación</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="figuras/corte_esfera.png" style="width:100.0%" /></p>
+</div>
+</div>
+<aside class="notes">
+<p>Aclarar</p>
+<p>Explicar qué significa config para energias bajas</p>
+</aside>
+</section><section id="resultados" class="slide level2">
+<h2>Resultados</h2>
+<p>Dosis superficial de 20.3 mGy/año</p>
+</section><section id="conclusiones" class="slide level2">
+<h2>Conclusiones</h2>
+<ul>
+<li>Construímos un irradiador</li>
+<li>Calculamos que la dosis que escapa es segura</li>
+<li>El irradiador sigue en uso en el laboratorio</li>
+</ul>
+</section></section>
+<section><section id="dosímetro-aps" class="title-slide slide level1"><h1>Dosímetro APS</h1></section><section id="esquemático" class="slide level2">
+<h2>Esquemático</h2>
+<p><img data-src="figuras/esquematico_aps.svg" style="width:60.0%" /></p>
+<aside class="notes">
+<p>Explicar seguidor</p>
+</aside>
+</section><section id="layout" class="slide level2">
+<h2>Layout</h2>
+<p><img data-src="figuras/layout_aps_zoom.png" style="width:80.0%" /></p>
+</section><section id="construcción" class="slide level2">
+<h2>Construcción</h2>
+<div class="columns">
+<div class="column" style="width:70%;">
+<ul>
+<li>Proceso CMOS de 0.6 µm, 5 V</li>
+<li>1 polisilicio, 2 metales</li>
+<li>PDK para Mentor</li>
+</ul>
+</div><div class="column" style="width:30%;">
+<p><img data-src="figuras/xfab.svg" style="width:100.0%" /></p>
+</div>
+</div>
+<p><img data-src="figuras/cross_section.svg" style="width:80.0%" /></p>
+</section><section id="cálculos-monte-carlo" class="slide level2">
+<h2>Cálculos Monte Carlo</h2>
+<p>Geometría simplificada</p>
+<p><img data-src="figuras/corte_aps_montecarlo.svg" style="width:50.0%" /></p>
+</section><section id="cálculos-manuales" class="slide level2">
+<h2>Cálculos manuales</h2>
+<p>Integral resuelta numericamente <span class="math display">\[ \frac{dE}{dx} = -S(E) \]</span> Valores de \( S \) tabulados por NIST</p>
+</section><section id="banco-de-medición" class="slide level2">
+<h2>Banco de medición</h2>
+<p><img data-src="figuras/banco_aps.svg" style="width:60.0%" /></p>
+</section><section id="resultados-1" class="slide level2">
+<h2>Resultados</h2>
+<p><img data-src="figuras/aps_respuesta_montecarlo.svg" style="width:60.0%" /></p>
+</section><section id="exposición-a-luz-visible" class="slide level2">
+<h2>Exposición a luz visible</h2>
+<p><img data-src="figuras/descarga_led_40.svg" style="width:60.0%" /></p>
+<aside class="notes">
+<p>Explicar forma de la curva de descarga</p>
+</aside>
+</section><section id="ruido-intra-disparo" class="slide level2">
+<h2>Ruido intra-disparo</h2>
+<p><img data-src="figuras/aps_ruido4.svg" style="width:60.0%" /></p>
+<aside class="notes">
+<p>Específico para 625 Hz, falta deriva</p>
+</aside>
+</section><section id="ruido-inter-disparos" class="slide level2">
+<h2>Ruido inter-disparos</h2>
+<p><img data-src="figuras/tension_salida_comparando_disparos_aps4.svg" style="width:60.0%" /></p>
+</section><section id="resúmen-de-características" class="slide level2">
+<h2>Resúmen de características</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sensibilidad</td>
+<td>7.1 V/Gy</td>
+</tr>
+<tr class="even">
+<td>Resolución</td>
+<td>2.0 mGy</td>
+</tr>
+<tr class="odd">
+<td>Rango (por disparo)</td>
+<td>0.4 Gy</td>
+</tr>
+</tbody>
+</table>
+</section><section id="conclusiones-1" class="slide level2">
+<h2>Conclusiones</h2>
+<ul>
+<li>Respuesta a luz visible es la esperada
+<ul>
+<li>Mayores intensidades aceleran la descarga</li>
+</ul></li>
+<li>Estimación del ruido</li>
+</ul>
+</section></section>
+<section><section id="floating-gate" class="title-slide slide level1"><h1>Floating Gate</h1></section><section id="origen" class="slide level2">
+<h2>Origen</h2>
+<p><img data-src="figuras/fg_bands.jpg" style="width:60.0%" /></p>
+</section><section id="esquemático-1" class="slide level2">
+<h2>Esquemático</h2>
+<p><img data-src="figuras/corte_fg.svg" style="width:80.0%" /></p>
+<aside class="notes">
+<p>explicar importancia del óxido grueso del well</p>
+</aside>
+</section><section id="layout-1" class="slide level2">
+<h2>Layout</h2>
+<p><img data-src="figuras/layout_fg_poly_met.png" style="width:70.0%" /></p>
+</section><section id="inyección" class="slide level2">
+<h2>Inyección</h2>
+<p><img data-src="figuras/inyeccion.svg" style="width:80.0%" /></p>
+</section><section id="irradiación" class="slide level2">
+<h2>Irradiación</h2>
+<p><img data-src="figuras/irradiacion_fg.svg" style="width:80.0%" /></p>
+</section><section id="cálculo-de-descarga" class="slide level2">
+<h2>Cálculo de descarga</h2>
+<ul>
+<li>Sensibilidad inicial extraída de medición</li>
+<li>Sensibilidad posterior calculada usando campo eléctrico en el óxido</li>
+<li>Tensión de FG es integral de sensibilidad en tensión</li>
+<li>Corriente de lector calculada con Spice</li>
+</ul>
+<aside class="notes">
+<p>Aclarar que no se usa corrimiento de Vt</p>
+</aside>
+</section><section id="curvas-de-carga-inyector" class="slide level2">
+<h2>Curvas de carga: inyector</h2>
+<p><img data-src="figuras/fg_carga_inyector.svg" style="width:80.0%" /></p>
+<aside class="notes">
+<p>Explicar mejor</p>
+</aside>
+</section><section id="curvas-de-carga-lector" class="slide level2">
+<h2>Curvas de carga: lector</h2>
+<p><img data-src="figuras/fg_carga_lector.svg" style="width:80.0%" /></p>
+</section><section id="banco-de-medición-durante-descarga" class="slide level2">
+<h2>Banco de medición durante descarga</h2>
+<p><img data-src="figuras/banco_irradiacion_fg.svg" style="width:70.0%" /></p>
+</section><section id="descarga-con-radiación" class="slide level2">
+<h2>Descarga con radiación</h2>
+<p><img data-src="figuras/fg_sr90_corriente.svg" style="width:48.0%" /> <img data-src="figuras/irradiacion_sensibilidad.svg" style="width:48.0%" /></p>
+<p>Tasa de dosis: 50 mGy/hr</p>
+</section><section id="ruido" class="slide level2">
+<h2>Ruido</h2>
+<p><img data-src="figuras/fg_ruido.svg" style="width:60.0%" /></p>
+<aside class="notes">
+<p>Específico para 1 Hz, falta deriva</p>
+</aside>
+</section><section id="resúmen-de-características-1" class="slide level2">
+<h2>Resúmen de características</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sensibilidad</td>
+<td>5.5-7 μA/Gy</td>
+</tr>
+<tr class="even">
+<td>Resolución</td>
+<td>4 mGy</td>
+</tr>
+<tr class="odd">
+<td>Rango</td>
+<td>100 Gy</td>
+</tr>
+<tr class="even">
+<td>Tensión de cargado</td>
+<td>hasta ±16 V</td>
+</tr>
+</tbody>
+</table>
+</section><section id="conclusiones-2" class="slide level2">
+<h2>Conclusiones</h2>
+<ul>
+<li>Inyección de carga</li>
+<li>Descarga con radiación
+<ul>
+<li>Sensibilidad anómala</li>
+</ul></li>
+<li>Estimación del ruido</li>
+</ul>
+</section></section>
+<section><section id="discusión-y-conclusiones" class="title-slide slide level1"><h1>Discusión y conclusiones</h1></section><section id="uso-de-proceso-cmos-estándar" class="slide level2">
+<h2>Uso de proceso CMOS estándar</h2>
+<ul>
+<li>Tipo de circuito determina qué variables importan
+<ul>
+<li>Circuito analógico normal: t<sub>ox</sub>, Vt, Idsat</li>
+<li>Dosímetro: espesores de todas las capas, propiedades de interfaz Si-SiO<sub>2</sub></li>
+</ul></li>
+<li>Conveniente adquirir más información del proceso</li>
+</ul>
+</section><section id="conclusiones-3" class="slide level2">
+<h2>Conclusiones</h2>
+<ul>
+<li>Construímos un irradiador
+<ul>
+<li>Dosis en el exterior de 20.3 mGy/año</li>
+</ul></li>
+<li>Construímos un APS
+<ul>
+<li>Calculamos sensibilidad de 7.1 V/Gy</li>
+<li>Mayores intensidades de luz aceleran su descarga</li>
+<li>Estimación del ruido: 2.0 mGy</li>
+</ul></li>
+<li>Construímos un FG
+<ul>
+<li>Inyectamos carga aplicando hasta -16 V</li>
+<li>Medimos sensibilidad de 5.5-7 μA/Gy</li>
+<li>Estimación del ruido: 4 mGy</li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="trabajos-futuros" class="title-slide slide level1"><h1>Trabajos futuros</h1></section><section id="biasing-para-monte-carlo" class="slide level2">
+<h2>Biasing para Monte Carlo</h2>
+<ul>
+<li>Concentrar tiempo de simulación en las partículas que escapan</li>
+</ul>
+<p><img data-src="figuras/geant.gif" style="width:70.0%" /></p>
+</section><section id="protección-para-esd" class="slide level2">
+<h2>Protección para ESD</h2>
+<ul>
+<li>Diseñar protección compatible con tensiones de inyección</li>
+</ul>
+<p><img data-src="figuras/esd.jpeg" style="width:60.0%" /></p>
+</section><section id="minimizar-corrientes-de-fuga" class="slide level2">
+<h2>Minimizar corrientes de fuga</h2>
+<ul>
+<li>Layout con guarda en nodos sensibles a fuga</li>
+</ul>
+<p><img data-src="figuras/guarded.png" style="width:60.0%" /></p>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        math: {
+          mathjax: 'MathJax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/math/math.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

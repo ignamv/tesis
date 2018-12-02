@@ -5,6 +5,8 @@ pandoc presentacion.md -o presentacion.html \
     -V theme=beige --css tipi.css \
     --mathjax=MathJax/MathJax.js
 
+cp presentacion.html index.html
+
 #pandoc presentacion.md -o presentacion.pptx \
     #-s --from markdown --slide-level=2 
 

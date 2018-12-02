@@ -162,6 +162,10 @@ Integral resuelta numericamente
 $$ \frac{dE}{dx} = -S(E) $$
 Valores de \\( S \\) tabulados por NIST
 
+## Banco de medición
+
+![](figuras/banco_aps.svg){width=60%}
+
 ## Resultados
 
 ![](figuras/aps_respuesta_montecarlo.svg){width=60%}
@@ -201,6 +205,10 @@ Específico para 625 Hz, falta deriva
 * Estimación del ruido
 
 # Floating Gate
+
+## Origen
+
+![](figuras/fg_bands.jpg){width=60%}
 
 ## Esquemático
 

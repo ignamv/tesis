@@ -1,121 +1,104 @@
-\section{Introducción}
-La radiación es un fenómeno natural con diversas aplicaciones.
+\section{Introduction}
+Radiation is a natural phenomenon with wide-ranging uses.
 
-En la industria, se usa para esterilizar instrumental médico y comida,
-alterar propiedades químicas de superficies\cite{clough2001high},
-y para distintos tipos de mediciones.
-En particular, se usa para ensayos no destructivos
-como la radiografía de neutrones\cite{berger_neutron_1960}.
+It is used industrially to sterilize food and medical equipment,
+to alter surface chemical properties\cite{clough2001high},
+and for several measurement techniques.
+In particular, it is used for non-destructive assays such as
+neutron radiography\cite{berger_neutron_1960}.
 
-En medicina, la radiación se emplea en diagnóstico para adquirir imágenes del cuerpo,
-y en terapia para tratar cáncer y otras enfermedades.
-Con la incidencia creciente de esta enfermedad 
-y el uso de radiación en 50\% de los
-pacientes\cite{symposium_assurance_dosimetry_1994},
-gran parte de la población va a ser expuesta a radiación.
+In the medical field, radiation is used both in diagnostics,
+to image the inside of the body,
+and in therapy, for the treatment of cancer and other diseases.
+Given the increasing rates of cancer,
+and the use of radiation in half of patients
+\cite{symposium_assurance_dosimetry_1994},
+a significant part of the population will be exposed to radiation
+at some point in their lives.
 
-Con el desarrollo de estas aplicaciones,
-se empezó a tomar conciencia de 
-los peligros de la exposición a la radiación,
-y la importancia de entender sus efectos en tejidos
-para establecer prácticas seguras.
+As medical and industrial applications became more widespread,
+there was a growing need to understand the dangers of radiation exposure.
+This led to the study of radiation's effects in living tissue,
+in order to establish safe operating practices.
 
-Una parte central de estas prácticas es el uso de dosímetros personales.
-Los mismos permiten limitar los tiempos e intensidades de exposición
-por debajo de valores riesgosos.
+One major way to ensure safety is routine use of personal dosimeters.
+These devices quantify a person's exposure to radiation,
+allowing a worker to manage his length and intensity of exposure
+in order to stay within safe limits.
 
-Además de proteger al personal de un hospital o planta,
-los dosímetros permiten monitorear de forma precisa 
-el tratamiento que recibe un paciente.
-Su uso facilita detectar errores de aplicación\cite{noel_detection_1995}.
-También permiten verificar la planificación de nuevas
-técnicas y así mejorar el estándar de cuidado\cite{essers_vivo_1999}.
-Por último, la dosimetría \emph{in vivo} 
-abre la puerta a terapias más efectivas:
-es posible planificar cada sesión de radiación
-en respuesta al resultado de la anterior,
-corrigiendo por fallas de alineamiento, calibración 
-y cambios en el paciente\cite{wu_application_2006}.
+In addition to protecting factory or hospital personnel,
+dosimeters can be used to precisely monitor a patient's radiation treatment.
+This enables the detection of over- or under-dosing errors\cite{noel_detection_1995}.
+They can also be used to plan new treatment techniques,
+in order to improve the standard of care
+\cite{essers_vivo_1999}.
+Lastly, \emph{in vivo} dosimetry
+opens the door to a more effective type of therapy:
+it becomes possible to plan each radiation session
+in response to the previous session,
+correcting for any misalignments,
+equipment drift and changes in the patient\cite{wu_application_2006}.
 
-Este tipo de medición demanda dosímetros 
-que se presten al uso médico.
-Los requerimientos pasan tanto por sus especificaciones técnicas
-(sensibilidad, dosis máxima)
-como por su costo,
-biocompatibilidad, tamaño,
-demora en la lectura y simplicidad de uso.
+\emph{In vivo} measurement depend on dosimeters fit for medical use.
+This implies not only specific technical requirements
+(sensitivity, maximum dose)
+but also cost, biocompatibility, size, readout speed and ease of use.
 
-Desde hace mucho tiempo se usan dosímetros basados en 
-dispositivos semiconductores discretos.
-Los mismos se basan en el mismo principio que una cámara de ionización de aire,
-pero miles de veces más sensibles por unidad de volúmen\cite{jones_application_1963}.
-Así posibilitan mediciones con mayor resolución espacial.
+Dosimeters are typically based on discrete semiconductor devices.
+Their operating principle is like that of an air ionization chamber,
+but with a thousand-fold increase in sensitivity per unit volume
+\cite{jones_application_1963}.
+This makes it feasible to conduct measurements with higher spatial resolution.
 
-Más reciente es un tipo de dosímetro que usa técnicas 
-provenientes de la fabricación de circuitos integrados 
-para obtener dispositivos 
-miniaturizables\cite{holmes-siedle_radfet:_1986}.
-Actualmente consisten en circuitos que miden el 
-cambio en las características eléctricas de un transistor.
-Este es un tipo especial de transistor denominado RADFET,
-particularmente sensible a la radiación 
-debido a su óxido de compuerta muy grueso.
+A newer kind of dosimeter employs techniques from integrated circuit fabrication
+which yield much smaller sensors\cite{holmes-siedle_radfet:_1986}.
+For example, there are circuits which measure 
+the shift in a transistor's electrical characteristics
+due to radiation.
+Typically this is a specialized transistor (RADFET)
+whose thick gate oxide makes it specially sensitive to radiation.
 
-Dentro de los dosímetros integrables 
-(los que se pueden incorporar con otras funciones en un circuito integrado),
-hay gran interés en aquellos fabricados usando, sin modificación,
-procesos comerciales para circuitos integrados\cite{lipovetzky_field_2013}
+There is great interest in building a dosimeter using 
+unmodified commercial integrated circuit processes\cite{lipovetzky_field_2013}
 \cite{wang_temperature_2005}
 \cite{garcia-moreno_floating_2012}
 \cite{dulinski_cmos_2004}.
-Esto quita la libertad de optimizar y controlar 
-los parámetros del proceso 
-para los requerimientos específicos de dosimetría.
-A cambio de esa restricción, 
-permite integrar circuitería adicional
-para procesamiento de señales e interfaz con el mundo exterior,
-y aprovechar las economías de escala de los procesos estándar.
+This does not allow the process to be optimized for dosimetry requirements.
+However, it opens the door to integrating additional analog and/or digital
+circuitry into the sensor.
+This would allow interface and signal processing circuitry to be cheaply included in a single die.
+In addition, it exploits the economies of scale of standard fabrication processes.
 
-En este trabajo diseñamos, construímos y caracterizamos
-dos dosímetros fabricados en un proceso estándar CMOS de
-\SI{0.6}{\micro\meter}.
-El primero es un Active Pixel Sensor,
-de estructura similar a un pixel del sensor de una cámara digital.
-El volúmen sensible es la zona desierta de portadores 
-de un diodo polarizado en inversa.
-La radiación incidente en esta zona genera pares electrón-hueco.
-El campo eléctrico separa electrones de huecos y los transporta hacia
-terminales opuestas del diodo,
-con una fracción de ellos desapareciendo por recombinación.
-Así la radiación incidente produce una corriente que va
-descargando un capacitor.
-El cambio en su valor de carga es un indicador de la energía total recibida.
+This thesis analyzes the design, construction and characterization
+of two dosimeters using a standard \SI{0.6}{\micro\meter} CMOS process.
+The first dosimeter is an Active Pixel Sensor,
+with a structure resembling a pixel from a digital camera sensor.
+The sensitive volume is the depletion region of a reverse-biased diode.
+Incoming radiation creates electron-hole pairs,
+which are separated out to opposite terminals by the electric field.
+This results in a current which discharges a capacitor.
+By measuring this discharge, it is possible to find the total energy deposited in the sensor.
 
-A diferencia de dosímetros tradicionales,
-el APS requiere un reset periódico para seguir funcionando.
-Sin embargo, este reset se realiza
-instantáneamente de manera electrónica sin necesidad de tensiones grandes,
-simplemente recargando el capacitor a su valor de carga original.
+Unlike an ionization chamber,
+the APS dosimeter requires periodic resetting.
+However, this only requires the capacitor to be recharged,
+which is almost instantaneous and does not require high voltages.
 
-El segundo dosímetro es un Floating Gate Transistor,
-semejante al transistor MOS en una celda de memoria Flash.
-Su compuerta se encuentra completamente aislada eléctricamente (flotando),
-para almacenar una carga colocada antes de la irradiación.
-La radiación incidente genera portadores en el aislante que rodea la compuerta
-y va descargándola en proporción a la energía capturada.
-Luego de la irradiación,
-se mide la carga remanente a través de su efecto en las curvas del transistor.
-Los dispositivos MOS son idóneos para dicha medición
-porque pueden medir la tensión de la compuerta sin consumo de corriente
-(o sea sin descargarla).
-Esto no es posible con transistores BJT y JFET.
-El dosímetro FG se destaca por la posibilidad de medir radiación sin suministro
-de tensión, ya que la compuerta flotante retiene su carga durante tiempos muy
-largos.
+The second dosimeter is a Floating Gate transistor,
+similar to the storage element in a Flash memory cell.
+It is a MOSFET whose gate is electrically isolated,
+so that it can be pre-charged before irradiating.
+Incoming radiation creates electron-hole pairs in the insulation around the floating gate,
+discharging it in direct proportion to the deposited energy.
+After irradiating, it is possible to determine how much charge remains
+by measuring the MOSFET's current-voltage characteristics.
+MOS devices are ideally suited for this purpose because they have zero gate current,
+so they can store charge for long periods of time.
+Floating Gate dosimeters stand out due to their ability to measure radiation without
+a voltage supply after the initial charging of the floating gate.
 
-Ambos dosímetros explotan la respuesta a radiación de dispositivos 
-normalmente utilizados para otros fines. 
-Luego de una introducción a la teoría de su funcionamiento,
-presentamos el proceso y las consideraciones de diseño,
-y los resultados de las mediciones de ambos dosímetros 
-comparando con los valores calculados y cos trabajos previos.
+Both dosimeters are based on measuring the radiation response of devices which are normally used for other purposes.
+After presenting the theory behind their operation,
+this thesis covers the fabrication process and resulting design considerations.
+It goes on to report the measurement results for both dosimeters,
+which are compared with calculations and with prior works.

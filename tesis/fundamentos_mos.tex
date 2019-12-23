@@ -1,61 +1,55 @@
-\section{Fundamentos de estructuras metal óxido semiconductor}
-La estructura MOS es la base de la tecnología moderna de 
-circuitos integrados\cita{sze_physics_2007}
-que componen las PCs, dispositivos móviles e infraestructura de comunicaciones.
-Su forma de fabricación, denominada proceso CMOS,
-ha permitido un crecimiento exponencial en la capacidad de cómputo,
-gracias a la constante miniaturización de los transistores que componen un
-circuito integrado (\figref{fig:moore}).
+\section{Fundamentals of Metal Oxide Semiconductor structures}
+MOS structures are the basis for modern integrated circuits
+\cita{sze_physics_2007}
+which make up PCs, mobile devices and communication infrastructure.
+The CMOS fabrication process which produces these structures
+has enabled processing power to grow exponentially,
+by steadily shrinking the transistors that make up an integrated circuit
+(\figref{fig:moore}).
 \fig{moore}{figuras/moore/moore.pdf}
-{Reducción exponencial de las dimensiones del transistor.
-La cantidad de transistores en un microprocesador se duplica cada dos años 
-siguiendo la ley de Moore\cite{moore_cramming_2006}.
-Reproducido de \cite{sedra_microelectronic_2010}.}
-\subsection{Capacitor MOS}
-Para entender el transistor MOS, estudiamos antes el capacitor MOS.
-Su fabricación comienza con una oblea de alrededor de \SI{1}{\milli\meter} cortada de un monocristal de silicio.
-Se oxida la superficie para obtener una delgada capa aislante de SiO$_2$.
-Los detalles de este paso y los tratamientos posteriores
-determinan una propiedad crucial de la interfaz Si-SiO$_2$:
-la densidad de estados electrónicos superficiales.
-Si su valor es muy alto, 
-muchas propiedades eléctricas se ven degradadas 
-(mayor ruido, corrimiento de parámetros con el tiempo).
-El descubrimiento de cómo lograr una interfaz adecuada para transistores MOS
-se dio décadas después de la idea original del transistor
+{Exponential reduction in transistor size.
+The number of transistors in a microprocessor doubles every two years,
+following Moore's law
+\cite{moore_cramming_2006}.
+Reprinted from \cite{sedra_microelectronic_2010}.}
+\subsection{MOS capacitor}
+Before studying MOS transistors, it is necessary to understand MOS capacitors.
+Fabrication begins with a ~\SI{1}{\milli\meter} silicon wafer cut from a monocrystalline ingot.
+Its surface is oxidized in order to produce a thin insulating SiO$_2$ layer.
+Both this step and subsequent treatment and annealing steps
+determine a crucial property of the Si-SiO$_2$ interface:
+the surface density of electronic states.
+If this number is too large, the device characteristics are negatively impacted:
+for example, through higher noise and parameter shifts over time.
+The invention that improved interfaces and thus enabled decent MOS transistors
+came decades after the MOS was originally patented
 \cite{chih-tang_evolution_1988}.
 
-Sobre el óxido se deposita un conductor (\emph{gate}) 
-como en la \figref{fig:cortemos}.
-El mismo puede ser polisilicio (silicio policristalino) o,
-en procesos recientes, un metal.
-\fig{cortemos}{figuras/mos/corte.png}{Corte lateral de una estructura MOS. 
-Reproducido de~\cite{sze_physics_2007}.}
+On top of the oxide layer, a conductor (gate) is deposited,
+as seen in \figref{fig:cortemos}.
+This conductor can be polysilicon (polycrystalline silicon) or,
+in recent processes, metal.
+\fig{cortemos}{figuras/mos/corte.png}{Cross section of a MOS structure.
+Reprinted from~\cite{sze_physics_2007}.}
 
-Esta estructura forma un capacitor porque tiene dos conductores separados por un
-dieléctrico.
+This structure forms a capacitor, with two conductors separated by a dielectric.
 %
-\subsubsection{Estructura de bandas}
-El análisis que sigue se basa en que las dimensiones laterales del MOS 
-(paralelo a la superficie del sustrato) son mucho mayores que 
-la longitud característica en que varían los campos en la dirección normal.
-Esto permite considerarlo homogéneo en las direcciones laterales,
-y limitarnos a un análisis unidimensional.
+\subsubsection{Band structure}
+The following analysis assumes a MOS whose dimensions along the wafer
+are much larger than the characteristic distance 
+across which the electric field varies normal to the wafer.
+This allows us to use a 1D model,
+neglecting field variations parallel to the wafer.
 
-La \figref{fig:bandasmos} muestra la estructura de bandas del MOS ideal.
-Un MOS ideal no tiene carga atrapada en el óxido ni en la interfaz
-óxido-semiconductor, y sus bandas no tienen curvatura cuando no se le aplica
-tensión.
-Analizamos la variación de las bandas en la dirección normal al sustrato,
-y su dependencia con la tensión $V$ aplicada.
+The ideal MOS band structure is depicted in \figref{fig:bandasmos}.
+An ideal MOS has no charge trapped in the oxide nor in the oxide-semiconductor interface.
+Therefore, its bands are flat under zero bias.
+We will analyze how band position varies with applied bias and with distance from the wafer surface.
 
-Al conectar una fuente de tensión 
-(por ejemplo una batería)
-entre las terminales, 
-fijamos la diferencia entre el nivel de Fermi del metal 
-y el del semiconductor. 
-El gradiente de $E_F$ produce un desplazamiento de cargas hasta que se llega a
-una nueva condición de equilibrio (\figref{fig:polarizacionmos}).
+When a voltage source (eg. a battery) is connected across the terminals,
+it fixes the difference between the Fermi levels of the metal and the semiconductor.
+The resulting $E_F$ gradient leads to a current within the MOS which restores equilibrium
+(\figref{fig:polarizacionmos}).
 
 %Bajo la condición $V=0$, los niveles de Fermi de metal y
 %semiconductor coinciden.
@@ -75,14 +69,14 @@ una nueva condición de equilibrio (\figref{fig:polarizacionmos}).
 %para obtener bandas planas (que implican, por Poisson, carga nula).
 %
 \fig{bandasmos}{figuras/mos/bandas.png}
-{Estructura de bandas del capacitor MOS en flatband o bandas planas.
-Reproducido de~\cite{sze_physics_2007}.}
+{Band structure of a MOS capacitor in the flatband condition.
+Reprinted from~\cite{sze_physics_2007}.}
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{.3\textwidth}
         \includegraphics{figuras/mos/acumulacion.png}
         \label{fig:mosacumulacion}
-        \caption{Acumulación}
+        \caption{Accumulation}
     \end{subfigure}
     \begin{subfigure}[b]{.3\textwidth}
         \includegraphics{figuras/mos/desercion.png}

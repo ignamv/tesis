@@ -81,198 +81,187 @@ Reprinted from~\cite{sze_physics_2007}.}
     \begin{subfigure}[b]{.3\textwidth}
         \includegraphics{figuras/mos/desercion.png}
         \label{fig:mosdesercion}
-        \caption{Deserción}
+        \caption{Depletion}
     \end{subfigure}
     \begin{subfigure}[b]{.3\textwidth}
         \includegraphics{figuras/mos/inversion.png}
-        \caption{Inversión}
+        \caption{Inversion}
         \label{fig:mosinversion}
     \end{subfigure}
-    \caption{Bandas del MOS polarizado, para $V_{fb}=0$.
-Reproducido de~\cite{sze_physics_2007}.}
+    \caption{Band structure of a MOS under bias, for $V_{fb}=0$.
+Reprinted from~\cite{sze_physics_2007}.}
     \label{fig:polarizacionmos}
 \end{figure}
 %
-\subsubsection{Concentración de portadores}
-Para modelar la concentración de huecos y electrones en semiconductores,
-se parte de la aproximación de electrón independiente.
-La misma permite pensar en términos de niveles de 1 electrón que son ocupados
-por electrones idénticos que no interactúan.
-La termodinámica de un sistema así
-lleva a la estadística de Fermi-Dirac, 
-que dice que la probabilidad de ocupación de un nivel está dada por
+\subsubsection{Carrier concentration}
+In order to model electron and hole concentration in semiconductors,
+one starts from the independent electron approximation.
+This means considering one-electron levels which are occupied by identical,
+non-interacting electrons.
+This type of system is described by Fermi-Dirac statistics,
+which state that the probability that a level is occupied is given by
 \begin{align*}
     f(E) = \left[\exp\left(\frac{E-E_F}{kT}\right)+1\right]^{-1}
 \end{align*}
-con $E$ la energía del nivel y $E_F$ el nivel de Fermi.
-$E_F$ es constante a lo largo de un sistema en equilibrio
-químico,
-y puede despejarse como función del número total de partículas.
-Para eso se invierte la identidad $N=\sum_E f(E)$ donde la suma es sobre
-todos los niveles de energía.
+with $E$ the level energy and $E_F$ the fermi level.
+$E_F$ is a constant throughout any system in chemical equilibrium,
+and can be solved for as a function of the total number of particles.
+This is done by inverting the equation $N=\sum_E f(E)$,
+with the sum spanning all energy levels.
 
-Para obtener la cantidad promedio de portadores en una banda,
-es necesario sumar la ocupación de todos los niveles de la misma. 
-En muchos casos de interés la banda de conducción cumple 
+In order to calculate the average number of carriers in a band,
+it is necessary to sum the occupancy of all the energy levels within it.
+We can simplify this sum in the non-degenerate case, where
+the conduction band is many thermal energies away from the Fermi level:
 $|E-E_F| \gg kT$.
-Esto permite aproximar la distribución Fermi-Dirac 
-por una distribución Maxwell-Boltzmann,
+This allows us to approximate the Fermi-Dirac distribution using a
+Maxwell-Boltzmann distribution:
 \begin{align*}
     f(E) \approx \exp\left(-\frac{E-E_F}{kT}\right)
 \end{align*}.
-Asimismo la suma de $f(E)$ sobre los niveles de la banda se puede aproximar
-por una integral, y así se llega a las concentraciones de electrones y huecos
+Moreover, the sum over energy levels can be approximated by an integral
+over energy, leading to the following hole and electron concentrations:
 \begin{align*}
     n_c = N_c(T)e^{-\frac{\epsilon_c-E_F}{k_BT}}\\
     p_v = P_v(T)e^{-\frac{E_F-\epsilon_v}{k_BT}}
-\end{align*} con $N_c(T)$ y $P_v(T)$ funciones que varían lentamente con la
-temperatura.
+\end{align*} with $N_c(T)$ y $P_v(T)$ two slowly-varying functions of temperature.
 
-Es conveniente expresar la concentración de portadores 
-como función del potencial medido respecto del contacto de bulk
-(un punto alejado del semiconductor, que tomamos como referencia):
+It is helpful to write the carrier concentration as a function of the bulk potential.
+This is a distant reference point in the semiconductor, which we use as a reference:
 $\psi_p=\phi(x)-\phi(\infty)$,
 \begin{align}
     n &= n_0\exp\left(\frac{q\psi_p}{kT}\right)&
     p &= p_0\exp\left(-\frac{q\psi_p}{kT}\right),
     \label{eq:portadores_nodegenerados}
 \end{align}
-con $n_0$ y $p_0$ las concentraciones de portadores en el bulk.
-\subsubsection{Impurezas}
-Una parte central del proceso de fabricación
-es introducir impurezas que aportan electrones o huecos
-en regiones cuidadosamente controladas (\emph{doping}).
-Así se crean zonas con concentraciones particulares de portadores.
-La geometría y concentración de cada zona
-es lo que define cada tipo de dispositivo 
-que un proceso es capaz de producir.
-Por ejemplo, un proceso puede estar diseñado para altas tensiones
-eligiendo concentraciones bajas y separaciones grandes
-que logren una alta tensión de ruptura de las junturas.
+with $n_0$ and $p_0$ the bulk carrier concentrations.
+\subsubsection{Doping}
+A central part of the fabrication process is the introduction of dopants
+which increase the number of holes or electrons in specific regions.
+The geometry and dopant concentration of each region define what kinds of devices
+can be created in a given process.
+For example, a process might be designed for high voltages by using low concentrations
+and large separations, which result in large junction breakdown voltages.
 
-Una técnica, llamada Chemical Vapor Deposition,
-es exponer el sustrato a un gas
-para que haya difusión de átomos del gas al sustrato.
-La otra, llamada implantación, es ionizar las impurezas 
-y acelerarlas mediante campos eléctricos hacia el sustrato.
-Allí penetran hasta una profundidad que puede controlarse 
-variando su energía\cite{campbell_science_2001}.
+One doping technique is called Chemical Vapor Deposition.
+It consists of exposing the wafer to a gas such that atoms diffuse from
+the gas phase to the wafer.
+Another technique is implanting: dopants are ionized and then accelerated
+towards the wafer using electric field.
+This allows the penetration depth to be controlled by varying the
+acceleration energy
+\cite{campbell_science_2001}.
 
-
-La forma en que las impurezas introducen portadores 
-es capturando o emitiendo electrones.
-Esto deja al átomo de impureza ionizado.
-Para analizar este fenómeno se modela al efecto 
-de una impureza con valencia 5
-(uno más que el Silicio)
-como si fuera un átomo normal de la red 
-sumado a una carga fija +1, y un electrón.
-Esta carga fija es capaz de atraer y formar estados ligados con electrones.
-Usando la ecuación de masa efectiva\cite{datta_quantum_1989},
+The mechanism by which dopants add carriers is by capturing or emitting electrons.
+This ionizes the impurity atom.
+In order to model this phenomenon,
+impurity atoms are modeled as though they were a normal Silicon lattice atom,
+and an additional charge depending on its valence number
+(+1 for pentavalent impurities like P, -1 for trivalent like B).
+This additional charge can form bound electron states.
+By using the effective mass equation\cite{datta_quantum_1989},
 % FIXME: feo
-se llega a que la energía de ligadura es muy baja
-y por lo tanto las impurezas están casi totalmente ionizadas 
-bajo condiciones normales de temperatura.
-Esto se debe al efecto de la red: 
-Por un lado actúa como dieléctrico
-y apantalla el campo eléctrico de la carga.
-Por otro lado altera la masa efectiva de los electrones 
-y reduce la energía cinética y por lo tanto la potencial.
+one can conclude that the binding energy is typically very low.
+Therefore, dopant atoms are almost completely ionized under normal temperature ranges.
+This is due to the periodic Silicon lattice, which acts in two ways.
+First, it is a dielectric which shields the dopant's electric field.
+Second, it gives the electron a smaller effective mass,
+which lowers the kinetic energy
+(and therefore the potential energy, through the Virial theorem)
 
-El análisis de impurezas aceptoras es análogo al de las donantes, 
-con una carga fija -1 que se ioniza y libera un hueco.
+Typically, a region has more dopants of one kind than the other,
+by several orders of magnitude.
+It is then said that the holes or the electrons are the majority carrier.
+It can also be said that the region is p-type (majority holes)
+or n-type (majority electrons).
 
-Típicamente se dopa una región con muchas más impurezas de un tipo
-que de otro: la diferencia suele ser de órdenes de magnitud.
-Se dice entonces que ahí los electrones o bien los huecos 
-son el portador mayoritario.
-De forma equivalente, se dice que esa región es de tipo 
-``P'' (dopada con aceptores) o de tipo ``N'' (dopada con donantes).
-En este caso la concentración del portador mayoritario
-es aproximadamente igual a la concentración de su impureza.
-La concentración del otro portador se encuentra fuertemente suprimida
-debido al principio de Le Chatelier,
-y vale aproximadamente $n_i^2/N_a$ 
-con $n_i$ la concentración de portadores del semiconductor intrínsico (puro),
-y $N_a$ la concentración de la impureza mayoritaria.
+Under this condition, the majority carrier concentration is approximately equal
+to its dopant concentration.
+The minority carrier concentration is suppressed due to Le Chatelier's principle,
+and is approximately equal to $n_i^2/N_a$ 
+with $n_i$ the intrinsic (pure) carrier concentration for the semiconductor,
+and $N_a$ the majority doping concentration.
 
-\subsubsection{Relación carga-tensión}
-Planteando la ecuación de Poisson para el potencial $\phi$ en el semiconductor se llega a
+\subsubsection{Charge-voltage relation}
+Starting from Poisson's equation for the semiconductor potential $\phi$,
+one reaches
 \begin{align*}
     \deriv{^2\phi}{x^2} &= \frac e{\epsilon_s}(N_d-N_a+p-n),
 \end{align*}
-siendo los términos de la derecha concentraciones de donantes, aceptores,
-huecos y electrones.
+where the right-hand side terms are concentrations of donors, acceptors,
+holes and electrons, respectively.
 
-
-La aproximación~\ref{eq:portadores_nodegenerados} es válida para 
+Approximation~\ref{eq:portadores_nodegenerados} is valid for the nondegenerate
+condition
 $|E_F-E_{c/v}|\gg kT$, 
-o sea el nivel de Fermi alejado de los bordes de las bandas.
-Así se obtiene un sistema de ecuaciones cuya solución para el campo eléctrico es
+meaning the Fermi level is several thermal energies away from the band edges.
+This leads to a set of equations which we can solve for the electric field:
 \begin{align*}
     \mathscr{E}_s &= \pm \frac{\sqrt 2kT}{qL_D}
-    F(q\psi_p/kT,n_{p0}/p_{p0})\textnormal{, con}\\
-    L_D^2&=\frac{kT\epsilon_s}{p_{p0}q^2}\textnormal{ , y}\\
+    F(q\psi_p/kT,n_{p0}/p_{p0})\textnormal{, with}\\
+    L_D^2&=\frac{kT\epsilon_s}{p_{p0}q^2}\textnormal{ , and}\\
     F(x,y) &= \sqrt{e^{-x}+x-1+y(e^x-x-1)}.
 \end{align*}
-Usando la ley de Gauss se obtiene la carga total del semiconductor
+Applying Gauss' law leads to the total charge in the semiconductor:
 \begin{align*}
     Q_s = -\epsilon_s\mathscr{E}_s.
 \end{align*}
-La relación entre $V_G$ y $\psi_p$ viene de plantear la continuidad del vector
-desplazamiento y la caída de tensión en el aislante
+
+We can find the relation between $V_G$ and $\psi_p$ by
+using the voltage drop across the gate oxide,
+and the continuity of the normal component of the displacement field:
 \begin{align}
     V_G &= \psi_s + \mathscr{E}\frac{\epsilon_s}{\epsilon_{ox}}t_{ox}.
     \label{eq:potencial_campo_mos}
 \end{align}
-Esto resulta en el gráfico de la \figref{fig:cargamos},
-donde delimitamos distintos regímenes de operación.
+This yields the curve in \figref{fig:cargamos},
+where one can highlight the operating regions.
 %
-\subsubsection{Regímenes de operación del capacitor MOS}
+\subsubsection{MOS capacitor operating regions}
 \begin{itemize}
-    \item Acumulación:
-        Aplicando tensión negativa al gate
-        se puebla la superficie de portadores mayoritarios.
-    \item Flatband/bandas planas: 
-        A \SI{0}{\volt} la carga positiva de los huecos 
+    \item Accumulation:
+        When the gate is negatively biased,
+        the semiconductor surface acquires additional majority carriers.
+    \item Flatband:
+        At zero gate voltage, the positive charge from the holes
         (portadores mayoritarios)
-        cancela la carga negativa de los aceptores, 
-        entonces $Q=0$. 
-    \item Deserción/Inversión débil:
-        Aumentando la tensión se vacía la superficie de portadores
-        mayoritarios,
-        dejando la carga neta negativa de los aceptores ionizados.
-    \item Inversión fuerte:
-        Al cruzar $2\psi_B$ se puebla la superficie de portadores minoritarios
-        con carga negativa,
-        de igual magnitud y signo opuesto a la del sustrato.
-        Un pequeño aumento adicional de $\psi_s$ resulta en un aumento exponencial
-        de $|Q|$.
-        Esta dependencia exponencial es válida hasta que el nivel de Fermi 
-        se aproxima al borde de la banda de conducción y 
-        el semiconductor se torna degenerado.
-        Esto significa que se comporta como un metal,
-        con una densidad de portadores que varía lentamente con el potencial.
-        Antes de este punto, la carga pasa a crecer linealmente con $V_G$
-        porque casi toda la tensión adicional cae a través del óxido de gate.
+        cancels with the negative charge from the acceptor ions,
+        leading to $Q=0$. 
+    \item Depletion/weak inversion:
+        With increasing gate voltage,
+        the semiconductor surface is depleted of majority carriers.
+        This leaves behind the negative charge from acceptor ions.
+    \item Strong inversion:
+        When the surface potential crosses $2\psi_B$,
+        the surface is filled with minority electrons,
+        with a concentration equaling that of majority carriers in the bulk.
+        Additional increases in $\psi_s$ result in exponential growth in
+        $|Q|$.
+        This remains true until the Fermi level gets close to 
+        the conduction band edge, which is called degeneracy.
+        When this happens, the semiconductor behaves like a metal,
+        whose carrier density varies very weakly with potential.
+        Before this point is reached,
+        charge grows linearly with $V_G$
+        because most additional voltage is dropped across the gate oxide.
 \end{itemize}
-\fig{cargamos}{figuras/mos/carga_vg.pdf}{Carga de un MOS típico 
-    ($N_A=$\SI{4e15}{\centi\meter^{-3}}) en función
-de la tensión de gate.
-En la región de la izquierda el nivel de Fermi se acerca a la banda de
-valencia. Esto torna degenerado al semiconductor y requiere el uso de
-estadística de Fermi-Dirac en vez de aproximarla por Maxwell-Boltzmann.}
+\fig{cargamos}{figuras/mos/carga_vg.pdf}{Charge in a typical MOS
+    ($N_A=$\SI{4e15}{\centi\meter^{-3}}) as a function of gate voltage.
+In the left of the graph, the Fermi level grows near to the valence band edge.
+This breaks the nondegeneracy assumption, meaning that Fermi-Dirac statistics
+must be used without approximation.}
 %
 %
-\subsection{Transistor MOS}
-El transistor es la base de la electrónica moderna.
-Modulando una señal con otra, 
-permite realizar operaciones analógicas como amplificación y multiplicación.
-Al operarlo con niveles discretos (prendido/apagado),
-permite realizar las operaciones lógicas básicas (NOT, AND, etc.) que
-se combinan para formar un circuito digital.
-Su evolución permitió la integración de un número creciente de funciones
-digitales y analógicas en un mismo circuito integrado.
+\subsection{MOS transistor}
+Transistors are the base of modern electronics.
+By modulating one signal with another,
+they implement analog operations like amplification and multiplication.
+When used with discrete levels (on/off),
+they implement the basic logic gates (NOT, AND, etc)
+which combine to form a digital circuit.
+Their steady improvement has allowed for a growing number of 
+digital and analog functions
+to be integrated in a single chip.
 %
 \subsubsection{Modelo circuital}
 \label{section:ecuaciones_mos}

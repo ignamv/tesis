@@ -263,48 +263,50 @@ Their steady improvement has allowed for a growing number of
 digital and analog functions
 to be integrated in a single chip.
 %
-\subsubsection{Modelo circuital}
+\subsubsection{Circuit model}
 \label{section:ecuaciones_mos}
-El MOSFET o transistor MOS es un dispositivo con 4 terminales:
-drain, gate, source y body (\figref{fig:mosfetschem}).
-\fig{mosfetschem}{figuras/mos/mosfet.pdf}{Símbolo esquemático del transistor MOS.}
-Frecuentemente se conecta source con body, rompiendo la simetría source-drain.
-La tensión entre gate y source controla la corriente drain-source.
+The MOSFET or MOS transistor is a 4-terminal device:
+drain, gate, source and body (\figref{fig:mosfetschem}).
+\fig{mosfetschem}{figuras/mos/mosfet.pdf}{Schematic symbol of the MOS transistor}
+In many cases, the source is shorted to the body,
+which breaks the drain-source symmetry.
+The gate-source voltage controls the current from drain to source.
 
-En la \figref{fig:mosfetoutput} se ven los 3 modos de operación del MOS:
-\fig{mosfetoutput}{figuras/mos/output.pdf}{Curvas características de un
-transistor MOS típico.}
+\Figref{fig:mosfetoutput} shows 3 operating regions for the MOSFET:
+\fig{mosfetoutput}{figuras/mos/output.pdf}{Output characteristics of a MOSFET}
 \begin{itemize}
-    \item Corte: Si $V_g<V_T$, no fluye corriente de drain.
-        Por eso $V_T$ es denominada la ``tensión umbral''.
-        $V_T$ es un parámetro de fabricación que ronda \SI{.3}{\volt} en procesos CMOS
-        modernos.
-        Un modelo más preciso es que $I_d$ depende exponencialmente de $V_g$.
-    \item Triodo: Si $V_g>V_T$ y $V_{ds}<V_g-V_T$, la corriente de drain crece con la
-        tensión drain-source siguiendo
+    \item Cutoff: when $V_g<V_T$, no drain current flows.
+        This is why $V_T$ is called the threshold voltage.
+        $V_T$ is a parameter fixed by the fabrication process
+        which is close to \SI{.3}{\volt} in modern CMOS processes.
+        A more accurate model for this region is that $I_d$ varies
+        exponentially with $V_gs$.
+    \item Triode: when $V_g>V_T$ and $V_{ds}<V_g-V_T$, 
+        drain current grows with drain-source voltage according to
         \begin{align*}
             I_D&=\beta_n\frac WL(V_{gs}-V_T-\frac{V_{ds}}2)V_{ds},
         \end{align*}
-        con $\beta_n$ un parámetro del proceso y $\frac WL$ la relación de
-        aspecto del MOSFET.
-    \item Saturación: Si $V_g>V_T$ y $V_{ds}>V_g-V_T$ la corriente se mantiene, a primer
-        orden, al valor constante
+        with $\beta_n$ a parameter fixed by the fabrication process
+        and $\frac WL$ the MOSFET's aspect ratio.
+    \item Saturation: when $V_g>V_T$ and $V_{ds}>V_g-V_T$,
+        drain current is approximately independent of $V_ds$:
         \begin{align*}
             I_{Dsat}&=\frac{\beta_n}2\frac WL(V_{gs}-V_T)^2.
         \end{align*}
 \end{itemize}
 %
-\subsubsection{Modelado físico}
-El MOSFET de canal n consiste en un capacitor MOS de sustrato p entre dos regiones fuertemente dopadas 
-tipo n, 
-que forman drain y source (\figref{fig:mosfetestructura}).
-Sin tensión de gate no puede fluir corriente entre drain y source porque una de las
-junturas p-n (drain-sustrato o source-sustrato) queda polarizada en inversa.
+\subsubsection{Physical modeling}
+An N-channel MOSFET consists of a MOS capacitor on a p-type substrate
+between two highly doped n-type regions.
+These two regions form the drain and source (\figref{fig:mosfetestructura}).
+In the absence of gate voltage,
+no current can flow from drain to source because 
+one of the p-n junctions (drain-substrate or source-substrate) is reverse-biased.
 
-Al polarizar el MOS en inversión se forma junto al óxido de gate 
-una capa de electrones libres llamada canal.
-Esta región de tipo n conecta drain y source y permite el flujo de corriente.
-Al variar la tensión de gate, la variación de carga en el canal modula su
-conductividad.
-\fig{mosfetestructura}{figuras/mos/mosfet.png}{Estructura del transistor MOS.
-Reproducido de~\cite{sze_physics_2007}.}
+When the MOS is inverted,
+a layer of electrons form a conduction channel near the surface of the silicon.
+This n-type region connects the drain to the source, allowing for current to flow.
+As gate voltage varies,
+the variation of charge in the channel modulates its conductivity.
+\fig{mosfetestructura}{figuras/mos/mosfet.png}{MOSFET structure.
+Reprinted from~\cite{sze_physics_2007}.}

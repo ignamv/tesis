@@ -1,7 +1,7 @@
 \section{Radiation}
 \label{sec:radiacion}
 Radiation is the transport of energy, mediated by different particles.
-This thesis deals with photons ($\gamma$ rays) and electrons ($\beta$ rays).
+This thesis deals with photons (X rays) and electrons ($\beta$ rays).
 When these particles carry enough energy,
 they interact with matter in such a way to cause ionization.
 This can lead to damage both in living tissue and in electronic devices.
@@ -52,51 +52,52 @@ When $\beta$ or $\gamma$ radiation strikes a material,
 it can produce free electrons (secondary $\beta$ radiation)
 if the incoming particle energy exceeds the material ionization energy.
 
-Otra forma de producir radiación $\beta$ es crear nuevos electrones a partir de
-energía.
-Esto se da naturalmente en algunos isótopos radioactivos en un proceso llamado
-decaimiento $\beta$.
-\subsubsection{Decaimiento $\beta$}
-El decaimiento $\beta$ es un proceso
-que convierte un núcleo $X$ en otro menos masivo $X'$ y emite
-un antineutrino electrónico y un electrón.
-Por ejemplo, el decaimiento del estroncio a itrio
+$\beta$ radiation can also be produced by decaying radioactive isotopes,
+in a process called $\beta$ decay.
+\subsubsection{$\beta$ decay}
+$\beta$ decay is a process whereby an atomic nucleus $X$ 
+turns into a lighter nucleus $X'$,
+emitting an electron and an electron antineutrino.
+For example, strontium decaying to Yttrium:
 \begin{align*}
     \left.^{90}\strontium\right.
     &\to\left.^{90}\yttrium\right.+e^-+\overline\nu_e.
 \end{align*}
-La variación de la cantidad de átomos $N_X$ puede modelarse con
+The variation in the number of atoms $N_X$ as a function of time follows the equation
 \begin{align*}
     \deriv{N_X}t &= -\lambda N_X\\
     \deriv{N_{X'}}t &= \lambda N_X
 \end{align*}
-si $X'$ es estable. 
-$\lambda$ es un parámetro que determina la tasa de decaimiento.
-La solución es
+if $X'$ is stable over the timescales of interest.
+$\lambda$ is a parameter which sets the decay rate.
+In the context of radiation, this decay rate is called activity
+and is measured in Becquerel (\SI{1}{\becquerel}=\SI{1}{\per\second})
+or Curie (1 Ci=\SI{3.7e10}{\per\second}).
+The solutions to this equation are of the form
 \begin{align}
     \label{eq:soluciondecaimiento}
     N_X(t) &= N_X(0)e^{-\lambda t}\\
     N_{X'}(t) &= N_X(0)(1-e^{-\lambda t}).\nonumber
 \end{align}
-En vez de $\lambda$ se habla comunmente de la vida media de $X$:
-el tiempo $\tau$ que tarda $N_X$ en caer a la mitad.
-Puede despejarse de la \equref{eq:soluciondecaimiento}
+Rather than $\lambda$, it is more usual to speak of the half life of $X$.
+This is the time $\tau$ it takes for $N_X$ to halve.
+Its relation to $\lambda$ can be deduced from \equref{eq:soluciondecaimiento}.
 \begin{align*}
     \frac 1 2 N_X(0) &= N_X(0)e^{-\lambda\tau}\\
     \tau &= \frac{\ln2}\lambda
 \end{align*}
-\subsubsection{Equilibrio secular}
-El nuevo núcleo creado por decaimiento $\beta$ puede, a su vez, ser inestable.
-Por ejemplo, el $^{90}\strontium$ decae en $^{90}\yttrium$ que decae
-en $^{90}\zirconium$.
-Modelamos esto con
+\subsubsection{Secular equilibrium}
+The lighter nucleus produced by $\beta$ decay may itself be unstable.
+For example, $^{90}\strontium$ decays to $^{90}\yttrium$ 
+which in turn decays to $^{90}\zirconium$.
+The quantities of each element follow the equations
 \begin{align*}
     \deriv{N_\strontium}t &= -\lambda_\strontium N_\strontium\\
     \deriv{N_\yttrium}t &= \lambda_\strontium N_\strontium
         -\lambda_\yttrium N_\yttrium\\
     \deriv{N_\zirconium}t &= \lambda_\yttrium N_\yttrium.
 \end{align*}
-Su solución es
+The solutions are of the form
 \begin{align*}
     N_\strontium(t) &= N_\strontium(0)e^{-\lambda_\strontium t}\\
     %\deriv{N_\yttrium}t +\lambda_\yttrium N_\yttrium &= 
@@ -105,20 +106,18 @@ Su solución es
         +N_\strontium(0)\frac{\lambda_\strontium}
         {\lambda_\yttrium-\lambda_\strontium}e^{-\lambda_\strontium t}.
 \end{align*}
-Dado que la vida media del $^{90}\yttrium$ (2.7 días) 
-es mucho menor que la del $^{90}\strontium$ (29 años),
-tenemos $\lambda_\yttrium\gg\lambda_\strontium$.
-Las cantidades de cada elemento tienden a un equilibrio secular dado por
+Because $^{90}\yttrium$'s half life (2.7 days) 
+is much smaller than $^{90}\strontium$'s (29 years),
+it holds that $\lambda_\yttrium\gg\lambda_\strontium$.
+Therefore, the quantities of both elements reach a secular equilibrium given by
 \begin{align*}
     N_\strontium(t) &= N_\strontium(0)e^{-\lambda_\strontium t}\\
     N_\yttrium(t) &\approx N_\strontium(0)
         \frac{\lambda_\strontium}{\lambda_\yttrium}
         e^{-\lambda_\strontium t}.
-\end{align*}La frecuencia con que cada elemento emite un electrón es su
-actividad. 
-Se expresa en Becquerel
-(\SI{1}{\becquerel}=\SI{1}{\per\second}) o Curie
-(1 Ci=\SI{3.7e10}{\per\second}), y está dada en este ejemplo por
+\end{align*}
+
+The activity is
 \begin{align*}
     A_\strontium(t) &= N_\strontium(0)\lambda_\strontium
         e^{-\lambda_\strontium t}\\
@@ -126,108 +125,102 @@ Se expresa en Becquerel
         \frac{\lambda_\strontium}{\lambda_\yttrium}\lambda_\yttrium
         e^{-\lambda_\strontium t}=A_\strontium(t).
 \end{align*}
-Por lo tanto, una fuente de $^{90}\strontium$ en equilibrio secular
-debe mitad de su actividad a decaimientos $\strontium\to\yttrium$
-y mitad a $\yttrium\to\zirconium$.
+Therefore, a $^{90}\strontium$ source in secular equilibrium
+owes half of its activity to $\strontium\to\yttrium$ decays
+and half to $\yttrium\to\zirconium$ decays.
 %
-\subsubsection{Frenado de electrones}
-La pérdida de energía de los electrones se debe a interacciones discretas con
-los átomos de un escudo.
-Aproximando el frenado como una variación contínua de su energía 
-en función de la distancia $\epsilon(x)$,
-podemos plantear un poder de frenado $S(\epsilon)$ del material tal que
+\subsubsection{Electronic stopping}
+Electrons lose energy in discrete interactions with the atoms that make up matter.
+This series of interactions can be approximated as
+a continuous variation of energy with distance $\epsilon(x)$.
+This allows us to define a stopping power $S(\epsilon)$ for each material such that
 \begin{align*}
     \frac{d\epsilon}{dx}=-S(\epsilon).
 \end{align*}
-con $\frac{d\epsilon}{dx}$ la variación de energía de un electrón por unidad de
-distancia.
 
-En protección de radiación no se suele trabajar con electrones individuales
-sino con haces. Típicamente se considera un haz con un flujo constante de
-$\frac{dN}{dt}$ partículas por unidad de tiempo.
-También se define su intensidad $I=\frac{dN}{dAdt}$,
-que es el flujo de partículas por unidad de área.
+One is typically interested in studying protection from a beam of electrons,
+rather than a single electron.
+Beams can be characterized by their particle flux (number of particles per unit time)
+$\dot N=\frac{dN}{dt}$
+or their fluence rate (number of particles per unit time, per unit area)
+$\dot\Phi=\frac{dN}{dAdt}$.
 
-Para calcular la tasa de dosis de un haz,
-resulta útil definir el poder de frenado de masa $S/\rho$. 
-Así se llega a una expresión simple para la tasa de dosis:
+In calculating a beam's dose rate (deposited energy per unit time, per unit mass),
+one typically works with the mass stopping power $S/\rho$,
+which is the stopping power divided by the material density.
+This leads to a simple expression for the dose rate:
 \begin{align*}
     \dot D&=\deriv{}{t}\deriv{E}{m}=\deriv{\epsilon dN}{mdt}=\frac
     1\rho\deriv{\epsilon}{x}\deriv{N}{Adt}=
-    \frac{IS}\rho
+    I\frac{S}\rho
 \end{align*}
-con $\rho$ la densidad del material bajo irradiación
-y $\dot D$ la deposición de energía por unidad de masa y de tiempo 
-(tasa de dosis).
-$S$ está tabulada para cada elemento y material (\figref{fig:stopping})
-\fig{stopping}{figuras/rad/stopping.pdf}{Poder de frenado de electrones 
-para distintos materiales en función de la energía.
-Valores publicados por NIST en el proyecto ESTAR\cite{berger_estar_????}.}
-junto con el rango o distancia de frenado
+$S$ and $S/\rho$ are tabulated for many elements and materials (\figref{fig:stopping}).
+\fig{stopping}{figuras/rad/stopping.pdf}{Electronic stopping power
+for different materials as a function of energy.
+Values published by NIST's ESTAR project\cite{berger_estar_????}.}
+Another tabulated quantity is the range,
+which is how far they can travel through a material in a straight line
+before exhausting their energy:
 \begin{align*}
     R(\epsilon) &= \int_0^\epsilon \frac{d\epsilon'}{S(\epsilon')}
-\end{align*} y la eficiencia radiativa $Y$.
-Esta es la fracción de la energía electrónica que se 
-emite como fotones (\emph{bremsstrahlung} o radiación de frenado). 
+\end{align*}
 
-$Y$ aumenta con el peso atómico del material de frenado.
-Para fines de protección,
-se suelen frenar los electrones con polímeros como acrílico que tienen bajo
-rendimiento radiativo.
-Así se minimiza la producción de rayos X y se reduce el espesor de plomo
-necesario para atenuarlos.
+Finally, there is the radiation yield $Y$.
+This is the fraction of energy which is emitted as photons
+(braking radiation or bremsstrahlung).
+$Y$ is an increasing function of atomic number.
+For protection purposes, it is common to stop electrons with
+polymers such as acrylic, which have low radiation yield.
+This minimizes X ray production,
+meaning less lead is required to absorb the braking radiation.
 %
-\subsection{Radiación X}
-Los rayos X son fotones de longitud de onda menor a \SI{10}{\nano\meter}.
-Transportan energía suficiente para ionizar muchos materiales.
-Se producen típicamente por el frenado de partículas cargadas al interactuar
-con la materia.
-\subsubsection{Radiación de frenado (bremsstrahlung)}
-Cuando una carga es acelerada, emite radiación
-electromagnética\cite{jackson_classical_1998}.
-Un caso importante es la bremsstrahlung,
-radiación por frenado de electrones en materia.
-Ocurre en la naturaleza por interacción de rayos cósmicos con la atmósfera,
-y artificialmente en los tubos de rayos X 
-al frenar electrones en un blanco metálico.
+\subsection{X radiation}
+X rays are photons with wavelengths between \SI{0.03}{\nano\meter} and \SI{10}{\nano\meter}.
+They carry sufficient energy to ionize many materials.
+They are typically produced when charged particles interact with matter.
+\subsubsection{Braking radiation (bremsstrahlung)}
+When a charged particle accelerates, it emits electromagnetic radiation
+\cite{jackson_classical_1998}.
+Bremsstrahlung is an example of this,
+produced by electrons which slow down in matter.
+It occurs naturally as cosmic rays interact with the atmosphere,
+and artificially in X ray tubes as electrons impact a metallic target.
 
-La densidad espectral de potencia de bremsstrahlung está dada por la ley de
-Kramers\cite{kramers_xciii._1923}
+Bremsstrahlung photons have a power spectral density given by
+Kramers' law\cite{kramers_xciii._1923}
 \begin{align}
     P(E)dE = \frac{2P_T}{E_M^2}(E_M-E)dE
     \label{eq:kramers}
-\end{align} para electrones con energía $E_M$ (\figref{fig:kramers}).
+\end{align} with $E_M$ the incoming electron energy (\figref{fig:kramers}).
 \fig{kramers}{figuras/rad/kramers.pdf}
-{Densidad espectral de potencia (PSD) de la radiación proveniente del 
-frenado de electrones con energía $E_M$ irradiando una potencia total $P_T$.}
-$P_T$ es la potencia total de \emph{bremsstrahlung}, dada por
+{Power spectral density produced by stopping electrons with energy $E_M$,
+with total power $P_T$.}
+$P_T$ is the total bremsstrahlung power, given by
 \begin{align*}
     P_T&=E_MIY(E_M)
-\end{align*}con $I$ la intensidad de electrones e $Y$ la eficiencia radiativa a
-esa energía.
-\subsubsection{Absorción de X}
-Modelamos la intensidad de rayos X como función contínua de la energía y
-posición $I(E,x)$.
-Así podemos plantear un coeficiente de absorción $\mu(E)$ para cada 
-material (\figref{fig:absorcionX}) tal que 
+\end{align*} with $I$ the electron flux
+and $Y$ the radiation yield for the target material at that energy.
+\subsubsection{X ray shielding}
+We model X ray intensity as a continuous function of energy and position $I(E,x)$.
+This allows us to define an absorption coefficient $\mu(E)$ for each material
+(\figref{fig:absorcionX}) such that
 \fig{absorcionX}{figuras/rad/absorcionX.pdf}
-{Tasa de absorción $\mu$ de rayos X en función de la energía.
-    Valores tabulados por NIST\cite{xraycoef}.}
+{X ray absorption coefficient $\mu$ as a function of energy.
+    Values tabulated by NIST\cite{xraycoef}.}
 \begin{align}
     \label{eq:absorcionx}
     dI/dx=-\mu I.
 \end{align}
-Este $\mu$ se encuentra tabulado para distintos elementos y materiales
-\cite{xraycoef}.
-\subsubsection{Factor de buildup}
+$\mu$ is tabulated for many elements and materials\cite{xraycoef}.
+\subsubsection{Buildup factor}
 % DETAIL: de repente estoy hablando de escudos y detectores
-El $\mu$ considera tanto absorción de fotones como scattering en un cuerpo.
-Si el detector (o la zona donde estoy calculando dosis) 
-está cerca de la fuente, 
-algunos fotones dispersados pueden impactarlo (\figref{fig:buildup}).
-\fig{buildup}{figuras/buildup/buildup.pdf}{Geometría mala: cerca del escudo algunos fotones
-dispersados llegan al detector.}
-Por eso se tabula el factor de buildup\cita{martin_physics_2013}
+The absorption coefficient $\mu$ takes into account both photon absorption and scattering in a body.
+When one calculates dose rate close to the shield,
+some of the photons scattered by the shield may still reach the region of interest
+(\figref{fig:buildup}).
+\fig{buildup}{figuras/buildup/buildup.pdf}{Counterproductive geometry:
+some of the photons scattered by the shield still reach the detector.}
+For this reason, there are tabulated values for the buildup \cita{martin_physics_2013}
 que relaciona la verdadera intensidad a la salida del escudo 
 con la calculada mediante la \equref{eq:absorcionx}.
 Su valor se obtiene numéricamente mediante simulaciones Monte-Carlo

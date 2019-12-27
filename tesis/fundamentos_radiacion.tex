@@ -215,14 +215,15 @@ $\mu$ is tabulated for many elements and materials\cite{xraycoef}.
 \subsubsection{Buildup factor}
 % DETAIL: de repente estoy hablando de escudos y detectores
 The absorption coefficient $\mu$ takes into account both photon absorption and scattering in a body.
-When one calculates dose rate close to the shield,
+When one calculates the dose rate close to the shield,
 some of the photons scattered by the shield may still reach the region of interest
 (\figref{fig:buildup}).
 \fig{buildup}{figuras/buildup/buildup.pdf}{Counterproductive geometry:
 some of the photons scattered by the shield still reach the detector.}
-For this reason, there are tabulated values for the buildup \cita{martin_physics_2013}
-que relaciona la verdadera intensidad a la salida del escudo 
-con la calculada mediante la \equref{eq:absorcionx}.
+For this reason, there are tabulated values for the buildup factor\cita{martin_physics_2013}
+which is the ratio of the actual intensity in the detector
+to the intensity calculated using \equref{eq:absorcionx}.
+The buildup factor is found numerically, using 
 Su valor se obtiene numéricamente mediante simulaciones Monte-Carlo
 (capítulo~\ref{montecarlo})
 que tienen en cuenta tanto absorción como scattering

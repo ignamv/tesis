@@ -1,118 +1,120 @@
-\section{Instrumental}
-\subsection{Electrómetro Keithley 617}
-Un electrómetro es un instrumento muy sensible para mediciones eléctricas.
-Configurado para medir tensión, sus características son:
+\section{Measurement instruments}
+\subsection{Keithley 617 electrometer}
+Electrometers are highly sensitive instruments for electrical measurements.
+When measuring voltage, it is characterized by:
 \begin{itemize}
-    \item Alta impedancia de entrada:
-\SI{200}{\tera\ohm} en paralelo con $<$\SI{2}{\pico\farad}
-\item Alta precisión: $\pm0.05\%$
-\item Alta resolución: hasta \SI{10}{\micro\volt}
+    \item High input impedance:
+\SI{200}{\tera\ohm} in parallel with $<$\SI{2}{\pico\farad}
+\item High precision: $\pm0.05\%$
+\item High resolution: under \SI{10}{\micro\volt}
 \end{itemize}
 \begin{figure}[p]
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/617volts.png}
-        \caption{Tensión}
+        \caption{Voltage}
         %\label{fig:posicionno}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/617ohms.png}
-        \caption{Resistencia}
+        \caption{Resistance}
         %\label{fig:posicionno}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/617amps.png}
-        \caption{Corriente}
+        \caption{Current}
         %\label{fig:posicionno}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/617coulombs.png}
-        \caption{Carga}
+        \caption{Charge}
         %\label{fig:posicionno}
     \end{subfigure}
-    \caption{Configuraciones de medición del electrómetro.
-    Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
+    \caption{Electrometer measurement configurations.
+    Reprinted from~\cite{keithley_instruments_inc._keithley_1984}.}
     \label{fig:keithley617}
 \end{figure}
-Introduciendo elementos de realimentación en el circuito de entrada,
-es capaz de medir corriente, resistencia, carga y tensión
+By adding feedback components to the input circuit,
+electrometers can measure voltage, current, resistance and charge.
 (\figref{fig:keithley617}).
-La alta ganancia del amplificador mantiene la terminal de entrada a
+The amplifier's high gain keeps the input terminal at 
 \SI{0}{\volt}, 
-evitando cargar el circuito bajo prueba.
-La terminal de entrada está cuidadosamente aislada 
-para evitar fugas de corriente. 
-Por ejemplo, partes del circuito de entrada 
-están levantadas del circuito impreso con aisladores de teflon
-para aumentar la aislación.
-\subsubsection{Medición con guarda}
-Al medir una fuente de tensión de muy alta impedancia,
-cualquier flujo de corriente hacia el instrumento de medición
-provoca una caída de tensión considerable.
-Debido a la alta impedancia de entrada del electrómetro,
-fluye muy poca corriente a través de sus terminales.
-Sin embargo, hay otra corriente que fluye en los cables debido a la resistencia
-finita de la aislación (\figref{fig:unguarded}).
+which minimizes the measurement's impact on the circuit under test.
+The very high input impedance,
+which minimizes current drawn from the circuit under test,
+is achieved partly by careful isolation of the input terminal.
+For example, parts of the input circuit 
+are held above the printed circuit board with teflon standoffs,
+for better isolation.
+\subsubsection{Guarded measurements}
+When measuring voltage at high impedance nodes,
+any current drawn by the measurement instrument causes a large voltage drop.
+Due to the electrometer's high input impedance,
+very little current is drawn through its terminals .
+However, there is an additional current flow through the cables
+due to the finite resistance of their insulation
+(\figref{fig:unguarded}).
 \fig{unguarded}{figuras/instrumental/unguarded.png}
-{Efecto de las pérdidas de los cables en mediciones de tensión.
-    Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
+{Effect of cable leakage on voltage measurements.
+    Reprinted from~\cite{keithley_instruments_inc._keithley_1984}.}
 
-Para evitar estas corrientes de pérdida,
-se utiliza un conductor de guarda (\figref{fig:guarded})
-rodeando al cable de señal.
-El electrómetro lo mantiene a una tensión muy cercana a la señal.
-Esto minimiza la tensión a través del aislante del cable,
-reduciendo las pérdidas en el mismo.
-Al mismo tiempo, la guarda reduce la capacidad efectiva del cable
-al minimizar la diferencia de potencial que aparece entre sus terminales
+To eliminate this leakage path,
+one can use cables which surround the signal conductor with a guard (\figref{fig:guarded})
+The electrometer drives the guard at the same voltage as the signal conductor.
+This nulls the voltage drop across the cable insulation,
+getting rid of the leakage current.
+Furthermore, the effective capacitance of the cable is reduced,
+as the voltage across its terminals is minimized.
 \cite{rich_shielding_1983}.
 \fig{guarded}{figuras/instrumental/guarded.png}
-{Medición con guarda para minimizar pérdidas en los cables.
-    Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
-\subsection{Fuente de corriente Keithley 220}
-Una fuente de corriente es un instrumento utilizado para forzar corrientes a
-través de impedancias grandes,
-como la del aislante de gate de un MOS.
-Esto requiere una impedancia de salida muy alta para minimizar las pérdidas de
-corriente dentro del instrumento.
-Al igual que con el electrómetro,
-se busca minimizar las corrientes de fuga en el cable de salida.
-Para esto se utiliza una guarda al mismo potencial que el cable de señal,
-pero forzada desde una fuente de baja impedancia (\figref{fig:220guard}).
+{Guarded measurement to reduce cable leakage currents.
+    Reprinted from~\cite{keithley_instruments_inc._keithley_1984}.}
+\subsection{Keithley 220 current source}
+A current source is an instrument typically used to force current through large impedances,
+like that of a MOS gate oxide.
+This requires a high output impedance,
+to ensure the current is flowing through the external device
+and not within the instrument.
+Like the electrometer,
+it can be used with a guard
+in order to reduce leakage currents
+due to cabling or other leakage paths.
+(\figref{fig:220guard}).
 \begin{figure}[H]
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/220unguarded.png}
-        \caption{Sin guarda.}
+        \caption{Unguarded.}
         %\label{fig:posicionno}
     \end{subfigure}
     \begin{subfigure}[b]{\textwidth}
     \centering
         \includegraphics{figuras/instrumental/220guarded.png}
-        \caption{Con guarda.}
+        \caption{Guarded.}
         %\label{fig:posicionno}
     \end{subfigure}
-        \caption{Efecto de las pérdidas al inyectar corriente.
-        Rodeando la señal con una guarda, las corrientes de pérdida fluyen en
-        la guarda y no afectan la medición.
-    Reproducido de~\cite{keithley_instruments_inc._keithley_1984}.}
+        \caption{Effect of current leakage when using a current source.
+        By surrounding the signal conductor with a guard,
+        leakage currents flow through the guard and do not impact the measurement.
+    Reprinted from~\cite{keithley_instruments_inc._keithley_1984}.}
     \label{fig:220guard}
 \end{figure}
-\subsection{Módulo de adquisición de datos Keithley KUSB-3108}
-El KUSB-3108 es un módulo con múltiples entradas y salidas 
-analógicas y digitales controladas por una PC.
-Conectando estas entradas y salidas a circuitería auxiliar,
-puede reemplazar a los instrumentos anteriores para mediciones en el campo
-(por ejemplo en un centro de irradiación externo).
+\subsection{Keithley KUSB-3108 data acquisition module}
+The Keithley KUSB-3108 data acquisition module
+has multiple analog and digital inputs/outputs controlled by a PC.
+With the help of external circuitry,
+it can be used to carry out field measurements
+where the previous instruments would not be practical
+(for example, in irradiation centers far from the lab).
 
-El banco de medición del FG usa una entrada analógica del KUSB
-conectada a un conversor I-V 
-para medir la corriente de Drain del transistor lector.
+The Floating Gate measurement setup uses a KUSB analog input
+connected to the output of a transimpedance amplifier.
+The voltage at that input is proportional to the drain current
+of the read transistor.
 
-El banco del APS usa una salida analógica 
-para controlar la fuente de corriente que alimenta un LED.
-Una salida digital controla la entrada de Reset de los APS,
-y dos entradas analógicas miden la tensión de salida de cada sensor.
+The APS measurement setup uses an analog output to control a current source driving a LED.
+An analog output controls the APS Reset input,
+and two analog inputs measure the APS output voltage.

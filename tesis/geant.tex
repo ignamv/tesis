@@ -1,58 +1,53 @@
 \subsection{Geant4}
-Geant4 es un conjunto de herramientas de código abierto
-para simular la interacción entre partículas y materia.
-Muchas instituciones colaboran en su desarrollo,
-incluyendo CERN, ESA y Fermilab.
-Se usa en múltiples áreas de la física, medicina e ingeniería espacial.
-\subsubsection{Estructura del programa}
-Geant4 es una librería de C++.
-Usando interfaces de esta librería,
-uno define clases para establecer:
+Geant4 is a package of open-source tools
+to simulate interactions between particles and matter.
+It is developed as a collaboration between many institutes
+such as CERN, ESA and Fermilab.
+It is used in many subfields of physics, medicine and space engineering.
+\subsubsection{Program structure}
+Geant4 is a C++ library.
+By implementing interfaces defined in this library,
+one can define classes which specify:
 \begin{itemize}
-    \item Fuente de partículas: su distribución espacial, de orientación, energía
-        y tipo de partícula
-    \item Geometría y materiales del detector y su entorno
-    \item Registro de las interacciones: qué variables o estadísticos
-        almacenar o filtrar (por ejemplo excluyendo ciertos tipos de
-        partículas).
+    \item Particle sources: the distribution in location, angle, energy and particle type
+    \item Detector and environment geometry and materials
+    \item Interaction logging: what magnitudes or statistics
+        to store to disk or filter out. For example, one might want to exclude certain kinds of particles.
 \end{itemize}
-Luego, uno instancia estas clases y las pasa a funciones provistas por Geant4
-que coordinan la simulación.
+These classes can then be instanced and passed as arguments to Geant4 functions,
+which run the simulation.
 
-Es posible hacer que estas clases reciban comandos de un archivo de texto.
-Esto permite correr variaciones de una simulación sin tener que recompilar el
-programa: sólo hace falta cambiar parámetros en ese archivo.
-Así facilita la experimentación rápida.
-\subsubsection{Geometría}
-Para definir la geometría usé el modelo del irradiador que creé en FreeCAD
-durante la fabricación.
-Geant4 permite crear el mundo de simulación a partir de un archivo
-en formato GDML\cite{chytracek_geometry_2006}
-con la clase \code{G4GDMLParser}.
-Escribí una herramienta en Python para convertir archivos 
-\code{.fcstd} de FreeCAD
-a este formato.
-Permite definir el material de cada sólido
-(usando el nombre del material en la base de datos de Geant4)
-y dónde se quieren registrar las interacciones.
+It is possible for these user-defined classes to read settings from a plain-text command file.
+This allows for fast experimentation, running variations on a simulation
+without the need to recompile the program (only changing the command file).
+\subsubsection{Geometry}
+In order to define the problem geometry,
+I used the 3D models I created in FreeCAD when building the irradiator.
+Geant4 allows the user to define the simulation environment with a GDML file\cite{chytracek_geometry_2006}
+using the \code{G4GDMLParser} class.
+I wrote a Python script to convert 
+FreeCAD \code{.fcstd} files to GDML.
+It allows the user to define the material for each solid
+(using the material's name in the Geant4 database)
+and which volume makes up the detector.
 
-Para tener una interfaz más cómoda creé la clase
-\code{GDMLDetectorConstruction}. 
-Por ejemplo, con esta secuencia de comandos carga un archivo GDML y define
-por nombre los volúmenes del modelo que conforman el detector:
+To simplify usage, I created the class 
+\code{GDMLDetectorConstruction},
+which can be configured from the command file.
+For example, the following lines load a GDML file
+and set the sensitive volume by name:
 \begin{verbatim}
 /gdml/load pvc_pb.gdml
-/gdml/sensitivevolume nombre_del_volumen_detector
+/gdml/sensitivevolume detector_volume_name
 \end{verbatim}
 
-\subsubsection{Fuente de partículas}
-Geant4 provee la clase \code{G4GeneralParticleSource}
-que permite definir todo tipo de fuentes:
-puntuales o extendidas, con distintas formas de haz y espectros de energía.
-Esto se configura mediante un archivo de comandos 
-leído en tiempo de ejecución.
-Por ejemplo, este fragmento crea una fuente 
-con forma de disco que dispara partículas en la dirección z:
+\subsubsection{Particle source}
+Geant4 provides the class \code{G4GeneralParticleSource},
+which can be configured for different types of sources:
+point or extended, which various beam shapes and energy spectra.
+These settings are read from the command file at runtime.
+For example, the following lines create a disk-shaped source
+shooting particles in the z direction:
 \begin{verbatim}
 /gps/pos/type Plane
 /gps/pos/shape Circle
@@ -60,23 +55,25 @@ con forma de disco que dispara partículas en la dirección z:
 /gps/ang/type beam1d
 /gps/direction 0 0 1
 \end{verbatim}
-\subsubsection{Registro de las interacciones}
-Durante la simulación se dan interacciones en todas partes del modelo.
-Sin embargo, sólo nos interesa registrar 
-las que ocurren dentro de un volúmen acotado.
-En el caso del irradiador, este volúmen representa al humano que queremos
-proteger.
-No nos interesan todos los datos intermedios de cómo la radiación atravesó 
-la masa de plástico, aire y plomo del irradiador. 
-En el APS, el volúmen de interés es la zona desierta de una juntura, 
-donde queremos estimar la carga generada.
+\subsubsection{Interaction logging}
+Each primary particle generated by the source
+causes interactions all across the problem geometry.
+However, we are normally only interested in those interactions which
+take place inside a bounded volume (detector).
+For example, in radiation protection,
+we are interested in how much dose reaches the human body.
+In dosimetry, we might be interested in how much charge is generated
+within the depletion region of a junction.
+All other interactions required to simulate the path of radiation 
+between the source and the detector are not of interest,
+and would take up excessive storage space if logged.
 
-La opción más básica es sumar toda la energía depositada en el detector.
-Esto brinda la mínima información necesaria para un cálculo de dosis.
-Opté por registrar las coordenadas y energía depositada
-por cada interacción en el detector.
-Esto brindó mayor flexibilidad para el análisis posterior en Python.
-Por ejemplo, permite analizar la variación de la dosis con la profundidad.
-Las interacciones se colectan en memoria usando la clase \code{G4THitsCollection}.
-Al final de cada disparo, se escriben a un archivo de texto
-usando funciones provistas por \code{G4AnalysisManager}.
+The straightforward solution is to log the total energy deposited in the detector.
+This is the minimum amount of information required to calculate dose.
+I chose to log the coordinates and deposited energy of all interactions within the detector.
+This does not take up excessive disk space,
+and allows for more flexibility when post-processing the results.
+For example, it allows for an analysis of how dose varies with depth.
+Interactions are first written to memory using class \code{G4THitsCollection}.
+At the end of each run, they are written to a text file
+using functions from \code{G4AnalysisManager}.

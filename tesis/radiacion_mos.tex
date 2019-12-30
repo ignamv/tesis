@@ -1,105 +1,96 @@
-\section{Efectos de radiación en dispositivos}
-El estudio de los efectos de la radiación en dispositivos electrónicos 
-tiene dos grandes áreas de aplicación:
+\section{Radiation effects in electronic devices}
+There are two main applications for the study of radiation effects in electronic devices:
 \begin{itemize}
-    \item el diseño de circuitos para uso en zonas de radiación intensa
-        (satélites, reactores nucleares), y
-    \item la medición de la radiación a través de su efecto en un dispositivo.
+    \item circuit design for use in high-radiation areas (satellites, nuclear reactors), and
+    \item radiation measurements.
 \end{itemize}
-Muchos tipos de dosímetros se basan en acumular 
-carga por ionización proveniente de radiación.
-Esta carga produce transitorios de corriente y tensión en los circuitos 
-integrados, y daño acumulativo en los transistores que los componen.
+Many types of dosimeters work on the principle of storing charge
+produced by ionizing radiation.
+This charge can cause voltage and current transients in integrated circuits,
+and cumulative damage in the component transistors.
 
-\subsection{Radiación en junturas p-n}
-\subsubsection{Daño acumulativo}
-La radiación desplaza átomos de la red del semiconductor, 
-creando defectos activos.
-Estos son sitios cargados donde se rompe la periodicidad de la red
+\subsection{Radiation effects in p-n junctions}
+\subsubsection{Cumulative damage}
+Radiation can displace atoms from the semiconductor lattice,
+which create active defects.
+These are charged sited which break the lattice's translation symmetry.
 \cite{iniewski_radiation_2011}.
-Cuando estos defectos se encuentran en la zona desierta de una juntura p-n,
-actúan como centros de generación/recombinación.
-Su presencia facilita la creación de pares electrón-hueco, 
-aumentando la corriente de fuga en inversa
+When active defects are present in a p-n junction's depletion region,
+they act as generation/recombination centers.
+In the reverse-bias condition, they increate the production rate of electron-hole pairs,
+which increases the reverse leakage current
 \cita{bogaert_total_2000}.
 
-Este tipo de daño se da principalmente al irradiar con iones pesados,
-y tiene menor importancia con partículas $\beta$ o $\gamma$
+This type of damage is mainly caused by heavy ion irradiation,
+and is less significant with $\beta$ and $\gamma$ radiation
 \cite{knoll_radiation_2010}%p. 397
 \cite{liu_electron_1971}.
-\subsubsection{Transitorios de carga}
+\subsubsection{Charge transients}
 \label{latchup}
-Cuando la radiación alcanza la zona desierta de una juntura,
-deposita parte de su energía creando pares electrón-hueco.
-El campo eléctrico intrínsico de esta zona
-lleva los portadores creados a terminales opuestas,
-produciendo un transitorio de corriente que fluye del lado n al p.
-Este se suma a la corriente de pérdida que tienen las junturas
-debido a generación térmica (creación espontánea de pares),
-y a la corriente de portadores minoritarios.
+When radiation crosses a junction's depletion region,
+it releases some of its energy in the production of electron-hole pairs.
+The depletion region's electric field
+moves the varriers to opposite terminals,
+causing a current transient which flows from n to p.
+This current adds to the leakage current caused by thermal generation
+(spontaneous carrier production),
+and the minority carrier current.
 
-Los transitorios pueden llevar a un modo de falla llamado Latch-Up
+Current transients can lead to a failure mode called Latch-Up
 \cite{gregory_latch-up_1973}.
-El transitorio polariza una juntura en directa brevemente.
-Si hay otras junturas cercanas en inversa,
-pueden colectar los portadores de la primera juntura 
-formando un transistor bipolar parásito.
-Si se dan las condiciones adecuadas,
-un conjunto de estas estructuras parásitas (\figref{fig:latchup})
-llega a un estado estable
-en el que cortocircuitan los rieles de alimentación.
-Esto continúa hasta que se apague la alimentación 
-(por ejemplo si hay protección contra exceso de corriente)
-o se destruya el circuito.
+The transient can briefly forward-bias a junction.
+If there are reverse-biased junctions nearby,
+they can collect carriers from the first junction,
+forming a parasitic bipolar transistor.
+Under the right conditions,
+these parasitic structures (\figref{fig:latchup})
+can reach a steady state in which
+the supply rails are short-circuited.
+This can go on until supply voltage is cut off
+(for example, by an overcurrent protection circuit),
+or until the circuit is destroyed.
 \fig{latchup}{figuras/mos/latchup.pdf}{
-Transistores parásitos presentes en un proceso CMOS estándar.
-La condición estable normal es ambos transistores apagados.
-La condición estable anómala es ambos transistores prendidos,
-cada uno suministrando la corriente de base del otro.
-Esta última condición puede destruir al circuito por exceso de corriente.}
-\subsection{Radiación en MOS}
-La ionización del óxido de las estructuras MOS crea portadores 
-con distintos efectos deletéreos\cita{oldham_total_2003}. 
-\subsubsection{Captura de carga}
-La radiación que incide en el dispositivo 
-produce una cantidad de pares electrón-hueco (\figref{fig:capturamos}).
-Algunas regiones del \emph{die}
-son particularmente sensibles a esta carga generada:
-como explicamos en las subsecciones anteriores,
-esa carga genera daño acumulativo y posiblemente latchup 
-cuando incide en el semiconductor.
-% TODO: y la que incide en el semiconductor?
-Cuando la ionización sucede en el óxido de un gate polarizado positivamente,
-los electrones escapan del óxido al gate por deriva,
-gracias a su alta movilidad.
-Así quedan sólo los huecos.
-La carga positiva producida por su presencia en el óxido 
-causa un corrimiento negativo de la tensión umbral 
-(ver sección~\ref{corrimientovt}).
-Los huecos se difunden lentamente hacia la interfaz Si-SiO$_2$.
-Una fracción la atraviesa, 
-saliendo del óxido y restaurando parcialmente el $V_T$.
-El resto es capturado por trampas,
-que retienen carga por tiempos largos (de horas a años).
-A medida que esta carga se libera, 
-lleva a una recuperación lenta del $V_T$ a su valor original.
-% TODO: dejaría recuperación lenta
-\fig{capturamos}{figuras/radmos/radiacion_mos.pdf}{Mecanismo de captura de
-carga en óxidos de MOS debido a radiación.}
-\subsubsection{Creación de trampas de interfaz}
-El otro efecto de la radiación es crear trampas de interfaz.
-Estos son estados localizados en la interfaz Si-SiO$_2$ con
-energías entre la banda de valencia y de conducción del Si.
-Pueden intercambiar carga con el Si,
-capturando o liberando tanto electrones como huecos.
-La densidad superficial de carga debido a estas trampas varía con el nivel de
-Fermi en la superficie, produciendo un $\Delta V_T$ dependiente de $V_G$.
-\subsubsection{Corrimiento de $V_T$}
+Parasitic transistors in a standard CMOS process.
+The normal stable condition is for both transistors to be cut-off.
+The anomalous stable condition is for both transistors to be on,
+each supplying base current to the other.
+This can destroy the circuit due to excessive current.}
+\subsection{Radiation effects in MOS}
+Ionization in MOS gate oxides creates carriers which
+have multiple damaging effects\cita{oldham_total_2003}. 
+\subsubsection{Charge trapping}
+Radiation that impacts a device produces electron-hole pairs (\figref{fig:capturamos}).
+Some regions of the die are particularly sensitive to the resulting charge:
+as was explained previously,
+charge in the semiconductor causes cumulative damage and latchup.
+When charge is produced in the gate oxide of a gate under positive bias,
+electrons drift from the oxide to the gate thanks to their high mobility.
+This leaves behind the holes.
+Their positive charge in the oxide causes a negative threshold voltage shift
+(section~\ref{corrimientovt}).
+Holes diffuse slowly towards the Si-SiO$_2$ interface.
+A fraction of them cross the interface,
+exiting the oxide and partially undoing the $V_T$ shift.
+The rest are captured by traps,
+where they can remain from hours to years.
+As they are released,
+the $V_T$ slowly recovers to its original value.
+\fig{capturamos}{figuras/radmos/radiacion_mos.pdf}{Charge
+trapping process in MOS oxides due to radiation}
+\subsubsection{Interface trap creation}
+Another consequence of radiation is the creation of interface traps.
+These are localized states in the Si-SiO$_2$ interface
+with energies in the silicon forbidden band.
+They can exchange charge with the silicon,
+by capturing or releasing holes or electrons.
+The traps' surface charge density changes with the surface Fermi level,
+leading to a $V_G$-dependent $V_T$ shift.
+\subsubsection{$V_T$ shift}
 \label{corrimientovt}
-La carga en el óxido de gate altera la relación 
-entre la tensión aplicada al gate y el campo en la interfaz Si-SiO$_2$.
-Analizamos este fenómeno en 1D con $x=0$ en el gate y $x=t_{ox}$
-en el semiconductor:
+Charges in the gate oxide alter the relation between gate voltage and
+surface potential.
+This can be analyzed in 1D,
+placing the gate at $x=0$ and the semiconductor surface at $x=t_{ox}$:
 \begin{align}
     V_g-\psi_s&=\int_0^{t_{ox}}E(x)dx=
     \int_0^{t_{ox}}\left[\frac d{dx}(xE)-x\frac{dE}{dx}\right]dx\\
@@ -108,25 +99,23 @@ en el semiconductor:
         \frac 1{\epsilon_{ox}}\int_0^{t_{ox}}x\rho(x)dx}{t_{ox}}.
         \label{eq:corrimiento_vt_mos}
 \end{align}
-Se ve que la carga desplaza las curvas del dispositivo 
-en su dependencia con $V_g$.
-Mientras más cerca del semiconductor esté la carga,
-mayor es este corrimiento.
+It can be seen that oxide charges cause a shift in the $V_g$
+dependence of the device curves.
+The closer the charge is to the semiconductor,
+the larger the shift.
 
-Las trampas de interfaz contienen una densidad superficial de carga dependiente
-de $E_F$, dada por
+Interface traps have a $E_F$-dependent surface charge density,
+given by
 \begin{align*}
     \sigma_{it} &= -e\int_{E_0}^{E_F} D_{it}dE
 \end{align*}
-siendo $D_{it}$ la densidad de trampas por unidad de energía,
-y $E_0$ el valor de $E_F$ para el cual se cancela la carga de las trampas
-donantes con la carga de las trampas aceptoras.
-Esta carga produce una deformación de las curvas del dispositivo:
-a medida que varía $V_G$,
-la variación de $\psi_s$ pone a las trampas de interfaz a distinta energía
-por encima o por debajo del nivel de Fermi.
-Esto produce un cambio en $\sigma_{it}$,
-que a su vez corre el $V_T$.
-Este $\Delta V_T$ dependiente de $V_G$ 
-se observa como un estiramiento de todas las curvas características del
-dispositivo (en particular las I-V y C-V) en su dependencia con $V_G$.
+with $D_{it}$ the interface trap density per unit energy,
+and $E_0$ the value of $E_F$ where charge from donor traps cancels
+with charge from acceptor traps.
+Interface trap charge alters the device curves:
+as $V_G$ and therefore $\psi_s$ vary,
+the Fermi level moves through the trap energies,
+changing $\sigma_{it}$ and thus shifting $V_T$.
+This $V_g$ dependent $\Delta V_T$
+manifests as a stretching of all device curves (I-V and C-V)
+in the $V_g$ axis.

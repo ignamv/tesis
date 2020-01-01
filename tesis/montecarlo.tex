@@ -1,56 +1,56 @@
-\section{Cálculos Monte-Carlo}
+\section{Monte Carlo simulations}
 \label{montecarlo}
-Las interacciones entre radiación y materia son eventos como
+Interactions between radiation and matter are events such as
 \begin{itemize}
-    \item Scattering: transferencia de energía y momento, por ejemplo de un
-        fotón a un electrón
-    \item Creación de pares: conversión de energía a un par partícula/
-        antipartícula, por ejemplo cuando un fotón incide en un núcleo y genera
-        un electrón y un positrón.
+    \item Scattering: energy and momentum transfer,
+        for example between a photon and an electron
+    \item Pair creation: conversion of energy to a
+        particle/antiparticle pair.
+        For example, when a photon strikes a nucleus and generates an
+        electron and a positron.
 \end{itemize}
-Estos procesos no son deterministas.
-Su resultado se describe mediante una distribución de probabilidad, como
+These processes are non-deterministic.
+Their results can be described by using a probability distribution, such as
 \begin{itemize}
-    \item probabilidad de decaimiento por unidad de tiempo (\emph{actividad}), o
-    \item sección diferencial de scattering $\deriv{\sigma}{\Omega}$:
-la probabilidad de scattering por unidad de ángulo sólido en 
-una dirección dada.
+    \item decay probability per unit time (activity), or
+    \item differential scattering cross section $\deriv{\sigma}{\Omega}$:
+        the scattering probability per unit solid angle,
+        for a given direction.
 \end{itemize}
-En algunos casos esta falta de determinismo es inescapable.
-Por ejemplo, en el entorno espacial hay que tener en cuenta la 
-pequeña probabilidad de recibir una partícula dañina de muy alta
-energía.
+In some cases, the non-determinism is inescapable.
+For example, in space one must consider the danger caused by
+very small probability events with very high energy
+incoming particles.
 
-En muchos otros casos de interés (aplicaciones médicas e industriales)
-las variaciones se cancelan debido a la ley de los grandes números.
-Entonces alcanza con calcular el valor esperado de las magnitudes que se buscan.
+In other cases (industrial and medical applications),
+statistical variations tend to cancel out due to the law of large numbers.
+It is enough to calculate the expected value of the magnitudes of interest.
 
-Frecuentemente se necesita predecir la dosis que va a recibir un \emph{detector}
-(por ejemplo un circuito o persona)
-dada una fuente de radiación y un entorno.
-Cada partícula generada por la fuente participa en muchas interacciones 
-y es capaz de generar múltiples partículas secundarias.
-Por lo tanto, el espacio de estados finales 
-partículas$\otimes$radiación tiene una gran dimensionalidad.
-Esto imposibilita calcular la función de distribución en todo el espacio.
-Por lo tanto, no es factible calcular el valor esperado de dosis 
-a partir de la función de distribución.
+A typical problem is calculating the dose in a target
+(for example, a circuit or person)
+for a given environment and radiation source.
+Each particle exiting the source can take part in many interactions,
+and can generate multiple secondary particles.
+Therefore, the space of final states has high dimensionality.
+This makes in infeasible to calculate the probability distribution for all final states.
+Therefore, it is not possible to calculate the expected value for the dose
+starting from the distribution function.
 
-El método Monte-Carlo\cite{roe_probability_1992} consiste en 
-generar muestras aleatorias
-del estado final en este espacio de probabilidad,
-y calcular los estadísticos a partir de las muestras.
-Para esto se simula la evolución de una partícula,
-eligiendo al azar entre las interacciones posibles de acuerdo con su 
-probabilidad. 
+The Monte Carlo method\cite{roe_probability_1992}
+consists in generating random samples of the final states,
+and calculating statistics based on those samples.
+To generate the random samples,
+one simulates a particle's evolution,
+choosing at random between possible interactions
+according to their relative probabilities.
 
-Para realizar este muestreo se utilizan en la práctica
-distintos paquetes de software. 
-Los mismos cuentan con bases de datos de materiales 
-que contienen información para cada tipo de interacción.
-Esto permite que el usuario se limite a modelar la geometría,
-usando software de modelado 3D como FreeCAD.
+In practice, this sampling is carried out using one of many
+software packages.
+They typically come bundled with material databases
+with tables characterizing each kind of interaction.
+This frees up the user to model the problem geometry,
+using 3D modeling software such as FreeCAD.
 
-Usé el toolkit Geant4\cite{allison_geant4_2006},
-con las partículas y procesos necesarios para radiación $\beta$ y X,
-para calcular dosis en distintas situaciones.
+I used the Geant4 toolkit\cite{allison_geant4_2006},
+selecting the particles and processes required for $\beta$ and X radiation,
+to calculate the dose for different parts of this thesis.

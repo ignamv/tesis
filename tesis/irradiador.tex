@@ -148,71 +148,74 @@ We applied \equref{eq:absorcionx}
 using lead absorption coefficients published by NIST\cite{xraycoef},
 resulting in the attenuated spectrum in \figref{fig:xatenuado}.
 \fig{xatenuado}{figuras/irradiador/xatenuado.pdf}
-{Calculated X ray spectrum in the irradiator's outer face.}
+{Calculated X ray spectrum in the irradiator's outer surface.}
 % TODO: tasa de dosis final según distancia, comparar con mediciones
 %
 %
 \subsubsection{Monte Carlo simulations with \Strontium source}
-La fuente de \Strontium  emite electrones con un espectro amplio de
-energías (\figref{fig:actividadsr90}).
-Este consiste en la suma del espectro de emisión de \Strontium
-y el de \Yttrium.
-Simulamos un haz de electrones con este espectro incidiendo normalmente sobre
-tejido blando, registrando la energía que depositan en función de la
-profundidad (\figref{fig:deposicionsr90}).
+The \Strontium source emits electrons with a wide energy spectrum
+(\figref{fig:actividadsr90}).
+This is the sum of the emission spectra of \Strontium and \Yttrium.
+We simulated this wide-spectrum electron beam directed perpendicularly into soft tissue,
+logging the deposited energy as a function of depth
+(\figref{fig:deposicionsr90}).
 \fig{deposicionsr90}{figuras/montecarlo/deposicion_sr90.pdf}
-{Energía depositada en tejido blando en función de la distancia,
-promediando entre electrones provenientes de una fuente de \Strontium.}
-Así ajustamos una potencia de frenado de masa promedio $S/\rho$ (\figref{fig:stoppingsr90})
+{Energy deposited in soft tissue as a function of distance,
+by an electron beam produced by a \Strontium source.}
+In this way we fit an average mass stopping power 
+$S/\rho$ (\figref{fig:stoppingsr90})
 \fig{stoppingsr90}{figuras/montecarlo/stopping_sr90.pdf}
-{Potencia de frenado promedio del tejido blando para electrones provenientes de
-una fuente de \Strontium.
-La cruz marca que a una profundidad de \SI{0.35}{\milli\meter} la tasa de dosis 
-coincide con la tabulada en \cite{delacroix_radionuclide_2002}.}
-que permite calcular tasa de dosis superficial mediante
+{Average mass stopping power of soft tissue for
+electrons coming from a \Strontium source.
+The cross marks the point at which the dose rate
+matches the value tabulated in \cite{delacroix_radionuclide_2002}.}
+which allows us to calculate surface dose rate using
 \begin{align*}
     \dot D &= \frac{AS/\rho}{4\pi r^2}
 \end{align*}
-con $A=\SI{100}{\milli\curie}$ la actividad de la fuente.
-La tasa de dosis calculada de este modo es comparable con la tabulada en
-\cite{delacroix_radionuclide_2002} si se promedia hasta una profundidad de
+, with $A=\SI{100}{\milli\curie}$ the source's activity.
+This calculated dose rate matches the value tabulated in 
+\cite{delacroix_radionuclide_2002} if averaged down to a depth of
 \SI{.35}{\milli\meter}.
-Esto sirve como verificación de que nuestras simulaciones Monte-Carlo producen
-valores compatibles con los que se encuentran en la literatura.
-\subsubsection{Cálculos Monte-Carlo del irradiador}
-Buscamos una cota superior de la tasa de dosis fuera del irradiador.
-Esto brinda la mayor confianza en que su operación no es peligrosa.
-Ya que el espesor del plomo es de varias longitudes características de
-atenuación ($1/\mu$),
-sólo pasa una fracción muy pequeña de la radiación inicial.
-Por lo tanto, hay que simular la emisión de 
-muchos electrones de la fuente de \Strontium
-para que llegue una cantidad apreciable de radiación a la cara exterior.
-Así podemos estimar de forma precisa la tasa de dosis.
+This serves as a verification that our Monte Carlo simulations yield
+results which are compatible with those in existing literature.
+\subsubsection{Irradiator Monte Carlo simulations}
+We are looking for an upper bound to the dose rate outside the irradiator.
+If this value is within safe limits, it serves as a guarantee that
+the irradiator is safe to operate.
+As the thickness of lead is many times greater than the X ray attenuation length
+($1/\mu$),
+only a very small fraction of the incoming radiation can cross it.
+Therefore, it is necessary to simulate a large number of electrons
+emitted by the \Strontium source
+in order to see an appreciable number exiting the irradiator.
+This is itself necessary in order to have an accurate estimate of the dose rate.
 
-Una forma de reducir el tiempo de CPU necesario para simulaciones
-es usar reducción de la varianza\cite{dressel_geometrical_2003}.
-Esta es una técnica para cálculos Monte Carlo que introduce un sesgo en la
-evolución de la partícula.
-Por ejemplo, podemos aumentar la probabilidad de que una partícula atraviese
-el plomo sin interactuar, en vez de scatterear.
-Llevando la cuenta de cuan improbable es la historia de la partícula,
-le damos un peso menor en la estadística final.
-Esto concentra la simulación en darnos muchos eventos que nos interesan
-(lo cual reduce la varianza de la estimación),
-minimizando la capacidad de procesamiento necesaria.
+One way to reduce the simulation CPU time is to use variance reduction
+\cite{dressel_geometrical_2003}.
+This is a technique used in Monte Carlo simulations 
+which biases the random choices involved in propagating particles.
+For example, it is possible to increase the probability that a particle will
+travel through a wall without interacting, instead of scattering.
+By keeping track of the likelihood of the particle's history,
+it is possible to adjust its weight 
+when calculating statistics like mean deposited energy.
 
-Dada la dificultad de implementar reducción de la varianza en Geant4,
-optamos por acelerar el cálculo simplificando la geometría.
-Simulamos un irradiador con simetría esférica,
-que consiste en un cascarón de \SI{10}{\milli\meter} de acrílico rodeado por
-\SI{36}{\milli\meter} de plomo (\figref{fig:corte_esferico}). 
+This technique focuses simulation time in producing relevant events
+(which lowers the estimator variances),
+reducing the required processing power.
+
+Given the difficulty in implementing variance reduction in Geant4,
+we opted to speed up simulations by simplifying the geometry.
+We simulated a spherically symmetric irradiator,
+which consists of a \SI{10}{\milli\meter} acrylic shell 
+surrounded by \SI{36}{\milli\meter} of lead (\figref{fig:corte_esferico}). 
 \fig{corte_esferico}{figuras/irradiador/corte_esfera.png}
-{Corte de la geometría simplificada que se usó para simular el irradiador en
-Geant4.}
-Toda partícula en el irradiador tiene que atravesar al menos ese espesor de
-acrílico y plomo.
-Por lo tanto, la dosis real va a ser aún menor a la simulada.
+{Cutaway view of the simplified geometry used to simulate the irradiator in Geant4.}
+All particles in the real irradiator have to cross at least those thicknesses of acrylic and lead.
+Therefore, the dose in the real irradiator is guaranteed to be lower than in the simulated one.
+Spherical symmetry allows us to ignore the dose angular distribution,
+choosing instead to average over $\theta$ and $\phi$.
 Dada la simetría del problema, no tenemos en cuenta la distribución en
 $\theta$ y $\phi$ sino que promediamos sobre ambas variables.
 Esto reduce enormemente el número de eventos necesarios para una buena

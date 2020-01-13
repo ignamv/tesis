@@ -216,15 +216,12 @@ All particles in the real irradiator have to cross at least those thicknesses of
 Therefore, the dose in the real irradiator is guaranteed to be lower than in the simulated one.
 Spherical symmetry allows us to ignore the dose angular distribution,
 choosing instead to average over $\theta$ and $\phi$.
-Dada la simetría del problema, no tenemos en cuenta la distribución en
-$\theta$ y $\phi$ sino que promediamos sobre ambas variables.
-Esto reduce enormemente el número de eventos necesarios para una buena
-estimación de la tasa de dosis.
-El resultado se ve en la \figref{fig:dosis_irradiador}.
+This drastically reduces the number of runs needed to reach an accurate estimate of the dose rate.
+The results can be seen in \figref{fig:dosis_irradiador}.
 \fig{dosis_irradiador}{figuras/montecarlo/dosis_irradiador.pdf}
-{Perfil de deposición de energía en la simulación Monte-Carlo del irradiador.}
-La dosis en la cara exterior del irradiador es
-de \SI{20.3}{\milli\sievert} por año.
-Este valor es aceptable si se tiene en cuenta que,
-en condiciones reales, se toca el irradiador durante intervalos muy cortos
-y el resto del tiempo se está a distancias mucho mayores.
+{Monte Carlo results for energy deposition profile at the outer surface of the irradiator.}
+The dose rate at the outer surface of the irradiator is
+\SI{20.3}{\milli\sievert} per year.
+This is a safe value when one takes into account that
+people will mostly remain at a distance from the irradiator,
+only touching it during brief periods of time.

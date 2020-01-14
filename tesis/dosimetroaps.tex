@@ -309,127 +309,121 @@ M3&     50& 3&  8\\
     \label{fig:areas_aps}
 \end{table}
 
-Estas dimensiones se utilizaron tanto para la simulación del circuito en SPICE
-como para los cálculos Monte-Carlo.
-La combinación de estas dos herramientas nos da una sensibilidad esperada de 
+These dimensions were used both for SPICE circuit simulations and for Monte Carlo radiation simulations.
+Combining the results from both types of simulation yields an expected sensitivity of
 \SI{7.1}{\volt\per\gray}.
-El diseño físico final está en la \figref{fig:layoutaps},
-y el esquemático en la \figref{fig:aps}.
+The final layout is in\figref{fig:layoutaps},
+and the schematic is in \figref{fig:aps}.
 \begin{figure}[p]
     \centering
     \includegraphics[width=\columnwidth]{figuras/gds/aps/todo.png}
-    \caption{Layout del dosímetro APS. 
-    El transistor de la derecha es el de salida, del segundo seguidor.
-    El resto se ve en más detalle en la \figref{fig:layoutapszoom}.}
+    \caption{APS dosimeter layout.
+    On the right is the output transistor, which belongs to the second follower stage.
+    The rest can be seen in more detail in \figref{fig:layoutapszoom}.}
     \label{fig:layoutaps}
 \end{figure}
 \begin{figure}[p]
     \centering
     \includegraphics[width=\columnwidth]{figuras/gds/aps/zoom.png}
-    \caption{Vista en detalle del layout del APS, excluyendo el transistor de
-        salida.
-        A la derecha está el diodo, con el cátodo (nwell) en el centro y el
-        ánodo (contactos a sustrato) rodeándolo.
-        A su izquierda está el primer MOSFET seguidor y abajo el MOSFET de
-        reset.
-        Los transistores de la izquierda polarizan al primer seguidor.
-    El transistor de reset está conectado a un pad (no visible) a través del
-    circuito de protección de la \figref{fig:proteccion5v}.}
+    \caption{Detail view of APS layout without the output transistor.
+        To the right is the sensitive diode, with its N-well cathode at the center
+        and anode (substrate) contacts all around it.
+        To its left is the first follower stage transistor,
+        and below it is the reset transistor.
+        The transistors on the left provide the bias current for the first follower stage.
+        The reset transistor is connected to a pad (not visible),
+        through the protection circuit in\figref{fig:proteccion5v}.}
     \label{fig:layoutapszoom}
 \end{figure}
 \fig{proteccion5v}{figuras/aps/proteccion.pdf}
-{Circuito de protección para la entrada de reset.
-Los diodos sólo conducen si la tensión del pad excede \SI{5}{\volt} o
-baja de \SI{0}{\volt}.
-Cuando llega un pulso de alta tensión
-(por ejemplo debido a una descarga electrostática)
-los diodos limitan la tensión que llega al circuito.
-Esto evita que se polaricen en directa las junturas drain-body y source-body,
-previniendo una falla por latchup (sección~\ref{latchup}).
-También evita la ruptura de los óxidos de compuerta de MOS.}
-\subsection{Medición}
-Tomamos dos dies y los bondeamos a placas adaptadoras de TSSOP28,
-un tipo de empaquetado de circuitos integrados de montaje superficial
-(figuras~\ref{fig:bondeados1}, \ref{fig:bondeados2} y~\ref{fig:pinout}).
+{Protection circuit for the reset input.
+The diodes only turn on if the pad voltage exceeds
+\SI{5}{\volt} or goes below \SI{0}{\volt}.
+When a high-voltage pulse reaches the pad
+(for example, due to electrostatic discharge),
+the diodes prevent dangerous voltages from reaching the circuit.
+This prevents any drain-body or source-body junctions from being forward-biased,
+which might cause a latchup failure (section~\ref{latchup}).
+It also protects MOS gate oxides from breaking down.}
+\subsection{Measurement}
+We wire-bonded two dies to a pair of TSSOP28 adapter boards.
+These are small PCBs meant to adapt surface-mount components
+to through-hole, for example to use them in a breadboard
+(figures~\ref{fig:bondeados1}, \ref{fig:bondeados2} and~\ref{fig:pinout}).
 \fig{bondeados1}{figuras/aps/bondeados.jpg}
-{Dies bondeados a placa adaptadora SMD.
-Los zócalos tienen las patas cortocircuitadas para proteger al die de
-descargas electrostáticas durante el transporte y almacenamiento.}
+{Bonded dies on SMD adapter board.
+The boards are mounted on sockets which short-circuit all of the leads.
+This protects the die from electrostatic discharge during transport and storage.
+}
 \figp{bondeados2}{figuras/aps/die.jpg}
-{Detalle del die fabricado con los dosímetros APS y FG 
-(arriba en la columna central)
-y otros circuitos.}
+{Close-up view of the die with the APS and FG dosimeters
+(top of the center column)
+, along with other circuits.}
 \figp{pinout}{figuras/aps/pinout1.pdf}
-{Layout del die entero con numeración de los pads bondeados}
-\subsubsection{Descarga en oscuridad}
-Primero medimos la respuesta del sensor sin luz ni radiación
-(figuras~\ref{fig:oscuridad4} y~\ref{fig:oscuridad40}).
+{Layout of the complete die, including pinouts for the pads that were wire-bonded.}
+\subsubsection{Self-discharge curves}
+We first measured the sensor's output in the absence of light and radiation.
+(figures~\ref{fig:oscuridad4} and~\ref{fig:oscuridad40}).
 \fig{oscuridad4}{figuras/aps/oscuridad4.pdf}
-{Curva de descarga en oscuridad del APS de 4x\SI{4}{\micro\meter}.
-Resulta de resetear el APS y medir su tensión de salida en oscuridad.}
+{Self-discharge curve of the \SI{4}{\micro\meter} APS.
+It is obtained by resetting the APS and measuring its output voltage in the dark.}
 \fig{oscuridad40}{figuras/aps/oscuridad40.pdf}
-{Curva de descarga en oscuridad del APS de 40x\SI{40}{\micro\meter}.
-Resulta de resetear el APS y medir su tensión de salida en oscuridad.}
-Esto nos muestra la descarga del diodo debido a la corriente de fuga en
-inversa.
+{Self-discharge curve of the \SI{40}{\micro\meter} APS.
+It is obtained by resetting the APS and measuring its output voltage in the dark.}
+This shows us the discharge due to the diode's reverse leakage current.
 
-Se ve en ambas figuras la misma curva 
-con escalas distintas de tiempo y de tensión.
-Esta variación proviene tanto de las áreas distintas de los dos sensores
-como de las variaciones aleatorias entre los MOS seguidores (mismatch).
-Cada transistor del die tiene pequeñas variaciones debido a imperfecciones en
-la litografía y variaciones aleatorias de dopaje.
-Estas variaciones no son tan notables en dispositivos grandes debido a que
-se cancelan al promediarse sobre mucha área.
-
-Ya que los seguidores usan varios transistores de área mínima,
-son particularmente sensibles a variaciones del proceso:
-el mismo error absoluto en las dimensiones del canal produce un mayor error relativo.
-
+Both variants of the APS have curves with similar shapes,
+but with different time and voltage scales.
+Their differences are mainly due to the disparity in diode area.
+In addition, there are small differences (mismatch) between the MOS in the follower stages.
+Each MOS has random variations due to imperfections in the processing steps
+(mask, lithography, implantation, etc).
+These variations tend to cancel out in large devices,
+but are significant in minimum-area devices.
+for example, the same absolute error in channel dimensions causes
+a much bigger relative error in the channel current.
+Since the first follower stage uses a minimum-area transistor,
+it is particularly sensitive to mismatch and process variability.
 % Descarga debería ser lineal
 % https://books.google.com.ar/books?id=6Rg7AAAAQBAJ&lpg=PA289&ots=yO1HPv_N4E&dq=reverse%20biased%20diode%20%22discharge%20curve%22&hl=es&pg=PA290#v=onepage&q=reverse%20biased%20diode%20%22discharge%20curve%22&f=false
 
-La curva de descarga es la solución a una ecuación diferencial
-no-lineal:
+The self-discharge curve is the solution to a non-linear differential equation:
 \begin{align*}
     \frac{\partial Q}{\partial V}\frac{dV}{dt} &= -I(V)
 \end{align*}
-La forma de la curva proviene de la variación 
-tanto de la corriente de fuga $I(V)$ 
-como de la capacidad del diodo $\frac{\partial Q}{\partial V}(V)$.
-Ambas dependen de la tensión aplicada,
-debido a la variación del ancho de la zona desierta.
-Al caer la tensión en inversa,
-la zona desierta se vuelve más angosta.
-Esto reduce su volúmen y por lo tanto 
-la tasa de generación térmica de pares electrón-hueco.
-Por otra parte,
-su capacidad es inversamente proporcional a este ancho.
-Ambos fenómenos reducen la tasa de descarga,
-como se ve al final de ambas curvas.
+The shape of the curve is due to the voltage dependence of both 
+the leakage current $I(V)$ 
+and the diode capacitance $\frac{\partial Q}{\partial V}(V)$.
+Both vary with voltage due to the change in the width of the depletion region.
+As the reverse voltage falls,
+the depletion region becomes narrower.
+The junction capacitance is inversely proportional to its width.
+As its volume shrinks,
+thermal generation of electron-hole pairs happens at a lower rate.
+Both effects lead to a reduced leakage current,
+as is visible at the end of the discharge curves.
 
-Por otro lado, hay factores de segundo orden 
-que no contemplamos en el análisis.
-Por ejemplo, el transistor de reset apagado
-no es un circuito abierto perfecto, 
-sino que tiene una corriente de pérdida muy pequeña.
-Esta corriente va a tender a cargar el cátodo de D1,
-enlenteciendo la descarga.
+Furthermore, there are second order terms which we did not
+consider in our simplified analysis.
+For example,
+the reset transistor in the cut-off region is not a perfect open circuit,
+but rather has a small leakage current.
+This current tends to charge D1's cathode,
+slowing down its discharge.
 %
-\subsection{Iluminación con LED}
-Medimos las curvas de descarga iluminando los dies con un LED,
-variando su corriente para lograr distintas intensidades de iluminación
-(figuras~\ref{fig:led4} y~\ref{fig:led40}).
+\subsection{LED illumination}
+We measured discharge curves while illuminating the dies with a LED,
+varying its supply current to achieve a wide range of light intensities
+(figures~\ref{fig:led4} and~\ref{fig:led40}).
 \fig{led4}{figuras/aps/descarga_led_4.pdf}
-{Curva de descarga iluminando con un LED el APS de 40x\SI{40}{\micro\meter}.
-La corriente del LED aumenta de \SI{.1}{\milli\ampere} a la derecha hasta
-\SI{10}{\milli\ampere} a la izquierda,
-con 6 curvas por década.}
+{Discharge curve under LED illumination for \SI{40}{\micro\meter} APS.
+LED current increases from \SI{.1}{\milli\ampere} on the right to \SI{10}{\milli\ampere} on the left,
+with 6 curves per decade.}
 \fig{led40}{figuras/aps/descarga_led_40.pdf}
-{Curva de descarga iluminando con un LED el APS de 4x\SI{4}{\micro\meter}.
-La corriente del LED aumenta de \SI{.1}{\milli\ampere} a la derecha hasta
-\SI{10}{\milli\ampere} a la izquierda,
-con 6 curvas por década.}
+{Curva de descarga iluminando con un LED el APS de \SI{4}{\micro\meter} APS.
+LED current increases from \SI{.1}{\milli\ampere} on the right to \SI{10}{\milli\ampere} on the left,
+with 6 curves per decade.}
+
 Esto permite observar la compresión en tiempo de la curva de descarga 
 con el aumento de la radiación incidente.
 No fue posible medir el efecto de otros tipos de radiación

@@ -135,169 +135,170 @@ based on the layout geometry
 (section~\ref{section:diseno_aps}).
 \subsection{Monte Carlo simulations}
 \label{montecarloaps}
-El dosímetro APS detecta energía depositada 
-en una región específica de un circuito integrado.
-A fines de simularlo, 
-simplificamos la geometría del die en tres regiones:
-una superficie de SiO$_2$, un sustrato de Si 
-y una zona sensible también de Si (\figref{fig:corteaps}).
+The APS dosimeter detects the energy that is deposited
+in a narrow region of an integrated circuit.
+For simulation purposes,
+we simplified the die geometry down to three regions:
+the SiO$_2$ surface, a Si substrate and
+a Si sensitive region (\figref{fig:corteaps}).
 \fig{corteaps}{figuras/aps/corte.pdf}
-{Corte de la geometría usada para simular el APS en Geant4 (no a escala).}
-Las dimensiones se extrajeron del diseño del APS 
-y de las especificaciones del proceso de fabricación del chip.
+{Cross section of the geometry used to simulate the APS with Geant4 (not to scale).}
+Dimensions were extracted from the APS layout and
+from the process specifications.
 
-Dado que el uso principal de Geant4 es en física de altas energías,
-su configuración por defecto no permite simular electrones secundarios por
-debajo de \SI{250}{\electronvolt}.
-% DETAIL rango a 250eV ~ nm, qué me importa?
-Para obtener precisión a escalas de distancia más chicas,
-empleamos una lista de procesos de interacción 
-compilada para simulaciones en microelectrónica \cite{Raine201497}.
-La misma simula con fidelidad electrones hasta \SI{16.7}{\electronvolt},
-cuyo rango en Si es del orden de \SI{0.1}{\nano\meter}.
+Because Geant4 is mainly used for high-energy physics,
+its default settings do not allow it to simulate secondary electrons with 
+energies below \SI{250}{\electronvolt}.
+In order to increase the accuracy at short length scales,
+we used a list of interaction processes
+which was put together for microelectronic simulations
+\cite{Raine201497}.
+It is capable of accurately simulating electrons down to energies of
+\SI{16.7}{\electronvolt},
+whose range in Si is on the order of \SI{0.1}{\nano\meter}.
 
-Los resultados se encuentran en la \figref{fig:energia1electron}.
+The results can be seen in \figref{fig:energia1electron}.
 % FIXME falta este gráfico usando
 % ../tesis/figuras/aps/deposicion1electron001.pdf y demás
 \fig{energia1electron}{figuras/aps/deposicion1electron_todos.pdf}
-{Distribución de probabilidad simulada en Geant4 
-    para la energía depositada en el sensor (eje X).
-Cada gráfico corresponde a una dada energía cinética de la partícula incidente.
-La energía promedio depositada está en la \figref{fig:energiadepositadaaps}.}
-El aumento de la respuesta al reducir la energía incidente se debe a que 
-los electrones menos energéticos 
-tienden a frenarse por completo en el detector,
-depositando toda su energía.
-Los más energéticos, en cambio, depositan una fracción variable de su energía
-total.
-La energía depositada promedio se encuentra en la
-\figref{fig:energiadepositadaaps}.
+{Probability distribution for total energy deposited in the sensor (X axis),
+simulated using Geant4.
+Each plot corresponds to a difference kinetic energy for the incoming particle.
+The mean deposited energy is in \figref{fig:energiadepositadaaps}.}
+The increased response as incoming particle energy goes down
+is due to the fact that slower electrons stop completely within the detector,
+depositing all of their energy.
+Electrons that are more energetic, however, only deposit a fraction of their total energy.
+The mean deposited energy is in \figref{fig:energiadepositadaaps}.
 \fig{energiadepositadaaps}{figuras/poster/aps_respuesta.pdf}
-{Respuesta promedio a un electrón incidente,
-en función de su energía inicial.
-Se ve que los electrones menos energéticos se frenan completamente en el
-detector.
-Las cruces son el resultado de simulación con Geant4,
-mientras que la línea es un cálculo manual 
-con los datos tabulados por NIST en ESTAR\cite{berger_estar_????}.}
-Se ve que para el rango de energías de interés,
-cada partícula incidente produce un cambio de decenas de mV.
+{Average response to an incoming electron
+as a function of its initial energy.
+It can be seen that lower-energy electrons stop completely inside the detector.
+Crosses mark the results of Geant4 simulations,
+while the solid line is the result of manual calculations using
+data tabulated by NIST in ESTAR\cite{berger_estar_????}.}
+For energies in the range of interest,
+each incoming particle causes a shift of tens of mV.
 
-La respuesta a fotones es mucho más reducida. 
-En los rangos de energía que nos interesan, producen una variación de tensión órdenes de magnitud por debajo de la de un electrón de la misma energía (\figref{fig:aps_respuesta_foton}).
+The photon response is much smaller.
+For the energy ranges of interest,
+the resulting voltage change
+is orders of magnitude below that of electrons with similar energies
+(\figref{fig:aps_respuesta_foton}).
 \fig{aps_respuesta_foton}{figuras/aps/respuesta_fotones.pdf}
-{Respuesta del APS a un fotón, calculada con datos tabulados en XCOM\cite{suplee_xcom_2009}.}
-\subsection{Fuentes de ruido}
-El APS se maneja con corrientes y variaciones de carga y tensión muy
-pequeñas.
-Por eso es crítico conocer los procesos que introducen ruido, 
-y su magnitud.
-Este ruido se combina con la señal proveniente de la radiación
-y determina la resolución del dosímetro: 
-la dosis mínima que es posible resolver por encima del
-ruido\cite{taylor_introduction_1997}.
-\subsubsection{Corriente de fuga de juntura p-n}
-Al polarizar una juntura p-n en inversa, fluye una corriente de
-pérdida\cite{sze_physics_2007} con un valor de DC dado por
+{APS response to photons, calculated using values tabulated by NIST in XCOM\cite{suplee_xcom_2009}.}
+\subsection{Noise sources}
+The APS operates with very small currents and charge/voltage variations.
+Therefore, it is critical to understand the noise sources that are present
+and what their magnitude is.
+Noise adds to the radiation signal,
+and thus sets the dosimeter's resolution:
+the minimum dose that can be resolved
+above the noise floor
+\cite{taylor_introduction_1997}.
+\subsubsection{P-N junction leakage current}
+When a p-n junction is biased in reverse,
+there is a leakage current
+\cite{sze_physics_2007}
+whose DC value is
 \begin{align*}
     I&=I_s(e^{\frac{qV}{\eta kT}}-1)
 \end{align*}
-con $V<0$ la tensión aplicada y $I_s$ y $\eta$ parámetros de fabricación de la
-juntura.
-El valor instantáneo de $I$ fluctúa debido a la naturaleza discreta de los portadores que
-atraviesan la barrera de energía de la juntura.
-Esta fluctuación se denomina ruido \emph{shot}, una clase de ruido blanco:
-su densidad espectral de potencia,
+with $V<0$ the bias voltage and $I_s$, $\eta$ junction fabrication parameters.
+
+$I$'s instantaneous value fluctuates due to the discrete nature of the carriers
+that cross the junction.
+This fluctuation is called \emph{shot} noise, which is a type of white noise:
+its power spectral density,
 \begin{align*}
     i^2(f) &= 2q|I|,
 \end{align*}
-no varía con la frecuencia (hasta frecuencias muy altas).
-\subsubsection{Fluctuaciones durante reset}
-Durante el reset, se carga la juntura p-n hasta $V_{dd}$ a través de M1.
-Cerca de la tensión final, M1 entra en modo triodo.
-En esta condición de operación, el canal actúa como una resistencia.
-Esto significa que produce ruido de Johnson\cite{baker_cmos_2010}.
-Al cargar la capacidad de juntura $C$, 
-este ruido produce una varianza en la tensión final dada por
+does not vary with frequency (up to very high frequencies).
+\subsubsection{Fluctuations during reset}
+During reset, the cathode is charged to \vdd through M1.
+As its voltage nears its final value, M1 enters the triode region.
+In this operating condition, the channel acts like a resistor.
+Therefore, it is a source of Johnson noise\cite{baker_cmos_2010}.
+When charging the junction capacitance $C$,
+the noise causes a variability in the final voltage, given by
 \begin{align*}
     \overline{v^2} &= \frac{kT}C.
 \end{align*}
-Evaluando esta fórmula con la capacitancia del APS
-% TODO: es la capacidad de 4x4 o 40x40?
-se llega a una tensión de ruido RMS de \SI{1.1}{\milli\volt}.
+. Evaluating this formula with the APS capacitance
+leads to a RMS noise voltage of \SI{1.1}{\milli\volt}.
 
-Esta incertidumbre en la tensión luego del reset puede eliminarse usando 
-la técnica Correlated Double Sampling\cite{white_characterization_1974}:
-se mide tensión antes y después de la exposición a la radiación.
-Al tomar la diferencia se elimina el ruido de reset,
-presente en ambas por igual.
+The uncertainty in the post-reset voltage can be canceled by using
+a technique called Correlated Double Sampling
+\cite{white_characterization_1974}:
+the output voltage is measured before and after irradiating.
+By taking the difference between the two readings,
+reset noise is eliminated because it is added to both voltages.
 
-\subsection{Diseño del circuito}
+\subsection{Circuit design}
 \label{section:diseno_aps}
-La topología del circuito quedó determinada por la elección de construir un
-dosímetro APS con un par de seguidores para su medición.
-El paso siguiente en el diseño fue elegir los tamaños de los distintos
-componentes para optimizar el desempeño del sensor.
+The circuit topology followed from the decision to build an APS dosimeter
+with two follower stages, to enable external measurements.
+The next step in the design process was choosing the sizes of the various components
+in order to optimize the sensor's performance.
 
-Para una carga dada, la tensión sobre un capacitor es inversamente proporcional
-a su capacidad.
-En el APS la carga es generada por la radiación,
-y la tensión es la señal cuya magnitud queremos maximizar.
-Para esto minimizamos las capacidades parásitas del cátodo de D1,
-usando transistores de área mínima para M1 y M2.
-Restringimos el largo de las conexiones del cátodo,
-y las mantuvimos alejadas de otros nodos.
-Aplicamos software de Mentor de extracción de capacidades parásitas al layout
-resultante, y obtuvimos una capacidad total en el cátodo de \SI{3.4}{\femto\farad}.
+For a given charge, voltage across a capacitor is inversely proportional to its capacitance.
+In the APS, charge is generated by radiation,
+and voltage is the signal whose magnitude we want to maximize.
 
-El tamaño del primer MOS seguidor, M2, 
-tiene que ser el tamaño mínimo para no cargar capacitivamente
-al nodo que acumula carga.
-Esto deja libre las dimensiones del segundo MOS seguidor, M3.
-Mientras más grande es, mayor es su capacidad de gate
-y por lo tanto más va a cargar a la etapa anterior.
-Por otro lado va a tener mayor capacidad de corriente
-para manejar la carga capacitiva del pad de salida.
+To this end, we minimize the parasitic capacitance on D1's cathode,
+by using minimum area transistors for M1 and M2.
+We kept the cathode connections as short as possible,
+and aimed to keep other nodes at a distance to reduce capacitive coupling.
+We ran Mentor software to extract parasitic capacitances from the layout,
+and found the total capacitance in the cathode to be \SI{3.4}{\femto\farad}.
 
-Estimamos un tamaño inicial para M3 fijando un largo arbitrario
-y variando el ancho para minimizar una figura de mérito.
-La figura que elegimos representa el delay producido por los dos seguidores,
+The first follower transistor, M2,
+needs to have the minimum possible size, to avoid capacitively loading
+the charge-accumulation node.
+It then remains to determine the geometry of the second follower transistor, M3.
+The larger it is, the higher its gate capacitance
+and therefore the more it will load the previous stage.
+On the other hand, a larger aspect ratio means a higher current capacity,
+to drive the capacitive load of the output pad.
+
+We estimated an initial size for M3 by fixing an arbitrary length
+and choosing the width which minimizes a figure of merit.
+This figure represents the delay of the two chained followers,
 \begin{align}
     \tau &= \tau_1+\tau_2 = g_{m2}C_{g3} + g_{m3}C_{\textnormal{pad}}
     \label{eq:delay_seguidor_aps}
 \end{align}
-con $g_m=\pderiv{I_D}{V_G}$ la transconductancia de un MOS 
-y $C_g$ su capacidad de gate.
-Minimizando la ecuación~\ref{eq:delay_seguidor_aps}
-para una polarización pre-fijada,
-llegamos a un $W$ inicial de \SI{409}{\micro\meter}.
+with $g_m=\pderiv{I_D}{V_G}$ the MOS transconductance
+and $C_g$ its gate capacitance.
+By minimizing equation~\ref{eq:delay_seguidor_aps}
+for a given bias,
+we reached a $W$ of \SI{409}{\micro\meter}.
 
-El paso siguiente es hacer un cálculo más preciso 
-que incluya todos los detalles del funcionamiento del circuito.
-Para esto simulamos con SPICE el tiempo de respuesta a un electrón incidente
-en función del ancho de M3 (\figref{fig:falltime}).
+The next step was to run a more accurate calculation,
+which takes into account all of the details of the circuit's behavior.
+To this end, we ran SPICE simulations of the response time to incoming electrons,
+for many values of $W$ (\figref{fig:falltime}).
 \fig{falltime}{figuras/aps/falltime.pdf}
-{Tiempo de respuesta simulado del buffer en función del ancho del MOS del
-    segundo seguidor. 
-    $W_{\textnormal{ideal}}$ es el $W$ óptimo cálculado a mano de forma
-    simplificada.
-}
-Se ve que hay poca mejora en el tiempo de respuesta 
-al aumentar $W$ por encima de nuestro estimado inicial.
-Por eso, teniendo en cuenta las limitaciones de área,
-elegimos un ancho total de \SI{400}{\micro\meter} repartido entre 8 canales 
-(o sea 8 MOS en paralelo, cada uno de \SI{50}{\micro\meter}).
+{Simulated buffer response time as a function of the second follower MOS' width.
+    $W_{\textnormal{ideal}}$ is the hand-calculated value of $W$
+    which minimizes a simplified expression for delay.  }
+It can be seen that the response time shows little improvement
+when $W$ is increase above our initial estimate.
+For that reason, along with area limitations,
+we chose a total width of \SI{400}{\micro\meter}
+split over 8 channels
+(meaning 8 parallel MOS, each having a width of \SI{50}{\micro\meter}).
 
-Las dimensiones finales están en la tabla~\ref{fig:areas_aps}.
-Incluímos también una variante con un diodo más grande,
-de modo que su capacidad opaque las otras capacidades parásitas.
+The final dimensions are in table~\ref{fig:areas_aps}.
+We included two variants of the APS,
+one of them with a bigger diode
+so that its capacitance would make all other parasitic capacitances insignificant.
 \begin{table}[h]
     \centering
-    \caption{Dimensiones del diseño optimizadas para sensibilidad y tiempo de
-    respuesta}
+    \caption{Design geometry, optimized for sensitivity and response time}
     \begin{tabular}{|c|c|c|c|}
         \hline
-        Dispositivo&      W (um)&    L (um)&  Canales\\
+        Device&      W (um)&    L (um)&  Channels\\
         \hline
 D1&     4&  4&  1\\
 M1&     0.8&    0.6&    1\\

@@ -416,45 +416,39 @@ We measured discharge curves while illuminating the dies with a LED,
 varying its supply current to achieve a wide range of light intensities
 (figures~\ref{fig:led4} and~\ref{fig:led40}).
 \fig{led4}{figuras/aps/descarga_led_4.pdf}
-{Discharge curve under LED illumination for \SI{40}{\micro\meter} APS.
+{Discharge curve under LED illumination for the \SI{40}{\micro\meter} APS.
 LED current increases from \SI{.1}{\milli\ampere} on the right to \SI{10}{\milli\ampere} on the left,
 with 6 curves per decade.}
 \fig{led40}{figuras/aps/descarga_led_40.pdf}
-{Curva de descarga iluminando con un LED el APS de \SI{4}{\micro\meter} APS.
+{Discharge curve under LED illumination for the \SI{4}{\micro\meter} APS.
 LED current increases from \SI{.1}{\milli\ampere} on the right to \SI{10}{\milli\ampere} on the left,
 with 6 curves per decade.}
 
-Esto permite observar la compresión en tiempo de la curva de descarga 
-con el aumento de la radiación incidente.
-No fue posible medir el efecto de otros tipos de radiación
-(por ejemplo, $\beta$) por limitaciones de tiempo.
-\subsubsection{Ruido medido}
-Establecimos que una medición con este dosímetro consiste en promediar 10
-muestras de tensión tomadas a una frecuencia de \SI{625}{\hertz} 
-(período de muestreo \SI{1.6}{\milli\second}).
-Al partir de esta definición,
-estamos eligiendo no profundizar en
-las características intrínsicas de ruido del sensor
-(y su dependencia con la frecuencia, por ejemplo).
-En cambio, nos enfocamos en el ruido que va a ver el usuario bajo ciertas
-condiciones particulares de uso.
+This shows the way the discharge speeds up as incoming radiation becomes more intense.
+Due to time restrictions, we were not able to measure the effect of other types of radiation
+such as $\beta$.
+\subsubsection{Measured noise}
+We decided that each measurement with this dosimeter consists of 
+an average of 10 voltage measurements taken at a \SI{625}{\hertz} sample rate
+(\SI{1.6}{\milli\second} sampling period).
+By starting from this definition,
+we are choosing not to go into the dosimeter's intrinsic noise characteristics
+(eg. its noise power spectral density).
+Rather, we are focusing on the noise seen by the user under specific usage conditions.
 
-Con esta definición de qué es una medición, 
-podemos definir de manera precisa el ruido como la desviación estándar
-de ese promedio de 10 muestras.
-Más precisamente, la tensión de salida a tasa de dosis constante
-es la suma de una componente determinista $V_D$ y una aleatoria $\epsilon$
+It follows from our definition of a measurement
+that the noise seen by the user is the standard deviation of the average of 10 samples.
+More precisely, the output voltage at a constant dose rate
+equals the sum of a deterministic component $V_D$ and a random component $\epsilon$,
 \begin{align*}
     V = V_D(\dot D, t) + \epsilon
 \end{align*}. 
-Al tomar la diferencia entre dos muestras consecutivas,
-queda una pequeña componente sistemática 
-(proporcional a $\Delta t\pderiv{V_D}{t}$) 
-sumada a la diferencia entre dos variables aleatorias que suponemos
-independientes.
-Por lo tanto, 
-la desviación estándar de la diferencia entre dos muestras consecutivas
-es $\sqrt 2$ veces la desviación estándar presente en una muestra.
+By taking the difference between two closely spaced samples,
+the result is a small systematic term
+(proportional to $\Delta t\pderiv{V_D}{t}$) 
+plus the difference between to random variables which we assume to be independent.
+Therefore, the standard deviation of the difference between two consecutive samples
+equals $\sqrt 2 \std[\epsilon]$
 
 Para el análisis, medimos 6 disparos del APS
 (cada disparo como las figuras~\ref{fig:led4} y~\ref{fig:led40}), 

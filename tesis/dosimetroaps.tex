@@ -448,13 +448,13 @@ the result is a small systematic term
 (proportional to $\Delta t\pderiv{V_D}{t}$) 
 plus the difference between to random variables which we assume to be independent.
 Therefore, the standard deviation of the difference between two consecutive samples
-equals $\sqrt 2 \std[\epsilon]$
+equals $\sqrt 2 \textrm{Std}[\epsilon]$
 
-Para el análisis, medimos 6 disparos del APS
-(cada disparo como las figuras~\ref{fig:led4} y~\ref{fig:led40}), 
-totalizando 75000 muestras.
-Luego diferenciamos estas mediciones y calculamos la desviación estándar.
-Los resultados se ven en las figuras~\ref{fig:ruido4} y~\ref{fig:ruido40}.
+For this analysis, we measured 6 APS discharges
+(with each discharge of the form seen in figures~\ref{fig:led4} and~\ref{fig:led40}), 
+for a total of 75000 samples.
+We differentiated these samples and then calculated standard deviations.
+The results are in figures~\ref{fig:ruido4} and~\ref{fig:ruido40}.
 % TODO: Las curvas medidas serían led4 y led40? Y pregunto:
 % 1) Las miles de muestras corresponden a un disparo o a muchos disparos? Y
 % cómo comparan los distintos disparos?
@@ -463,53 +463,52 @@ Los resultados se ven en las figuras~\ref{fig:ruido4} y~\ref{fig:ruido40}.
 % TODO De dónde sale la equivalencia? ¿Es este sigma representativo de la
 % dispersión en una repetición de disparos? Diría que está restringido a la
 % freq de muestreo
-\fig{ruido4}{figuras/aps/ruido4.pdf}{Ruido a la salida del APS de
-    \SI{4x4}{\micro\meter}, calculado tomando diferencias entre muestras
-    consecutivas y
-escalando para que represente el ruido en un promedio de 10 valores.
-La dosis equivalente se calculó con la sensibilidad proveniente
-de las simulaciones SPICE y los cálculos de radiación.}
-\fig{ruido40}{figuras/aps/ruido40.pdf}{Ruido a la salida del APS de
-    \SI{40x40}{\micro\meter}, calculado tomando diferencias entre muestras
-    consecutivas y
-escalando para que represente el ruido en un promedio de 10 valores.
-La dosis equivalente se calculó con la sensibilidad proveniente
-de las simulaciones SPICE y los cálculos de radiación.}
-También es posible tomar la desviación estándar para cada disparo,
-como se ve en las figuras~\figref{fig:ruido_disparo_4} y~\figref{fig:ruido_disparo_40}.
-Así se verifica que todos los disparos tienen una estadística similar.
+\fig{ruido4}{figuras/aps/ruido4.pdf}{Noise at the output of the
+    \SI{4x4}{\micro\meter} APS. This is the standard deviation of the difference between adjacent samples,
+    scaled to match the noise when averaging 10 samples.
+    Equivalent dose was calculated using the sensitivity estimated from a combination
+    of SPICE and Monte-Carlo simulations.}
+\fig{ruido40}{figuras/aps/ruido40.pdf}{Noise at the output of the
+    \SI{40x40}{\micro\meter} APS. This is the standard deviation of the difference between adjacent samples,
+    scaled to match the noise when averaging 10 samples.
+    Equivalent dose was calculated using the sensitivity estimated from a combination
+    of SPICE and Monte-Carlo simulations.}
+It is also possible to calculate the standard deviation for each discharge,
+as seen in figures~\figref{fig:ruido_disparo_4} and~\figref{fig:ruido_disparo_40}.
+This serves to verify that all discharges follow similar statistics.
 \fig{ruido_disparo_4}{figuras/aps/std_disparo_aps4.pdf}
-{Ruido a la salida del APS de \SI{40x40}{\micro\meter},
-calculado usando muestras de disparos individuales.
-Los resultados se agrupan muy cerca del valor de la \figref{fig:ruido40}.}
+{Noise at the output of the \SI{40x40}{\micro\meter}
+APS, calculated using samples from single discharges.
+The results are grouped close to the values in \figref{fig:ruido40}.}
 \fig{ruido_disparo_40}{figuras/aps/std_disparo_aps40.pdf}
-{Ruido a la salida del APS de \SI{4x4}{\micro\meter},
-calculado usando muestras de disparos individuales.
-Los resultados se agrupan muy cerca del valor de la \figref{fig:ruido4}.}
-Podemos convertir estos valores de ruido en dosis usando la sensibilidad
-calculada en~\ref{section:diseno_aps}.
-Así llegamos a una resolución de \SI{2.0}{\milli\gray} y \SI{2.3}{\milli\gray}
-para el APS de \SI{4x4}{\micro\meter} y \SI{40x40}{\micro\meter},
-    respectivamente.
-Sin embargo, esto está restringido a 
-las condiciones de muestreo de las que partimos,
-y es posible hacer un análisis más general de 
-la magnitud del ruido en función de la frecuencia.
-Esto permitiría elegir otra cantidad de promediado o frecuencia de muestreo 
-que logre mayor resolución.
+{Noise at the output of the \SI{4x4}{\micro\meter}
+APS, calculated using samples from single discharges.
+The results are grouped close to the values in \figref{fig:ruido4}.}
+It is possible to convert these noise voltage values into dose
+by using the sensitivity calculated in section~\ref{section:diseno_aps}.
+This leads to a resolution of \SI{2.0}{\milli\gray} and \SI{2.3}{\milli\gray}
+for the \SI{4x4}{\micro\meter} and \SI{40x40}{\micro\meter} APS,
+    respectively.
 
-Este análisis del ruido tampoco contempla todas los formas posibles
-de usar el APS.
-Su validez principal es al realizar una medición Correlated Double Sampling,
-restando la tensión final a la tensión luego del reset.
-Sin embargo,
-también existe la posibilidad de medir durante intervalos largos,
-sumando la dosis medida en cada ciclo de reset y descarga.
-En este caso, se suma el error en cada disparo para llegar a un valor de ruido
-proporcional a la raíz de la cantidad de disparos.
+It must be emphasized that these results are only applicable to the specific usage conditions we set out from.
+It is possible to carry out a more general analysis of the frequency dependence of the noise,
+which might bring insights into the underlying physical processes.
 
-A fin de evaluar la repetitividad de la lectura, comparamos la tensión de salida de los APS un tiempo fijo después de su reseteo, para varios disparos.
-El resultado (figuras~\ref{fig:comparacion_salida_disparos_aps4} y~\ref{fig:comparacion_salida_disparos_aps40}) es que hay una diferencia entre disparos de \SI{20}{\milli\volt} en el APS de \SI{4x4}{\micro\meter} y de \SI{12}{\milli\volt} en el de \SI{40x40}{\micro\meter}.
+Furthermore, it is possible to think of other ways to measure dose with the APS.
+This analysis applies mostly to measurements using Correlated Double Sampling,
+where the final voltage is subtracted from the post-reset voltage.
+However, there is also the alternative of measuring across long intervals of time,
+by adding the doses measured in multiple discharge cycles.
+The errors would also add together,
+leading to a relative error which grows as the square root of the number of cycles.
+
+In order to evaluate the repeatability of the measurements,
+we compared the APS output voltage a fixed time after reset,
+for multiple discharges.
+The results (figures~\ref{fig:comparacion_salida_disparos_aps4} and~\ref{fig:comparacion_salida_disparos_aps40})
+show differences between discharges of
+\SI{20}{\milli\volt} in the \SI{4x4}{\micro\meter} APS,
+and \SI{12}{\milli\volt} in the \SI{40x40}{\micro\meter} APS.
 \fig{comparacion_salida_disparos_aps4}
 {figuras/aps/tension_salida_comparando_disparos_aps4.pdf}
 {Tensión de salida para varios disparos, un tiempo fijo luego de resetear el APS de \SI{4x4}{\micro\meter}.}

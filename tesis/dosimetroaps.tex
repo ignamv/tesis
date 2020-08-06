@@ -511,36 +511,39 @@ show differences between discharges of
 and \SI{12}{\milli\volt} in the \SI{40x40}{\micro\meter} APS.
 \fig{comparacion_salida_disparos_aps4}
 {figuras/aps/tension_salida_comparando_disparos_aps4.pdf}
-{Tensión de salida para varios disparos, un tiempo fijo luego de resetear el APS de \SI{4x4}{\micro\meter}.}
+{Output voltage for multiple discharges, 
+measured after waiting a fixed interval of time from the reset
+(\SI{4x4}{\micro\meter} APS)}
 \fig{comparacion_salida_disparos_aps40}
 {figuras/aps/tension_salida_comparando_disparos_aps40.pdf}
-{Tensión de salida para varios disparos, un tiempo fijo luego de resetear el APS de \SI{40x40}{\micro\meter}.}
-Si bien es una muestra reducida, la repetitividad de la lectura entre disparos es buena.
-En particular, es comparable con el ruido de medición caracterizado en las figuras~\ref{fig:ruido_disparo_4} y~\ref{fig:ruido_disparo_40}.
-Las lecturas están acotadas en un intervalo de \SI{20}{\milli\volt} para el dispositivo de \SI{4x4}{\micro\meter} y es aproximadamente la mitad en el dispositivo de \SI{40x40}{\micro\meter}; valores comparables con las desviaciones estándar obtenidas para la dispersión de las lecturas intra-disparos.
+{Output voltage for multiple discharges, 
+measured after waiting a fixed interval of time from the reset
+(\SI{40x40}{\micro\meter} APS)}
+Although the number of samples is limited,
+the reading is repeatable between discharges.
+The differences are similar to the measurement noise plotted in figures~
+\ref{fig:ruido_disparo_4} and~\ref{fig:ruido_disparo_40}.
+The readings are within a \SI{20}{\milli\volt} interval for the \SI{4x4}{\micro\meter} device,
+and approximately \SI{20}{\milli\volt} for the \SI{40x40}{\micro\meter} device.
+These values are comparable to the standard deviations of the differences between discharges.
 %
-\subsection{Resúmen de características}
-El dosímetros APS de \SI{4x4}{\micro\meter} que diseñamos, 
-fabricamos y construímos presenta las
-siguientes características:
+\subsection{Summarized specifications}
+The \SI{4x4}{\micro\meter} APS dosimeter we have designed, fabricated and built
+has the following specifications:
 \begin{itemize}
-    \item Sensibilidad: \SI{7.1}{\volt\per\gray}
-    \item Resolución: \SI{2.0}{\milli\gray}
-    \item Rango (por disparo): \SI{0.4}{\gray}
+    \item Sensitivity: \SI{7.1}{\volt\per\gray}
+    \item Resolution: \SI{2.0}{\milli\gray}
+    \item Range (per discharge): \SI{0.4}{\gray}
 \end{itemize}
 %
-\subsection{Conclusiones}
-Presentamos el concepto básico del dosímetro APS,
-con sus peculiaridades de uso y el tipo de mediciones que permite realizar.
-Cubrimos su teoría de funcionamiento,
-y de ahí explicamos el proceso de diseñar el circuito
-para su fabricación.
+\subsection{Conclusions}
+We have presented the basic concepts behind the APS dosimeter,
+including its distinctive form of operation and type of measurements that it enables.
+We have covered its theory of operation,
+and following that the procedure followed to design the circuit that we sent out for fabrication.
 
-En los resultados verificamos que el sensor
-sigue el comportamiento básico que esperamos,
-tanto en ausencia de radiación 
-como para distintas intensidades de luz visible.
-Asimismo, conseguimos una estimación inicial de la resolución del sensor
-en base al ruido medido a la salida.
-Así dimos los primeros pasos para implementar un dosímetro APS
-en un proceso de fabricación CMOS estándar.
+Our results have verified that the sensor
+behaves as expected, both in darkness and for varying intensities of visible light.
+Moreover, we have reached an initial estimate of the sensor's resolution
+by measuring the output noise.
+These are the first steps towards the construction of an APS dosimeter in a standard CMOS process.

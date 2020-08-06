@@ -1,99 +1,88 @@
-\section{Dosímetro Floating Gate}
-Los MOSFET con gate aislado o floating gate se usan comercialmente
-en memorias no volátiles (Flash y EEPROM).
-Se coloca cierta carga, 
-cuyo valor representa uno o más bits de información, en el gate.
-Luego se recupera la información midiendo la carga del gate
-en base a las curvas IV del MOSFET.
+\section{Floating Gate dosimeter}
+Floating gate MOSFETs are used commercially for non-volatile memory (Flash and EEPROM).
+The ammount of charge placed on the gate represents the value of one or more bits of information.
+This information can be retrieved by measuring the gate charge through the MOSFET's IV curves.
 
-El dosímetro FG se basa en un MOSFET con gate aislado.
-Su modo de uso es primero resetearlo, dándole una carga inicial.
-Desde el momento de reset, el dosímetro integra 
-la dosis total que recibe sin necesidad de alimentación
-(mientras no exceda una dosis máxima).
-Por lo tanto es idóneo para seguimientos largos,
-por ejemplo de un trabajador durante su turno.
+The floating gate dosimeter is based on a floating gate MOSFET.
+In order to use it, it must first be reset by placing an initial charge on the gate.
+The dosimeter will then integrate the total dose received from the moment it was reset.
+This does not require a power supply during irradiation, but it is limited to a certain maximum dose.
+This makes it ideal for long monitoring intervals,
+for example during a person's workday.
 
-Igual que como hicimos para el dosímetro APS,
-esta parte del trabajo comienza con la teoría del dosímetro.
-Luego cubre cómo realizamos el diseño y lo optimizamos.
-Por último, presenta las mediciones del sensor fabricado,
-incluyendo los resultados de su irradiación,
-y las conclusiones que siguen de ellas.
+We will follow the same outline as for the APS dosimeter,
+starting with the theory behind its operation.
+Afterwards, we will cover the design and optimization process.
+Finally, we will present measurements of the fabricated sensor,
+including irradiation results and the conclusions that follow.
 %
-\subsection{Principio de funcionamiento}
-El principio de funcionamiento del dosímetro FG 
-es que la radiación que incide
-en el óxido de compuerta tiende a descargar al FG.
-Antes de irradiar,
-se coloca carga en el gate mediante una corriente de túnel 
+\subsection{Operating principle}
+The principle of operation of the FG dosimeter is that
+incoming radiation that strikes the gate oxide
+tends to discharge the gate.
+Before irradiation,
+the gate is charged using a tunneling current through the gate oxide
 (\figref{fig:cargafg}).
 \figp{cargafg}{figuras/fg/esquemainyeccion.pdf}
-{ Inyección de carga en el FG a través de una corriente de túnel.
-La tensión en el inyector produce un campo eléctrico en su óxido de gate,
-que facilita una corriente de túnel Fowler-Nordheim.
-La carga que pasa al FG prende el transistor lector.}
-Esta carga altera la tensión de gate, prendiendo un transistor lector.
+{ Charge injection in the FG using a tunnel current.
+The voltage across the injector MOS translates to an electric field in the gate oxide,
+which leads to a Fowler-Nordheim tunneling current.
+The charge that enters the FG turns the reader MOS on.}
+This charge alters the gate voltage, turning the reader MOS on.
 
-La radiación incidente produce pares electrón-hueco en el óxido
-que rodea al floating gate, descargándolo
+Incoming radiation creates electron-hole pairs in the oxide that surrounds the floating gate.
+This process causes a discharge
 (\figref{fig:irradiacionfg}).
 \figp{irradiacionfg}{figuras/fg/irradiacion.pdf}
-{ Descarga del FG debido a pares electrón-hueco creados por
-radiación.
-Los huecos son atraídos a la carga negativa del FG y
-se recombinan con la misma, descargándolo.}
-Esto va apagando el lector,
-reduciendo su corriente de drain si se aplica tensión drain-source constante
+{ FG discharge due to electron-hole pairs created by incoming radiation.
+The holes go toward and recombine with the negative charge on the FG, thereby discharging it.}
+The reader MOS then gradually turns off,
+conducting less drain current for a given drain-source voltage
 (\figref{fig:fg_vd_cte})
 \fig{fg_vd_cte}{figuras/fg/lector_vd_cte.pdf}
-{Simulación de la corriente de drain del lector con la tensión de gate,
-para distintos valores de $V_{sd}$.}
-o aumentando su tensión drain-source si se aplica corriente de drain constante
+{ Simulated drain current through the reader MOS as a function of gate voltage and $V_{sd}$.}
+or increasing its drain-source voltage if the drain is biased at constant current
 (\figref{fig:fg_id_cte}).
 \fig{fg_id_cte}{figuras/fg/lector_id_cte.pdf}
-{Simulación de la tensión de drain del lector con la tensión de gate,
-para distintos valores de $I_d$.}
-Calibrando estas cantidades contra la dosis recibida, 
-el resultado es un dosímetro.
+{ Simulated reader drain voltage as a function of gate voltage and $I_d$.}
+By calibrating one of these quantities against known doses,
+one can build a dosimeter.
 %
-\subsection{Trabajos previos}
-Thomsen\cite{thomsen_floating-gate_1991} produce un FG MOSFET
-con un proceso estándar de \SI{2}{\micro\meter} con dos capas de polisilicio
-a través del consorcio MOSIS\cite{noauthor_mosis_nodate}.
-Su innovación consiste en usar túnel Fowler-Nordheim entre las capas de
-polisilicio, en vez de usar electrones calientes. 
-Así logra buenas corrientes de inyección para ambas polaridades,
-aplicando tensiones de hasta \SI{20}{\volt}.
+\subsection{Previous works}
+Thomsen\cite{thomsen_floating-gate_1991} assembled a FG MOSFET
+using a standard \SI{2}{\micro\meter} process with two polysilicon layers,
+fabricated through the MOSIS service\cite{noauthor_mosis_nodate}.
+Their innovation consists of using Fowler-Nordheim tunneling between the poly layers,
+rather than hot electrons.
+This enhances the tunneling current for both polarities,
+achieving satisfactory injection using voltages under \SI{20}{\volt}.
 
-Tarr\cite{tarr_sensitive_2004} fabrica un FG en un proceso comercial CMOS
-de \SI{1.5}{\micro\meter} con dos capas de polisilicio. 
-Esto le permite aplicar la tensión de inyección 
-(de hasta 40V) sin pasar por un MOS.
-Usa un MOS lector apareado con otro MOS idéntico para compensar 
-la variación con temperatura.
-Como resultado obtiene una sensibilidad de \SI{3}{\milli\volt\per\rad}.
+Tarr\cite{tarr_sensitive_2004} fabricated a FG in a commercial
+\SI{1.5}{\micro\meter} CMOS process with two poly layers.
+This allows him to apply injection voltages up to SI{40}{\volt}
+without going through an injector MOS.
+He used a reader MOS with an identical matched MOS,
+in order to compensate for temperature drift.
+He achieved a sensitivity of \SI{3}{\milli\volt\per\rad}.
 
-Cesari\cite{cesari_floating_2014} construye un dosímetro FG 
-con un proceso de una sola capa de polisilicio.
-Lo usa para estudiar el efecto de cargas y descargas repetidas
-en el sensor.
-En ambos casos controla la carga del FG eléctricamente,
-aplicando tensiones de hasta \SI{18}{\volt}.
+Cesari\cite{cesari_floating_2014} fabricated a FG dosimeter
+using a process with a single poly layer.
+He used it to study the effect on the sensor of repeated charge-discharge cycles.
+He charged and discharged the FG electrically by applying voltages up to
+\SI{18}{\volt}.
 
 %
-\subsection{Acoplamiento capacitivo}
-Ya que el FG está aislado,
-su tensión es función de la carga que almacena 
-y de la capacidad entre este y otros nodos del circuito.
-Sumando la carga en cada capacidad se llega a la relación
+\subsection{Capacitive coupling}
+Because the FG is isolated from other nodes,
+its voltage is a function of its charge and of the voltage of other nodes that are capacitively coupled to it.
+Adding up the charges of all the capacitances connected to the FG leads to the equation
 \begin{align}
     Q_{FG} &= (C_R + C_W) V_{FG} + C_I (V_{FG}-V_I)
     \label{eq:ccoupling}
 \end{align}
-con $Q_{FG}$ la carga almacenada en el FG, $C_R$ la capacidad de gate del
-lector, $C_W$ la capacidad del FG sobre el well del lector y $C_I$ la capacidad
-de gate del inyector (\figref{fig:cargadofg}).
+with $Q_{FG}$ the FG charge, $C_R$ the reader MOS gate capacitance,
+$C_W$ the FG capacitance over the reader N-well and 
+$C_I$ the injector MOS gate capacitance (\figref{fig:cargadofg}).
 \fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
 {Esquemático del flujo de carga al floating gate 
 a través del óxido del MOS inyector.

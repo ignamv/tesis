@@ -84,174 +84,165 @@ with $Q_{FG}$ the FG charge, $C_R$ the reader MOS gate capacitance,
 $C_W$ the FG capacitance over the reader N-well and 
 $C_I$ the injector MOS gate capacitance (\figref{fig:cargadofg}).
 \fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
-{Esquemático del flujo de carga al floating gate 
-a través del óxido del MOS inyector.
-Al aplicar tensión al inyector,
-parte de esta tensión cae sobre 
-la capacidad de gate $C_I$ del MOS inyector 
-y parte sobre la capacidad de well $C_W$ y del MOS lector $C_R$.
-Minimizando $C_I$, se maximiza la tensión a través del inyector
-y por lo tanto se logra la mayor corriente de túnel.}
-\subsection{Sensibilidad}
-Para predecir la sensibilidad del dosímetro,
-necesitamos un modelo simple de cómo la radiación
-descarga al floating gate.
+{Schematic of the current flowing to the floating gate through the injectos MOS gate oxide.
+When the injector is biased, part of the applied voltage drops across its gate capacitance $C_I$,
+and the rest drops across the N-well capacitance $C_W$ and reader MOS capacitance $C_R$.
+By minimizing $C_I$, one maximizes the voltage across the injector,
+thus maximizing the tunnel current.`
+\subsection{Sensitivity}
+In order to predict the sensitivity of the dosimeter,
+we need to model the discharge of the floating gate
+as a result of incoming radiation.
 
-En principio, la radiación genera pares electrón-hueco
-en todo el volúmen de óxido donde incide.
-Esto sólo nos interesa cuando ocurre en el óxido que rodea al FG,
-porque entonces esos pares electrón-hueco pueden descargarlo.
-Por lo tanto, cada región de FG aporta una generación de carga
-proporcional a su área $A$ y al espesor de óxido: $t$.
+In principle, radiation generates electron-hole pairs in any volume of oxide it traverses.
+We are only interested in those which are generated near the FG and are therefore capable of discharging it.
+Therefore, under irradiation, each part of the FG contributes an ammount of charge proportional to its area $A$ and oxide thickness $t$.
 
-No podemos medir directamente la cantidad de carga en el floating gate.
-Sólo podemos saberla indirectamente, a partir de la tensión de gate.
-La relación entre carga y tensión es la capacitancia del FG.
-Para cada región de FG, su capacitancia es proporcional al área $A$
-e inversamente proporcional al espesor del óxido $t$
-que la separa de la otra placa del capacitor (lo que sea que tenga debajo).
+As the FG is isolated, we can not directly measure its stored charge.
+We can only measure it indirectly, through the gate voltage's effect on the reader MOS.
+The ratio between FG charge and voltage is the total FG capacitance.
+Each region of FG contributes a capacitance directly proportional to its area $A$ 
+and inversely proportional to the thickness $t$ of the oxide 
+separating it from the other plate of the capacitor 
+(the N-well or substrate underneath).
 
-Por lo tanto, la sensibilidad 
-(definida como derivada de la tensión respecto de la dosis)
-es un cociente entre la carga generada por todo el óxido que rodea al FG
-y la capacitancia del FG a otros nodos.
+Therefore, the sensitivity (the derivative of the gate voltage with respect to dose)
+is the ratio of the charge generated in the oxide surrounding the FG,
+to the capacitance from the FG to other nodes:
 \begin{align}
     S = \deriv{V}{E} \propto \frac{\sum_i A_it_i}{\sum_j A_j/t_j}
     \label{eq:sensibilidad_fg}
 \end{align},
-con $A_i$ y $t_i$ las áreas y espesores de los óxidos que rodean al FG.
-Tanto los óxidos de campo como de gate consisten de SiO$_2$,
-de modo que la permitividad es parte de la constante de proporcionalidad.
-Explorando esta ecuación, podemos optimizar el diseño del dosímetro
-para maximizar su sensibilidad.
-\subsection{Diseño}
-El desempeño del dosímetro depende de cocientes
-de capacidades entre FG y distintos nodos del circuito. 
-Dado que el espesor de cada dieléctrico no es una variable de diseño
-(está fijado por el proceso de fabricación),
-manipulamos estos cocientes de capacidad alterando las relaciones 
-entre las áreas del lector, inyector y FG.
-Debido a limitaciones del proceso de fabricación,
-las áreas tienen un valor mínimo y varían de a pasos discretos.
-Por otro lado, hay un área total máxima para el dosímetro.
-Para elegir las dimensiones óptimas,
-exploramos el espacio de soluciones mirando dos parámetros de calidad:
-sensibilidad a la radiación, y eficiencia de inyección.
+with $A_i$ and $t_i$ the areas and thicknesses of the oxides surrounding the FG.
+Both field oxide and gate oxide regions are made of SiO$_2$,
+so the permittivity can be absorbed into the constant of proportionality.
+By analyzing this equation, we can design the dosimeter in an optimal way which
+maximizes sensitivity.
+\subsection{Design}
+The dosimeter's performance depends on the ratios between 
+capacitances from the FG to other circuit nodes.
+As the thickness of the dielectrics is not a design variable
+(being determined by the fabrication process),
+we can manipulate these ratios of capacitances through the
+areas of the reader, injector and FG.
+Due to limitations of the fabrication process (specifically lithography),
+these areas have minimum values, and vary in discrete steps.
+Additionally, we have a limited total area available.
+In order to choose an optimal set of areas,
+we explored the problem space with two benchmarks in mind:
+radiation sensitivity, and injection efficiency.
 
-La ecuación~\ref{eq:sensibilidad_fg} dice que la sensibilidad se maximiza
-asignando mayor área al óxido más grueso,
-que es el óxido de campo entre FG y el well del lector.
+Equation~\ref{eq:sensibilidad_fg} implies that sensitivity is maximized
+by giving the most area to the thickest oxide,
+which is the field oxide between the FG and the reader N-well.
 
-Por otro lado,
-la ecuación~\ref{eq:ccoupling} dice que la tensión de túnel $V_{FG}-V_I$
-se maximiza, para un $V_I$ dado,
-minimizando la relación $C_I/C_{FG}$.
-Dado que hay un área mínima para el inyector,
-es necesario aumentar las otras capacidades para reducir esa relación.
+On the other hand, equation~\ref{eq:ccoupling}
+says that the tunnel voltage $V_{FG}-V_I$
+is maximized, for a given $V_I$,
+by minimizing the $C_I/C_{FG}$ ratio.
+Because there's a lower limit to the injector area,
+it is necessary to increase the other areas to reduce that ratio.
 
-Exploramos el espacio de soluciones
-graficando las curvas de nivel de ambos parámetros en función de dos variables
-de diseño:
-la relación área lector / área inyector,
-y la relación área de well del lector / área inyector.
-Esto se ve en las figuras~\ref{fig:sensibilidad_fg}
-y~\ref{fig:eficiencia_inyeccion}.
+We explored the problem space by plotting contours for both benchmarks,
+as a function of two design variables:
+reader area / injector area,
+and reader N-well area / injector area.
+These contour plots are shown in figures~\ref{fig:sensibilidad_fg}
+and~\ref{fig:eficiencia_inyeccion}.
 \fig{sensibilidad_fg}{figuras/fg/sensibilidad.pdf}
-{Sensibilidad del floating gate en función de la relación de áreas de 
-inyector ($A_I$),
-lector ($A_R$) 
-y well del lector ($A_W$).}
+{Floating gate sensitivity 
+as a function of the ratios between
+injector area ($A_I$),
+reader area ($A_R$) 
+and reader N-well area ($A_W$).}
 \fig{eficiencia_inyeccion}{figuras/fg/inyeccion.pdf}
-{Fracción de la tensión de inyección que cae en el óxido del inyector,
-en función de la relación de áreas de 
-inyector ($A_I$),
-lector ($A_R$) 
-y well del lector ($A_W$).}
+{Fraction of the injection voltage which drops across the injector gate oxide,
+as a function of the ratios between
+injector area ($A_I$),
+reader area ($A_R$) 
+and reader N-well area ($A_W$).}
 
 % TODO Detallar criterios utilizados para llegar a esos números.
 % Las relaciones Aw/Ai y Ar/Ai están fuera de los gráficos anteriores
-El inyector, por las razones ya explicadas, es de área mínima.
-Quedan por determinar las dimensiones finales del lector y el inyector.
-La \figref{fig:eficiencia_inyeccion}
-muestra que con una relación $A_R/A_I$ de cerca de 10000
-se obtiene una eficiencia de inyección casi igual a 1.
-Rellenando el resto del área disponible en el chip con Well del lector,
-obtenemos una relación $A_W/A_I$ de casi 40000.
-La \figref{fig:sensibilidad_fg} muestra que con estas áreas
-se obtiene una sensibilidad de varias decenas de \SI{}{\milli\volt\per\gray},
-lo cual resulta aceptable.
-Ajustando las áreas para que quepa todo 
-en la región reservada para este proyecto 
-llegamos a las dimensiones finales de cada región:
+The aforementioned criteria lead us to use an injector with minimum area.
+This leaves the reader and N-well areas as free variables.
+\Figref{fig:eficiencia_inyeccion}
+shows that a $A_R/A_I$ ratio around 10000
+leads to an injection efficiency of approximately 1.
+By filling the rest of the available area with reader N-well,
+we get a $A_W/A_I$ ratio of almost 40000.
+\Figref{fig:sensibilidad_fg} shows that this choice of areas
+yields a sensitivity in the tens of \SI{}{\milli\volt\per\gray},
+which is satisfactory.
+After laying out the structures in the area allocated for this project,
+we reached the final areas for each region:
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
     \hline
-    Región   & Área (\SI{}{\micro\meter\squared})\\ \hline
-    Inyector \vspace{0.5cm}& 4.32\\
-Well     & 180000\\
-Lector   & 35000\\
+    Region   & Area (\SI{}{\micro\meter\squared})\\ \hline
+    Injector \vspace{0.5cm}& 4.32\\
+N-Well     & 180000\\
+Reader   & 35000\\
 \hline
 \end{tabular}
 \end{table}
 %
-\subsection{Diseño físico (layout)}
+\subsection{Physical design (layout)}
 %
 \fig{layout_fg_todo}{figuras/gds/fg/small/poly_met.png}
-{Layout del dosímetro completo, mostrando polisilicio y metalización.
-El rectángulo superior de polisilicio está sobre nwell con óxido de campo,
-y es la región principal de generación de carga por su óxido grueso.
-Abajo a la izquierda está el inyector, 
-el MOS de área mínima a través del cual se carga al FG.
-Abajo a la derecha está el transistor lector,
-armado con múltiples canales 
-(varios MOSFET en paralelo que comparten difusiones source/drain).}
-El layout (\figref{fig:layout_fg_todo}) se divide en 3 grandes regiones:
+{Layout of the complete dosimeter, showing polysilicon and metal layers.
+The upper polysilicon rectangle is laid over N-well with field oxide,
+and it is the main charge-generating region due to its thick oxide.
+On the lower left is the injector,
+a minimum-area MOS through which the FG is charged.
+On the lower right is the reader MOS, laid out with multiple fingers
+(parallel MOSFETs which share drain/source implants).}
+The layout (\figref{fig:layout_fg_todo}) is divided into 3 main regions:
 \begin{itemize}
-    \item Floating Gate sobre óxido de campo y nwell,
-    \item MOS inyector, y
-    \item MOSFET lector.
+    \item Floating Gate over field oxide and N-well,
+    \item MOS injector, and
+    \item reader MOSFET.
 \end{itemize}
-El inyector es un MOS de área mínima con su propio nwell
+The injector is a minimum-area MOS in a separate N-well
 (\figref{fig:layout_inyector}).
 \fig{layout_inyector}{figuras/gds/fg/small/inyector.png}
-{Layout del MOS inyector. Está rodeado por contactos a body (nwell).
-Estos contactos y los de drain/source 
-están cortocircuitados por la metalización (no visible).}
-Esto permite conectar su drain, source y body a la terminal de inyección.
+{Injector MOS layout. It is surrounded by body contacts.
+These are shorted with the drain/source contacts
+in a metal layer that is not shown.  }
+This allows the drain, source and body terminals to be connected to the injection terminal of the chip. If the N-well was shared, it would not be possible to apply high voltages to it without disrupting other parts of the circuit.
 
-El lector es un MOSFET de $W=\SI{100}{\micro\meter}$ 
-por $L=\SI{25}{\micro\meter}$ con 14 canales.
-Esto significa que usa 14 MOSFET en paralelo,
-que comparten difusiones source/drain. 
-Esto se ve claramente en la metalización (\figref{fig:layout_fg_met}),
-donde los source están conectados por debajo con M1 (la primera capa de metal)
-y los drain por arriba con M2 (la segunda capa de metal).
+The reader is a $W=\SI{100}{\micro\meter}$ 
+by $L=\SI{25}{\micro\meter}$ MOSFET with 14 fingers.
+This means that there are 14 MOSFETs in parallel,
+sharing source/drain implants. 
+This is visible in the metal layers (\figref{fig:layout_fg_met}),
+where the sources are joined on the bottom using M1 (the first metal layer)
+and the drains are joined on top using M2 (the second metal layer).
 \fig{layout_fg_met}{figuras/gds/fg/small/met1_met2.png}
-{Metalización del FG.
-A la izquierda, hay M1 (la primera capa de metal) 
-cortocircuitando source, drain y body del MOS inyector.
-A la derecha, hay M1 conectando por debajo los sources/body del MOSFET lector
-y M2 conectando por arriba los drains.}
-\subsection{Medición de la carga}
-\fig{floatingcapacidades}{figuras/fgcapacidades/floatinggate2.pdf}{Modelo de
-acoplamiento capacitivo en un MOSFET con floating gate.}
-La tensión del floating gate controla el canal de un MOSFET
-que llamamos lector o reader.
-Para determinar esa tensión en función de la carga del FG,
-usamos el acoplamiento capacitivo
-\cita{pavan_floating_2004} 
-entre floating gate y otros nodos.
-Despejando la ecuación~\ref{eq:ccoupling}, llegamos a la ecuación
+{FG metal layers.
+On the left is M1 (first metal layer)
+shorting source, drain and body of the injector MOS.
+On the bottom right is M1 connecting the sources and body contacts of the reader MOS.
+Above that is M2 joining the reader MOS drains.}
+\subsection{Charge measurement}
+\fig{floatingcapacidades}{figuras/fgcapacidades/floatinggate2.pdf}
+{Capacitive coupling model in a FGMOS}
+The floating gate voltage controls the level of inversion
+in a MOSFET we will call "reader".
+In order to find the channel inversion as a function of FG charge,
+we analyse the capacitive coupling between the FG and other nodes
+\cita{pavan_floating_2004}.
+Solving equation~\ref{eq:ccoupling}, we reach
 \begin{align*}
     V_{FG} &= \frac{C_I V_I + (C_R+C_W) V_R + Q}{C_I+C_R+C_W}
 \end{align*}
-con los términos ilustrados en la \figref{fig:floatingcapacidades}.
+with the terms shown in \figref{fig:floatingcapacidades}.
 
-Durante la lectura se usa $V_I=V_R=0$.
-Podemos evaluar las ecuaciones de la sección~\ref{section:ecuaciones_mos}
-para un PMOS y expresarlas en función de $V_{FG}$ y $V'_R$.
-Así llegamos a la corriente del lector
+While reading, the circuit is biased at $V_I=V_R=0$.
+We can evaluate the equations in section~\ref{section:ecuaciones_mos}
+(for a PMOS) and write them as a function of $V_{FG}$ y $V'_R$.
+This way we reach an expression for the reader current
 \begin{align*}
     I_R' &= \begin{cases}
         I_{D0} \left(\frac W L\right)_L
@@ -262,86 +253,80 @@ Así llegamos a la corriente del lector
         -V'_R-V_T>V_{FG}.
     \end{cases}
 \end{align*}
-. Estas ecuaciones nos indican que,
-polarizando el lector con una tensión $V'_R$ pequeña
-(usamos \SI{-0.1}{\volt}),
-estamos en la situación del medio y
-la corriente de drain varía linealmente con $V_{FG}$
-\subsection{Cargado del floating gate}
+. These equations tell us that,
+when the reader is biased with a small
+$V'_R$ (we used \SI{-0.1}{\volt}),
+we are in the second case and the drain current
+is a linear function of $V_{FG}$.
+\subsection{Charging the floating gate}
 %
-\subsubsection{Mecanismo de inyección}
-Dado que el floating gate está aislado,
-no es posible cargarlo o descargarlo con una fuente de tensión
-como las placas de un capacitor normal.
-La única forma de hacerle llegar carga es 
-a través del aislante que lo rodea.
+\subsubsection{Injection mechanism}
+Because the floating gate is surrounded by insulators,
+it is not possible to charge it or discharge it through normal conduction
+like a regular capacitor.
+The charge must go through the surrounding insulation.
 
-En condiciones normales, el aislante tiene muy pocos portadores.
-Esto impide la conducción normal como en un metal.
-Además, para espesores típicos de aislante, 
-los electrones que están a uno y otro lado del mismo
-no pueden tunelear a través de su barrera de potencial.
-En consecuencia, el aislante presenta una resistencia alta.
+Normally, insulators have very few charge carriers.
+This prevents the kind of conduction seen in metals.
+In addition, the insulator is usually thick enough
+to prevent electrons from tunneling directly across the potential barrier.
+Therefore, the resistance is very high.
 
-Al aplicarle suficiente tensión,
-el campo eléctrico en el aislante inclina la banda de conducción,
-reduciendo el ancho de la barrera de potencial
+When a high enough voltage is applied,
+the electric field within the insulator tilts the conduction band,
+narrowing the potential barrier
 (\figref{fig:fowlernordheim}).
-Así aumenta la probabilidad de túnel, y en consecuencia la corriente.
-Esto se denomina corriente de túnel
-Fowler-Nordheim\cite{lenzlinger_fowlernordheim_1969}.
+This increases the tunnel probability and, therefore, the current.
+This is called a
+Fowler-Nordheim tunneling current\cite{lenzlinger_fowlernordheim_1969}.
 \fig{fowlernordheim}{figuras/fowlernordheim/fowlernordheim.pdf}
-{Diagrama de bandas de la emisión de electrones del canal al gate de un MOS. 
-El campo eléctrico en el óxido de gate reduce el ancho de la barrera de
-potencial del óxido, facilitando el tuneleo.
-Reproducido de \cite{lenzlinger_fowlernordheim_1969}}
+{Band diagram for electron emission from the channel to the gate of a MOS.
+The electric field in the gate oxide narrows the oxide potential barrier,
+making tunneling more probable.
+Reprinted from \cite{lenzlinger_fowlernordheim_1969}}
 
-Esta corriente se ajusta a una expresión del tipo
+This current fits an expression of the form
 \begin{align*}
     J_{FN} &= AF_{ox}^2\exp(-B/F_{ox}).
 \end{align*}
-con $A$ y $B$ constantes de ajuste 
-y $F_{ox}$ el campo eléctrico en el óxido.
+with two fitting constants $A$ y $B$,
+and $F_{ox}$ the oxide electric field.
 
-Esto explica la corriente de gate que fluye en un MOS,
-al aplicar tensión suficiente entre body y gate.
-En nuestro caso, no podemos aplicar tensión directamente al gate
-porque está completamente aislado.
-Esto puede representarse como en la \figref{fig:cargadofg}.
-La tensión se aplica al body de un MOS inyector,
-cuyo gate es el FG.
-Dándole al MOS inyector la menor área posible, 
-reducimos su capacidad de gate.
-Así la mayor parte de la tensión de inyección cae a través de su óxido
-y produce una corriente de túnel que carga al FG.
+This explains the current current that flows through a MOS' gate
+when a high enough voltage is applied between gate and body.
+In our case, we can't apply a voltage directly to the gate because it is floating.
+This can be seen in \figref{fig:cargadofg}.
+We apply a voltage to the bodey of an injector MOS,
+whose gate is the FG.
+By minimizing the area of this MOS,
+we lower its gate capacitance.
+This way, most of the applied voltage drops across its gate oxide,
+causing a tunneling current which charges/discharges the FG.
 
-Dado que el FG tiene que encender un PMOS,
-hay que darle una carga inicial negativa.
-Mirando la \figref{fig:cargadofg},
-una tensión negativa entre el inyector y el lector
-produce carga negativa en el FG.
-Esta polarización pone al MOS inyector en acumulación,
-de modo que la tensión gate-body cae principalmente 
-en el óxido de gate (y muy poco en el silicio).
-Por otro lado, casi nada de la tensión inyector-lector
-cae a través del MOS lector,
-porque su capacidad es tanto mayor a la del inyector.
+Because we want the FG to turn on a PMOS,
+we need to give it a negative charge.
+Looking at \figref{fig:cargadofg},
+a negative voltage between injector and reader
+stores a negative charge in the FG.
+This biases the injector MOS in accumulation,
+so its gate-body voltage drops mainly across the gate oxide
+(and to a much lesser extend across the silicon).
+On the other hand, almost no voltage drops across the reader MOS,
+because its capacitance is much greater than that of the injector.
 
 % FIXME: esto queda colgado
-El campo en el óxido $F_{ox}$ sigue la expresión para el campo en el óxido
-de gate de un MOS.
-En el caso del inyector, la tensión de gate es $V_{FG}$
-y la tensión de body es $V_I$.
-Reemplazando estas dos cantidades en la ecuación de balance de carga
-del MOS (ecuación~\ref{eq:potencial_campo_mos})
-y agregando los términos debido a la no-idealidad de la estructura
-se llega a la expresión
+The oxide field $F_{ox}$ can be found from the MOS capacitor equations.
+The injector's gate voltage is $V_{FG}$
+and its body voltage is $V_I$.
+Substituting these values into the MOS charge balance equation
+(equation~\ref{eq:potencial_campo_mos})
+one reaches the expression
 \begin{align*}
     V_{FG}-V_I &= F_{ox}t_{ox}+\psi_s+V_{FB},
 \end{align*}
-con $V_{FB}=(\Phi_S-\Phi_M)/e$ 
-y $\psi_s$ la caída de tensión sobre el Si del inyector,
-que como ya dijimos es despreciable.
+with $V_{FB}=(\Phi_S-\Phi_M)/e$ 
+and $\psi_s$ the voltage drop across the injector silicon,
+which is, as we said, negligible.
 %
 %Nuestro proceso de fabricación alcanza breakdown del
 %óxido de gate al aplicar \SI{13}{\volt}.
@@ -349,81 +334,75 @@ que como ya dijimos es despreciable.
 %\SI{.1}{\nano\ampere\per\micro\meter\squared}, cargando nuestro floating
 %gate a razón de \SI{3.9}{\volt\per\second}.
 % TODO: calcular / medir curva Fowler-Nordheim
-\subsubsection{Experimental}
+\subsubsection{Measurement procedure}
 \fig{medicion_fg}{esquematicos/medicion_fg/medicion_fg.pdf}
-{Setup experimental para inyectar corriente en el FG,
-con todos los caminos de pérdidas relevantes.
-La conexión del sustrato a la guarda de la fuente de corriente
-anula la tensión a través del diodo sustrato-bulk del inyector.}
-Cargamos el floating gate aplicando corriente constante
-entre el inyector y el well del lector.
-Durante la inyección,
-cualquier conductancia parásita entre esos nodos 
-va a llevarse parte de la corriente,
-reduciendo la carga inyectada.
-Al mismo tiempo, parte de la carga proporcionada
-va a cargar las capacidades del sistema.
-Si aplicamos una corriente pequeña
-(para cambiar lentamente la carga del FG),
-el setup de inyección está la mayoría del tiempo cargando estas capacidades
-hasta que se alcanza la tensión necesaria para el tuneleo de inyector a FG.
+{Experimental setup for injecting current into the FG,
+including all relevant leakage paths.}
+By connecting the substrate to the current source guard terminal,
+the voltage across the injector's body-substrate diode is made 0.}
+We charged the floating gate by applying a constant current 
+between the injector and the reader N-well.
+While charging, any parasitic conduction path between those nodes
+will carry part of the injection current,
+reducing the injected charge.
+Moreover, part of the current serves to charge the system capacitances.
+If the applied current is small (in order to charge the FG slowly),
+the setup spends most of its time charging capacitances,
+until they reach a high enough voltage to produce tunneling.
 
-Usamos la guarda de la fuente de corriente para eliminar algunos caminos de pérdida
+We used the current source's guard terminal to zero the voltage across some of the leakage paths
 (\figref{fig:medicion_fg}).
-Conectándola al sustrato evitamos la corriente en inversa del diodo de bulk
-del inyector.
-Ya que el inyector está bondeado al pin siguiente al well del lector,
-no es posible interponer una guarda entre ellos para evitar pérdidas en el PCB.
-\subsubsection{Curvas de carga y descarga}
-La tensión del inyector (figuras~\ref{fig:descarga_inyector}
-y~\ref{fig:carga_inyector})
-varía linealmente mientras se carga la capacidad de los cables a corriente
-constante.
-Cuando el inyector alcanza una diferencia de potencial suficiente respecto del FG,
-la corriente de túnel crece rápidamente y frena el crecimiento de la tensión.
+By connecting it to the substrate,
+we eliminate the reverse current through the injector's bulk-substrate diode.
+Since the injector was bonded to the pin adjacent to that of the reader N-well,
+it was not possible to connect the guard between those two pins 
+to prevent leakage through the PCB.
+\subsubsection{Charge/discharge curves}
+The injector voltage (figures~\ref{fig:descarga_inyector}
+and~\ref{fig:carga_inyector})
+changes linearly as the cable capacitance charges at constant current.
+When the potential difference between injector and FG is high enough,
+the tunnel current increases rapidly, and the voltage rate of change decreases.
 
-Para estudiar la carga y descarga del FG,
-repetimos varias veces estos dos pasos:
+In order to study the FG charge and discharge process,
+we repeated this sequence multiple times:
 \begin{itemize}
-    \item inyectar corriente constante a través del inyector,
-        midiendo al mismo tiempo la corriente del lector 
-        polarizado con $V_{sd}=$\SI{100}{\milli\volt}.
-        Terminamos esta inyección al obtener una cierta variación de corriente
-        del lector.
-    \item medir corriente del lector en función de la tensión $V_{sd}$.
-        En cada iteración de carga o descarga del FG,
-        esta curva tiene mayor o menor magnitud (respectivamente).
+    \item Force a constant current into the injector,
+        while biasing the reader at $V_{sd}=$\SI{100}{\milli\volt}
+        and measuring the reader current.
+        The injection is stopped when the reader current changes by a predetermined amount.
+    \item Measure reader current as a function of $V_{sd}$.
+        On every iteration, this curve is higher/lower respectively when charging/discharging.
 \end{itemize}
 
-Las curvas IV (figuras~\ref{fig:descarga_iv}
-y~\ref{fig:carga_iv}) saturan a corrientes cada vez más grandes/chicas,
-confirmando que el FG se está cargando/descargando 
-entre la medición de una curva y la siguiente.
+The IV curves (figures~\ref{fig:descarga_iv}
+and~\ref{fig:carga_iv}) have increasing/decreasing saturation currents,
+which confirms that the FG is charging/discharging
+between measurements.
 \fig{descarga_inyector}{figuras/fg/21a29dip_inyector.pdf}
-{Descarga del FG midiendo tensión del inyector (línea punteada) y
-corriente de drain del lector (línea sólida) a
+{FG discharge measuring injector voltage (dotted line) and
+reader drain current (solid line) at
 $V_{sd}$=\SI{100}{\milli\volt}.
-Esta corriente de drain es una indicación directa 
-de la cantidad de carga en el FG.}
+This current is an indicator of the amount of charge in the FG.}
 \fig{descarga_iv}{figuras/fg/21a29dip_iv.pdf}
-{Curvas IV del lector medidas entre tramos de la descarga
-    de la \figref{fig:descarga_inyector}.}
+{Reader IV curves, measured between discharge intervals of
+    \figref{fig:descarga_inyector}.}
 \fig{carga_inyector}{figuras/fg/12a21dip_inyector.pdf}
-{Carga del FG midiendo tensión del inyector (línea punteada) y
-corriente de drain (línea sólida) a
+{FG charging, measuring injector voltage (dotted line) and
+reader drain current (solid line) at
 $V_{sd}$=\SI{100}{\milli\volt}.}
 \fig{carga_iv}{figuras/fg/12a21dip_iv.pdf}
-{Curvas IV del lector medidas entre tramos de la carga.}
-\subsection{Irradiación con \Strontium}
-Expusimos el dosímetro,
-previamente cargado,
-a una fuente de \Strontium
-en el irradiador descripto en el capítulo~\ref{sec:irradiador}.
-% TODO: agregaría 'en el irradiador descripto en el cap XX'
-La \figref{fig:irradiacionfg_respuesta} muestra que la corriente responde de
-manera casi lineal a la dosis.
-La variación de la sensibilidad (pendiente de la curva)
-se ve con más detalle en la \figref{fig:irradiacionfg_sensibilidad}.
+{Reader IV curves, measured between charging intervals of
+    \figref{fig:carga_inyector}.}
+\subsection{\Strontium irradiation}
+We charged the dosimeter and exposed it to a 
+\Strontium source
+in the irradiator described in chapter~\ref{sec:irradiador}.
+\figref{fig:irradiacionfg_respuesta} shows that the current
+varies almost linearly with the dose.
+The sensitivity (slope of the current vs dose curve)
+can be seen more clearly in
+\figref{fig:irradiacionfg_sensibilidad}.
 
 La corriente calculada parte de la corriente inicial extraída de la medición.
 También se extrae de la sensibilidad inicial medida el factor de proporcionalidad entre dosis y carga generada.

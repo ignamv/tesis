@@ -1,7 +1,7 @@
 \section{Discussion}
 \subsection{Use of standard CMOS processes}
 The main difficulty in designing dosimeters in standard CMOS processes
-is that these processes are not designed for this purpose.
+is that these processes are not designed for such a purpose.
 The sensitivity has a subtle dependence on the geometry and doping of the
 various circuit structures.
 For ordinary analog circuits, it is enough for the foundry to control and inform the designer about
@@ -9,13 +9,13 @@ certain device parameters: threshold voltages, saturation currents, capacitances
 Although we succeeded in designing dosimeters based on this limited information,
 it would be ideal to optimize the design using more detailed 
 (possibly confidential) process information.
-\subsection{Biasing Monte-Carlo simulations}
+\subsection{Variance reduction in Monte-Carlo simulations}
 The irradiator Monte-Carlo simulations used a spherically symmetrical model
-in order to minimize runtime while providing a reasonable wort-case dose estimate.
+in order to minimize runtime while providing a reasonable worst-case dose estimate.
 The problem with this kind of simulation is that we are only interested in 
 the small fraction of particles which escape the irradiator,
 while the simulator wastes time tracking those which never escape.
-It would be valuable for further works to use simulation biasing.
+It would be valuable for further works to use simulation variance reduction.
 This is a technique used in radiation protection,
 which allows for simulation time to be focused on certain outcomes.
 This is done by biasing the generation of random numbers so that interesting outcomes
@@ -50,6 +50,6 @@ This suggests that the model we tried to fit is not capturing all relevant proce
 such as interface state creation or oxide charge capture.
 We can still calibrate the sensor using the empirical curve.
 Nevertheless, it would be better to look for designs which minimize
-the influence of processes which are outside our control.
-This would lead to a dosimeter which is less sensitive to process variations.
+the influence of physical processes which are outside our control.
+This would lead to a dosimeter which is less sensitive to fabrication process variations.
 % layout con más cuidado, faltaron guardas

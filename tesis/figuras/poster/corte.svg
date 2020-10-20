@@ -11,7 +11,7 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    sodipodi:docname="corte.svg"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.47 r22583"
    version="1.1"
    id="svg2985"
    height="211.61456"
@@ -23,14 +23,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="118.69652"
-     inkscape:cy="88.758642"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="171.81925"
+     inkscape:cy="88.606196"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1366"
-     inkscape:window-height="739"
+     inkscape:window-width="1680"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -40,6 +40,13 @@
      fit-margin-bottom="5" />
   <defs
      id="defs2987">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 105.80728 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="325.00464 : 105.80728 : 1"
+       inkscape:persp3d-origin="162.50232 : 70.538188 : 1"
+       id="perspective71" />
     <marker
        inkscape:stockid="Arrow2Send"
        orient="auto"
@@ -277,7 +284,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -290,21 +297,21 @@
        y="561.63226"
        x="372.25888"
        id="image3128"
-       xlink:href="file:///home/ignacio/Documentos/poster/figures/corte.png"
+       xlink:href="file:///home/imartinez/tesis_licenciatura/tesis/figuras/poster//corte.png"
        height="160.29384"
        width="248.18944" />
     <text
        xml:space="preserve"
        style="font-size:16.65390396px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#ca0a0a;fill-opacity:1;stroke:#564135;stroke-width:0.11565211;stroke-opacity:0;font-family:cmr10;-inkscape-font-specification:cmr10"
-       x="402.06018"
+       x="386.06018"
        y="743.38867"
        id="text3058"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3060"
-         x="402.06018"
+         x="386.06018"
          y="743.38867"
-         style="stroke-width:0.11565211">Fuente</tspan></text>
+         style="stroke-width:0.11565211">Sr source</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:16.65390396px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:100%;letter-spacing:0px;word-spacing:0px;fill:#40661d;fill-opacity:1;stroke:#564135;stroke-width:0.11565211;stroke-opacity:0;font-family:cmr10;-inkscape-font-specification:cmr10"
@@ -313,15 +320,15 @@
        id="text3135"
        sodipodi:linespacing="100%"><tspan
          sodipodi:role="line"
-         id="tspan3137"
          x="563.90204"
          y="711.06335"
-         style="stroke-width:0.11565211">Dispositivo</tspan><tspan
+         id="tspan3139"
+         style="stroke-width:0.11565211">Device under</tspan><tspan
          sodipodi:role="line"
          x="563.90204"
          y="727.71729"
-         id="tspan3139"
-         style="stroke-width:0.11565211">a irradiar</tspan></text>
+         style="stroke-width:0.11565211"
+         id="tspan2878">irradiation</tspan></text>
     <path
        style="fill:none;stroke:url(#linearGradient19905);stroke-width:1.1565212;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Mend)"
        d="m 490.19286,727.11276 -47.813,-62.1085"
@@ -337,20 +344,20 @@
     <text
        sodipodi:linespacing="125%"
        id="text4819"
-       y="564.07855"
-       x="589.49432"
+       y="560.07855"
+       x="579.49432"
        style="font-size:16.65390396px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#3a6b9a;fill-opacity:1;stroke:#564135;stroke-width:0.11565211;stroke-opacity:0;font-family:cmr10;-inkscape-font-specification:cmr10"
        xml:space="preserve"><tspan
-         y="564.07855"
-         x="589.49432"
+         y="560.07855"
+         x="579.49432"
          id="tspan4821"
          sodipodi:role="line"
-         style="stroke-width:0.11565211">Escudo β</tspan></text>
+         style="stroke-width:0.11565211">β shielding</tspan></text>
     <path
        sodipodi:nodetypes="cc"
        inkscape:connector-curvature="0"
        id="path4823"
-       d="m 616.72713,569.91381 -54.06907,46.26084"
+       d="m 620.61622,564.25696 -57.95816,51.91769"
        style="fill:#3a6b9a;fill-opacity:1;stroke:#3a6b9a;stroke-width:1.1565212;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1MendxA)" />
     <text
        xml:space="preserve"
@@ -363,7 +370,7 @@
          id="tspan4884"
          x="344.31186"
          y="568.24207"
-         style="stroke-width:0.11565211">Escudo X</tspan></text>
+         style="stroke-width:0.11565211">X shielding</tspan></text>
     <path
        style="fill:#3a6b9a;fill-opacity:1;stroke:#464646;stroke-width:1.1565212;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1MendxAE)"
        d="m 392.82463,571.30163 18.09785,21.27999"
@@ -381,7 +388,7 @@
          id="tspan19351"
          x="466.73804"
          y="739.1759"
-         style="fill:url(#linearGradient19897);fill-opacity:1;stroke-width:0.11565211">Montura</tspan></text>
+         style="fill:url(#linearGradient19897);fill-opacity:1;stroke-width:0.11565211">Mount</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.34695634;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 416.23642,719.65171 -45.7959,9.4863"

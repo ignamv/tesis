@@ -146,7 +146,7 @@ and large separations, which result in large junction breakdown voltages.
 One doping technique is called Chemical Vapor Deposition.
 It consists of exposing the wafer to a gas such that atoms diffuse from
 the gas phase to the wafer.
-Another technique is implanting: dopants are ionized and then accelerated
+Another technique is implantation: dopants are ionized and then accelerated
 towards the wafer using electric field.
 This allows the penetration depth to be controlled by varying the
 acceleration energy
@@ -165,7 +165,7 @@ one can conclude that the binding energy is typically very low.
 Therefore, dopant atoms are almost completely ionized under normal temperature ranges.
 This is due to the periodic Silicon lattice, which acts in two ways.
 First, it is a dielectric which shields the dopant's electric field.
-Second, it gives the electron a smaller effective mass,
+Second, it gives the electrons a smaller effective mass,
 which lowers the kinetic energy
 (and therefore the potential energy, through the Virial theorem)
 
@@ -224,7 +224,7 @@ where one can highlight the operating regions.
         the semiconductor surface acquires additional majority carriers.
     \item Flatband:
         At zero gate voltage, the positive charge from the holes
-        (portadores mayoritarios)
+        (majority carriers)
         cancels with the negative charge from the acceptor ions,
         leading to $Q=0$. 
     \item Depletion/weak inversion:
@@ -247,7 +247,7 @@ where one can highlight the operating regions.
 \end{itemize}
 \fig{cargamos}{figuras/mos/carga_vg.pdf}{Charge in a typical MOS
     ($N_A=$\SI{4e15}{\centi\meter^{-3}}) as a function of gate voltage.
-In the left of the graph, the Fermi level grows near to the valence band edge.
+On the left side of the graph, the Fermi level grows near to the valence band edge.
 This breaks the nondegeneracy assumption, meaning that Fermi-Dirac statistics
 must be used without approximation.}
 %
@@ -280,7 +280,7 @@ The gate-source voltage controls the current from drain to source.
         $V_T$ is a parameter fixed by the fabrication process
         which is close to \SI{.3}{\volt} in modern CMOS processes.
         A more accurate model for this region is that $I_d$ varies
-        exponentially with $V_gs$.
+        exponentially with $V_{gs}$.
     \item Triode: when $V_g>V_T$ and $V_{ds}<V_g-V_T$, 
         drain current grows with drain-source voltage according to
         \begin{align*}
@@ -289,7 +289,7 @@ The gate-source voltage controls the current from drain to source.
         with $\beta_n$ a parameter fixed by the fabrication process
         and $\frac WL$ the MOSFET's aspect ratio.
     \item Saturation: when $V_g>V_T$ and $V_{ds}>V_g-V_T$,
-        drain current is approximately independent of $V_ds$:
+        drain current is approximately independent of $V_{ds}$:
         \begin{align*}
             I_{Dsat}&=\frac{\beta_n}2\frac WL(V_{gs}-V_T)^2.
         \end{align*}
@@ -305,7 +305,7 @@ one of the p-n junctions (drain-substrate or source-substrate) is reverse-biased
 
 When the MOS is inverted,
 a layer of electrons form a conduction channel near the surface of the silicon.
-This n-type region connects the drain to the source, allowing for current to flow.
+This n-type region connects the drain to the source, allowing current to flow.
 As gate voltage varies,
 the variation of charge in the channel modulates its conductivity.
 \fig{mosfetestructura}{figuras/mos/mosfet.png}{MOSFET structure.

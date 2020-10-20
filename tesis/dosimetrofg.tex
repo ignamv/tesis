@@ -1,6 +1,6 @@
 \section{Floating Gate dosimeter}
 Floating gate MOSFETs are used commercially for non-volatile memory (Flash and EEPROM).
-The ammount of charge placed on the gate represents the value of one or more bits of information.
+The amount of charge placed on the gate represents the value of one or more bits of information.
 This information can be retrieved by measuring the gate charge through the MOSFET's IV curves.
 
 The floating gate dosimeter is based on a floating gate MOSFET.
@@ -18,7 +18,7 @@ including irradiation results and the conclusions that follow.
 %
 \subsection{Operating principle}
 The principle of operation of the FG dosimeter is that
-incoming radiation that strikes the gate oxide
+incoming radiation which strikes the gate oxide
 tends to discharge the gate.
 Before irradiation,
 the gate is charged using a tunneling current through the gate oxide
@@ -59,7 +59,7 @@ achieving satisfactory injection using voltages under \SI{20}{\volt}.
 
 Tarr\cite{tarr_sensitive_2004} fabricated a FG in a commercial
 \SI{1.5}{\micro\meter} CMOS process with two poly layers.
-This allows him to apply injection voltages up to SI{40}{\volt}
+This allows him to apply injection voltages up to \SI{40}{\volt}
 without going through an injector MOS.
 He used a reader MOS with an identical matched MOS,
 in order to compensate for temperature drift.
@@ -84,7 +84,7 @@ with $Q_{FG}$ the FG charge, $C_R$ the reader MOS gate capacitance,
 $C_W$ the FG capacitance over the reader N-well and 
 $C_I$ the injector MOS gate capacitance (\figref{fig:cargadofg}).
 \fig{cargadofg}{esquematicos/cargado_fg/cargado_fg.pdf}
-{Schematic of the current flowing to the floating gate through the injectos MOS gate oxide.
+{Schematic of the current flowing to the floating gate through the injector MOS gate oxide.
 When the injector is biased, part of the applied voltage drops across its gate capacitance $C_I$,
 and the rest drops across the N-well capacitance $C_W$ and reader MOS capacitance $C_R$.
 By minimizing $C_I$, one maximizes the voltage across the injector,
@@ -140,7 +140,7 @@ On the other hand, equation~\ref{eq:ccoupling}
 says that the tunnel voltage $V_{FG}-V_I$
 is maximized, for a given $V_I$,
 by minimizing the $C_I/C_{FG}$ ratio.
-Because there's a lower limit to the injector area,
+Because there is a lower limit to the injector area,
 it is necessary to increase the other areas to reduce that ratio.
 
 We explored the problem space by plotting contours for both benchmarks,
@@ -164,7 +164,7 @@ and reader N-well area ($A_W$).}
 
 % TODO Detallar criterios utilizados para llegar a esos números.
 % Las relaciones Aw/Ai y Ar/Ai están fuera de los gráficos anteriores
-The aforementioned criteria lead us to use an injector with minimum area.
+These criteria lead us to use an injector with minimum area.
 This leaves the reader and N-well areas as free variables.
 \Figref{fig:eficiencia_inyeccion}
 shows that a $A_R/A_I$ ratio around 10000
@@ -179,9 +179,9 @@ we reached the final areas for each region:
 \begin{table}[h]
 \centering
 \begin{tabular}{|c|c|}
-    \hline
-    Region   & Area (\SI{}{\micro\meter\squared})\\ \hline
-    Injector \vspace{0.5cm}& 4.32\\
+\hline
+Region   & Area (\SI{}{\micro\meter\squared})\\ \hline
+Injector & 4.32\\
 N-Well     & 180000\\
 Reader   & 35000\\
 \hline
@@ -193,7 +193,7 @@ Reader   & 35000\\
 \fig{layout_fg_todo}{figuras/gds/fg/small/poly_met.png}
 {Layout of the complete dosimeter, showing polysilicon and metal layers.
 The upper polysilicon rectangle is laid over N-well with field oxide,
-and it is the main charge-generating region due to its thick oxide.
+and is the main charge-generating region due to its thick oxide.
 On the lower left is the injector,
 a minimum-area MOS through which the FG is charged.
 On the lower right is the reader MOS, laid out with multiple fingers
@@ -210,7 +210,7 @@ The injector is a minimum-area MOS in a separate N-well
 {Injector MOS layout. It is surrounded by body contacts.
 These are shorted with the drain/source contacts
 in a metal layer that is not shown.  }
-This allows the drain, source and body terminals to be connected to the injection terminal of the chip. If the N-well was shared, it would not be possible to apply high voltages to it without disrupting other parts of the circuit.
+This allows the drain, source and body terminals to be connected to the injection terminal of the chip. If the N-well were shared, it would not be possible to apply high voltages to it without disrupting other parts of the circuit.
 
 The reader is a $W=\SI{100}{\micro\meter}$ 
 by $L=\SI{25}{\micro\meter}$ MOSFET with 14 fingers.
@@ -241,7 +241,7 @@ with the terms shown in \figref{fig:floatingcapacidades}.
 
 While reading, the circuit is biased at $V_I=V_R=0$.
 We can evaluate the equations in section~\ref{section:ecuaciones_mos}
-(for a PMOS) and write them as a function of $V_{FG}$ y $V'_R$.
+(for a PMOS) and write them as a function of $V_{FG}$ and $V'_R$.
 This way we reach an expression for the reader current
 \begin{align*}
     I_R' &= \begin{cases}
@@ -292,11 +292,11 @@ This current fits an expression of the form
 with two fitting constants $A$ y $B$,
 and $F_{ox}$ the oxide electric field.
 
-This explains the current current that flows through a MOS' gate
+This explains the current that flows through a MOS' gate
 when a high enough voltage is applied between gate and body.
 In our case, we can't apply a voltage directly to the gate because it is floating.
 This can be seen in \figref{fig:cargadofg}.
-We apply a voltage to the bodey of an injector MOS,
+We apply a voltage to the body of an injector MOS,
 whose gate is the FG.
 By minimizing the area of this MOS,
 we lower its gate capacitance.
@@ -372,7 +372,7 @@ we repeated this sequence multiple times:
         and measuring the reader current.
         The injection is stopped when the reader current changes by a predetermined amount.
     \item Measure reader current as a function of $V_{sd}$.
-        On every iteration, this curve is higher/lower respectively when charging/discharging.
+        On every iteration, this curve is higher/lower when charging/discharging, respectively.
 \end{itemize}
 
 The IV curves (figures~\ref{fig:descarga_iv}
@@ -398,7 +398,7 @@ $V_{sd}$=\SI{100}{\milli\volt}.}
 We charged the dosimeter and exposed it to a 
 \Strontium source
 in the irradiator described in chapter~\ref{sec:irradiador}.
-\figref{fig:irradiacionfg_respuesta} shows that the current
+\Figref{fig:irradiacionfg_respuesta} shows that the current
 varies almost linearly with the dose.
 The sensitivity (slope of the current vs dose curve)
 can be seen more clearly in
@@ -450,7 +450,7 @@ The sensitivity varies with dose, due to two effects.
 \begin{itemize}
     \item As the FG discharges, the oxide field diminishes.
         This reduces the electron-hole pair production yield.
-    \item As the current goes down, $g_m$ ($\frac{dI_D}{dV_G}$) goes up
+    \item As the current goes down, $g_m$ (the transconductance, defined as $\frac{dI_D}{dV_G}$) goes up
         (\figref{fig:didv}), which increases the sensitivity.
 \end{itemize}
 Measurements show a growth in sensitivity until the dose reaches

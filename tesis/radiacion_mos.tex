@@ -13,11 +13,11 @@ and cumulative damage in the component transistors.
 \subsubsection{Cumulative damage}
 Radiation can displace atoms from the semiconductor lattice,
 which create active defects.
-These are charged sited which break the lattice's translation symmetry.
+These are charged sites which break the lattice's translation symmetry
 \cite{iniewski_radiation_2011}.
 When active defects are present in a p-n junction's depletion region,
 they act as generation/recombination centers.
-In the reverse-bias condition, they increate the production rate of electron-hole pairs,
+In the reverse-bias condition, they increase the production rate of electron-hole pairs,
 which increases the reverse leakage current
 \cita{bogaert_total_2000}.
 
@@ -30,7 +30,7 @@ and is less significant with $\beta$ and $\gamma$ radiation
 When radiation crosses a junction's depletion region,
 it releases some of its energy in the production of electron-hole pairs.
 The depletion region's electric field
-moves the varriers to opposite terminals,
+moves the carriers to opposite terminals,
 causing a current transient which flows from n to p.
 This current adds to the leakage current caused by thermal generation
 (spontaneous carrier production),
@@ -46,7 +46,7 @@ Under the right conditions,
 these parasitic structures (\figref{fig:latchup})
 can reach a steady state in which
 the supply rails are short-circuited.
-This can go on until supply voltage is cut off
+This can go on until the voltage supply is cut off
 (for example, by an overcurrent protection circuit),
 or until the circuit is destroyed.
 \fig{latchup}{figuras/mos/latchup.pdf}{
@@ -63,14 +63,14 @@ Radiation that impacts a device produces electron-hole pairs (\figref{fig:captur
 Some regions of the die are particularly sensitive to the resulting charge:
 as was explained previously,
 charge in the semiconductor causes cumulative damage and latchup.
-When charge is produced in the gate oxide of a gate under positive bias,
+When charge is produced in the oxide of a gate under positive bias,
 electrons drift from the oxide to the gate thanks to their high mobility.
 This leaves behind the holes.
-Their positive charge in the oxide causes a negative threshold voltage shift
+The presence of their positive charge in the oxide causes a negative threshold voltage shift
 (section~\ref{corrimientovt}).
 Holes diffuse slowly towards the Si-SiO$_2$ interface.
 A fraction of them cross the interface,
-exiting the oxide and partially undoing the $V_T$ shift.
+exiting the oxide and partially reversing the $V_T$ shift.
 The rest are captured by traps,
 where they can remain from hours to years.
 As they are released,
@@ -80,7 +80,7 @@ trapping process in MOS oxides due to radiation}
 \subsubsection{Interface trap creation}
 Another consequence of radiation is the creation of interface traps.
 These are localized states in the Si-SiO$_2$ interface
-with energies in the silicon forbidden band.
+with energies within the silicon forbidden band.
 They can exchange charge with the silicon,
 by capturing or releasing holes or electrons.
 The traps' surface charge density changes with the surface Fermi level,

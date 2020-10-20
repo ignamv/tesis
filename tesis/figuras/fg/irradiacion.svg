@@ -13,7 +13,7 @@
    height="102.67439"
    id="svg28776"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.47 r22583"
    sodipodi:docname="irradiacion.svg">
   <sodipodi:namedview
      id="base"
@@ -22,9 +22,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="80.201825"
-     inkscape:cy="-25.1902"
+     inkscape:zoom="3.959798"
+     inkscape:cx="95.959833"
+     inkscape:cy="22.970505"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -32,8 +32,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1366"
-     inkscape:window-height="739"
+     inkscape:window-width="1680"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
      inkscape:window-y="1"
      inkscape:window-maximized="1"
@@ -55,6 +55,13 @@
   </sodipodi:namedview>
   <defs
      id="defs28778">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 51.337196 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="264.98743 : 51.337196 : 1"
+       inkscape:persp3d-origin="132.49371 : 34.224798 : 1"
+       id="perspective101" />
     <marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
@@ -245,7 +252,7 @@
        inkscape:connector-curvature="0" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        x="394.54721"
        y="402.85959"
        id="text28684"
@@ -253,18 +260,18 @@
          sodipodi:role="line"
          id="tspan28686"
          x="394.54721"
-         y="402.85959">Inyector</tspan></text>
+         y="402.85959">Injector</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text28688"
        y="405.14102"
-       x="532.74408"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;baseline-shift:baseline;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
+       x="524.74408"
+       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-indent:0;text-align:start;text-decoration:none;line-height:125%;letter-spacing:0px;word-spacing:0px;text-transform:none;direction:ltr;block-progression:tb;writing-mode:lr-tb;text-anchor:start;color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        xml:space="preserve"><tspan
          y="405.14102"
-         x="532.74408"
+         x="524.74408"
          id="tspan28690"
-         sodipodi:role="line">Lector</tspan></text>
+         sodipodi:role="line">Reader</tspan></text>
     <text
        transform="matrix(0,-1,1,0,0,0)"
        sodipodi:linespacing="125%"

@@ -13,10 +13,17 @@
    height="167.75597"
    id="svg4601"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.47 r22583"
    sodipodi:docname="fowlernordheim.svg">
   <defs
      id="defs4603">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 83.877983 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="124.77936 : 83.877983 : 1"
+       inkscape:persp3d-origin="62.389679 : 55.918655 : 1"
+       id="perspective30" />
     <marker
        inkscape:stockid="Arrow1Mend"
        orient="auto"
@@ -49,10 +56,10 @@
      fit-margin-left="2"
      fit-margin-right="2"
      fit-margin-bottom="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="739"
+     inkscape:window-width="1680"
+     inkscape:window-height="1016"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="1"
      inkscape:window-maximized="1" />
   <metadata
      id="metadata4606">
@@ -62,7 +69,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -132,34 +139,34 @@
        id="text4547"
        y="191.06238"
        x="262.75006"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:100%;font-family:'Nimbus Roman No9 L';-inkscape-font-specification:'Nimbus Roman No9 L';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:100%;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        xml:space="preserve"><tspan
          y="191.06238"
          x="262.75006"
-         id="tspan4549"
-         sodipodi:role="line">Emisión</tspan><tspan
+         sodipodi:role="line"
+         id="tspan4161">Tunnel</tspan><tspan
          y="203.06238"
          x="262.75006"
          sodipodi:role="line"
-         id="tspan4553">electrónica</tspan><tspan
+         id="tspan2841">electron</tspan><tspan
          y="215.06238"
          x="262.75006"
          sodipodi:role="line"
-         id="tspan4161">por túnel</tspan></text>
+         id="tspan2843">emission</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4555"
        y="339.93588"
-       x="237.2531"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Nimbus Roman No9 L';-inkscape-font-specification:'Nimbus Roman No9 L';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       x="241.2531"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        xml:space="preserve"><tspan
          y="339.93588"
-         x="237.2531"
+         x="241.2531"
          id="tspan4557"
          sodipodi:role="line">Metal</tspan></text>
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Nimbus Roman No9 L';-inkscape-font-specification:'Nimbus Roman No9 L';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        x="277.2001"
        y="339.93588"
        id="text4561"
@@ -167,17 +174,17 @@
          sodipodi:role="line"
          id="tspan4563"
          x="277.2001"
-         y="339.93588">Óxido</tspan></text>
+         y="339.93588">Oxide</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text4565"
        y="339.93588"
        x="317.14709"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;line-height:125%;font-family:'Nimbus Roman No9 L';-inkscape-font-specification:'Nimbus Roman No9 L';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Nimbus Roman No9 L;-inkscape-font-specification:Nimbus Roman No9 L"
        xml:space="preserve"><tspan
          y="339.93588"
          x="317.14709"
          id="tspan4567"
-         sodipodi:role="line">Silicio</tspan></text>
+         sodipodi:role="line">Silicon</tspan></text>
   </g>
 </svg>

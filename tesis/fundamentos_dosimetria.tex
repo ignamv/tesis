@@ -2,90 +2,81 @@
 Radiation is an invisible part of many processes
 and technologies which raise our standard of living:
 nuclear energy production, medical diagnosis and therapy,
-and cientific and industrial measurements.
-Understanding its production, 
-La radiación es una parte invisible de muchos procesos 
-y tecnologías que mejoran nuestra calidad de vida:
-producción nuclear de energía, 
-diagnóstico y terapias médicas, 
-y mediciones con fines científicos e industriales.
-Hay que entender su producción, propagación y efectos biológicos
-como punto de partida para 
-proteger a las personas y al ambiente de sus efectos deletéreos
+and scientific and industrial measurements.
+Understanding its production, propagation and biological effects
+is a starting point in order to protect people and the environment
+from its associated risks.
 \cite{iaea_radiation_????}.
-Con este objetivo se crearon organizaciones como la International Commission on
-Radiological Protection\cite{_icrp_????} y la International Atomic Energy
+This goal has led to the creation of organizations such as the
+International Commision on Radiological Protection
+\cite{_icrp_????} and the International Atomic Energy
 Agency\cite{iaea_official_????}.
-Estos grupos crean recomendaciones para la seguridad en el uso de la radiación,
-tanto para los operarios como para orientar la legislación en cada país.
+These entities compose recommendations for the safe use of radiation.
+These are aimed both at operators and at lawmakers.
 
-En todo ámbito donde se emplea radiación 
-hay criterios para la exposición máxima 
-que pueden sufrir pacientes,
-trabajadores y el público general.
-Estos criterios se establecen balanceando los riesgos y beneficios.
-Por ejemplo la radioterapia sirve para tratar la enfermedad
-pero también puede dañar tejidos sanos.
-Además es posible que haya riesgo para otras personas.
-Por ejemplo, el personal que administra radiodiagnóstico y terapia.
+In every context where radiation is used,
+there are criteria which limit the exposure for
+patients, workers and/or the general public.
+These criteria are established as a balance between risks and benefits.
+For example, radiotherapy can treat disease,
+but it can also damage healthy tissue.
+Additionaly, it is necessary to protect the operators and other personnel.
 
-Para limitar la exposición,
-se definen prácticas a distintos niveles organizativos.
-A nivel operativo, se planean las manipulaciones de material radioactivo
-para minimizar la dosis.
-Asimismo, se monitorea la dosis recibida por trabajadores 
-mediante distintos tipos de dosímetros,
-y se controla la contaminación del ambiente de trabajo.
-Esto se acompaña con la creación de protocolos para el trabajo seguro
-que incluyen roles pre-establecidos para responder a accidentes.
+In order to limit exposure, 
+there are practices which are aimed at different levels of an organization.
+At the operator level,
+manipulation of radioactive material is planned in order to minimize dose.
+In addition, operator dose is monitored using various types of dosimeters,
+and workplace contamination is monitored.
+This is complemented by the creation of protocols for safe work
+which include pre-established roles for emergency response.
 
-A nivel más alto, cada organización puede crear una cultura de seguridad:
-involucrando a los trabajadores en la creación e implementación de las normas,
-buscando transparencia y responsabilidad individual. 
+At a higher level, each organization is responsible for creating a safety-oriented culture.
+This implies worker involvement in the creation and implementation of safety norms,
+while aiming for transparency and individual responsibility.
 
-Esto sigue con 
-la regulación de las empresas, tanto de forma externa 
-(gubernamental e internacional) como interna (revisión por pares mediante
-organizaciones como la World Association of Nuclear Operators
+Above this, single organizations are regulated both externally
+(by government or international bodies)
+and internally (peer inspection through entities such as the
+World Association of Nuclear Operators
 \cite{washington_practice_1997}).
-\subsection{Dosis}
-Los efectos de la exposición a la radiación varían con 
+\subsection{Dose}
+The effects from radiation exposure vary with
 \begin{itemize}
-    \item flujo de partículas 
-        (cantidad que cruzan por unidad de tiempo y superficie),
-    \item tiempo de exposición,
-    \item tipo de partícula incidente ($\alpha$, $\beta$, $\gamma$, etc.),
-    \item sustancia donde incide,
-    \item clase de estructuras presentes en el blanco (tejido graso o ADN,
-        pads o celdas de memoria),
-    \item condiciones del blanco (estadío de vida de una célula
-        \cite{podgorsak_radiation_2005}, polarización de un circuito),
+    \item particle fluence
+        (number of particles crossing per unit time, per unit surface),
+    \item exposure time,
+    \item type of particle ($\alpha$, $\beta$, $\gamma$, etc.),
+    \item substance of the target that is being irradiated,
+    \item type of target structure (fatty tissue, DNA, pads or memory cells),
+    \item target conditions (cell's stage in its lifecycle
+        \cite{podgorsak_radiation_2005}, circuit biasing),
 \end{itemize}etc.
-Como punto de partida para cuantificar el efecto de la radiación ionizante
-se define la \emph{dosis}: energía depositada por unidad de masa.
-Unidades típicas son Gray 
+As a starting point, in order to quantify the effects of ionizing radiation,
+we define \emph{dose} as the energy deposited per unit mass.
+It is typically measured in Gray 
 (\SI{1}{\Gray} = \SI{1}{\joule\per\kilo\gram}) 
-y rad 
+or rad
 (\SI{1}{\rad} = \SI{0.01}{\Gray}).
 
-Para evaluar los efectos de una exposición o serie de exposiciones en humanos,
-se calcula la dosis equivalente\cite{martin_effective_2007}.
-Teniendo en cuenta las respuestas distintas de cada tejido,
-se definen factores de peso $w_t$ para cada uno.
-Asimismo, cada tipo de partícula tiene un factor de peso $w_r$
-en función de su capacidad de dañar células.
-Ponderando cada tipo y zona de radiación con estos factores se calcula un
-número $E$ que representa de manera más precisa el daño total al organismo:
+In order to assess the effect on humans of one or more exposures,
+we calculate an effective dose.
+\cite{martin_effective_2007}.
+Each tissue has a weighing factor $w_t$ which corresponds to how severely it is affected by radiation.
+Moreover, each type of particle has a weighing factor $w_r$
+as a function of how damaging it is to a cell.
+By weighing and summing each type of radiation and target tissue,
+we calculate a number $E$ which more accurately reflects the total damage to the organism:
 \begin{align*}
     E = \sum_r w_r \sum_t w_t D_{r,t}
 \end{align*}
-con $D_{r,t}$ la dosis de partículas $r$ recibida por el tejido $t$.
+with $D_{r,t}$ the dose of particles $r$ entering tissue $t$.
 
-La dosis es una magnitud relevante debido a su correlación
-con el aumento de probabilidad de cáncer.
-El modelo usado convencionalmente se llama Linear Non-Threshold
+Dose is an important measure due to its correlation with increased cancer probability.
+The traditional model is called Linear Non-Threshold
 \cite{valentin_low-dose_2006}.
-Supone una relación lineal entre dosis y el aumento de probabilidad de cáncer.
-Esta es una base simple para el trabajo en protección.
-Sin embargo no modela posibles efectos positivos (horméticos) 
-de dosis muy bajas \cite{hooker_linear_2004}.
+It models the increase in cancer probability as a linear function of dose.
+This is a simple model for radiation protection work.
+However, it does not take into consideration any purported possitive (hormetic)
+effects at very low dose rates
+\cite{hooker_linear_2004}.

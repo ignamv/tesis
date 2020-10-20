@@ -1,61 +1,55 @@
-\section{Discusión}
-\subsection{Uso de procesos CMOS estándar}
-La dificultad central en el diseño de dosímetros en procesos CMOS estándar
-se debe a que el proceso no está diseñado con este fin.
-La sensibilidad del dosímetro depende de manera sutil de la geometría y
-composición de las distintas estructuras del circuito.
-Para circuitos analógicos convencionales, alcanza con que el proceso controle y
-reporte al diseñador distintos parámetros de dispositivos: 
-capacidades entre capas, corrientes de fuga, tensiones de umbral de MOS, etc. 
-Si bien fue posible diseñar los dosímetros en base a estos parámetros,
-es deseable optimizar el diseño con información más detallada 
-(posíblemente confidencial) acerca del proceso.
-\subsection{Biasing para simulaciones Monte-Carlo}
-La simulación Monte-Carlo del irradiador empleó un modelo con simetría esférica
-para obtener un estimado de dosis worst-case minimizando el tiempo de cálculo.
-El problema se debe a que nos interesa la fracción ínfima de partículas que
-escapan del irradiador, y la simulación pierde tiempo simulando aquellas que se
-detienen adentro.
-Una mejora posible para trabajos posteriores sería utilizar técnicas
-de biasing en la simulación.
-Esta es una técnica usada en cálculos de protección que permite explorar en más
-detalle un tipo de resultado reduciendo el tiempo que se dedica a otros
-resultados. Esto se logra sesgando la generación de números aleatorios y luego
-corrigiendo los resultados para compensar.
-\subsection{Estructuras de protección ESD}
-La cantidad de mediciones se vio limitada por la fragilidad de los circuitos,
-probablemente dañados por descargas electrostáticas (ESD).
-Si bien se incorporaron estructuras de protección a las entradas de reset de
-los dosímetros APS, los diseños futuros deberían explorar medidas adicionales.
-En particular, una forma de proteger el transistor inyector del dosímetro FG
-que permita aplicar las tensiones elevadas de inyección.
-\subsection{Layout para minimizar corrientes de fuga}
-El layout de los dosímetros no prestó particular atención a los distintos
-caminos de fuga presentes en el circuito fabricado,
-cuando ambos dosímetros son sensibles a fugas pequeñas ya sea antes o durante
-la irradiación.
-Iteraciones futuras deberían explorar el uso de guardas y posiblemente cambios
-en el circuito que permitan controlar las corrientes de fuga.
-\subsection{Curvas de descarga de APS}
-Las curvas de descarga medidas en los APS de área grande y chica tienen tiempos
-de descarga muy distintos.
-Tanto esto como la forma particular de las curvas no tienen explicación
-inmediata.
-Si bien la medición con LED confirma que responden a la luz incidente,
-es deseable explicar la forma detallada de estas curvas para entender el
-fenómeno y construir un dosímetro robusto.
-\subsection{Adición de un Control Gate al FG}
-Resulta interesante desarrollar una variante del dosímetro FG que use una capa
-de metalización como Control Gate.
-Esto daría mayor flexibilidad a la hora de cargar y medir el dosímetro,
-permitiendo por ejemplo medir el corrimiento de la tensión umbral en este
-nuevo terminal.
-\subsection{Variación anómala de la sensibilidad de FG}
-No se pudo ajustar la curva de sensibilidad del dosímetro FG de forma
-satisfactoria.
-Esto apunta a que el modelo usado para el ajuste no captura algunos procesos
-necesarios como creación de estados de interfaz o captura de carga en el óxido.
-Esta falla del modelo no impide una calibración del sensor a la curva empírica,
-pero sugiere cambiar el diseño para minimizar estos procesos y obtener un
-dosímetro menos sensible a variables poco controladas del proceso.
+\section{Discussion}
+\subsection{Use of standard CMOS processes}
+The main difficulty in designing dosimeters in standard CMOS processes
+is that these processes are not designed for this purpose.
+The sensitivity has a subtle dependence on the geometry and doping of the
+various circuit structures.
+For ordinary analog circuits, it is enough for the foundry to control and inform the designer about
+certain device parameters: threshold voltages, saturation currents, capacitances, leakage currents, etc.
+Although we succeeded in designing dosimeters based on this limited information,
+it would be ideal to optimize the design using more detailed 
+(possibly confidential) process information.
+\subsection{Biasing Monte-Carlo simulations}
+The irradiator Monte-Carlo simulations used a spherically symmetrical model
+in order to minimize runtime while providing a reasonable wort-case dose estimate.
+The problem with this kind of simulation is that we are only interested in 
+the small fraction of particles which escape the irradiator,
+while the simulator wastes time tracking those which never escape.
+It would be valuable for further works to use simulation biasing.
+This is a technique used in radiation protection,
+which allows for simulation time to be focused on certain outcomes.
+This is done by biasing the generation of random numbers so that interesting outcomes
+(e.g. particles which escape) are more likely.
+In the end, the results are corrected to reflect how unlikely they are in reality.
+\subsection{ESD protection structures}
+Measurements were limited by the fragility of the samples,
+which probably suffered from ESD (electrostatic discharge) damage.
+Although protection structures were used in the APS reset inputs,
+future designs should look into additional protections.
+In particular, there should be a way to protect the FG injector
+while allowing it to reach the elevated injection voltages.
+\subsection{Leakage-minimizing layout}
+The dosimeters were not laid out with leakage current in mind.
+Both of them are sensitive to small leakage currents, whether before or during irradiation.
+Future iterations should explore using guard rings or possibly changes to the circuit
+which keep leakage currents under control.
+\subsection{APS discharge curves}
+The small and large APS have very different discharge curves.
+This discrepancy has no immediate explanation, and neither does the unusual shape of the curves.
+Although the LED measurements confirm that the APS are sensitive to incoming light,
+it would be desirable to understand the exact shape of these curves.
+This would allow us to better understand the discharge phenomena and build a more robust dosimeter.
+\subsection{Adding a control gate to the FG dosimeter}
+It is possible to reach a deeper understanding of the FG dosimeter by adding an externally accessible gate.
+This can be done by routing metal over the FG, creating a capacitor.
+It would allow for new ways of characterizing the device,
+for example by measuring the shift in Vt as seen from the control gate.
+\subsection{Anomalous variation of the FG sensitivity}
+It was not possible to achieve a close fit to the measured FG sensitivity.
+This suggests that the model we tried to fit is not capturing all relevant processes
+such as interface state creation or oxide charge capture.
+We can still calibrate the sensor using the empirical curve.
+Nevertheless, it would be better to look for designs which minimize
+the influence of processes which are outside our control.
+This would lead to a dosimeter which is less sensitive to process variations.
 % layout con más cuidado, faltaron guardas
